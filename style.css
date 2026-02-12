@@ -1014,8 +1014,8 @@ footer .footer-links a:hover {
 
 .sponsor-detail-logo {
     flex-shrink: 0;
-    width: 180px;
-    height: 140px;
+    width: 220px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1023,7 +1023,6 @@ footer .footer-links a:hover {
 }
 
 .sponsor-detail-logo.logo-lg {
-    width: 220px;
     height: 170px;
     padding: 5px;
 }
@@ -1112,12 +1111,11 @@ footer .footer-links a:hover {
     }
 
     .sponsor-detail-logo {
-        width: 140px;
-        height: 100px;
+        width: 160px;
+        height: 110px;
     }
 
     .sponsor-detail-logo.logo-lg {
-        width: 160px;
         height: 120px;
     }
 }
