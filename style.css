@@ -501,10 +501,46 @@ h2 {
 .about-text {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0 auto 50px;
     color: var(--text-light);
     font-size: 1.05rem;
     line-height: 1.8;
+}
+
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.highlight-item {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+}
+
+.highlight-item h3 {
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.highlight-item p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ===== CTA BANNER ===== */
