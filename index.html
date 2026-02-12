@@ -3,30 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangkok Lions Rugby</title>
+    <title>Bangkok Lions Rugby Football Club</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="nav-brand">Bangkok Lions</div>
+        <div class="nav-brand">Bangkok <span>Lions</span></div>
         <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#about">About Us</a></li>
             <li><a href="#roster">Roster</a></li>
             <li><a href="#schedule">Calendar</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Bangkok Lions</h1>
+            <h1>Bangkok <span>Lions</span></h1>
             <p class="tagline">Play. Grow. Roar.</p>
             <p class="subtitle">From first pass to final whistle, we empower kids to grow stronger together through teamwork, discipline, and the joy of rugby.</p>
-            <a href="#roster" class="btn">Meet the Team</a>
+            <a href="#contact" class="btn">Join the Pride</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#127945;</div>
+                    <h3>Learn Rugby</h3>
+                    <p>Whether it's your first time picking up a ball or you've been playing for years, our coaches develop players at every level with structured, age-appropriate training.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128170;</div>
+                    <h3>Build Character</h3>
+                    <p>Rugby teaches discipline, respect, and resilience. Our players grow stronger on and off the pitch, developing life skills that go far beyond the game.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#129309;</div>
+                    <h3>Grow Together</h3>
+                    <p>Being part of a team means something. We build a supportive community where every kid belongs, friendships are formed, and memories are made for life.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -52,11 +74,19 @@
                 </div>
             </div>
             <p class="about-text">
-                The Bangkok Lions are a youth rugby development club dedicated to building character,
-                teamwork, and athletic skills. We believe every kid deserves the chance to experience
-                the pride of being part of a team. From beginners to experienced players, there's a
-                place for everyone in the pride.
+                The Bangkok Lions Rugby Football Club is a youth rugby development organisation dedicated to building
+                character, teamwork, and athletic skills. We believe every kid deserves the chance to experience
+                the pride of being part of a team. From beginners to experienced players, there's a place for
+                everyone in the pride.
             </p>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to Join the Pride?</h2>
+            <p>No experience needed. Just bring your energy, your attitude, and a willingness to have fun.</p>
+            <a href="#contact" class="btn">Register Now</a>
         </div>
     </section>
 
@@ -175,7 +205,7 @@
 
     <section id="schedule" class="schedule">
         <div class="container">
-            <h2>Match Schedule</h2>
+            <h2>Match Calendar</h2>
             <div class="schedule-list">
                 <div class="match-card">
                     <div class="match-date">
@@ -236,10 +266,23 @@
         </div>
     </section>
 
+    <section id="sponsors" class="sponsors">
+        <div class="container">
+            <h2>Sponsors & Partners</h2>
+            <p>Proud to be supported by our 2025/26 sponsors and partners.</p>
+            <div class="sponsor-logos">
+                <div class="sponsor-placeholder">Sponsor 1</div>
+                <div class="sponsor-placeholder">Sponsor 2</div>
+                <div class="sponsor-placeholder">Sponsor 3</div>
+                <div class="sponsor-placeholder">Sponsor 4</div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Join the Pride</h2>
-            <p>Interested in playing or supporting the Bangkok Lions? Get in touch.</p>
+            <h2>Contact Us</h2>
+            <p>Interested in playing or supporting the Bangkok Lions? Whether you want to join as a player, become a sponsor, or just find out more - we'd love to hear from you.</p>
             <form class="contact-form" onsubmit="handleSubmit(event)">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
@@ -248,6 +291,7 @@
                     <option value="play">Join as a Player</option>
                     <option value="support">Support the Team</option>
                     <option value="sponsor">Become a Sponsor</option>
+                    <option value="merch">Ask about Merchandise</option>
                     <option value="other">Other</option>
                 </select>
                 <textarea placeholder="Your Message" rows="4"></textarea>
@@ -258,7 +302,14 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Bangkok Lions Rugby Club. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#roster">Roster</a>
+                <a href="#schedule">Calendar</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <p>&copy; 2026 Bangkok Lions Rugby Football Club. All rights reserved.</p>
         </div>
     </footer>
 
