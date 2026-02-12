@@ -995,60 +995,65 @@ footer .footer-links a:hover {
     background: var(--bg);
 }
 
-.sponsors-page-intro {
-    text-align: center;
-    color: var(--text-light);
-    font-size: 1.05rem;
-    max-width: 600px;
-    margin: -20px auto 50px;
-    line-height: 1.7;
-}
-
-.sponsors-page-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.sponsor-page-card {
+.sponsor-detail-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 30px 20px 24px;
-    text-align: center;
+    padding: 40px;
+    margin-bottom: 25px;
     transition: all 0.3s ease;
 }
 
-.sponsor-page-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+.sponsor-detail-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     border-color: var(--gold);
 }
 
-.sponsor-page-logo {
-    width: 100%;
-    aspect-ratio: 3 / 2;
+.sponsor-detail-logo {
+    flex-shrink: 0;
+    width: 180px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
-    margin-bottom: 16px;
 }
 
-.sponsor-page-logo img {
+.sponsor-detail-logo img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
 
-.sponsor-page-card h3 {
-    font-size: 0.9rem;
-    font-weight: 600;
+.sponsor-detail-text h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
     color: var(--dark);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.sponsor-tag {
+    display: inline-block;
+    background: rgba(0, 40, 104, 0.08);
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.sponsor-detail-text p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.8;
 }
 
 .sponsors-cta {
@@ -1092,8 +1097,17 @@ footer .footer-links a:hover {
         letter-spacing: 2px;
     }
 
-    .sponsors-page-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .sponsor-detail-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .sponsor-detail-logo {
+        width: 140px;
+        height: 100px;
     }
 }
 
