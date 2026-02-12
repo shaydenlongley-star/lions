@@ -347,6 +347,18 @@ h2 {
     letter-spacing: 0.5px;
 }
 
+.training-venue-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.training-venue-link:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
 .training-pin {
     width: 22px;
     height: 22px;
