@@ -239,22 +239,117 @@ h2 {
 
 .features-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .features-header h2 {
-    margin-bottom: 12px;
+    margin-bottom: 0;
 }
 
-.features-subtitle {
+/* ===== TRAINING BANNER ===== */
+.training-banner {
+    background: var(--blue);
+    border-radius: 16px;
+    padding: 40px 30px;
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 40, 104, 0.25);
+}
+
+.training-banner::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 160px;
+    height: 160px;
+    background: rgba(255, 209, 0, 0.08);
+    border-radius: 50%;
+}
+
+.training-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 209, 0, 0.06);
+    border-radius: 50%;
+}
+
+.training-banner-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.training-line-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.training-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 500;
+}
+
+.training-highlight {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.1;
+}
+
+.training-line-venue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     font-size: 1.15rem;
-    color: var(--text-light);
-    line-height: 1.6;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
 }
 
-.features-subtitle strong {
-    color: var(--blue);
-    font-weight: 700;
+.training-pin {
+    width: 22px;
+    height: 22px;
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+.training-line-ages {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .training-highlight {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .training-banner {
+        padding: 30px 20px;
+        margin-bottom: 40px;
+    }
+
+    .training-line-ages {
+        font-size: 0.9rem;
+    }
 }
 
 .features-grid {
