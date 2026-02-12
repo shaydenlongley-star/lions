@@ -421,35 +421,38 @@ h2 {
 
 /* ===== QUOTE ===== */
 .quote-section {
-    padding: 70px 0;
-    background: var(--gold);
+    padding: 80px 0;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .club-quote {
-    max-width: 750px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: center;
     position: relative;
+    padding: 0 30px;
 }
 
 .club-quote::before {
     content: '\201C';
-    font-size: 6rem;
-    color: var(--blue);
-    opacity: 0.25;
+    font-size: 5rem;
+    color: var(--gold);
     position: absolute;
-    top: -40px;
-    left: -10px;
+    top: -30px;
+    left: 0px;
     font-family: Georgia, serif;
     line-height: 1;
 }
 
 .club-quote p {
-    font-size: 1.45rem;
-    font-weight: 600;
-    color: var(--blue);
-    line-height: 1.8;
-    letter-spacing: 0.3px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.9;
+    letter-spacing: 0.2px;
 }
 
 /* ===== ABOUT ===== */
