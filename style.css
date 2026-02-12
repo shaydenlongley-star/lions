@@ -419,6 +419,39 @@ h2 {
     line-height: 1.7;
 }
 
+/* ===== QUOTE ===== */
+.quote-section {
+    padding: 70px 0;
+    background: var(--gold);
+}
+
+.club-quote {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.club-quote::before {
+    content: '\201C';
+    font-size: 6rem;
+    color: var(--blue);
+    opacity: 0.25;
+    position: absolute;
+    top: -40px;
+    left: -10px;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.club-quote p {
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--blue);
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
+
 /* ===== ABOUT ===== */
 .about {
     padding: 100px 0;
