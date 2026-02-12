@@ -234,6 +234,26 @@ h2 {
     background: var(--bg);
 }
 
+.features-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.features-header h2 {
+    margin-bottom: 12px;
+}
+
+.features-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.features-subtitle strong {
+    color: var(--blue);
+    font-weight: 700;
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
