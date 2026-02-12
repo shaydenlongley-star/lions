@@ -276,6 +276,11 @@ h2 {
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0, 40, 104, 0.25);
+    transition: box-shadow 0.3s ease;
+}
+
+.training-banner:hover {
+    box-shadow: 0 0 20px rgba(255, 209, 0, 0.6), 0 0 40px rgba(255, 209, 0, 0.3);
 }
 
 .training-banner::before {
