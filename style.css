@@ -792,6 +792,12 @@ h2 {
     transform: scale(1.2);
 }
 
+.sponsor-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 @media (max-width: 768px) {
     .sponsor-logos {
         grid-template-columns: repeat(2, 1fr);
