@@ -1278,23 +1278,48 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
 
 .values-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
 .value-card {
     text-align: center;
-    padding: 40px 24px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
     transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.value-card-photo {
+    padding: 0;
 }
 
 .value-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     border-color: var(--gold);
+}
+
+.value-photo {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.value-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.value-card:hover .value-photo img {
+    transform: scale(1.05);
+}
+
+.value-body {
+    padding: 28px 24px;
 }
 
 .value-icon {
@@ -1429,7 +1454,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     }
 
     .values-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 
