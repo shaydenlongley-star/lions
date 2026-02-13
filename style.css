@@ -780,11 +780,16 @@ h2 {
 }
 
 .sponsor-logos {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+.sponsor-logos .sponsor-card-link {
+    width: calc(25% - 15px);
 }
 
 .sponsor-card {
@@ -822,8 +827,8 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    .sponsor-logos {
-        grid-template-columns: repeat(2, 1fr);
+    .sponsor-logos .sponsor-card-link {
+        width: calc(50% - 10px);
     }
 }
 
