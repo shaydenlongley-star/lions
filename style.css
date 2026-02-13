@@ -1009,6 +1009,13 @@ a.sponsor-detail-card {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+    outline: none;
+}
+
+a.sponsor-detail-card:focus,
+a.sponsor-detail-card:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 .sponsor-detail-card {

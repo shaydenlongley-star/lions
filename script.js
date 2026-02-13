@@ -55,6 +55,7 @@ if (window.location.hash) {
             setTimeout(() => {
                 window.addEventListener('scroll', function removeGlow() {
                     target.classList.remove('sponsor-highlight');
+                    history.replaceState(null, '', window.location.pathname);
                     window.removeEventListener('scroll', removeGlow);
                 });
             }, 1000);
