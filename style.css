@@ -1115,6 +1115,15 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     object-fit: contain;
 }
 
+.sponsor-text-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
 .sponsor-detail-text h3 {
     font-size: 1.3rem;
     font-weight: 700;
