@@ -15,7 +15,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 // Navbar background on scroll
 const navbar = document.querySelector('.navbar');
+const isMobile = () => window.innerWidth <= 768;
 window.addEventListener('scroll', () => {
+    if (isMobile()) return;
     if (window.scrollY > 50) {
         navbar.style.padding = '12px 40px';
     } else {
