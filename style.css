@@ -1341,7 +1341,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
 }
 
 .value-card:nth-child(2) .value-photo img {
-    object-position: center 75%;
+    object-position: center 10%;
 }
 
 .value-card:hover .value-photo img {
