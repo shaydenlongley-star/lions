@@ -45,12 +45,19 @@ document.querySelectorAll('.player-card, .match-card, .stat-card, .feature-card'
     observer.observe(el);
 });
 
-// Scroll hash target to center of screen
+// Scroll hash target to center of screen with yellow glow
 if (window.location.hash) {
     const target = document.querySelector(window.location.hash);
     if (target) {
         setTimeout(() => {
             target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.classList.add('sponsor-highlight');
+            setTimeout(() => {
+                window.addEventListener('scroll', function removeGlow() {
+                    target.classList.remove('sponsor-highlight');
+                    window.removeEventListener('scroll', removeGlow);
+                });
+            }, 1000);
         }, 100);
     }
 }
