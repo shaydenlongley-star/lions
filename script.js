@@ -32,16 +32,20 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('scroll-visible');
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('.player-card, .match-card, .stat-card, .feature-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+document.querySelectorAll(
+    '.feature-card, .stat-card, .sponsor-card, .training-banner, .club-quote, ' +
+    '.about-split, .value-card, .training-split, .about-hero, .about-join, ' +
+    '.about-mission-overlay, .cta-section, .contact, .map-section, ' +
+    '.features-header, .about h2, .about-text, .about-text-2, .sponsor-card-link'
+).forEach((el, i) => {
+    el.classList.add('scroll-hidden');
+    el.style.transitionDelay = (i % 4) * 0.1 + 's';
     observer.observe(el);
 });
 
