@@ -1201,6 +1201,12 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.about-split:hover .about-split-img {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
 }
 
 .about-split-img img {
@@ -1209,6 +1215,23 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     object-fit: cover;
     display: block;
     min-height: 320px;
+    transition: transform 0.5s ease;
+}
+
+.about-split:hover .about-split-img img {
+    transform: scale(1.05);
+}
+
+.about-split-text {
+    transition: transform 0.4s ease;
+}
+
+.about-split:hover .about-split-text {
+    transform: translateX(8px);
+}
+
+.about-split-reverse:hover .about-split-text {
+    transform: translateX(-8px);
 }
 
 .about-split-text h2 {
