@@ -995,6 +995,12 @@ footer .footer-links a:hover {
     background: var(--bg);
 }
 
+a.sponsor-detail-card {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
 .sponsor-detail-card {
     display: flex;
     align-items: flex-start;
