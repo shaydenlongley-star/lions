@@ -1251,7 +1251,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
 
 .about-intro {
     padding: 80px 0;
-    background: var(--bg);
+    background: #FFFFFF;
 }
 
 /* Mission banner: full-width photo background with overlay */
