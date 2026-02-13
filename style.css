@@ -1165,14 +1165,14 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
 
 /* ===== ABOUT PAGE ===== */
 .about-hero {
-    background: var(--blue);
+    background: #FFFFFF;
     padding: 140px 0 80px;
     text-align: center;
 }
 
 .about-hero h1 {
     font-size: 3rem;
-    color: #FFFFFF;
+    color: var(--blue);
     text-transform: uppercase;
     letter-spacing: 5px;
     margin-bottom: 16px;
