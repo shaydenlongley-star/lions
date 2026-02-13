@@ -1028,6 +1028,12 @@ a.sponsor-detail-card {
     border-color: var(--gold);
 }
 
+.sponsor-detail-card:target {
+    box-shadow: 0 0 20px rgba(255, 209, 0, 0.6), 0 0 40px rgba(255, 209, 0, 0.3);
+    border-color: var(--gold);
+    outline: none;
+}
+
 .sponsor-detail-logo {
     flex-shrink: 0;
     width: 220px;
