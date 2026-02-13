@@ -1179,12 +1179,12 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
 }
 
 .about-hero h1 span {
-    color: var(--gold);
+    color: var(--blue);
 }
 
 .about-hero-tagline {
     font-size: 1.4rem;
-    color: var(--gold);
+    color: var(--blue);
     font-weight: 600;
     letter-spacing: 6px;
     text-transform: uppercase;
