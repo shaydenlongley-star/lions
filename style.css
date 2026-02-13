@@ -1204,7 +1204,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-.about-split:hover .about-split-img {
+.about-split-img:hover {
     transform: scale(1.02);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
 }
@@ -1218,21 +1218,10 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     transition: transform 0.5s ease;
 }
 
-.about-split:hover .about-split-img img {
-    transform: scale(1.05);
+.about-split-img:hover img {
+    transform: scale(1.08);
 }
 
-.about-split-text {
-    transition: transform 0.4s ease;
-}
-
-.about-split:hover .about-split-text {
-    transform: translateX(8px);
-}
-
-.about-split-reverse:hover .about-split-text {
-    transform: translateX(-8px);
-}
 
 .about-split-text h2 {
     text-align: left;
