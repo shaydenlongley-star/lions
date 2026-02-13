@@ -1336,9 +1336,12 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     transition: transform 0.4s ease;
 }
 
-.value-card:nth-child(1) .value-photo img,
-.value-card:nth-child(2) .value-photo img {
+.value-card:nth-child(1) .value-photo img {
     object-position: center 30%;
+}
+
+.value-card:nth-child(2) .value-photo img {
+    object-position: center 45%;
 }
 
 .value-card:hover .value-photo img {
