@@ -1206,7 +1206,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
 
 .about-split-img:hover {
     transform: scale(1.02);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 0 20px rgba(255, 209, 0, 0.6), 0 0 40px rgba(255, 209, 0, 0.3);
 }
 
 .about-split-img img {
