@@ -1550,6 +1550,21 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
         letter-spacing: 3px;
     }
 
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .nav-brand {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        gap: 6px;
+    }
+
+    .nav-logo {
+        width: 30px;
+        height: 30px;
+    }
+
     .nav-toggle {
         display: block;
     }
