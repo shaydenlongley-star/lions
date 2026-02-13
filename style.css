@@ -1022,26 +1022,26 @@ footer .footer-links a:hover {
 
 /* ===== SPONSORS PAGE ===== */
 .sponsors-hero {
-    padding: 160px 0 80px;
-    background: var(--blue);
+    padding: 140px 0 80px;
+    background: #FFFFFF;
     text-align: center;
 }
 
 .sponsors-hero h1 {
     font-size: 3rem;
     font-weight: 900;
-    color: #FFFFFF;
+    color: var(--blue);
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     margin-bottom: 20px;
 }
 
 .sponsors-hero h1 span {
-    color: var(--gold);
+    color: var(--blue);
 }
 
 .sponsors-hero p {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-light);
     font-size: 1.15rem;
     max-width: 600px;
     margin: 0 auto;
