@@ -1241,7 +1241,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
 }
 
 .about-mission-overlay {
-    background: rgba(0, 40, 104, 0.92);
+    background: var(--blue);
     padding: 100px 0;
     min-height: 360px;
     display: flex;
