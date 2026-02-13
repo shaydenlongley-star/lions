@@ -870,6 +870,15 @@ h2 {
     opacity: 0.9;
 }
 
+.social-email {
+    background: var(--blue);
+    color: #FFFFFF;
+}
+
+.social-email:hover {
+    opacity: 0.9;
+}
+
 /* ===== CONTACT ===== */
 .contact {
     padding: 100px 0;
