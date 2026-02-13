@@ -1181,67 +1181,92 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     text-transform: uppercase;
 }
 
+/* Split layout: image + text side by side */
+.about-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-split-reverse {
+    direction: rtl;
+}
+
+.about-split-reverse > * {
+    direction: ltr;
+}
+
+.about-split-img {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.about-split-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 320px;
+}
+
+.about-split-text h2 {
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 2rem;
+}
+
+.about-split-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.about-split-text p:last-child {
+    margin-bottom: 0;
+}
+
 .about-intro {
     padding: 80px 0;
     background: var(--bg);
 }
 
-.about-intro-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-intro-content p {
-    font-size: 1.15rem;
-    line-height: 1.9;
-    color: var(--text);
-    margin-bottom: 20px;
-}
-
-.about-intro-content p:last-child {
-    margin-bottom: 0;
-}
-
-.about-mission {
-    padding: 80px 0;
-    background: var(--bg-alt);
-}
-
-.mission-card {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    background: var(--blue);
-    padding: 60px 50px;
-    border-radius: 16px;
+/* Mission banner: full-width photo background with overlay */
+.about-mission-banner {
     position: relative;
-    overflow: hidden;
+    background: url('hero-bg.jpg') center/cover no-repeat fixed;
+    min-height: 360px;
 }
 
-.mission-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gold);
+.about-mission-overlay {
+    background: rgba(0, 40, 104, 0.85);
+    padding: 100px 0;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
 }
 
-.mission-card h2 {
+.about-mission-overlay .container {
+    text-align: center;
+    max-width: 750px;
+}
+
+.about-mission-overlay h2 {
     color: var(--gold);
     margin-bottom: 24px;
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
-.mission-card p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.25rem;
+.about-mission-overlay p {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.3rem;
     line-height: 1.8;
     font-style: italic;
 }
 
+/* Values */
 .about-values {
     padding: 80px 0;
     background: var(--bg);
@@ -1293,9 +1318,16 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     line-height: 1.6;
 }
 
-.about-training {
+/* Community section */
+.about-community-section {
     padding: 80px 0;
     background: var(--bg-alt);
+}
+
+/* Training */
+.about-training {
+    padding: 80px 0;
+    background: var(--bg);
 }
 
 .training-split {
@@ -1348,44 +1380,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-.about-community {
-    padding: 80px 0;
-    background: var(--bg);
-}
-
-.community-card {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 60px 50px;
-    border: 2px solid var(--gold);
-    border-radius: 16px;
-    position: relative;
-}
-
-.community-card::before {
-    content: '\201C';
-    position: absolute;
-    top: -10px;
-    left: 40px;
-    font-size: 5rem;
-    color: var(--gold);
-    line-height: 1;
-    font-family: Georgia, serif;
-}
-
-.community-card h2 {
-    color: var(--blue);
-    margin-bottom: 24px;
-    font-size: 2rem;
-}
-
-.community-card p {
-    color: var(--text);
-    font-size: 1.1rem;
-    line-height: 1.9;
-}
-
+/* Join CTA */
 .about-join {
     padding: 80px 0;
     background: var(--blue);
@@ -1416,6 +1411,23 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
         letter-spacing: 4px;
     }
 
+    .about-split {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about-split-reverse {
+        direction: ltr;
+    }
+
+    .about-split-text h2 {
+        text-align: center;
+    }
+
+    .about-split-img img {
+        min-height: 240px;
+    }
+
     .values-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -1433,14 +1445,12 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
         min-height: 300px;
     }
 
-    .mission-card,
-    .community-card {
-        padding: 40px 24px;
+    .about-mission-banner {
+        background-attachment: scroll;
     }
 
-    .community-card::before {
-        left: 20px;
-        font-size: 3.5rem;
+    .about-mission-overlay {
+        padding: 60px 0;
     }
 }
 
