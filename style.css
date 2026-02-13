@@ -1311,6 +1311,7 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     transition: transform 0.4s ease;
 }
 
