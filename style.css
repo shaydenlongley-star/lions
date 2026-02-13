@@ -1015,6 +1015,10 @@ a.sponsor-detail-card {
 a.sponsor-detail-card:focus,
 a.sponsor-detail-card:focus-visible {
     outline: none;
+}
+
+a.sponsor-detail-card:focus:not(.sponsor-highlight),
+a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     box-shadow: none;
 }
 
