@@ -1629,8 +1629,14 @@ a.sponsor-detail-card:focus-visible:not(.sponsor-highlight) {
     }
 
     .about-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 12px;
+    }
+
+    .about-grid .stat-card {
+        width: calc(50% - 6px);
     }
 
     .features-grid {
