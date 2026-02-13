@@ -45,6 +45,16 @@ document.querySelectorAll('.player-card, .match-card, .stat-card, .feature-card'
     observer.observe(el);
 });
 
+// Scroll hash target to center of screen
+if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+        setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+    }
+}
+
 // Contact form handler
 function handleSubmit(e) {
     e.preventDefault();
