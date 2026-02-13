@@ -67,6 +67,38 @@ if (window.location.hash) {
     }
 }
 
+// Animated stat counters
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const prefix = el.dataset.prefix || '';
+            const duration = 1500;
+            const start = performance.now();
+
+            function update(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(eased * target);
+                el.textContent = prefix + current + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = prefix + target + suffix;
+                }
+            }
+            requestAnimationFrame(update);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+    counterObserver.observe(el);
+});
+
 // Contact form handler
 function handleSubmit(e) {
     e.preventDefault();
