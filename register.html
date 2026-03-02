@@ -40,151 +40,95 @@
                 style="margin-top: 32px;"
             >
 
-                <!-- PLAYER DETAILS -->
+                <!-- ACCOUNT INFORMATION -->
                 <div class="form-section">
-                    <span class="form-section-title">Player Details</span>
-                    <div class="form-grid-2" style="margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label for="player-first">First Name *</label>
-                            <input type="text" id="player-first" name="player_first_name" placeholder="First name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="player-last">Last Name *</label>
-                            <input type="text" id="player-last" name="player_last_name" placeholder="Last name" required>
-                        </div>
-                    </div>
-                    <div class="form-grid-3" style="margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label for="player-dob">Date of Birth *</label>
-                            <input type="date" id="player-dob" name="player_dob" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="player-gender">Gender *</label>
-                            <select id="player-gender" name="player_gender" required>
-                                <option value="" disabled selected>Select...</option>
-                                <option value="Boy">Boy</option>
-                                <option value="Girl">Girl</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="player-age-group">Age Group *</label>
-                            <select id="player-age-group" name="player_age_group" required>
-                                <option value="" disabled selected>Select...</option>
-                                <option value="U6">U6 (ages 3–5)</option>
-                                <option value="U8">U8 (ages 6–7)</option>
-                                <option value="U10">U10 (ages 8–9)</option>
-                                <option value="U12">U12 (ages 10–11)</option>
-                                <option value="U14">U14 (ages 12–13)</option>
-                                <option value="U16">U16 (ages 14–15)</option>
-                                <option value="U19">U19 (ages 16–18)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="player-school">School (optional)</label>
-                        <input type="text" id="player-school" name="player_school" placeholder="e.g. Bangkok Patana School">
-                    </div>
-                </div>
-
-                <!-- PARENT / GUARDIAN DETAILS -->
-                <div class="form-section" style="margin-top: 32px;">
-                    <span class="form-section-title">Parent / Guardian Details</span>
-                    <div class="form-grid-2" style="margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label for="parent-name">Full Name *</label>
-                            <input type="text" id="parent-name" name="parent_name" placeholder="Parent or guardian name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="parent-relationship">Relationship to Player *</label>
-                            <select id="parent-relationship" name="parent_relationship" required>
-                                <option value="" disabled selected>Select...</option>
-                                <option value="Mother">Mother</option>
-                                <option value="Father">Father</option>
-                                <option value="Guardian">Guardian</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-grid-2" style="margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label for="parent-email">Email Address *</label>
-                            <input type="email" id="parent-email" name="parent_email" placeholder="your@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="parent-phone">Mobile Number *</label>
-                            <input type="tel" id="parent-phone" name="parent_phone" placeholder="+66 XX XXX XXXX" required>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EMERGENCY CONTACT -->
-                <div class="form-section" style="margin-top: 32px;">
-                    <span class="form-section-title">Emergency Contact</span>
-                    <div class="form-grid-3">
-                        <div class="form-group">
-                            <label for="emergency-name">Full Name *</label>
-                            <input type="text" id="emergency-name" name="emergency_name" placeholder="Emergency contact name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emergency-phone">Phone Number *</label>
-                            <input type="tel" id="emergency-phone" name="emergency_phone" placeholder="+66 XX XXX XXXX" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emergency-relationship">Relationship *</label>
-                            <select id="emergency-relationship" name="emergency_relationship" required>
-                                <option value="" disabled selected>Select...</option>
-                                <option value="Mother">Mother</option>
-                                <option value="Father">Father</option>
-                                <option value="Guardian">Guardian</option>
-                                <option value="Grandparent">Grandparent</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MEDICAL INFORMATION -->
-                <div class="form-section" style="margin-top: 32px;">
-                    <span class="form-section-title">Medical Information</span>
+                    <span class="form-section-title">Account Information</span>
                     <div class="form-group" style="margin-bottom: 16px;">
-                        <label for="medical-conditions">Medical Conditions or Allergies</label>
-                        <textarea id="medical-conditions" name="medical_conditions" placeholder="Please list any medical conditions, allergies, or medications we should be aware of. Leave blank if none."></textarea>
+                        <label for="username">Username *</label>
+                        <input type="text" id="username" name="username" placeholder="Choose a username" required>
                     </div>
-                    <div class="form-group">
-                        <label for="how-heard">How did you hear about us?</label>
-                        <select id="how-heard" name="how_heard">
-                            <option value="" disabled selected>Select...</option>
-                            <option value="Friend or Family">Friend or Family</option>
-                            <option value="Social Media">Social Media</option>
-                            <option value="School">School</option>
-                            <option value="Bangkok Patana">Bangkok Patana</option>
-                            <option value="Leicester Tigers">Leicester Tigers</option>
-                            <option value="Online Search">Online Search</option>
-                            <option value="Other">Other</option>
-                        </select>
+                    <div class="form-grid-2" style="margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password" name="password" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirm Password *</label>
+                            <input type="password" id="password2" name="password2" placeholder="Repeat your password" required>
+                        </div>
+                    </div>
+                    <div class="form-grid-2" style="margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="first-name">First Name *</label>
+                            <input type="text" id="first-name" name="first_name" placeholder="First name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name *</label>
+                            <input type="text" id="last-name" name="last_name" placeholder="Last name" required>
+                        </div>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-email">Confirm Email *</label>
+                            <input type="email" id="confirm-email" name="confirm_email" placeholder="Repeat your email" required>
+                        </div>
                     </div>
                 </div>
 
-                <!-- CONSENT & TERMS -->
+                <!-- PARENT INFORMATION -->
                 <div class="form-section" style="margin-top: 32px;">
-                    <span class="form-section-title">Consent &amp; Agreement</span>
+                    <span class="form-section-title">Parent / Guardian Information</span>
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="parent-mobile">Parent / Guardian Mobile Number *</label>
+                        <input type="tel" id="parent-mobile" name="parent_mobile_number" placeholder="+66 XX XXX XXXX" required>
+                    </div>
+                    <p style="font-size: 0.82rem; color: var(--text-light); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Second Parent / Guardian (optional)</p>
+                    <div class="form-grid-2" style="margin-bottom: 16px;">
+                        <div class="form-group">
+                            <label for="parent2-name">First Name</label>
+                            <input type="text" id="parent2-name" name="parent_2_name" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <label for="parent2-surname">Last Name</label>
+                            <input type="text" id="parent2-surname" name="parent_2_surname" placeholder="Last name">
+                        </div>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="parent2-email">Email Address</label>
+                            <input type="email" id="parent2-email" name="parent_2_email" placeholder="second@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="parent2-mobile">Mobile Number</label>
+                            <input type="tel" id="parent2-mobile" name="parent_2_mobile_number" placeholder="+66 XX XXX XXXX">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AGREEMENTS -->
+                <div class="form-section" style="margin-top: 32px;">
+                    <span class="form-section-title">Agreements</span>
                     <div style="display: flex; flex-direction: column; gap: 14px;">
                         <div class="consent-group">
-                            <input type="checkbox" id="consent-photo" name="consent_photo" value="yes" required>
+                            <input type="checkbox" id="consent-waiver" name="waiver_agreement" value="yes" required>
+                            <label for="consent-waiver">* I have read and agree to the <a href="waiver.html" target="_blank">Bangkok Lions Rugby Football Club's Waiver of Liability</a>.</label>
+                        </div>
+                        <div class="consent-group">
+                            <input type="checkbox" id="consent-photo" name="waiver_photos" value="yes" required>
                             <label for="consent-photo">* I have read and agree to the <a href="photo-policy.html" target="_blank">Bangkok Lions Rugby Football Club's Photo Usage Policy</a>.</label>
                         </div>
                         <div class="consent-group">
-                            <input type="checkbox" id="consent-medical" name="consent_medical" value="yes" required>
-                            <label for="consent-medical">* I confirm that the medical information provided above is accurate and I consent to emergency medical treatment being sought for my child if required.</label>
-                        </div>
-                        <div class="consent-group">
-                            <input type="checkbox" id="consent-terms" name="consent_terms" value="yes" required>
-                            <label for="consent-terms">* I have read and agree to the <a href="waiver.html" target="_blank">Bangkok Lions Rugby Football Club's Waiver of Liability</a>.</label>
+                            <input type="checkbox" id="consent-email" name="email_consent" value="yes">
+                            <label for="consent-email">I would like to receive news and updates from Bangkok Lions Rugby Football Club by email.</label>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn auth-btn" style="margin-top: 16px;">Submit Registration</button>
+                <button type="submit" class="btn auth-btn" style="margin-top: 16px;">Submit and Confirm</button>
             </form>
 
             <div class="auth-switch">
