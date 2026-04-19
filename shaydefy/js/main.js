@@ -1,0 +1,273 @@
+/* ============================================
+   main.js — Shaydefy Studio v2
+   ============================================ */
+(function () {
+  'use strict';
+
+  /* ----------------------------------------
+     YEAR
+  ---------------------------------------- */
+  var yr = document.getElementById('year');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ----------------------------------------
+     PRELOADER — dismiss then kick off hero
+  ---------------------------------------- */
+  var preloader = document.getElementById('preloader');
+
+  function dismissPreloader() {
+    if (!preloader) { revealHero(); return; }
+    preloader.classList.add('out');
+    preloader.addEventListener('transitionend', revealHero, { once: true });
+    // Unlock scroll
+    document.body.style.overflow = '';
+  }
+
+  // Wait for fonts + images, but cap at 2s
+  var ready = false;
+  function tryDismiss() {
+    if (ready) return;
+    ready = true;
+    // Minimum display: 1.7s for preloader animation to complete
+    setTimeout(dismissPreloader, 1700);
+  }
+
+  window.addEventListener('load', tryDismiss);
+  setTimeout(tryDismiss, 2200); // hard cap
+
+  /* ----------------------------------------
+     HERO REVEAL — word clip animation
+  ---------------------------------------- */
+  function revealHero() {
+    var words = document.querySelectorAll('.hero-title .word');
+    var eyebrow = document.querySelector('.hero-eyebrow');
+    var sub     = document.querySelector('.hero-sub');
+    var actions = document.querySelector('.hero-actions');
+    var aside   = document.querySelector('.hero-aside');
+    var scroll  = document.querySelector('.hero-scroll-hint');
+
+    if (typeof gsap !== 'undefined') {
+      var tl = gsap.timeline();
+
+      // Eyebrow
+      tl.to(eyebrow, { opacity:1, y:0, duration:0.7, ease:'power2.out' }, 0);
+
+      // Title words clip up
+      tl.to(words, {
+        y: '0%',
+        duration: 1.0,
+        stagger: 0.12,
+        ease: 'power4.out'
+      }, 0.15);
+
+      // Sub copy
+      tl.to(sub, { opacity:1, y:0, duration:0.8, ease:'power2.out' }, 0.55);
+
+      // Actions
+      tl.to(actions, { opacity:1, y:0, duration:0.7, ease:'power2.out' }, 0.72);
+
+      // Aside badges
+      tl.to(aside, { opacity:1, y:0, duration:0.8, ease:'power2.out' }, 0.6);
+
+      // Scroll hint
+      tl.to(scroll, { opacity:1, duration:0.6, ease:'power2.out' }, 1.1);
+
+    } else {
+      // No GSAP fallback — just show everything
+      [eyebrow, sub, actions, aside, scroll].forEach(function (el) {
+        if (el) el.style.opacity = '1';
+      });
+      words.forEach(function (w) { w.style.transform = 'translateY(0)'; });
+    }
+  }
+
+  /* ----------------------------------------
+     SCROLL PROGRESS
+  ---------------------------------------- */
+  var bar = document.getElementById('scrollProgress');
+  function updateBar() {
+    if (!bar) return;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    if (total > 0) bar.style.width = (window.scrollY / total * 100) + '%';
+  }
+  window.addEventListener('scroll', updateBar, { passive: true });
+
+  /* ----------------------------------------
+     NAVBAR scroll state
+  ---------------------------------------- */
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function () {
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
+    updateBar();
+  }, { passive: true });
+
+  /* ----------------------------------------
+     MOBILE NAV TOGGLE
+  ---------------------------------------- */
+  var navMenu   = document.getElementById('navMenu');
+  var navToggle = document.getElementById('navToggle');
+  var isOpen    = false;
+
+  function setMenu(open) {
+    isOpen = open;
+    if (navMenu)   navMenu.classList.toggle('open', open);
+    if (navToggle) navToggle.parentElement.classList.toggle('nav-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  if (navToggle) navToggle.addEventListener('click', function () { setMenu(!isOpen); });
+  if (navMenu) navMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setMenu(false); });
+  });
+
+  /* ----------------------------------------
+     ACTIVE NAV LINK
+  ---------------------------------------- */
+  var sections = document.querySelectorAll('[id]');
+  var navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        navLinks.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(function (s) { io.observe(s); });
+
+  /* ----------------------------------------
+     SCROLL REVEAL — data-reveal elements
+  ---------------------------------------- */
+  var reveals = document.querySelectorAll('[data-reveal]');
+  var ro = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(function (el) { ro.observe(el); });
+
+  /* ----------------------------------------
+     SPOTLIGHT GLOW — work cards
+  ---------------------------------------- */
+  document.querySelectorAll('.work-card').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100) + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
+    });
+  });
+
+  /* ----------------------------------------
+     LIQUID CURSOR BLOB
+  ---------------------------------------- */
+  (function () {
+    if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+
+    var el    = document.createElement('div');
+    el.className = 'cursor';
+    el.innerHTML = '<div class="cursor-dot"></div>';
+    document.body.appendChild(el);
+    var dot = el.querySelector('.cursor-dot');
+    document.documentElement.classList.add('cursor-on');
+
+    var mx=0,my=0,cx=0,cy=0,px=0,py=0;
+    var hovering = false;
+    el.style.opacity = '0';
+
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      el.style.opacity = '1';
+    }, { passive: true });
+    document.addEventListener('mouseleave', function () { el.style.opacity = '0'; });
+    document.addEventListener('mouseover', function (e) {
+      hovering = !!e.target.closest('a,button,[role="button"]');
+      dot.classList.toggle('big', hovering);
+    });
+
+    (function loop() {
+      requestAnimationFrame(loop);
+      px = cx; py = cy;
+      cx += (mx - cx) * 0.13;
+      cy += (my - cy) * 0.13;
+      var vx = cx - px, vy = cy - py;
+      var spd = Math.sqrt(vx*vx + vy*vy);
+      var str = Math.min(spd * 0.18, 1.6);
+      var sx  = hovering ? 1 : 1 + str;
+      var sy  = hovering ? 1 : Math.max(0.5, 1/(1 + str*0.55));
+      var ang = (!hovering && spd > 0.3) ? Math.atan2(vy,vx)*(180/Math.PI) : 0;
+      el.style.transform  = 'translate(' + cx + 'px,' + cy + 'px)';
+      dot.style.transform = 'translate(-50%,-50%) rotate(' + ang + 'deg) scaleX(' + sx + ') scaleY(' + sy + ')';
+    })();
+  })();
+
+  /* ----------------------------------------
+     CLICK SHOCKWAVE
+  ---------------------------------------- */
+  document.addEventListener('click', function (e) {
+    var r = document.createElement('span');
+    r.style.cssText = 'position:fixed;left:' + e.clientX + 'px;top:' + e.clientY + 'px;' +
+      'width:0;height:0;border-radius:50%;border:1px solid rgba(201,168,76,0.6);' +
+      'transform:translate(-50%,-50%);pointer-events:none;z-index:9997;' +
+      'transition:width 0.55s ease,height 0.55s ease,opacity 0.55s ease;opacity:1;';
+    document.body.appendChild(r);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        r.style.width = '72px'; r.style.height = '72px'; r.style.opacity = '0';
+      });
+    });
+    setTimeout(function () { r.remove(); }, 600);
+  });
+
+  /* ----------------------------------------
+     PAGE TRANSITION CURTAIN
+  ---------------------------------------- */
+  (function () {
+    var c = document.getElementById('pageCurtain');
+    if (!c) return;
+
+    if (sessionStorage.getItem('curtainEntry')) {
+      sessionStorage.removeItem('curtainEntry');
+      c.classList.add('in');
+      c.style.transition = 'none';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          c.style.transition = '';
+          c.classList.replace('in','out');
+          c.addEventListener('transitionend', function () {
+            c.style.pointerEvents = 'none';
+          }, { once: true });
+        });
+      });
+    }
+
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (!h || h.startsWith('#') || h.startsWith('http') ||
+          h.startsWith('//') || h.startsWith('mailto') || h.startsWith('tel')) return;
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        sessionStorage.setItem('curtainEntry','1');
+        c.classList.remove('out'); c.classList.add('in');
+        c.style.transition = '';
+        setTimeout(function () { window.location.href = h; }, 560);
+      });
+    });
+  })();
+
+  /* ----------------------------------------
+     SMOOTH ANCHOR SCROLL
+  ---------------------------------------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(this.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+    });
+  });
+
+})();

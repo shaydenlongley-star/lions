@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shaydefy — Premium web design studio based in Bangkok. Cinematic, high-performance websites for businesses that refuse to be ordinary.">
+  <title>Shaydefy — Premium Web Design Studio · Bangkok</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaydefy">
+  <meta property="og:title" content="Shaydefy — Premium Web Design Studio · Bangkok">
+  <meta property="og:description" content="We build cinematic, high-performance websites for businesses that refuse to be ordinary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <style>
+    /* Critical: hide everything until preloader ready */
+    body { overflow:hidden; }
+    @media(max-width:900px){
+      .nav-menu{display:flex!important;position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;background:#080808!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:8px!important;padding:40px 28px!important;z-index:9999!important;opacity:0!important;transform:translateX(100%)!important;pointer-events:none!important;transition:opacity .35s ease,transform .35s cubic-bezier(.4,0,.2,1)!important}
+      .nav-menu.open{opacity:1!important;transform:translateX(0)!important;pointer-events:all!important}
+      .nav-toggle{display:flex!important;z-index:10000!important}
+      .nav-menu a{font-size:1.25rem!important;padding:16px 32px!important;font-weight:500!important;color:rgba(255,255,255,0.75)!important;width:100%!important;text-align:center!important;display:block!important}
+      .work-grid{grid-template-columns:1fr!important}
+      .about-split{grid-template-columns:1fr!important;gap:48px!important}
+    }
+    html,body{overflow-x:hidden!important}
+  </style>
+</head>
+<body>
+
+  <!-- Page Transition Curtain -->
+  <div id="pageCurtain" class="page-curtain"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <span class="preloader-wordmark">SHAYDEFY</span>
+    <div class="preloader-track"><div class="preloader-fill" id="preloaderFill"></div></div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="nav-logo">SHAYDEFY</a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span class="burger" id="burger"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================================================
+       HERO
+  ================================================= -->
+  <section class="hero" id="home">
+    <div class="hero-grain"></div>
+    <div class="hero-glow"></div>
+
+    <div class="container hero-container">
+
+      <!-- Left: Main content -->
+      <div class="hero-content">
+        <p class="hero-eyebrow" data-reveal>Bangkok &nbsp;·&nbsp; Web Design Studio</p>
+
+        <h1 class="hero-title" id="heroTitle" data-reveal data-reveal-delay="1">
+          <span class="hero-title-line"><span class="word-wrap"><span class="word">SHAY</span></span><span class="word-wrap"><span class="word">DEFY</span></span></span>
+        </h1>
+
+        <p class="hero-sub" data-reveal data-reveal-delay="2">
+          Premium web experiences for<br>businesses that refuse to be ordinary.
+        </p>
+
+        <div class="hero-actions" data-reveal data-reveal-delay="3">
+          <a href="#work" class="btn btn-gold">View Work</a>
+          <a href="#contact" class="btn btn-ghost">Start a Project &nbsp;↗</a>
+        </div>
+      </div>
+
+      <!-- Right: Featured stat/badge -->
+      <div class="hero-aside" data-reveal data-reveal-delay="4">
+        <div class="hero-badge">
+          <span class="hero-badge-num">10+</span>
+          <span class="hero-badge-label">Projects<br>Delivered</span>
+        </div>
+        <div class="hero-badge">
+          <span class="hero-badge-num">BKK</span>
+          <span class="hero-badge-label">Based in<br>Bangkok</span>
+        </div>
+        <div class="hero-badge">
+          <span class="hero-badge-num">100%</span>
+          <span class="hero-badge-label">Custom<br>Builds</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span class="hero-scroll-line"></span>
+      <span class="hero-scroll-text">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ================================================
+       WORK
+  ================================================= -->
+  <section class="section" id="work">
+    <div class="container">
+
+      <div class="work-header">
+        <div>
+          <span class="eyebrow">Selected Work</span>
+          <h2>Built to be remembered.</h2>
+        </div>
+        <span class="work-count">01 — 07</span>
+      </div>
+
+      <!-- FEATURED -->
+      <a href="siam-legal/index.html" class="work-featured" data-reveal>
+        <div class="work-featured-img" style="background-image:url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1920&q=85')"></div>
+        <div class="work-featured-overlay"></div>
+        <div class="work-featured-body">
+          <div>
+            <span class="work-num">01</span>
+            <span class="work-tag">Legal &amp; Immigration</span>
+            <h3>Siam Legal International</h3>
+            <p>Cinematic redesign for Bangkok's leading international law firm — scroll-driven narrative, GSAP animations, full rebrand.</p>
+          </div>
+          <span class="work-arrow">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H6M15 3V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- GRID -->
+      <div class="work-grid">
+
+        <a href="bangkokelites/index.html" class="work-card" data-reveal>
+          <div class="work-card-img" style="background-image:url('https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">02</span>
+            <span class="work-tag">Luxury Lifestyle</span>
+            <h3>Bangkok Elites</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
+
+        <a href="praesidia-website/index.html" class="work-card" data-reveal>
+          <div class="work-card-img" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">03</span>
+            <span class="work-tag">International Organisation</span>
+            <h3>Praesidia Alliance</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
+
+        <a href="pfil-website/index.html" class="work-card" data-reveal>
+          <div class="work-card-img" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">04</span>
+            <span class="work-tag">Professional Services</span>
+            <h3>PFIL Group</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
+
+        <a href="tradefarm-website/index.html" class="work-card" data-reveal>
+          <div class="work-card-img" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">05</span>
+            <span class="work-tag">Agricultural Commerce</span>
+            <h3>Tradefarm</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
+
+        <a href="bens-bookkeeping/index.html" class="work-card" data-reveal>
+          <div class="work-card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">06</span>
+            <span class="work-tag">Financial Services</span>
+            <h3>Ben's Bookkeeping</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
+
+        <a href="headbangbarber/index.html" class="work-card" data-reveal>
+          <div class="work-card-img" style="background-image:url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">07</span>
+            <span class="work-tag">Grooming &amp; Lifestyle</span>
+            <h3>Headbang Barber</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       ABOUT
+  ================================================= -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-left" data-reveal>
+          <span class="eyebrow">About</span>
+          <h2>Craft over<br><em>everything.</em></h2>
+          <div class="gold-rule"></div>
+          <p>I'm a Bangkok-based web designer building premium, cinematic websites for businesses that take their digital presence seriously. Every site is custom-crafted — no templates, no shortcuts, no compromise.</p>
+          <p>I work with professional service firms, luxury brands, and ambitious businesses across Southeast Asia and beyond.</p>
+          <a href="#contact" class="btn btn-gold" style="margin-top:12px">Start a Project</a>
+        </div>
+        <div class="about-right" data-reveal data-reveal-delay="2">
+          <div class="about-card">
+            <span class="about-card-num">10+</span>
+            <span class="about-card-label">Projects Completed</span>
+          </div>
+          <div class="about-card">
+            <span class="about-card-num">100%</span>
+            <span class="about-card-label">Custom — No Templates</span>
+          </div>
+          <div class="about-card">
+            <span class="about-card-num">BKK</span>
+            <span class="about-card-label">Based in Bangkok, Thailand</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       CONTACT
+  ================================================= -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-inner">
+      <span class="eyebrow" data-reveal>Get in Touch</span>
+      <h2 data-reveal data-reveal-delay="1">Let's build something<br><em>remarkable.</em></h2>
+      <p data-reveal data-reveal-delay="2">Tell me about your project. I'll respond within one business day.</p>
+      <div data-reveal data-reveal-delay="3">
+        <a href="mailto:hello@shaydefy.com" class="btn btn-gold">hello@shaydefy.com &nbsp;↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       FOOTER
+  ================================================= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">SHAYDEFY</span>
+      <span class="footer-copy">&copy; <span id="year"></span> Shaydefy. Bangkok, Thailand.</span>
+      <ul class="footer-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>
