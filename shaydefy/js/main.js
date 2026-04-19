@@ -526,9 +526,9 @@
         n: twFull.length,
         ease: 'none',
         scrollTrigger: {
-          trigger: closingH2,
-          start: 'top 80%',
-          end: 'top 20%',
+          trigger: '.closing-section',
+          start: 'top 70%',
+          end: 'bottom bottom',
           scrub: 1.5
         },
         onUpdate: function () {
