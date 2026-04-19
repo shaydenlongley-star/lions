@@ -172,37 +172,46 @@
   });
 
   /* ----------------------------------------
-     CURSOR PREVIEW — work cards
+     CURSOR PREVIEW — gsap.quickTo + velocity skew
   ---------------------------------------- */
   (function () {
     if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    if (typeof gsap === 'undefined') return;
     var preview = document.getElementById('cursorPreview');
     var previewImg = document.getElementById('cursorPreviewImg');
     if (!preview || !previewImg) return;
 
-    var px = 0, py = 0, cx = 0, cy = 0;
-    var active = false;
+    var mx = 0, my = 0, prevMx = 0, prevMy = 0;
+
+    var xTo = gsap.quickTo(preview, 'x', { duration: 0.6, ease: 'power3.out' });
+    var yTo = gsap.quickTo(preview, 'y', { duration: 0.6, ease: 'power3.out' });
 
     document.addEventListener('mousemove', function (e) {
-      px = e.clientX; py = e.clientY;
-    }, { passive: true });
+      var dx = e.clientX - prevMx;
+      var dy = e.clientY - prevMy;
+      prevMx = mx; prevMy = my;
+      mx = e.clientX; my = e.clientY;
 
-    (function loop() {
-      requestAnimationFrame(loop);
-      cx += (px - cx) * 0.1;
-      cy += (py - cy) * 0.1;
-      preview.style.transform = 'translate(' + (cx + 20) + 'px,' + (cy - 70) + 'px)';
-    })();
+      xTo(mx + 20);
+      yTo(my - 80);
+
+      gsap.to(previewImg, {
+        skewX: dx * 0.25, skewY: dy * 0.08,
+        duration: 0.3, ease: 'power2.out', overwrite: true
+      });
+      gsap.to(previewImg, {
+        skewX: 0, skewY: 0,
+        duration: 0.7, ease: 'power3.out', delay: 0.1, overwrite: false
+      });
+    }, { passive: true });
 
     document.querySelectorAll('[data-preview]').forEach(function (card) {
       card.addEventListener('mouseenter', function () {
         previewImg.style.backgroundImage = "url('" + card.getAttribute('data-preview') + "')";
         preview.classList.add('active');
-        active = true;
       });
       card.addEventListener('mouseleave', function () {
         preview.classList.remove('active');
-        active = false;
       });
     });
   })();
@@ -282,25 +291,47 @@
   });
 
   /* ----------------------------------------
-     PAGE TRANSITION CURTAIN
+     PAGE TRANSITION CURTAIN — stair panels
   ---------------------------------------- */
   (function () {
-    var c = document.getElementById('pageCurtain');
-    if (!c) return;
+    var curtain = document.getElementById('pageCurtain');
+    if (!curtain || typeof gsap === 'undefined') return;
+
+    var panels = curtain.querySelectorAll('.curtain-panel');
+    if (!panels.length) return;
+
+    function coverScreen(cb) {
+      curtain.style.pointerEvents = 'all';
+      gsap.fromTo(panels,
+        { yPercent: 100 },
+        {
+          yPercent: 0,
+          duration: 0.6,
+          stagger: 0.07,
+          ease: 'power4.inOut',
+          onComplete: cb
+        }
+      );
+    }
+
+    function revealScreen() {
+      gsap.to(panels, {
+        yPercent: -100,
+        duration: 0.6,
+        stagger: { each: 0.07, from: 'end' },
+        ease: 'power4.inOut',
+        onComplete: function () {
+          curtain.style.pointerEvents = 'none';
+          gsap.set(panels, { yPercent: 100 });
+        }
+      });
+    }
 
     if (sessionStorage.getItem('curtainEntry')) {
       sessionStorage.removeItem('curtainEntry');
-      c.classList.add('in');
-      c.style.transition = 'none';
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          c.style.transition = '';
-          c.classList.replace('in','out');
-          c.addEventListener('transitionend', function () {
-            c.style.pointerEvents = 'none';
-          }, { once: true });
-        });
-      });
+      gsap.set(panels, { yPercent: 0 });
+      curtain.style.pointerEvents = 'all';
+      setTimeout(revealScreen, 100);
     }
 
     document.querySelectorAll('a[href]').forEach(function (a) {
@@ -309,10 +340,8 @@
           h.startsWith('//') || h.startsWith('mailto') || h.startsWith('tel')) return;
       a.addEventListener('click', function (e) {
         e.preventDefault();
-        sessionStorage.setItem('curtainEntry','1');
-        c.classList.remove('out'); c.classList.add('in');
-        c.style.transition = '';
-        setTimeout(function () { window.location.href = h; }, 560);
+        sessionStorage.setItem('curtainEntry', '1');
+        coverScreen(function () { window.location.href = h; });
       });
     });
   })();
@@ -387,8 +416,8 @@
     }
 
     document.querySelectorAll('h2').forEach(function (h2) {
-      // Skip if inside hero (has its own animation)
-      if (h2.closest('.hero')) return;
+      // Skip if inside hero (has its own animation) or closing section (typewriter handles it)
+      if (h2.closest('.hero') || h2.closest('.closing-section')) return;
       // Remove data-reveal on the h2 itself to avoid conflict
       h2.removeAttribute('data-reveal');
       h2.style.opacity = '1';
@@ -448,6 +477,67 @@
           start: 'top bottom',
           end: 'bottom top',
           scrub: true
+        }
+      });
+    }
+
+    /* -- Direction-aware scroll reveals -- */
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+      if (el.closest('.hero') || el.closest('.closing-section')) return;
+      var delay = parseInt(el.getAttribute('data-reveal-delay') || '0', 10) * 0.12;
+      // Take over from the IO observer
+      ro.unobserve(el);
+      el.classList.remove('visible');
+      el.style.transition = 'none';
+      gsap.set(el, { opacity: 0, y: 36 });
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 88%',
+        onEnter: function () {
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.8, delay: delay, ease: 'power3.out', clearProps: 'transition' });
+        },
+        onLeaveBack: function () {
+          gsap.set(el, { opacity: 0, y: -30 });
+        },
+        onEnterBack: function () {
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' });
+        }
+      });
+    });
+
+    /* -- Scroll typewriter — closing statement h2 -- */
+    var closingH2 = document.querySelector('.closing-section h2');
+    if (closingH2) {
+      ro.unobserve(closingH2);
+      closingH2.removeAttribute('data-reveal');
+      closingH2.style.opacity = '1';
+      closingH2.style.transform = 'none';
+
+      var twBefore = "Let\u2019s build something\nthe world ";
+      var twAfter  = 'remembers.';
+      var twFull   = twBefore + twAfter;
+
+      closingH2.innerHTML = '<span class="tw-typed"></span>';
+      var twTyped = closingH2.querySelector('.tw-typed');
+      var twObj   = { n: 0 };
+
+      gsap.to(twObj, {
+        n: twFull.length,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: closingH2,
+          start: 'top 80%',
+          end: 'top 20%',
+          scrub: 1.5
+        },
+        onUpdate: function () {
+          var n   = Math.round(twObj.n);
+          var pre = twBefore.slice(0, Math.min(n, twBefore.length)).replace('\n', '<br>');
+          var em  = n > twBefore.length ? twAfter.slice(0, n - twBefore.length) : '';
+          twTyped.innerHTML = pre +
+            (em ? '<em style="color:var(--gold);font-style:italic">' + em + '</em>' : '') +
+            '<span class="tw-cursor">|</span>';
         }
       });
     }

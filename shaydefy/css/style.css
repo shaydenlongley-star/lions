@@ -940,17 +940,30 @@ img { max-width:100%; display:block; }
 }
 
 /* ============================================
-   PAGE CURTAIN
+   PAGE CURTAIN — stair panels
    ============================================ */
 .page-curtain {
-  position:fixed; inset:0; background:var(--dark);
+  position:fixed; inset:0;
   z-index:99998; pointer-events:none;
-  transform:translateX(105%);
-  transition:transform 0.55s cubic-bezier(0.77,0,0.18,1);
+  display:flex;
+}
+.page-curtain.active { pointer-events:all; }
+.curtain-panel {
+  flex:1; height:100%;
+  background:var(--dark);
+  transform:translateY(100%);
   will-change:transform;
 }
-.page-curtain.in  { transform:translateX(0);    pointer-events:all; }
-.page-curtain.out { transform:translateX(-105%); }
+.curtain-panel:nth-child(even) { background:var(--dark-2); }
+
+/* ============================================
+   TYPEWRITER CURSOR
+   ============================================ */
+.tw-cursor {
+  font-style:normal; color:var(--gold);
+  animation:twBlink 0.7s step-end infinite;
+}
+@keyframes twBlink { 50% { opacity:0; } }
 
 /* ============================================
    MOBILE
