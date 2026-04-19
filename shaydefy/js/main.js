@@ -10,23 +10,7 @@
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ----------------------------------------
-     LENIS SMOOTH SCROLL
-  ---------------------------------------- */
-  var lenis;
-  if (typeof Lenis !== 'undefined') {
-    lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
-    function lenisRaf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(lenisRaf);
-    }
-    requestAnimationFrame(lenisRaf);
-
-    // Keep GSAP ScrollTrigger in sync
-    if (typeof ScrollTrigger !== 'undefined') {
-      lenis.on('scroll', ScrollTrigger.update);
-    }
-  }
+  var lenis = null;
 
   /* ----------------------------------------
      PRELOADER — dismiss then kick off hero
@@ -343,12 +327,6 @@
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
     gsap.registerPlugin(ScrollTrigger);
-
-    // Sync Lenis with ScrollTrigger ticker
-    if (lenis) {
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-    }
 
     /* -- Hero title parallax on scroll -- */
     var heroTitle = document.querySelector('.hero-title');
