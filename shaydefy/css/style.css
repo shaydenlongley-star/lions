@@ -378,11 +378,12 @@ img { max-width:100%; display:block; }
   gap:0 24px;
   padding:26px 0;
   border-bottom:1px solid var(--border);
-  position:relative; overflow:hidden;
+  position:relative;
   text-decoration:none;
-  transition:background 0.45s var(--ease);
+  z-index:1;
+  transition:background 0.45s var(--ease), z-index 0s;
 }
-.work-row:hover { background:rgba(201,168,76,0.03); }
+.work-row:hover { background:rgba(201,168,76,0.03); z-index:5; }
 .wr-num {
   font-family:var(--font-d);
   font-size:0.7rem; font-weight:400;
@@ -412,13 +413,15 @@ img { max-width:100%; display:block; }
 }
 .work-row:hover .wr-arrow { opacity:1; transform:translateX(0); }
 .wr-img {
-  position:absolute; right:0; top:0; bottom:0;
-  width:42%;
-  background-size:cover; background-position:top left;
+  position:absolute; right:0;
+  top:50%; transform:translateY(-50%);
+  width:38%; aspect-ratio:16/10;
+  background-size:cover; background-position:top center;
   background-repeat:no-repeat;
   clip-path:inset(0 100% 0 0);
   transition:clip-path 0.75s cubic-bezier(0.77,0,0.18,1);
   pointer-events:none; z-index:2;
+  box-shadow:0 16px 48px rgba(0,0,0,0.55);
 }
 .work-row:hover .wr-img { clip-path:inset(0 0% 0 0); }
 
