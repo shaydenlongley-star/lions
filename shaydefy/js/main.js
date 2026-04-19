@@ -495,7 +495,7 @@
         trigger: el,
         start: 'top 88%',
         onEnter: function () {
-          gsap.to(el, { opacity: 1, y: 0, duration: 0.8, delay: delay, ease: 'power3.out', clearProps: 'transition' });
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.8, delay: delay, ease: 'power3.out' });
         },
         onLeaveBack: function () {
           gsap.set(el, { opacity: 0, y: -30 });
