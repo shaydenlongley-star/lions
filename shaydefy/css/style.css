@@ -85,10 +85,17 @@ img { max-width:100%; display:block; }
   font-family:var(--font-d);
   font-size:clamp(2rem,5vw,3.5rem);
   font-weight:600; letter-spacing:0.24em;
-  color:#fff; opacity:0;
-  animation:plFadeIn 0.6s var(--ease-out) 0.2s forwards;
+  color:#fff;
+  overflow:hidden;
 }
-@keyframes plFadeIn { to { opacity:1; } }
+.pl-char:nth-child(1) { animation-delay:0.05s; }
+.pl-char:nth-child(2) { animation-delay:0.10s; }
+.pl-char:nth-child(3) { animation-delay:0.15s; }
+.pl-char:nth-child(4) { animation-delay:0.20s; }
+.pl-char:nth-child(5) { animation-delay:0.28s; }
+.pl-char:nth-child(6) { animation-delay:0.34s; }
+.pl-char:nth-child(7) { animation-delay:0.40s; }
+.pl-char:nth-child(8) { animation-delay:0.46s; }
 
 .preloader-track {
   width:120px; height:1px;
@@ -773,6 +780,98 @@ img { max-width:100%; display:block; }
 [data-reveal-delay="2"] { transition-delay:0.24s; }
 [data-reveal-delay="3"] { transition-delay:0.36s; }
 [data-reveal-delay="4"] { transition-delay:0.48s; }
+
+/* ============================================
+   SECTION INDICATOR
+   ============================================ */
+.section-indicator {
+  position:fixed; left:32px; top:50%;
+  transform:translateY(-50%);
+  display:flex; flex-direction:column;
+  align-items:center; gap:10px;
+  z-index:500; opacity:0;
+  transition:opacity 0.5s var(--ease);
+  pointer-events:none;
+}
+.section-indicator.visible { opacity:1; }
+.section-indicator-num {
+  font-family:var(--font-b); font-size:0.58rem;
+  letter-spacing:0.2em; color:var(--gold);
+  writing-mode:vertical-rl; text-orientation:mixed;
+  transition:opacity 0.3s;
+}
+.section-indicator-line {
+  display:block; width:1px; height:40px;
+  background:linear-gradient(to bottom, var(--gold), transparent);
+}
+.section-indicator-label {
+  font-family:var(--font-b); font-size:0.55rem;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--text-low); writing-mode:vertical-rl;
+  transition:opacity 0.3s;
+}
+@media(max-width:900px) { .section-indicator { display:none; } }
+
+/* ============================================
+   CURSOR PREVIEW
+   ============================================ */
+.cursor-preview {
+  position:fixed; pointer-events:none;
+  z-index:9996; opacity:0;
+  transition:opacity 0.3s var(--ease);
+  will-change:transform;
+}
+.cursor-preview.active { opacity:1; }
+.cursor-preview-img {
+  width:220px; height:138px;
+  background-size:cover; background-position:top left;
+  background-repeat:no-repeat;
+  border:1px solid var(--border);
+  box-shadow:0 24px 48px rgba(0,0,0,0.6);
+  transform:rotate(-2deg);
+  transition:background-image 0.2s;
+}
+
+/* ============================================
+   PRELOADER — per-letter
+   ============================================ */
+.preloader-wordmark { display:flex; gap:0.02em; }
+.pl-char {
+  display:inline-block;
+  opacity:0; transform:translateY(30px);
+  animation:plCharIn 0.5s var(--ease-out) forwards;
+}
+@keyframes plCharIn {
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ============================================
+   NAV + FOOTER UNDERLINE DRAW
+   ============================================ */
+.nav-menu a:not(.nav-cta) {
+  position:relative;
+}
+.nav-menu a:not(.nav-cta)::after {
+  content:''; position:absolute;
+  bottom:4px; left:16px; right:16px; height:1px;
+  background:var(--gold);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform 0.35s var(--ease);
+}
+.nav-menu a:not(.nav-cta):hover::after,
+.nav-menu a:not(.nav-cta).active::after { transform:scaleX(1); }
+
+.footer-links a {
+  position:relative;
+}
+.footer-links a::after {
+  content:''; position:absolute;
+  bottom:-2px; left:0; right:0; height:1px;
+  background:var(--gold);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform 0.3s var(--ease);
+}
+.footer-links a:hover::after { transform:scaleX(1); }
 
 /* ============================================
    CURSOR BLOB

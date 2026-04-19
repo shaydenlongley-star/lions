@@ -32,9 +32,23 @@
   <!-- Page Transition Curtain -->
   <div id="pageCurtain" class="page-curtain"></div>
 
+  <!-- Section Indicator -->
+  <div class="section-indicator" id="sectionIndicator" aria-hidden="true">
+    <span class="section-indicator-num" id="sectionNum">01</span>
+    <span class="section-indicator-line"></span>
+    <span class="section-indicator-label" id="sectionLabel">Home</span>
+  </div>
+
+  <!-- Cursor Preview -->
+  <div class="cursor-preview" id="cursorPreview" aria-hidden="true">
+    <div class="cursor-preview-img" id="cursorPreviewImg"></div>
+  </div>
+
   <!-- Preloader -->
   <div class="preloader" id="preloader" aria-hidden="true">
-    <span class="preloader-wordmark">SHAYDEFY</span>
+    <span class="preloader-wordmark">
+      <span class="pl-char">S</span><span class="pl-char">H</span><span class="pl-char">A</span><span class="pl-char">Y</span><span class="pl-char">D</span><span class="pl-char">E</span><span class="pl-char">F</span><span class="pl-char">Y</span>
+    </span>
     <div class="preloader-track"><div class="preloader-fill" id="preloaderFill"></div></div>
   </div>
 
@@ -59,7 +73,7 @@
   <!-- ================================================
        HERO
   ================================================= -->
-  <section class="hero" id="home">
+  <section class="hero" id="home" data-section-label="Home" data-section-num="01">
     <div class="hero-grain"></div>
     <div class="hero-glow"></div>
 
@@ -137,7 +151,7 @@
   <!-- ================================================
        SERVICES
   ================================================= -->
-  <section class="services-section section" id="services">
+  <section class="services-section section" id="services" data-section-label="Services" data-section-num="02">
     <div class="container">
       <div class="services-header">
         <span class="eyebrow" data-reveal>What We Build</span>
@@ -166,7 +180,7 @@
   <!-- ================================================
        WORK
   ================================================= -->
-  <section class="section" id="work">
+  <section class="section" id="work" data-section-label="Work" data-section-num="03">
     <div class="container">
 
       <div class="work-header">
@@ -197,7 +211,7 @@
       <!-- GRID -->
       <div class="work-grid">
 
-        <a href="bangkokelites/index.html" class="work-card" data-reveal>
+        <a href="bangkokelites/index.html" class="work-card" data-reveal data-preview="home page ss/bangkok-elites.png">
           <div class="work-card-img" style="background-image:url('home page ss/bangkok-elites.png')"></div>
           <div class="work-card-overlay"></div>
           <div class="work-card-body">
@@ -208,7 +222,7 @@
           </div>
         </a>
 
-        <a href="praesidia-website/index.html" class="work-card" data-reveal>
+        <a href="praesidia-website/index.html" class="work-card" data-reveal data-preview="home page ss/praesidia.png">
           <div class="work-card-img" style="background-image:url('home page ss/praesidia.png')"></div>
           <div class="work-card-overlay"></div>
           <div class="work-card-body">
@@ -219,7 +233,7 @@
           </div>
         </a>
 
-        <a href="pfil-website/index.html" class="work-card" data-reveal>
+        <a href="pfil-website/index.html" class="work-card" data-reveal data-preview="home page ss/pfil.png">
           <div class="work-card-img" style="background-image:url('home page ss/pfil.png')"></div>
           <div class="work-card-overlay"></div>
           <div class="work-card-body">
@@ -230,7 +244,7 @@
           </div>
         </a>
 
-        <a href="tradefarm-website/index.html" class="work-card" data-reveal>
+        <a href="tradefarm-website/index.html" class="work-card" data-reveal data-preview="home page ss/tradefarm.png">
           <div class="work-card-img" style="background-image:url('home page ss/tradefarm.png')"></div>
           <div class="work-card-overlay"></div>
           <div class="work-card-body">
@@ -241,7 +255,7 @@
           </div>
         </a>
 
-        <a href="bens-bookkeeping/index.html" class="work-card" data-reveal>
+        <a href="bens-bookkeeping/index.html" class="work-card" data-reveal data-preview="home page ss/bens-bookkeeping.png">
           <div class="work-card-img" style="background-image:url('home page ss/bens-bookkeeping.png')"></div>
           <div class="work-card-overlay"></div>
           <div class="work-card-body">
@@ -252,7 +266,7 @@
           </div>
         </a>
 
-        <a href="headbangbarber/index.html" class="work-card" data-reveal>
+        <a href="headbangbarber/index.html" class="work-card" data-reveal data-preview="home page ss/headbang-barber.png">
           <div class="work-card-img" style="background-image:url('home page ss/headbang-barber.png')"></div>
           <div class="work-card-overlay"></div>
           <div class="work-card-body">
@@ -300,7 +314,7 @@
   <!-- ================================================
        ABOUT
   ================================================= -->
-  <section class="section about-section" id="about">
+  <section class="section about-section" id="about" data-section-label="About" data-section-num="04">
     <div class="container">
       <div class="about-split">
         <div class="about-left" data-reveal>
@@ -332,7 +346,7 @@
   <!-- ================================================
        CONTACT
   ================================================= -->
-  <section class="contact-section" id="contact">
+  <section class="contact-section" id="contact" data-section-label="Contact" data-section-num="05">
     <div class="container contact-inner">
       <span class="eyebrow" data-reveal>Get in Touch</span>
       <h2 data-reveal data-reveal-delay="1">Let's build something<br><em>remarkable.</em></h2>
@@ -380,6 +394,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-  <script src="js/main.js?v=2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>
