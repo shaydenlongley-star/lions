@@ -154,10 +154,12 @@
      SPOTLIGHT GLOW — work cards
   ---------------------------------------- */
   document.querySelectorAll('.work-card').forEach(function (card) {
+    var img = card.querySelector('.work-card-img');
     card.addEventListener('mousemove', function (e) {
-      var r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100) + '%');
-      card.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
+      if (!img) return;
+      var r = img.getBoundingClientRect();
+      img.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100) + '%');
+      img.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
     });
   });
 
