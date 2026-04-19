@@ -516,6 +516,34 @@
   }
 
   /* ----------------------------------------
+     WORK PANEL — sticky cross-fade preview
+  ---------------------------------------- */
+  (function () {
+    var panel    = document.getElementById('workPanel');
+    var panelImg = document.getElementById('workPanelImg');
+    if (!panel || !panelImg) return;
+
+    var rows = document.querySelectorAll('.work-row[data-img]');
+    if (!rows.length) return;
+
+    // Show first image immediately
+    panelImg.style.backgroundImage = "url('" + rows[0].getAttribute('data-img') + "')";
+    // Fade panel in after a brief delay so it appears with the section
+    setTimeout(function () { panel.classList.add('visible'); }, 400);
+
+    rows.forEach(function (row) {
+      row.addEventListener('mouseenter', function () {
+        var img = row.getAttribute('data-img');
+        panelImg.style.opacity = '0';
+        setTimeout(function () {
+          panelImg.style.backgroundImage = "url('" + img + "')";
+          panelImg.style.opacity = '1';
+        }, 180);
+      });
+    });
+  })();
+
+  /* ----------------------------------------
      CONTACT FORM — Formspree
   ---------------------------------------- */
   var form    = document.getElementById('contactForm');
