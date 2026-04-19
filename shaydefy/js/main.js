@@ -13,6 +13,49 @@
   var lenis = null;
 
   /* ----------------------------------------
+     CANVAS GRAIN — animated film grain on hero
+  ---------------------------------------- */
+  (function () {
+    if (!window.matchMedia('(min-width:769px)').matches) return;
+    var canvas = document.getElementById('heroGrain');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var frame = 0;
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+
+    var rTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(rTimer);
+      rTimer = setTimeout(resize, 200);
+    });
+
+    function drawGrain() {
+      var w = canvas.width, h = canvas.height;
+      var imageData = ctx.createImageData(w, h);
+      var data = imageData.data;
+      for (var i = 0; i < data.length; i += 4) {
+        var v = (Math.random() * 255) | 0;
+        data[i]     = v;
+        data[i + 1] = v;
+        data[i + 2] = v;
+        data[i + 3] = (Math.random() * 30) | 0;
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    (function loop() {
+      requestAnimationFrame(loop);
+      frame++;
+      if (frame % 2 === 0) drawGrain();
+    })();
+  })();
+
+  /* ----------------------------------------
      PRELOADER — dismiss then kick off hero
   ---------------------------------------- */
   var preloader = document.getElementById('preloader');
@@ -150,26 +193,7 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  // Work cards in grid get staggered delay
-  var workCards = document.querySelectorAll('.work-grid .work-card');
-  workCards.forEach(function (card, i) {
-    card.style.transitionDelay = (i % 3) * 0.1 + 's';
-  });
-
   reveals.forEach(function (el) { ro.observe(el); });
-
-  /* ----------------------------------------
-     SPOTLIGHT GLOW — work cards
-  ---------------------------------------- */
-  document.querySelectorAll('.work-card').forEach(function (card) {
-    var img = card.querySelector('.work-card-img');
-    card.addEventListener('mousemove', function (e) {
-      if (!img) return;
-      var r = img.getBoundingClientRect();
-      img.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100) + '%');
-      img.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
-    });
-  });
 
   /* ----------------------------------------
      CURSOR PREVIEW — work cards
@@ -425,18 +449,34 @@
       });
     }
 
-    /* -- Featured card parallax -- */
-    var featuredImg = document.querySelector('.work-featured-img');
-    if (featuredImg) {
-      gsap.to(featuredImg, {
-        yPercent: 18, ease: 'none',
-        scrollTrigger: {
-          trigger: '.work-featured',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
+    /* -- Hero mouse parallax — multi-layer depth -- */
+    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+      var heroEl   = document.querySelector('.hero');
+      var grain    = document.getElementById('heroGrain');
+      var glow     = document.getElementById('heroGlow');
+      var eyebrow2 = document.querySelector('.hero-eyebrow');
+      var rule2    = document.querySelector('.hero-rule');
+      var title2   = document.querySelector('.hero-title');
+
+      if (heroEl) {
+        heroEl.addEventListener('mousemove', function (e) {
+          var r  = heroEl.getBoundingClientRect();
+          var nx = (e.clientX - r.left) / r.width  - 0.5;
+          var ny = (e.clientY - r.top)  / r.height - 0.5;
+
+          if (grain)   gsap.to(grain,   { x: nx * 20, y: ny * 14, duration: 1.2, ease: 'power3.out', overwrite: true });
+          if (glow)    gsap.to(glow,    { x: nx * 32, y: ny * 22, duration: 1.4, ease: 'power3.out', overwrite: true });
+          if (eyebrow2) gsap.to(eyebrow2, { x: nx * 12, y: ny * 8,  duration: 1.0, ease: 'power3.out', overwrite: true });
+          if (rule2)    gsap.to(rule2,    { x: nx * 12, y: ny * 8,  duration: 1.0, ease: 'power3.out', overwrite: true });
+          if (title2)   gsap.to(title2,   { x: nx * 6,  y: ny * 4,  duration: 1.5, ease: 'power3.out', overwrite: true });
+        });
+
+        heroEl.addEventListener('mouseleave', function () {
+          [grain, glow, eyebrow2, rule2, title2].forEach(function (el) {
+            if (el) gsap.to(el, { x: 0, y: 0, duration: 1.0, ease: 'power3.out', overwrite: true });
+          });
+        });
+      }
     }
 
     /* -- Counter animations -- */
