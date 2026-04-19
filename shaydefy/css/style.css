@@ -667,7 +667,7 @@ img { max-width:100%; display:block; }
 }
 .process-line-track {
   position:absolute;
-  top:10px; left:0; right:0; height:1px;
+  top:30px; left:0; right:0; height:1px;
   background:var(--border);
   overflow:hidden;
   pointer-events:none;
@@ -686,15 +686,18 @@ img { max-width:100%; display:block; }
 }
 .process-step:first-child { padding-left:0; }
 .process-num {
-  display:flex; align-items:center; gap:10px;
+  display:block;
   font-family:var(--font-b); font-size:0.65rem;
   letter-spacing:0.2em; color:var(--gold);
-  margin-bottom:36px;
+  margin-bottom:12px;
 }
-.process-num::before {
-  content:''; display:block;
+.process-dot {
+  display:block;
   width:8px; height:8px; border-radius:50%;
-  border:1px solid var(--gold); flex-shrink:0;
+  border:1px solid var(--gold);
+  background:var(--dark-2);
+  position:relative; z-index:1;
+  margin-bottom:28px;
 }
 .process-step h3 {
   font-size:1.3rem; font-weight:600;
