@@ -586,13 +586,14 @@
           var ny = (e.clientY - r.top)  / r.height - 0.5;
           gsap.to(card, {
             rotateY: nx * 14, rotateX: -ny * 10,
-            duration: 0.4, ease: 'power2.out', overwrite: true
+            transformPerspective: 900,
+            duration: 0.4, ease: 'power2.out', overwrite: 'auto'
           });
         });
         card.addEventListener('mouseleave', function () {
           gsap.to(card, {
             rotateY: 0, rotateX: 0,
-            duration: 0.7, ease: 'power3.out', overwrite: true
+            duration: 0.7, ease: 'power3.out', overwrite: 'auto'
           });
         });
       });

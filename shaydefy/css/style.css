@@ -444,11 +444,10 @@ img { max-width:100%; display:block; }
 /* Grid */
 .work-grid {
   display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
-  perspective:900px;
 }
 .work-card {
   display:flex; flex-direction:column; text-decoration:none;
-  transform-style:preserve-3d; will-change:transform;
+  will-change:transform;
 }
 .work-card-img {
   position:relative;
@@ -644,13 +643,12 @@ img { max-width:100%; display:block; }
 .services-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
   border:1px solid var(--border);
-  perspective:900px;
 }
 .service-card {
   padding:48px 40px;
   border-right:1px solid var(--border);
   position:relative;
-  transform-style:preserve-3d; will-change:transform;
+  will-change:transform;
   transition:background 0.35s var(--ease);
 }
 .service-card:last-child { border-right:none; }
