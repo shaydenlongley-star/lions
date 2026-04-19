@@ -79,15 +79,15 @@
         </p>
 
         <div class="hero-actions" data-reveal data-reveal-delay="3">
-          <a href="#work" class="btn btn-gold">View Work</a>
-          <a href="#contact" class="btn btn-ghost">Start a Project &nbsp;↗</a>
+          <a href="#work" class="btn btn-gold" data-magnetic>View Work</a>
+          <a href="#contact" class="btn btn-ghost" data-magnetic>Start a Project &nbsp;↗</a>
         </div>
       </div>
 
       <!-- Right: Featured stat/badge -->
       <div class="hero-aside" data-reveal data-reveal-delay="4">
         <div class="hero-badge">
-          <span class="hero-badge-num">10+</span>
+          <span class="hero-badge-num" data-count="10" data-suffix="+">10+</span>
           <span class="hero-badge-label">Projects<br>Delivered</span>
         </div>
         <div class="hero-badge">
@@ -95,7 +95,7 @@
           <span class="hero-badge-label">Based in<br>Bangkok</span>
         </div>
         <div class="hero-badge">
-          <span class="hero-badge-num">100%</span>
+          <span class="hero-badge-num" data-count="100" data-suffix="%">100%</span>
           <span class="hero-badge-label">Custom<br>Builds</span>
         </div>
       </div>
@@ -105,6 +105,61 @@
     <div class="hero-scroll-hint">
       <span class="hero-scroll-line"></span>
       <span class="hero-scroll-text">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ================================================
+       MARQUEE
+  ================================================= -->
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-inner">
+      <div class="marquee-group">
+        <span class="marquee-item">Siam Legal</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Bangkok Elites</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Praesidia Alliance</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">PFIL Group</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Tradefarm</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Ben's Bookkeeping</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Headbang Barber</span><span class="marquee-sep">◆</span>
+      </div>
+      <div class="marquee-group">
+        <span class="marquee-item">Siam Legal</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Bangkok Elites</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Praesidia Alliance</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">PFIL Group</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Tradefarm</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Ben's Bookkeeping</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Headbang Barber</span><span class="marquee-sep">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================
+       SERVICES
+  ================================================= -->
+  <section class="services-section section" id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="eyebrow" data-reveal>What We Build</span>
+        <h2 data-reveal data-reveal-delay="1">Three disciplines.<br><em>One studio.</em></h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-reveal>
+          <span class="service-num">01</span>
+          <h3>Web Design</h3>
+          <p>Cinematic, scroll-driven websites built entirely from scratch. No templates, no page builders, no compromise.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="1">
+          <span class="service-num">02</span>
+          <h3>Development</h3>
+          <p>Clean, performant HTML/CSS/JS. Every line written with purpose — fast, accessible, and built to last.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="2">
+          <span class="service-num">03</span>
+          <h3>Brand Identity</h3>
+          <p>Naming, visual direction, and complete digital presence — from zero to unforgettable.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -213,6 +268,32 @@
   </section>
 
   <!-- ================================================
+       PROCESS
+  ================================================= -->
+  <section class="process-section section">
+    <div class="container">
+      <span class="eyebrow" data-reveal>How It Works</span>
+      <div class="process-grid">
+        <div class="process-step" data-reveal>
+          <span class="process-num">01</span>
+          <h3>Discovery</h3>
+          <p>Your goals, your audience, your competitors. A few focused conversations that inform every design decision.</p>
+        </div>
+        <div class="process-step" data-reveal data-reveal-delay="1">
+          <span class="process-num">02</span>
+          <h3>Design</h3>
+          <p>High-fidelity mockups reviewed together. Every pixel deliberate before a single line of code is written.</p>
+        </div>
+        <div class="process-step" data-reveal data-reveal-delay="2">
+          <span class="process-num">03</span>
+          <h3>Delivery</h3>
+          <p>Fully built, tested across every device, and handed over ready to launch. No loose ends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
        ABOUT
   ================================================= -->
   <section class="section about-section" id="about">
@@ -228,11 +309,11 @@
         </div>
         <div class="about-right" data-reveal data-reveal-delay="2">
           <div class="about-card">
-            <span class="about-card-num">10+</span>
+            <span class="about-card-num" data-count="10" data-suffix="+">10+</span>
             <span class="about-card-label">Projects Completed</span>
           </div>
           <div class="about-card">
-            <span class="about-card-num">100%</span>
+            <span class="about-card-num" data-count="100" data-suffix="%">100%</span>
             <span class="about-card-label">Custom — No Templates</span>
           </div>
           <div class="about-card">
@@ -251,9 +332,29 @@
     <div class="container contact-inner">
       <span class="eyebrow" data-reveal>Get in Touch</span>
       <h2 data-reveal data-reveal-delay="1">Let's build something<br><em>remarkable.</em></h2>
-      <p data-reveal data-reveal-delay="2">Tell me about your project. I'll respond within one business day.</p>
-      <div data-reveal data-reveal-delay="3">
-        <a href="mailto:hello@shaydefy.com" class="btn btn-gold">hello@shaydefy.com &nbsp;↗</a>
+      <div class="contact-form-wrap" data-reveal data-reveal-delay="2">
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID: formspree.io/new -->
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" type="text" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" name="email" required placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="cf-message">Project Brief</label>
+            <textarea id="cf-message" name="message" rows="5" required placeholder="Tell me about your project — what you do, what you need, and when you need it."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" data-magnetic>Send Message</button>
+        </form>
+        <div class="contact-success" id="contactSuccess">
+          <span class="contact-check">✓</span>
+          <p>Message received. I'll be in touch within one business day.</p>
+        </div>
       </div>
     </div>
   </section>

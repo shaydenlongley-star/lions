@@ -1,5 +1,5 @@
 /* ============================================
-   main.js — Shaydefy Studio v2
+   main.js — Shaydefy Studio v3
    ============================================ */
 (function () {
   'use strict';
@@ -19,65 +19,52 @@
     if (!preloader) { revealHero(); return; }
     preloader.classList.add('out');
     preloader.addEventListener('transitionend', revealHero, { once: true });
-    // Unlock scroll
     document.body.style.overflow = '';
   }
 
-  // Wait for fonts + images, but cap at 2s
   var ready = false;
   function tryDismiss() {
     if (ready) return;
     ready = true;
-    // Minimum display: 1.7s for preloader animation to complete
     setTimeout(dismissPreloader, 1700);
   }
 
   window.addEventListener('load', tryDismiss);
-  setTimeout(tryDismiss, 2200); // hard cap
+  setTimeout(tryDismiss, 2200);
 
   /* ----------------------------------------
      HERO REVEAL — word clip animation
   ---------------------------------------- */
   function revealHero() {
-    var words = document.querySelectorAll('.hero-title .word');
+    var words   = document.querySelectorAll('.hero-title .word');
     var eyebrow = document.querySelector('.hero-eyebrow');
+    var rule    = document.querySelector('.hero-rule');
     var sub     = document.querySelector('.hero-sub');
     var actions = document.querySelector('.hero-actions');
     var aside   = document.querySelector('.hero-aside');
     var scroll  = document.querySelector('.hero-scroll-hint');
 
     if (typeof gsap !== 'undefined') {
-      var tl = gsap.timeline();
+      var tl = gsap.timeline({ onComplete: initScrollFeatures });
 
-      // Eyebrow
       tl.to(eyebrow, { opacity:1, y:0, duration:0.7, ease:'power2.out' }, 0);
+      tl.to(rule,    { opacity:1, duration:0.6, ease:'power2.out' }, 0.2);
 
-      // Title words clip up
       tl.to(words, {
-        y: '0%',
-        duration: 1.0,
-        stagger: 0.12,
-        ease: 'power4.out'
+        y: '0%', duration:1.0, stagger:0.12, ease:'power4.out'
       }, 0.15);
 
-      // Sub copy
-      tl.to(sub, { opacity:1, y:0, duration:0.8, ease:'power2.out' }, 0.55);
-
-      // Actions
+      tl.to(sub,     { opacity:1, y:0, duration:0.8, ease:'power2.out' }, 0.55);
       tl.to(actions, { opacity:1, y:0, duration:0.7, ease:'power2.out' }, 0.72);
-
-      // Aside badges
-      tl.to(aside, { opacity:1, y:0, duration:0.8, ease:'power2.out' }, 0.6);
-
-      // Scroll hint
-      tl.to(scroll, { opacity:1, duration:0.6, ease:'power2.out' }, 1.1);
+      tl.to(aside,   { opacity:1, y:0, duration:0.8, ease:'power2.out' }, 0.6);
+      tl.to(scroll,  { opacity:1, duration:0.6, ease:'power2.out' }, 1.1);
 
     } else {
-      // No GSAP fallback — just show everything
-      [eyebrow, sub, actions, aside, scroll].forEach(function (el) {
+      [eyebrow, rule, sub, actions, aside, scroll].forEach(function (el) {
         if (el) el.style.opacity = '1';
       });
       words.forEach(function (w) { w.style.transform = 'translateY(0)'; });
+      initScrollFeatures();
     }
   }
 
@@ -271,5 +258,110 @@
       window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
     });
   });
+
+  /* ----------------------------------------
+     SCROLL-DRIVEN FEATURES (GSAP ScrollTrigger)
+     Runs after hero reveal completes
+  ---------------------------------------- */
+  function initScrollFeatures() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* -- Featured card parallax -- */
+    var featuredImg = document.querySelector('.work-featured-img');
+    if (featuredImg) {
+      gsap.to(featuredImg, {
+        yPercent: 18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.work-featured',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
+
+    /* -- Counter animations on stats -- */
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var obj    = { val: 0 };
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: function () {
+          gsap.to(obj, {
+            val: target,
+            duration: 1.6,
+            ease: 'power2.out',
+            snap: { val: 1 },
+            onUpdate: function () {
+              el.textContent = Math.round(obj.val) + suffix;
+            }
+          });
+        }
+      });
+    });
+
+    /* -- Magnetic buttons -- */
+    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+      document.querySelectorAll('[data-magnetic]').forEach(function (el) {
+        el.addEventListener('mousemove', function (e) {
+          var r   = el.getBoundingClientRect();
+          var x   = (e.clientX - r.left - r.width  / 2) * 0.28;
+          var y   = (e.clientY - r.top  - r.height / 2) * 0.28;
+          gsap.to(el, { x: x, y: y, duration: 0.45, ease: 'power2.out', overwrite: true });
+        });
+        el.addEventListener('mouseleave', function () {
+          gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)', overwrite: true });
+        });
+      });
+    }
+  }
+
+  /* ----------------------------------------
+     CONTACT FORM — Formspree
+  ---------------------------------------- */
+  var form    = document.getElementById('contactForm');
+  var success = document.getElementById('contactSuccess');
+
+  if (form && success) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var orig = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        if (res.ok) {
+          form.style.transition = 'opacity 0.4s';
+          form.style.opacity = '0';
+          setTimeout(function () {
+            form.style.display = 'none';
+            success.classList.add('show');
+          }, 400);
+        } else {
+          btn.textContent = orig;
+          btn.disabled = false;
+          alert('Something went wrong. Please email hello@shaydefy.com directly.');
+        }
+      })
+      .catch(function () {
+        btn.textContent = orig;
+        btn.disabled = false;
+        alert('Something went wrong. Please email hello@shaydefy.com directly.');
+      });
+    });
+  }
 
 })();
