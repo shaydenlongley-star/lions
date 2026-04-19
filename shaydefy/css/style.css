@@ -757,6 +757,21 @@ img { max-width:100%; display:block; }
 .contact-success p { color:var(--text-mid); margin:0; }
 
 /* ============================================
+   SPLIT HEADING REVEAL
+   ============================================ */
+.split-wrap {
+  display:inline-block;
+  overflow:hidden;
+  vertical-align:bottom;
+  padding-bottom:0.12em;
+  margin-bottom:-0.12em;
+}
+.split-word {
+  display:inline-block;
+  will-change:transform;
+}
+
+/* ============================================
    SCROLL REVEAL
    ============================================ */
 [data-reveal] {

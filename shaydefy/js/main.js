@@ -328,6 +328,73 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
+    /* -- SplitText heading reveals -- */
+    function splitHeading(el) {
+      var nodes = Array.from(el.childNodes);
+      el.innerHTML = '';
+      nodes.forEach(function (node) {
+        if (node.nodeType === 3) {
+          node.textContent.split(/(\s+)/).forEach(function (chunk) {
+            if (/^\s+$/.test(chunk)) {
+              el.appendChild(document.createTextNode(chunk));
+            } else if (chunk) {
+              var wrap  = document.createElement('span');
+              wrap.className = 'split-wrap';
+              var inner = document.createElement('span');
+              inner.className = 'split-word';
+              inner.textContent = chunk;
+              wrap.appendChild(inner);
+              el.appendChild(wrap);
+            }
+          });
+        } else if (node.nodeType === 1) {
+          if (node.tagName === 'BR') {
+            el.appendChild(node.cloneNode());
+          } else if (node.tagName === 'EM') {
+            node.textContent.split(/(\s+)/).forEach(function (chunk) {
+              if (/^\s+$/.test(chunk)) {
+                el.appendChild(document.createTextNode(chunk));
+              } else if (chunk) {
+                var wrap  = document.createElement('span');
+                wrap.className = 'split-wrap';
+                var em    = document.createElement('em');
+                var inner = document.createElement('span');
+                inner.className = 'split-word';
+                inner.textContent = chunk;
+                em.appendChild(inner);
+                wrap.appendChild(em);
+                el.appendChild(wrap);
+              }
+            });
+          } else {
+            el.appendChild(node.cloneNode(true));
+          }
+        }
+      });
+    }
+
+    document.querySelectorAll('h2').forEach(function (h2) {
+      // Skip if inside hero (has its own animation)
+      if (h2.closest('.hero')) return;
+      // Remove data-reveal on the h2 itself to avoid conflict
+      h2.removeAttribute('data-reveal');
+      h2.style.opacity = '1';
+      h2.style.transform = 'none';
+
+      splitHeading(h2);
+
+      gsap.fromTo(h2.querySelectorAll('.split-word'),
+        { y: '105%' },
+        {
+          y: '0%',
+          duration: 1.0,
+          stagger: 0.07,
+          ease: 'power4.out',
+          scrollTrigger: { trigger: h2, start: 'top 88%', once: true }
+        }
+      );
+    });
+
     /* -- Hero title parallax on scroll -- */
     var heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
