@@ -268,6 +268,22 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
+    /* -- Process line scrub -- */
+    var processLine = document.getElementById('processLineFill');
+    var processSection = document.querySelector('.process-section');
+    if (processLine && processSection) {
+      gsap.to(processLine, {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: processSection,
+          start: 'top 65%',
+          end: 'top 15%',
+          scrub: 0.8
+        }
+      });
+    }
+
     /* -- Featured card parallax -- */
     var featuredImg = document.querySelector('.work-featured-img');
     if (featuredImg) {
