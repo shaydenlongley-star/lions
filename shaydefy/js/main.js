@@ -234,6 +234,19 @@
       dot.classList.toggle('big', hovering);
     });
 
+    // VIEW label on work card hover
+    document.querySelectorAll('.work-card').forEach(function (card) {
+      card.addEventListener('mouseenter', function () {
+        dot.classList.remove('big');
+        dot.classList.add('view');
+        dot.textContent = 'VIEW';
+      });
+      card.addEventListener('mouseleave', function () {
+        dot.classList.remove('view');
+        dot.textContent = '';
+      });
+    });
+
     (function loop() {
       requestAnimationFrame(loop);
       px = cx; py = cy;
@@ -470,6 +483,27 @@
         });
         el.addEventListener('mouseleave', function () {
           gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)', overwrite: true });
+        });
+      });
+    }
+
+    /* -- 3D card tilt -- */
+    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+      document.querySelectorAll('.work-card, .service-card').forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          var r  = card.getBoundingClientRect();
+          var nx = (e.clientX - r.left) / r.width  - 0.5;
+          var ny = (e.clientY - r.top)  / r.height - 0.5;
+          gsap.to(card, {
+            rotateY: nx * 14, rotateX: -ny * 10,
+            duration: 0.4, ease: 'power2.out', overwrite: true
+          });
+        });
+        card.addEventListener('mouseleave', function () {
+          gsap.to(card, {
+            rotateY: 0, rotateX: 0,
+            duration: 0.7, ease: 'power3.out', overwrite: true
+          });
         });
       });
     }

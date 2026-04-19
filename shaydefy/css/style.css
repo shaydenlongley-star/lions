@@ -444,9 +444,11 @@ img { max-width:100%; display:block; }
 /* Grid */
 .work-grid {
   display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  perspective:900px;
 }
 .work-card {
   display:flex; flex-direction:column; text-decoration:none;
+  transform-style:preserve-3d; will-change:transform;
 }
 .work-card-img {
   position:relative;
@@ -553,6 +555,30 @@ img { max-width:100%; display:block; }
 }
 
 /* ============================================
+   CLOSING STATEMENT
+   ============================================ */
+.closing-section {
+  text-align:center;
+  background:var(--dark-2);
+  position:relative; overflow:hidden; z-index:2;
+}
+.closing-section::before {
+  content:'';
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:800px; height:600px;
+  background:radial-gradient(ellipse, rgba(201,168,76,0.07), transparent 65%);
+  pointer-events:none;
+}
+.closing-inner { position:relative; z-index:1; }
+.closing-section h2 {
+  font-size:clamp(3rem,7vw,7rem);
+  font-style:italic; line-height:1.05;
+  margin-bottom:40px;
+}
+.closing-section h2 em { color:var(--gold); }
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer { border-top:1px solid var(--border); padding:28px 0; position:relative; z-index:2; background:var(--dark); }
@@ -618,11 +644,13 @@ img { max-width:100%; display:block; }
 .services-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
   border:1px solid var(--border);
+  perspective:900px;
 }
 .service-card {
   padding:48px 40px;
   border-right:1px solid var(--border);
   position:relative;
+  transform-style:preserve-3d; will-change:transform;
   transition:background 0.35s var(--ease);
 }
 .service-card:last-child { border-right:none; }
@@ -901,6 +929,14 @@ img { max-width:100%; display:block; }
   width:34px; height:34px;
   background:rgba(201,168,76,0.06);
   border-color:rgba(201,168,76,0.4);
+}
+.cursor-dot.view {
+  width:72px; height:72px;
+  background:var(--gold); border-color:var(--gold);
+  color:#000;
+  font-family:var(--font-b); font-size:0.45rem;
+  font-weight:700; letter-spacing:0.2em;
+  display:flex; align-items:center; justify-content:center;
 }
 
 /* ============================================
