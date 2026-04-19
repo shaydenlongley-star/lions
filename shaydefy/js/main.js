@@ -193,7 +193,26 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
+  // Work cards in grid get staggered delay
+  var workCards = document.querySelectorAll('.work-grid .work-card');
+  workCards.forEach(function (card, i) {
+    card.style.transitionDelay = (i % 3) * 0.1 + 's';
+  });
+
   reveals.forEach(function (el) { ro.observe(el); });
+
+  /* ----------------------------------------
+     SPOTLIGHT GLOW — work cards
+  ---------------------------------------- */
+  document.querySelectorAll('.work-card').forEach(function (card) {
+    var img = card.querySelector('.work-card-img');
+    card.addEventListener('mousemove', function (e) {
+      if (!img) return;
+      var r = img.getBoundingClientRect();
+      img.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100) + '%');
+      img.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
+    });
+  });
 
   /* ----------------------------------------
      CURSOR PREVIEW — work cards
@@ -449,34 +468,18 @@
       });
     }
 
-    /* -- Hero mouse parallax — multi-layer depth -- */
-    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-      var heroEl   = document.querySelector('.hero');
-      var grain    = document.getElementById('heroGrain');
-      var glow     = document.getElementById('heroGlow');
-      var eyebrow2 = document.querySelector('.hero-eyebrow');
-      var rule2    = document.querySelector('.hero-rule');
-      var title2   = document.querySelector('.hero-title');
-
-      if (heroEl) {
-        heroEl.addEventListener('mousemove', function (e) {
-          var r  = heroEl.getBoundingClientRect();
-          var nx = (e.clientX - r.left) / r.width  - 0.5;
-          var ny = (e.clientY - r.top)  / r.height - 0.5;
-
-          if (grain)   gsap.to(grain,   { x: nx * 20, y: ny * 14, duration: 1.2, ease: 'power3.out', overwrite: true });
-          if (glow)    gsap.to(glow,    { x: nx * 32, y: ny * 22, duration: 1.4, ease: 'power3.out', overwrite: true });
-          if (eyebrow2) gsap.to(eyebrow2, { x: nx * 12, y: ny * 8,  duration: 1.0, ease: 'power3.out', overwrite: true });
-          if (rule2)    gsap.to(rule2,    { x: nx * 12, y: ny * 8,  duration: 1.0, ease: 'power3.out', overwrite: true });
-          if (title2)   gsap.to(title2,   { x: nx * 6,  y: ny * 4,  duration: 1.5, ease: 'power3.out', overwrite: true });
-        });
-
-        heroEl.addEventListener('mouseleave', function () {
-          [grain, glow, eyebrow2, rule2, title2].forEach(function (el) {
-            if (el) gsap.to(el, { x: 0, y: 0, duration: 1.0, ease: 'power3.out', overwrite: true });
-          });
-        });
-      }
+    /* -- Featured card parallax -- */
+    var featuredImg = document.querySelector('.work-featured-img');
+    if (featuredImg) {
+      gsap.to(featuredImg, {
+        yPercent: 18, ease: 'none',
+        scrollTrigger: {
+          trigger: '.work-featured',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
     }
 
     /* -- Counter animations -- */
@@ -514,34 +517,6 @@
       });
     }
   }
-
-  /* ----------------------------------------
-     WORK PANEL — sticky cross-fade preview
-  ---------------------------------------- */
-  (function () {
-    var panel    = document.getElementById('workPanel');
-    var panelImg = document.getElementById('workPanelImg');
-    if (!panel || !panelImg) return;
-
-    var rows = document.querySelectorAll('.work-row[data-img]');
-    if (!rows.length) return;
-
-    // Show first image immediately
-    panelImg.style.backgroundImage = "url('" + rows[0].getAttribute('data-img') + "')";
-    // Fade panel in after a brief delay so it appears with the section
-    setTimeout(function () { panel.classList.add('visible'); }, 400);
-
-    rows.forEach(function (row) {
-      row.addEventListener('mouseenter', function () {
-        var img = row.getAttribute('data-img');
-        panelImg.style.opacity = '0';
-        setTimeout(function () {
-          panelImg.style.backgroundImage = "url('" + img + "')";
-          panelImg.style.opacity = '1';
-        }, 180);
-      });
-    });
-  })();
 
   /* ----------------------------------------
      CONTACT FORM — Formspree
