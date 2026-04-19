@@ -159,37 +159,17 @@
   reveals.forEach(function (el) { ro.observe(el); });
 
   /* ----------------------------------------
-     BACKGROUND FLOOD — work card hover
+     SPOTLIGHT GLOW — work cards
   ---------------------------------------- */
-  (function () {
-    var floodA   = document.getElementById('bgFloodA');
-    var floodB   = document.getElementById('bgFloodB');
-    if (!floodA || !floodB) return;
-
-    var current  = floodA;
-    var next     = floodB;
-    var activeImg = null;
-
-    document.querySelectorAll('.work-h-card[data-preview]').forEach(function (card) {
-      card.addEventListener('mouseenter', function () {
-        var img = card.getAttribute('data-preview');
-        if (img === activeImg) return;
-        activeImg = img;
-
-        next.style.backgroundImage = "url('" + img + "')";
-        next.classList.add('active');
-        current.classList.remove('active');
-
-        var tmp = current; current = next; next = tmp;
-      });
+  document.querySelectorAll('.work-card').forEach(function (card) {
+    var img = card.querySelector('.work-card-img');
+    card.addEventListener('mousemove', function (e) {
+      if (!img) return;
+      var r = img.getBoundingClientRect();
+      img.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100) + '%');
+      img.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
     });
-
-    document.querySelector('.work-section') && document.querySelector('.work-section').addEventListener('mouseleave', function () {
-      floodA.classList.remove('active');
-      floodB.classList.remove('active');
-      activeImg = null;
-    });
-  })();
+  });
 
   /* ----------------------------------------
      CURSOR PREVIEW — work cards
@@ -378,24 +358,16 @@
       });
     }
 
-    /* -- Horizontal scroll work section -- */
-    var workSection = document.getElementById('work');
-    var workTrack   = document.getElementById('workHTrack');
-    if (workSection && workTrack) {
-      var getScrollDist = function () {
-        return workTrack.scrollWidth - workSection.clientWidth;
-      };
-      gsap.to(workTrack, {
-        x: function () { return -getScrollDist(); },
-        ease: 'none',
+    /* -- Featured card parallax -- */
+    var featuredImg = document.querySelector('.work-featured-img');
+    if (featuredImg) {
+      gsap.to(featuredImg, {
+        yPercent: 18, ease: 'none',
         scrollTrigger: {
-          trigger: workSection,
-          pin: true,
-          start: 'top top',
-          end: function () { return '+=' + getScrollDist(); },
-          scrub: 1,
-          invalidateOnRefresh: true,
-          anticipatePin: 1
+          trigger: '.work-featured',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
         }
       });
     }

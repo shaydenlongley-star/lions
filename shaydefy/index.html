@@ -32,9 +32,6 @@
   <!-- Page Transition Curtain -->
   <div id="pageCurtain" class="page-curtain"></div>
 
-  <!-- Background Flood (work hover effect) -->
-  <div class="bg-flood" id="bgFloodA"></div>
-  <div class="bg-flood" id="bgFloodB"></div>
 
   <!-- Section Indicator -->
   <div class="section-indicator" id="sectionIndicator" aria-hidden="true">
@@ -184,8 +181,9 @@
   <!-- ================================================
        WORK
   ================================================= -->
-  <section id="work" class="work-section" data-section-label="Work" data-section-num="03">
+  <section class="section" id="work" data-section-label="Work" data-section-num="03">
     <div class="container">
+
       <div class="work-header" data-reveal>
         <div>
           <span class="eyebrow">Selected Work</span>
@@ -193,73 +191,94 @@
         </div>
         <span class="work-count">01 — 07</span>
       </div>
-    </div>
 
-    <div class="work-h-track" id="workHTrack">
-
-      <a href="siam-legal/index.html" class="work-h-card" data-preview="home page ss/siam-legal.png">
-        <div class="work-h-img" style="background-image:url('home page ss/siam-legal.png')"></div>
-        <div class="work-h-overlay"></div>
-        <div class="work-h-body">
-          <div class="work-h-meta"><span class="work-num">01</span><span class="work-tag">Legal &amp; Immigration</span></div>
-          <div><h3>Siam Legal International</h3><span class="work-link">View Project &nbsp;↗</span></div>
+      <!-- FEATURED -->
+      <a href="siam-legal/index.html" class="work-featured" data-reveal>
+        <div class="work-featured-img" style="background-image:url('home page ss/siam-legal.png')"></div>
+        <div class="work-featured-overlay"></div>
+        <div class="work-featured-body">
+          <div>
+            <span class="work-num">01</span>
+            <span class="work-tag">Legal &amp; Immigration</span>
+            <h3>Siam Legal International</h3>
+            <p>Cinematic redesign for Bangkok's leading international law firm — scroll-driven narrative, GSAP animations, full rebrand.</p>
+          </div>
+          <span class="work-arrow">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H6M15 3V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
       </a>
 
-      <a href="bangkokelites/index.html" class="work-h-card" data-preview="home page ss/bangkok-elites.png">
-        <div class="work-h-img" style="background-image:url('home page ss/bangkok-elites.png')"></div>
-        <div class="work-h-overlay"></div>
-        <div class="work-h-body">
-          <div class="work-h-meta"><span class="work-num">02</span><span class="work-tag">Luxury Lifestyle</span></div>
-          <div><h3>Bangkok Elites</h3><span class="work-link">View Project &nbsp;↗</span></div>
-        </div>
-      </a>
+      <!-- GRID -->
+      <div class="work-grid">
 
-      <a href="praesidia-website/index.html" class="work-h-card" data-preview="home page ss/praesidia.png">
-        <div class="work-h-img" style="background-image:url('home page ss/praesidia.png')"></div>
-        <div class="work-h-overlay"></div>
-        <div class="work-h-body">
-          <div class="work-h-meta"><span class="work-num">03</span><span class="work-tag">International Organisation</span></div>
-          <div><h3>Praesidia Alliance</h3><span class="work-link">View Project &nbsp;↗</span></div>
-        </div>
-      </a>
+        <a href="bangkokelites/index.html" class="work-card" data-reveal data-preview="home page ss/bangkok-elites.png">
+          <div class="work-card-img" style="background-image:url('home page ss/bangkok-elites.png')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">02</span>
+            <span class="work-tag">Luxury Lifestyle</span>
+            <h3>Bangkok Elites</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
 
-      <a href="pfil-website/index.html" class="work-h-card" data-preview="home page ss/pfil.png">
-        <div class="work-h-img" style="background-image:url('home page ss/pfil.png')"></div>
-        <div class="work-h-overlay"></div>
-        <div class="work-h-body">
-          <div class="work-h-meta"><span class="work-num">04</span><span class="work-tag">Professional Services</span></div>
-          <div><h3>PFIL Group</h3><span class="work-link">View Project &nbsp;↗</span></div>
-        </div>
-      </a>
+        <a href="praesidia-website/index.html" class="work-card" data-reveal data-preview="home page ss/praesidia.png">
+          <div class="work-card-img" style="background-image:url('home page ss/praesidia.png')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">03</span>
+            <span class="work-tag">International Organisation</span>
+            <h3>Praesidia Alliance</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
 
-      <a href="tradefarm-website/index.html" class="work-h-card" data-preview="home page ss/tradefarm.png">
-        <div class="work-h-img" style="background-image:url('home page ss/tradefarm.png')"></div>
-        <div class="work-h-overlay"></div>
-        <div class="work-h-body">
-          <div class="work-h-meta"><span class="work-num">05</span><span class="work-tag">Agricultural Commerce</span></div>
-          <div><h3>Tradefarm</h3><span class="work-link">View Project &nbsp;↗</span></div>
-        </div>
-      </a>
+        <a href="pfil-website/index.html" class="work-card" data-reveal data-preview="home page ss/pfil.png">
+          <div class="work-card-img" style="background-image:url('home page ss/pfil.png')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">04</span>
+            <span class="work-tag">Professional Services</span>
+            <h3>PFIL Group</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
 
-      <a href="bens-bookkeeping/index.html" class="work-h-card" data-preview="home page ss/bens-bookkeeping.png">
-        <div class="work-h-img" style="background-image:url('home page ss/bens-bookkeeping.png')"></div>
-        <div class="work-h-overlay"></div>
-        <div class="work-h-body">
-          <div class="work-h-meta"><span class="work-num">06</span><span class="work-tag">Financial Services</span></div>
-          <div><h3>Ben's Bookkeeping</h3><span class="work-link">View Project &nbsp;↗</span></div>
-        </div>
-      </a>
+        <a href="tradefarm-website/index.html" class="work-card" data-reveal data-preview="home page ss/tradefarm.png">
+          <div class="work-card-img" style="background-image:url('home page ss/tradefarm.png')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">05</span>
+            <span class="work-tag">Agricultural Commerce</span>
+            <h3>Tradefarm</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
 
-      <a href="headbangbarber/index.html" class="work-h-card" data-preview="home page ss/headbang-barber.png">
-        <div class="work-h-img" style="background-image:url('home page ss/headbang-barber.png')"></div>
-        <div class="work-h-overlay"></div>
-        <div class="work-h-body">
-          <div class="work-h-meta"><span class="work-num">07</span><span class="work-tag">Grooming &amp; Lifestyle</span></div>
-          <div><h3>Headbang Barber</h3><span class="work-link">View Project &nbsp;↗</span></div>
-        </div>
-      </a>
+        <a href="bens-bookkeeping/index.html" class="work-card" data-reveal data-preview="home page ss/bens-bookkeeping.png">
+          <div class="work-card-img" style="background-image:url('home page ss/bens-bookkeeping.png')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">06</span>
+            <span class="work-tag">Financial Services</span>
+            <h3>Ben's Bookkeeping</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
 
+        <a href="headbangbarber/index.html" class="work-card" data-reveal data-preview="home page ss/headbang-barber.png">
+          <div class="work-card-img" style="background-image:url('home page ss/headbang-barber.png')"></div>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-num">07</span>
+            <span class="work-tag">Grooming &amp; Lifestyle</span>
+            <h3>Headbang Barber</h3>
+            <span class="work-link">View Project &nbsp;↗</span>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
 
