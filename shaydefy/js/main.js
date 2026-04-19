@@ -13,49 +13,6 @@
   var lenis = null;
 
   /* ----------------------------------------
-     CANVAS GRAIN — animated film grain on hero
-  ---------------------------------------- */
-  (function () {
-    if (!window.matchMedia('(min-width:769px)').matches) return;
-    var canvas = document.getElementById('heroGrain');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var frame = 0;
-
-    function resize() {
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-    resize();
-
-    var rTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(rTimer);
-      rTimer = setTimeout(resize, 200);
-    });
-
-    function drawGrain() {
-      var w = canvas.width, h = canvas.height;
-      var imageData = ctx.createImageData(w, h);
-      var data = imageData.data;
-      for (var i = 0; i < data.length; i += 4) {
-        var v = (Math.random() * 255) | 0;
-        data[i]     = v;
-        data[i + 1] = v;
-        data[i + 2] = v;
-        data[i + 3] = (Math.random() * 30) | 0;
-      }
-      ctx.putImageData(imageData, 0, 0);
-    }
-
-    (function loop() {
-      requestAnimationFrame(loop);
-      frame++;
-      if (frame % 2 === 0) drawGrain();
-    })();
-  })();
-
-  /* ----------------------------------------
      PRELOADER — dismiss then kick off hero
   ---------------------------------------- */
   var preloader = document.getElementById('preloader');
