@@ -322,6 +322,8 @@ function launch(id, type) {
       if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000); }
       window.open(url, '_blank');
     }).catch(() => { window.open(url, '_blank'); });
+  } else if (type === 'email') {
+    window.location.href = url;
   } else {
     window.open(url, '_blank');
   }
