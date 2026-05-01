@@ -212,7 +212,7 @@ function getUrl(ch, touch) {
   const msg = ch[`t${touch}`] || ch.t1;
   switch (ch.type) {
     case 'email':
-      return `mailto:${ch.to}?subject=${encodeURIComponent(ch.subject)}&body=${encodeURIComponent(msg)}`;
+      return `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(ch.to)}&su=${encodeURIComponent(ch.subject)}&body=${encodeURIComponent(msg)}`;
     case 'whatsapp':
       return `https://wa.me/${ch.phone}?text=${encodeURIComponent(msg)}`;
     case 'instagram':
@@ -322,8 +322,6 @@ function launch(id, type) {
       if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000); }
       window.open(url, '_blank');
     }).catch(() => { window.open(url, '_blank'); });
-  } else if (type === 'email') {
-    window.location.href = url;
   } else {
     window.open(url, '_blank');
   }
