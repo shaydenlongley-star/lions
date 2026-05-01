@@ -284,13 +284,13 @@ function render() {
       const copyNeeded = needsCopy(ch.type);
 
       const mainBtn = `<button class="ch-btn ${sent ? 'sent' : ''}"
-        onclick="launch('${c.id}','${ch.type}','${encodeURIComponent(url)}','${encodeURIComponent(msg)}')">
+        onclick="launch(${c.id},'${ch.type}')">
         ${iconHtml(ch.type)} ${getLabel(ch)} ${sent ? '✓' : ''}
       </button>`;
 
       const copyBtn = copyNeeded
         ? `<button class="copy-btn" id="copy-${c.id}-${ch.type}"
-            onclick="copyMsg('${c.id}','${ch.type}','${encodeURIComponent(msg)}')">Copy</button>`
+            onclick="copyMsg(${c.id},'${ch.type}')">Copy</button>`
         : '';
 
       const sentBtn = `<button class="sent-mark" onclick="toggleSent(${c.id},'${ch.type}')" title="${sent ? 'Undo' : 'Mark sent'}">${sent ? '✓' : '○'}</button>`;
@@ -309,9 +309,13 @@ function render() {
   }).join('');
 }
 
-function launch(id, type, encodedUrl, encodedMsg) {
-  const url = decodeURIComponent(encodedUrl);
-  const msg = decodeURIComponent(encodedMsg);
+function getContact(id) { return contacts.find(c => c.id === id); }
+function getChannel(id, type) { return getContact(id).channels.find(ch => ch.type === type); }
+
+function launch(id, type) {
+  const ch = getChannel(id, type);
+  const msg = ch[`t${currentTouch}`] || ch.t1;
+  const url = getUrl(ch, currentTouch);
   if (needsCopy(type)) {
     navigator.clipboard.writeText(msg).then(() => {
       const btn = document.getElementById(`copy-${id}-${type}`);
@@ -325,8 +329,9 @@ function launch(id, type, encodedUrl, encodedMsg) {
   setTimeout(render, 500);
 }
 
-function copyMsg(id, type, encodedMsg) {
-  const msg = decodeURIComponent(encodedMsg);
+function copyMsg(id, type) {
+  const ch = getChannel(id, type);
+  const msg = ch[`t${currentTouch}`] || ch.t1;
   navigator.clipboard.writeText(msg).then(() => {
     const btn = document.getElementById(`copy-${id}-${type}`);
     if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000); }
