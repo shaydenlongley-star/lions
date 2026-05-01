@@ -4,85 +4,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1440">
 <title>BACKYARD Craft Studio — Mockup</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  body { width: 100vw; height: 100vh; overflow: hidden; background: #100F0C; font-family: 'Inter', sans-serif; }
-  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
-  .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.14) saturate(0.25) contrast(1.35); }
-  .overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(16,15,12,0.98) 0%, rgba(16,15,12,0.74) 52%, rgba(16,15,12,0.18) 100%); }
-  .silver-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(184,168,130,0.72) 30%, rgba(184,168,130,0.72) 70%, transparent); }
-  .service-list { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 2px; }
-  .svc-item { display: flex; align-items: center; gap: 10px; justify-content: flex-end; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-  .svc-name { color: rgba(255,255,255,0.22); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
-  .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(184,168,130,0.3); }
-  .svc-item.active .svc-name { color: rgba(255,255,255,0.65); }
-  .svc-item.active .svc-dot { background: rgba(184,168,130,0.88); }
-  .location-badge { position: absolute; right: 80px; bottom: 55px; z-index: 5; border: 1px solid rgba(184,168,130,0.18); padding: 14px 20px; background: rgba(16,15,12,0.84); display: flex; flex-direction: column; gap: 6px; align-items: center; }
-  .badge-label { color: rgba(255,255,255,0.2); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  .badge-divider { width: 22px; height: 1px; background: rgba(184,168,130,0.24); }
-  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(184,168,130,0.75); font-style: italic; }
-  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 30px 80px 30px 100px; border-bottom: 1px solid rgba(184,168,130,0.07); }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #fff; letter-spacing: 0.16em; }
-  .logo em { font-style: italic; color: rgba(184,168,130,0.85); }
-  .nav-links { display: flex; gap: 36px; }
-  .nav-links a { color: rgba(255,255,255,0.26); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
-  .nav-cta { border: 1px solid rgba(184,168,130,0.38); color: rgba(184,168,130,0.9); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
-  .content { position: relative; z-index: 2; display: flex; align-items: center; height: 100%; padding: 0 100px; }
-  .text { max-width: 540px; }
-  .eyebrow { color: rgba(184,168,130,0.6); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; line-height: 1.04; color: #fff; margin-bottom: 22px; }
-  h1 em { font-style: italic; color: rgba(184,168,130,0.88); }
-  .rule { width: 36px; height: 1px; background: rgba(184,168,130,0.22); margin-bottom: 20px; }
-  p { color: rgba(255,255,255,0.3); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
-  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
-  .btn-primary { background: rgba(184,168,130,0.88); color: #100F0C; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
-  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.36); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #EAE0CE; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: #EAE0CE; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #9C7E58; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.78) saturate(0.65); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(234,224,206,0.18) 0%, transparent 22%), linear-gradient(0deg, rgba(60,38,14,0.44) 0%, transparent 42%); }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(184,152,96,0.68) 30%, rgba(184,152,96,0.68) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(184,152,96,0.28); padding: 14px 18px; background: rgba(234,224,206,0.92); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(26,20,10,0.36); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(184,152,96,0.32); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(156,122,72,0.82); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .svc-name { color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(184,152,96,0.5); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.68); }
+  .svc-item.active .svc-dot { background: rgba(184,152,96,0.95); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(234,224,206,0.97); border-bottom: 1px solid rgba(184,152,96,0.12); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #1A140A; letter-spacing: 0.14em; }
+  .logo em { font-style: italic; color: #B89860; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,20,10,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #1A140A; color: #EAE0CE; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: #B89860; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #1A140A; margin-bottom: 18px; }
+  h1 em { font-style: italic; color: #B89860; }
+  .rule { width: 36px; height: 1px; background: rgba(184,152,96,0.34); margin-bottom: 18px; }
+  p { color: rgba(26,20,10,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #1A140A; color: #EAE0CE; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,20,10,0.16); color: rgba(26,20,10,0.46); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
   .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag { border: 1px solid rgba(184,168,130,0.15); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .tag { border: 1px solid rgba(184,152,96,0.3); color: rgba(26,20,10,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
 </style>
 </head>
 <body>
 <div class="hero">
-  <img class="bg-img" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1600&q=80" alt="BACKYARD Craft Studio Bangkok">
-  <div class="overlay"></div>
-  <div class="silver-strip"></div>
-  <div class="service-list">
-    <div class="svc-item active"><div class="svc-name">Silver Clay Jewelry</div><div class="svc-dot"></div></div>
-    <div class="svc-item"><div class="svc-name">Group Workshops</div><div class="svc-dot"></div></div>
-    <div class="svc-item"><div class="svc-name">Private Classes</div><div class="svc-dot"></div></div>
-    <div class="svc-item"><div class="svc-name">Custom Pieces</div><div class="svc-dot"></div></div>
-  </div>
-  <div class="location-badge">
-    <div class="badge-label">Ramintra</div>
-    <div class="badge-divider"></div>
-    <div class="badge-val">Bangkok</div>
-    <div class="badge-divider"></div>
-    <div class="badge-label">Silversmith Studio</div>
-  </div>
   <nav>
-    <div class="logo">BACKYARD <em>Craft</em></div>
+    <div class="logo">BACKYARD <em>Craft</em> Studio</div>
     <div class="nav-links">
       <a href="#">Workshops</a><a href="#">Private Class</a><a href="#">Gallery</a><a href="#">Book</a>
     </div>
-    <button class="nav-cta">Book a Workshop</button>
+    <button class="nav-cta">Book a Class</button>
   </nav>
-  <div class="content">
-    <div class="text">
-      <div class="eyebrow">Ramintra · Bangkok · Silversmith Studio</div>
-      <h1>Make silver.<br><em>With your hands.</em></h1>
-      <div class="rule"></div>
-      <p>Bangkok's silver clay jewelry studio in Ramintra. Small-group workshops (max 4), private classes, and custom commissions — 99.99% fine silver, shaped by you in a single session.</p>
-      <div class="actions">
-        <button class="btn-primary">Book a Workshop</button>
-        <button class="btn-ghost">View Gallery</button>
-      </div>
-      <div class="tags">
-        <div class="tag">Silver Clay</div>
-        <div class="tag">Group Workshops</div>
-        <div class="tag">Private Class</div>
-        <div class="tag">Custom Pieces</div>
-      </div>
+  <div class="left">
+    <div class="eyebrow">Ramintra · Bangkok · Silver Clay Jewelry</div>
+    <h1>Make silver.<br><em>With your hands.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's silver clay jewelry studio in Ramintra. Small-group workshops (max 4), private classes, and custom commissions — 99.99% fine silver, shaped by you in a single session.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Workshop</button>
+      <button class="btn-ghost">View Gallery</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Silver Clay</div>
+      <div class="tag">Group Workshops</div>
+      <div class="tag">Private Class</div>
+      <div class="tag">Custom Pieces</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=80" alt="BACKYARD Craft Studio Bangkok">
+    <div class="accent-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Silver Clay Jewelry</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Group Workshops</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Private Classes</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Custom Pieces</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Silver Clay</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Workshop</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Ramintra · Bangkok</div>
     </div>
   </div>
 </div>
