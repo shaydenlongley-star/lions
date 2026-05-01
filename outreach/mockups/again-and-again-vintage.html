@@ -13,33 +13,33 @@
   .right { position: relative; overflow: hidden; background: #9A8888; }
   .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.76) saturate(0.55); }
   .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(248,246,244,0.16) 0%, transparent 20%), linear-gradient(0deg, rgba(40,20,20,0.38) 0%, transparent 40%); }
-  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(180,148,148,0.65) 30%, rgba(180,148,148,0.65) 70%, transparent); }
-  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(180,148,148,0.26); padding: 14px 18px; background: rgba(248,246,244,0.92); display: flex; flex-direction: column; gap: 6px; align-items: center; }
-  .badge-label { color: rgba(32,18,18,0.36); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
-  .badge-divider { width: 22px; height: 1px; background: rgba(180,148,148,0.32); }
-  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(148,108,108,0.82); font-style: italic; }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(138,148,108,0.68) 30%, rgba(138,148,108,0.68) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(138,148,108,0.26); padding: 14px 18px; background: rgba(248,246,244,0.92); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(16,18,12,0.36); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(138,148,108,0.32); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(100,112,72,0.82); font-style: italic; }
   .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
   .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
   .svc-name { color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(180,148,148,0.5); flex-shrink: 0; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(138,148,108,0.5); flex-shrink: 0; }
   .svc-item.active .svc-name { color: rgba(255,255,255,0.68); }
-  .svc-item.active .svc-dot { background: rgba(180,148,148,0.95); }
-  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(248,246,244,0.97); border-bottom: 1px solid rgba(180,148,148,0.1); }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #201212; letter-spacing: 0.12em; }
-  .logo em { font-style: italic; color: #B49494; }
+  .svc-item.active .svc-dot { background: rgba(138,148,108,0.95); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(248,246,244,0.97); border-bottom: 1px solid rgba(138,148,108,0.1); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #101208; letter-spacing: 0.12em; }
+  .logo em { font-style: italic; color: #8A9468; }
   .nav-links { display: flex; gap: 32px; }
-  .nav-links a { color: rgba(32,18,18,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
-  .nav-cta { background: #201212; color: #F8F6F4; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
-  .eyebrow { color: #B49494; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #201212; margin-bottom: 18px; }
-  h1 em { font-style: italic; color: #B49494; }
-  .rule { width: 36px; height: 1px; background: rgba(180,148,148,0.34); margin-bottom: 18px; }
-  p { color: rgba(32,18,18,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .nav-links a { color: rgba(16,18,8,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #101208; color: #F8F6F4; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: #8A9468; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #101208; margin-bottom: 18px; }
+  h1 em { font-style: italic; color: #8A9468; }
+  .rule { width: 36px; height: 1px; background: rgba(138,148,108,0.34); margin-bottom: 18px; }
+  p { color: rgba(16,18,8,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
   .actions { display: flex; gap: 12px; margin-bottom: 28px; }
-  .btn-primary { background: #201212; color: #F8F6F4; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
-  .btn-ghost { border: 1px solid rgba(32,18,18,0.16); color: rgba(32,18,18,0.46); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .btn-primary { background: #101208; color: #F8F6F4; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(16,18,8,0.16); color: rgba(16,18,8,0.46); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
   .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag { border: 1px solid rgba(180,148,148,0.28); color: rgba(32,18,18,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .tag { border: 1px solid rgba(138,148,108,0.28); color: rgba(16,18,8,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
 </style>
 </head>
 <body>

@@ -11,35 +11,35 @@
   .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
   .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.14) saturate(0.2) contrast(1.4); }
   .overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(12,10,8,0.98) 0%, rgba(12,10,8,0.74) 52%, rgba(12,10,8,0.18) 100%); }
-  .amber-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(196,140,60,0.82) 30%, rgba(196,140,60,0.82) 70%, transparent); }
+  .amber-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(210,204,192,0.72) 30%, rgba(210,204,192,0.72) 70%, transparent); }
   .service-list { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 2px; }
   .svc-item { display: flex; align-items: center; gap: 10px; justify-content: flex-end; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
   .svc-name { color: rgba(255,255,255,0.22); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
-  .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(196,140,60,0.35); }
+  .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(210,204,192,0.28); }
   .svc-item.active .svc-name { color: rgba(255,255,255,0.65); }
-  .svc-item.active .svc-dot { background: rgba(196,140,60,0.9); }
-  .location-badge { position: absolute; right: 80px; bottom: 55px; z-index: 5; border: 1px solid rgba(196,140,60,0.22); padding: 14px 20px; background: rgba(12,10,8,0.84); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .svc-item.active .svc-dot { background: rgba(210,204,192,0.82); }
+  .location-badge { position: absolute; right: 80px; bottom: 55px; z-index: 5; border: 1px solid rgba(210,204,192,0.18); padding: 14px 20px; background: rgba(12,10,8,0.84); display: flex; flex-direction: column; gap: 6px; align-items: center; }
   .badge-label { color: rgba(255,255,255,0.2); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  .badge-divider { width: 22px; height: 1px; background: rgba(196,140,60,0.28); }
-  .badge-val { font-family: 'DM Serif Display', serif; font-size: 1rem; color: rgba(196,140,60,0.82); font-style: italic; }
-  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 30px 80px 30px 100px; border-bottom: 1px solid rgba(196,140,60,0.07); }
+  .badge-divider { width: 22px; height: 1px; background: rgba(210,204,192,0.22); }
+  .badge-val { font-family: 'DM Serif Display', serif; font-size: 1rem; color: rgba(210,204,192,0.72); font-style: italic; }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 30px 80px 30px 100px; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #fff; letter-spacing: 0.12em; }
-  .logo em { font-style: italic; color: rgba(196,140,60,0.9); }
+  .logo em { font-style: italic; color: rgba(210,204,192,0.88); }
   .nav-links { display: flex; gap: 36px; }
   .nav-links a { color: rgba(255,255,255,0.26); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
-  .nav-cta { border: 1px solid rgba(196,140,60,0.4); color: rgba(196,140,60,0.95); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+  .nav-cta { border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.82); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
   .content { position: relative; z-index: 2; display: flex; align-items: center; height: 100%; padding: 0 100px; }
   .text { max-width: 540px; }
-  .eyebrow { color: rgba(196,140,60,0.65); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+  .eyebrow { color: rgba(210,204,192,0.58); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
   h1 { font-family: 'DM Serif Display', serif; font-size: 5rem; font-weight: 400; line-height: 1.04; color: #fff; margin-bottom: 22px; }
-  h1 em { font-style: italic; color: rgba(196,140,60,0.9); }
-  .rule { width: 36px; height: 1px; background: rgba(196,140,60,0.26); margin-bottom: 20px; }
+  h1 em { font-style: italic; color: rgba(210,204,192,0.88); }
+  .rule { width: 36px; height: 1px; background: rgba(210,204,192,0.2); margin-bottom: 20px; }
   p { color: rgba(255,255,255,0.3); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
   .actions { display: flex; gap: 12px; margin-bottom: 36px; }
-  .btn-primary { background: rgba(196,140,60,0.88); color: #0C0A08; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-primary { background: rgba(255,255,255,0.9); color: #0C0A08; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
   .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.36); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
   .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag { border: 1px solid rgba(196,140,60,0.16); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .tag { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
 </style>
 </head>
 <body>
