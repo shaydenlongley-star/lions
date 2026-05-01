@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Silom Thai Cooking School — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #F8F4EC; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+  .left {
+    background: #F8F4EC;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px; position: relative;
+  }
+
+  .right { position: relative; overflow: hidden; background: #2D6A4F; }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.72) saturate(0.85);
+  }
+  .right::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgba(248,244,236,0.18) 0%, transparent 20%),
+                linear-gradient(0deg, rgba(27,77,53,0.6) 0%, transparent 45%);
+  }
+
+  .green-strip {
+    position: absolute; top: 0; left: 0; bottom: 0; z-index: 3;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, rgba(45,106,79,0.7) 30%, rgba(45,106,79,0.7) 70%, transparent);
+  }
+
+  /* Rating badge */
+  .rating-badge {
+    position: absolute; right: 48px; bottom: 60px; z-index: 5;
+    border: 1px solid rgba(200,134,10,0.3); padding: 14px 18px;
+    background: rgba(248,244,236,0.88);
+    display: flex; flex-direction: column; gap: 6px; align-items: center;
+  }
+  .badge-label { color: rgba(45,40,20,0.38); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(200,134,10,0.3); }
+  .badge-val { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: rgba(200,134,10,0.75); font-style: italic; }
+
+  /* Class days list */
+  .days-list {
+    position: absolute; right: 48px; top: 50%; transform: translateY(-50%);
+    z-index: 5; display: flex; flex-direction: column; gap: 3px;
+  }
+  .day-item {
+    display: flex; align-items: center; gap: 8px; justify-content: flex-end;
+    padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .day-name { color: rgba(255,255,255,0.28); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .day-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(200,134,10,0.4); flex-shrink: 0; }
+  .day-item.active .day-name { color: rgba(255,255,255,0.65); }
+  .day-item.active .day-dot { background: rgba(200,134,10,0.9); }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 70px 26px 100px;
+    background: rgba(248,244,236,0.97);
+    border-bottom: 1px solid rgba(45,106,79,0.1);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #1A2D1A; letter-spacing: 0.06em; }
+  .logo em { font-style: italic; color: #2D6A4F; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,45,26,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #2D6A4F; color: #F8F4EC; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+
+  .eyebrow { color: #C8860A; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4.6rem; font-weight: 400; line-height: 1.06;
+    color: #1A2D1A; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #2D6A4F; }
+
+  .rule { width: 36px; height: 1px; background: rgba(45,106,79,0.35); margin-bottom: 18px; }
+
+  p { color: rgba(26,45,26,0.48); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #2D6A4F; color: #F8F4EC; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,45,26,0.14); color: rgba(26,45,26,0.45); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(45,106,79,0.28); color: rgba(26,45,26,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Silom</em> Thai Cooking School</div>
+    <div class="nav-links">
+      <a href="#">Classes</a>
+      <a href="#">Menu</a>
+      <a href="#">About</a>
+      <a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book a Class</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Bangrak · Bangkok · Since 2004</div>
+    <h1>Cook Thai.<br><em>The real way.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's highest-rated cooking school with 1,600+ five-star reviews on TripAdvisor. Daily morning classes in Bangrak — market visit, hands-on cooking, and a meal you made yourself.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Class</button>
+      <button class="btn-ghost">View Class Menu</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Morning Classes</div>
+      <div class="tag">Market Visit</div>
+      <div class="tag">Halal Available</div>
+      <div class="tag">Daily Sessions</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=1200&q=80" alt="Silom Thai Cooking School">
+    <div class="green-strip"></div>
+    <div class="days-list">
+      <div class="day-item active"><div class="day-name">Green Curry</div><div class="day-dot"></div></div>
+      <div class="day-item"><div class="day-name">Pad Thai</div><div class="day-dot"></div></div>
+      <div class="day-item"><div class="day-name">Tom Yum</div><div class="day-dot"></div></div>
+      <div class="day-item"><div class="day-name">Mango Sticky Rice</div><div class="day-dot"></div></div>
+    </div>
+    <div class="rating-badge">
+      <div class="badge-label">TripAdvisor</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">4.8 ★</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">1,600+ Reviews</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Cholas Authentic Indian — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #1a0800; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1a0800 0%, #2d1200 50%, #1a0800 100%);
+  }
+  .bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(220,100,20,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(180,60,10,0.08) 0%, transparent 50%);
+  }
+
+  /* Spice pattern — subtle dots */
+  .pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: radial-gradient(circle, #e07820 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Right side decorative plate */
+  .plate-wrap {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    z-index: 2;
+  }
+  .plate-outer {
+    width: 380px; height: 380px; border-radius: 50%;
+    border: 1px solid rgba(220,140,40,0.15);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .plate-inner {
+    width: 300px; height: 300px; border-radius: 50%;
+    border: 1px solid rgba(220,140,40,0.08);
+    background: radial-gradient(circle at 40% 40%, rgba(220,100,20,0.08), rgba(26,8,0,0.6));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px;
+  }
+  .plate-icon { font-size: 3rem; opacity: 0.4; }
+  .plate-text { color: rgba(220,140,40,0.3); font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; }
+
+  /* Spice tags on right */
+  .spice-tags {
+    position: absolute; right: 92px; bottom: 50px; z-index: 3;
+    display: flex; gap: 8px;
+  }
+  .spice-tag { border: 1px solid rgba(220,140,40,0.2); color: rgba(220,140,40,0.4); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(220,140,40,0.07);
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #e8c87a; letter-spacing: 0.08em; }
+  .logo em { font-style: italic; color: rgba(220,140,40,0.7); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.3); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { background: #c8621a; color: #fff; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 3;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 560px; }
+
+  .eyebrow { color: rgba(220,140,40,0.55); font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 20px; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 400; line-height: 1.05;
+    color: #f0e0c0; margin-bottom: 20px;
+  }
+  h1 em { font-style: italic; color: #e07820; }
+
+  .rule { width: 40px; height: 1px; background: rgba(220,140,40,0.35); margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.4); font-size: 0.91rem; line-height: 1.8; max-width: 400px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; }
+  .btn-primary { background: #c8621a; color: #fff; padding: 14px 32px; font-size: 0.72rem; letter-spacing: 0.14em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(220,140,40,0.25); color: rgba(220,140,40,0.6); padding: 14px 32px; font-size: 0.72rem; letter-spacing: 0.14em; background: none; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="bg"></div>
+  <div class="pattern"></div>
+
+  <div class="plate-wrap">
+    <div class="plate-outer">
+      <div class="plate-inner">
+        <div class="plate-icon">🍛</div>
+        <div class="plate-text">Authentic South Indian</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spice-tags">
+    <div class="spice-tag">Dosa</div>
+    <div class="spice-tag">Biryani</div>
+    <div class="spice-tag">Curry</div>
+    <div class="spice-tag">Thali</div>
+  </div>
+
+  <nav>
+    <div class="logo"><em>Cholas</em> Authentic Indian</div>
+    <div class="nav-links">
+      <a href="#">Menu</a>
+      <a href="#">About</a>
+      <a href="#">Location</a>
+      <a href="#">Reservations</a>
+    </div>
+    <button class="nav-cta">Reserve a Table</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Bangkok · Authentic South Indian Cuisine</div>
+      <h1>Real Indian<br>food in the<br>heart of <em>Bangkok.</em></h1>
+      <div class="rule"></div>
+      <p>Authentic South Indian recipes, made the way they were meant to be. Dosas, biryanis, curries, and thalis — no shortcuts, no compromise.</p>
+      <div class="actions">
+        <button class="btn-primary">Reserve a Table</button>
+        <button class="btn-ghost">View Menu</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

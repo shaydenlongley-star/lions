@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Hugs x Kisses Nail Bar — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #FAF6F3; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+  .left {
+    background: #FAF6F3;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px; position: relative;
+  }
+
+  .right { position: relative; overflow: hidden; background: #E8D5D0; }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.88) saturate(0.85);
+  }
+  .right::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgba(250,246,243,0.15) 0%, transparent 20%),
+                linear-gradient(0deg, rgba(230,210,205,0.5) 0%, transparent 40%);
+  }
+
+  /* Petal accent strip */
+  .petal-strip {
+    position: absolute; top: 0; left: 0; bottom: 0; z-index: 3;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, rgba(210,155,155,0.5) 30%, rgba(210,155,155,0.5) 70%, transparent);
+  }
+
+  /* Studio badge */
+  .studio-badge {
+    position: absolute; right: 48px; bottom: 60px; z-index: 5;
+    border: 1px solid rgba(210,155,155,0.3); padding: 14px 18px;
+    background: rgba(250,246,243,0.82);
+    display: flex; flex-direction: column; gap: 6px; align-items: center;
+  }
+  .badge-label { color: rgba(90,60,60,0.35); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(210,155,155,0.35); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(180,110,110,0.65); font-style: italic; }
+
+  /* Locations pill */
+  .locations {
+    position: absolute; right: 48px; top: 50%; transform: translateY(-50%);
+    z-index: 5; display: flex; flex-direction: column; gap: 3px;
+  }
+  .loc-item {
+    display: flex; align-items: center; gap: 8px; justify-content: flex-end;
+    padding: 6px 0; border-bottom: 1px solid rgba(210,155,155,0.12);
+  }
+  .loc-name { color: rgba(255,255,255,0.32); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .loc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(210,155,155,0.45); flex-shrink: 0; }
+  .loc-item.active .loc-name { color: rgba(255,255,255,0.65); }
+  .loc-item.active .loc-dot { background: rgba(210,155,155,0.9); }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 70px 26px 100px;
+    background: rgba(250,246,243,0.97);
+    border-bottom: 1px solid rgba(210,155,155,0.12);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #2A1A1A; letter-spacing: 0.08em; }
+  .logo em { font-style: italic; color: #C89090; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(42,26,26,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #2A1A1A; color: #FAF6F3; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+
+  .eyebrow { color: #C89090; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.8rem; font-weight: 300; line-height: 1.06;
+    color: #2A1A1A; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #C89090; }
+
+  .rule { width: 36px; height: 1px; background: rgba(200,144,144,0.35); margin-bottom: 18px; }
+
+  p { color: rgba(42,26,26,0.48); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #2A1A1A; color: #FAF6F3; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(42,26,26,0.14); color: rgba(42,26,26,0.45); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(200,144,144,0.28); color: rgba(42,26,26,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Hugs × Kisses</em> Nail Bar</div>
+    <div class="nav-links">
+      <a href="#">Gallery</a>
+      <a href="#">Services</a>
+      <a href="#">Locations</a>
+      <a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Sukhumvit 26 · Siam Square · Bangkok</div>
+    <h1>Nail art that<br>tells your <em>story.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's custom nail art studio with over 22,000 followers and two locations. Bring a reference, leave with something unforgettable — every set is made for you, not a catalogue.</p>
+    <div class="actions">
+      <button class="btn-primary">Book Now</button>
+      <button class="btn-ghost">View Gallery</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Custom Nail Art</div>
+      <div class="tag">Gel & Acrylic</div>
+      <div class="tag">Nail Extensions</div>
+      <div class="tag">2 Locations</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=80" alt="Hugs x Kisses Nail Art">
+    <div class="petal-strip"></div>
+    <div class="locations">
+      <div class="loc-item active"><div class="loc-name">Sukhumvit 26</div><div class="loc-dot"></div></div>
+      <div class="loc-item"><div class="loc-name">Siam Square</div><div class="loc-dot"></div></div>
+      <div class="loc-item"><div class="loc-name">New Location</div><div class="loc-dot"></div></div>
+    </div>
+    <div class="studio-badge">
+      <div class="badge-label">Instagram</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">22K Followers</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Bangkok</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

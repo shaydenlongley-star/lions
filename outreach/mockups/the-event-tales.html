@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>The Event Tales — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #09090b; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.22) saturate(0.5);
+  }
+
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(135deg, rgba(9,9,11,0.98) 0%, rgba(9,9,11,0.7) 50%, rgba(9,9,11,0.15) 100%);
+  }
+
+  /* Bokeh lights effect */
+  .bokeh {
+    position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none;
+  }
+  .bokeh-dot {
+    position: absolute; border-radius: 50%;
+    background: rgba(255,220,100,0.06);
+    filter: blur(40px);
+  }
+  .b1 { width: 300px; height: 300px; right: 15%; top: 10%; }
+  .b2 { width: 200px; height: 200px; right: 35%; bottom: 20%; background: rgba(255,200,80,0.04); }
+  .b3 { width: 150px; height: 150px; right: 5%; bottom: 40%; }
+
+  /* Story chapters */
+  .chapters {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    z-index: 5; display: flex; flex-direction: column; gap: 2px;
+  }
+  .chapter {
+    padding: 10px 16px; border-left: 2px solid rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.18); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .chapter.active {
+    border-left-color: rgba(255,200,80,0.5);
+    color: rgba(255,200,80,0.6);
+  }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 400; color: #fff; letter-spacing: 0.05em; }
+  .logo em { font-style: italic; color: rgba(255,200,80,0.7); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.28); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { background: rgba(255,200,80,0.85); color: #09090b; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 3;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 560px; }
+
+  .eyebrow { color: rgba(255,200,80,0.5); font-size: 0.67rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem; font-weight: 400; line-height: 1.05;
+    color: #fff; margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: rgba(255,200,80,0.75); }
+
+  .rule { width: 36px; height: 1px; background: rgba(255,200,80,0.25); margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.36); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(255,200,80,0.85); color: #09090b; padding: 14px 32px; font-size: 0.71rem; font-weight: 400; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(255,200,80,0.12); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&q=80" alt="The Event Tales">
+  <div class="overlay"></div>
+  <div class="bokeh">
+    <div class="bokeh-dot b1"></div>
+    <div class="bokeh-dot b2"></div>
+    <div class="bokeh-dot b3"></div>
+  </div>
+
+  <div class="chapters">
+    <div class="chapter">Concept</div>
+    <div class="chapter active">Design</div>
+    <div class="chapter">Execute</div>
+    <div class="chapter">Celebrate</div>
+  </div>
+
+  <nav>
+    <div class="logo">The <em>Event</em> Tales</div>
+    <div class="nav-links">
+      <a href="#">Portfolio</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <button class="nav-cta">Start Planning</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Bangkok · Thailand · Event Creators</div>
+      <h1>Your event.<br>Your <em>story.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok-based event creators turning briefs into experiences. Weddings, corporate galas, brand launches — we handle every detail so you don't have to.</p>
+      <div class="actions">
+        <button class="btn-primary">Start Planning</button>
+        <button class="btn-ghost">See Our Work</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Weddings</div>
+        <div class="tag">Corporate</div>
+        <div class="tag">Brand Events</div>
+        <div class="tag">Full Service</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>UnReal Gym Thailand — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0A0A0A; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.18) saturate(0.3) contrast(1.2);
+  }
+
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.72) 50%, rgba(10,10,10,0.2) 100%);
+  }
+
+  /* UR monogram */
+  .monogram {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    z-index: 5;
+    font-family: 'DM Serif Display', serif;
+    font-size: 8rem; font-style: italic;
+    color: rgba(255,255,255,0.04);
+    line-height: 1; user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  /* Membership badge */
+  .membership {
+    position: absolute; right: 80px; bottom: 55px; z-index: 5;
+    border: 1px solid rgba(255,255,255,0.06); padding: 14px 20px;
+    background: rgba(10,10,10,0.7);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .mem-title { color: rgba(255,255,255,0.2); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .mem-tiers { display: flex; flex-direction: column; gap: 4px; }
+  .mem-tier { display: flex; justify-content: space-between; gap: 20px; }
+  .mem-name { color: rgba(255,255,255,0.22); font-size: 0.58rem; letter-spacing: 0.1em; }
+  .mem-price { color: rgba(200,160,48,0.5); font-size: 0.58rem; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #fff; letter-spacing: 0.1em; }
+  .logo em { font-style: italic; color: rgba(200,160,48,0.75); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.28); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 560px; }
+
+  .eyebrow { color: rgba(200,160,48,0.55); font-size: 0.67rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5.2rem; font-weight: 400; line-height: 1.02;
+    color: #fff; margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: rgba(200,160,48,0.8); }
+
+  .rule { width: 36px; height: 1px; background: rgba(200,160,48,0.2); margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.35); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(200,160,48,0.85); color: #0A0A0A; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(200,160,48,0.1); color: rgba(255,255,255,0.2); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80" alt="UnReal Gym Thailand">
+  <div class="overlay"></div>
+
+  <div class="monogram">UR</div>
+
+  <div class="membership">
+    <div class="mem-title">Membership From</div>
+    <div class="mem-tiers">
+      <div class="mem-tier"><div class="mem-name">Standard</div><div class="mem-price">4,800 ฿/mo</div></div>
+      <div class="mem-tier"><div class="mem-name">Premium</div><div class="mem-price">9,800 ฿/mo</div></div>
+      <div class="mem-tier"><div class="mem-name">Elite</div><div class="mem-price">38,000 ฿/mo</div></div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="logo"><em>UnReal</em> Gym</div>
+    <div class="nav-links">
+      <a href="#">Training</a>
+      <a href="#">Membership</a>
+      <a href="#">Coaches</a>
+      <a href="#">Join</a>
+    </div>
+    <button class="nav-cta">Join Now</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Sukhumvit Soi 24 · Bangkok · Floors 6–8</div>
+      <h1>Elite training.<br><em>No excuses.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's premium gym for serious athletes. Three floors of world-class equipment on Sukhumvit Soi 24 — bodybuilding, powerlifting, functional training, and personal coaching at the highest level.</p>
+      <div class="actions">
+        <button class="btn-primary">Join Now</button>
+        <button class="btn-ghost">View Membership</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Bodybuilding</div>
+        <div class="tag">Powerlifting</div>
+        <div class="tag">Personal Training</div>
+        <div class="tag">3 Floors</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

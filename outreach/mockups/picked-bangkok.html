@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Picked Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #f2ede8; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+  .left {
+    background: #f2ede8;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px; position: relative;
+  }
+
+  .right { position: relative; overflow: hidden; background: #1a1714; }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.55) saturate(0.7);
+  }
+  .right::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgba(242,237,232,0.1) 0%, transparent 30%),
+                linear-gradient(0deg, rgba(26,23,20,0.5) 0%, transparent 40%);
+  }
+
+  .location-tag {
+    position: absolute; right: 40px; bottom: 50px; z-index: 5;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 18px; background: rgba(26,23,20,0.5);
+    color: rgba(255,255,255,0.3); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .location-tag span { color: rgba(255,255,255,0.5); }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 70px 28px 100px;
+    background: rgba(242,237,232,0.97);
+    border-bottom: 1px solid rgba(26,23,20,0.07);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #1a1714; letter-spacing: 0.06em; }
+  .logo em { font-style: italic; color: #8c6e4a; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,23,20,0.38); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #1a1714; color: #f2ede8; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+
+  .eyebrow { color: #8c6e4a; font-size: 0.67rem; letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 18px; opacity: 0.8; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4.6rem; font-weight: 400; line-height: 1.06;
+    color: #1a1714; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #8c6e4a; }
+
+  .rule { width: 36px; height: 1px; background: rgba(140,110,74,0.35); margin-bottom: 18px; }
+
+  p { color: rgba(26,23,20,0.48); font-size: 0.9rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 30px; }
+  .btn-primary { background: #1a1714; color: #f2ede8; padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,23,20,0.13); color: rgba(26,23,20,0.46); padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(140,110,74,0.22); color: rgba(26,23,20,0.38); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Picked</em> Bangkok</div>
+    <div class="nav-links">
+      <a href="#">New Arrivals</a>
+      <a href="#">Brands</a>
+      <a href="#">About</a>
+      <a href="#">Visit</a>
+    </div>
+    <button class="nav-cta">Shop Now</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Siam Square · Lido Connect · Bangkok</div>
+    <h1>Curated<br>fashion,<br><em>carefully</em> picked.</h1>
+    <div class="rule"></div>
+    <p>Bangkok's most carefully curated multi-label boutique. Contemporary Thai and international brands, hand-selected for the discerning wardrobe — found on Level 3, Lido Connect.</p>
+    <div class="actions">
+      <button class="btn-primary">Shop the Edit</button>
+      <button class="btn-ghost">New Arrivals</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Multi-Label</div>
+      <div class="tag">Contemporary</div>
+      <div class="tag">Thai Designers</div>
+      <div class="tag">Streetwear</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="Picked Bangkok">
+    <div class="location-tag">
+      <div>Lido Connect</div>
+      <span>Level 3 · Siam Square</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

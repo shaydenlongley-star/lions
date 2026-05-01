@@ -416,5 +416,60 @@
     "status": "sent",
     "nextFollowUp": "2026-05-04",
     "notes": "in.the.backyard.studio@gmail.com. WhatsApp +66 86 776 9194. Also @backyard.craft.studio. VERIFY COLORS before mockup."
+  },
+  {
+    "id": 39,
+    "name": "Cuckoo and Friends",
+    "category": "cafe + wine bar",
+    "channel": "email",
+    "touchNumber": 1,
+    "dateContacted": "2026-05-01",
+    "status": "sent",
+    "nextFollowUp": "2026-05-04",
+    "notes": "cuckoo.and.friends@gmail.com. LINE @490gnpmm. Ekkamai Soi 21. No website. VERIFY COLORS."
+  },
+  {
+    "id": 40,
+    "name": "Butter Bakery Bangkok",
+    "category": "artisan bakery",
+    "channel": "email",
+    "touchNumber": 1,
+    "dateContacted": "2026-05-01",
+    "status": "sent",
+    "nextFollowUp": "2026-05-04",
+    "notes": "butterbakery.bangkok@gmail.com. 3 locations. No website. VERIFY COLORS."
+  },
+  {
+    "id": 41,
+    "name": "Patani Studio",
+    "category": "film lab",
+    "channel": "email",
+    "touchNumber": 1,
+    "dateContacted": "2026-05-01",
+    "status": "sent",
+    "nextFollowUp": "2026-05-04",
+    "notes": "patani.studio@gmail.com. Yaowarat. No website. VERIFY COLORS."
+  },
+  {
+    "id": 42,
+    "name": "Fickle Lifestyle",
+    "category": "craft workshop",
+    "channel": "email",
+    "touchNumber": 1,
+    "dateContacted": "2026-05-01",
+    "status": "sent",
+    "nextFollowUp": "2026-05-04",
+    "notes": "ficklelifebkk@gmail.com. WhatsApp +66 98 173 3006. 79K followers. Carrd only. VERIFY COLORS."
+  },
+  {
+    "id": 43,
+    "name": "Again and Again Vintage",
+    "category": "vintage clothing",
+    "channel": "instagram",
+    "touchNumber": 1,
+    "dateContacted": "2026-05-01",
+    "status": "sent",
+    "nextFollowUp": "2026-05-04",
+    "notes": "@vintage_again_and_again. LINE @againandagain. 91K followers. No website. VERIFY COLORS."
   }
 ]

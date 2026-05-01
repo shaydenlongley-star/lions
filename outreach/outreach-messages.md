@@ -1715,3 +1715,213 @@ Shayden
 3. BACKYARD Craft Studio — Email + IG DM [mockup: 51] — premium niche, zero Google presence — VERIFY COLORS FIRST
 4. Luscious Lashes — IG DM + WhatsApp [mockup: 47] — GoWabi commission angle
 5. NITHINA — IG DM [mockup: 50] — international buyer / no website angle
+
+---
+
+# ROUND 12
+
+## 52. CUCKOO AND FRIENDS
+**Contact:** Instagram @cuckoo_and_friends / Email cuckoo.and.friends@gmail.com / LINE @490gnpmm / Phone +66 62 832 8249
+**Channel:** Email (primary) + Instagram DM
+**Website score:** No website — Instagram and Facebook only
+**Pain point:** Vintage homestyle cafe and weekend wine bar on Ekkamai Soi 21 with zero web presence — no menu, no hours, no bookable wine bar page. Invisible to anyone searching for Ekkamai cafes online.
+**Colors:** UNCONFIRMED — check @cuckoo_and_friends on Instagram before sending
+**Mockup:** cuckoo-and-friends.html
+
+**Email (cuckoo.and.friends@gmail.com):**
+
+Subject: Quick thought on Cuckoo and Friends' website
+
+Hi Cuckoo and Friends,
+
+I was looking up specialty cafes in Ekkamai and came across your Instagram. Really unique concept — a cafe and wine bar built inside a furniture showroom is exactly the kind of story that should be easy to find online.
+
+Right now you have no website at all. Anyone searching "Ekkamai cafe" or "wine bar Ekkamai Bangkok" on Google can't find you — and the wine bar side especially feels like it's missing a proper bookable page.
+
+I'm a web designer in Bangkok. I build custom sites for local cafes and hospitality businesses. Put together a concept for Cuckoo and Friends — happy to show you.
+
+shaydefy.com
+
+Shayden
+
+**[ATTACH: cuckoo-and-friends mockup screenshot — VERIFY COLORS FIRST]**
+
+**Instagram DM (@cuckoo_and_friends):**
+
+Hey Cuckoo and Friends,
+
+The cafe-inside-a-furniture-showroom concept is great — but you have no website, which means anyone searching for cafes in Ekkamai on Google can't find you at all.
+
+The wine bar side especially deserves its own page. I build custom sites for Bangkok cafes and hospitality. Put a concept together.
+
+shaydefy.com
+Shayden
+
+**[ATTACH: cuckoo-and-friends mockup screenshot — VERIFY COLORS FIRST]**
+
+---
+
+## 53. BUTTER BAKERY BANGKOK
+**Contact:** Instagram @butter____bakery / Email butterbakery.bangkok@gmail.com / Phone +66 65 552 5915 (Sathorn)
+**Channel:** Email (primary) + Instagram DM
+**Website score:** No website — Instagram and Facebook only, no domain found
+**Pain point:** Three-location artisan bakery with a catering arm and no website. No menu, no pre-order system, no catering inquiry form, no SEO. Every customer has to find them through Instagram or word of mouth.
+**Colors:** UNCONFIRMED — check @butter____bakery on Instagram before sending
+**Mockup:** butter-bakery-bkk.html
+
+**Email (butterbakery.bangkok@gmail.com):**
+
+Subject: Quick thought on Butter Bakery's website
+
+Hi Butter Bakery,
+
+I was looking for artisan bakeries in Bangkok and found your Instagram. Three locations, a catering operation, and really strong product photography — but no website.
+
+That means no pre-order system, no catering inquiry form, no Google presence. Anyone searching "sourdough Bangkok" or "artisan bakery Sathorn" can't find you. For a bakery at your level, that's a lot of potential customers going elsewhere.
+
+I'm a web designer in Bangkok. I build custom sites for food and hospitality businesses. Put together a concept for Butter Bakery — happy to show you what it could look like.
+
+shaydefy.com
+
+Shayden
+
+**[ATTACH: butter-bakery-bkk mockup screenshot — VERIFY COLORS FIRST]**
+
+**Instagram DM (@butter____bakery):**
+
+Hey Butter Bakery,
+
+Three locations and a catering arm but no website — anyone searching "sourdough Bangkok" or "artisan bakery Sathorn" on Google can't find you.
+
+For a bakery at your level, a proper site with pre-order and a catering page would do a lot of work.
+
+I build custom websites for Bangkok food businesses. Put a concept together.
+
+shaydefy.com
+Shayden
+
+**[ATTACH: butter-bakery-bkk mockup screenshot — VERIFY COLORS FIRST]**
+
+---
+
+## 54. PATANI STUDIO
+**Contact:** Instagram @patanistudio / Email patani.studio@gmail.com / Phone +66 92 926 6216
+**Channel:** Email (primary) + Instagram DM
+**Website score:** No website — Instagram and Facebook only, listed on third-party directories but owns no web property
+**Pain point:** Bangkok's highest-end fine art film lab with no website. Clients have to DM for every service inquiry — pricing, turnaround times, darkroom booking, and workshops are all undiscoverable.
+**Colors:** UNCONFIRMED — check @patanistudio on Instagram before sending
+**Mockup:** patani-studio.html
+
+**Email (patani.studio@gmail.com):**
+
+Subject: Quick thought on Patani Studio's website
+
+Hi Patani Studio,
+
+I was looking for film labs in Bangkok and found your Instagram. Clearly the most serious fine art lab in the city — C41, B&W, E-6, silver gelatin printing, darkroom rental. There's nothing else like it here.
+
+But you have no website. Pricing, turnaround times, darkroom availability, workshop schedules — none of that is findable. Anyone who doesn't already know about you has no way to discover what you do or book.
+
+I'm a web designer in Bangkok. I build custom sites for creative studios and niche businesses. Put together a concept for Patani — happy to show you what it could look like.
+
+shaydefy.com
+
+Shayden
+
+**[ATTACH: patani-studio mockup screenshot — VERIFY COLORS FIRST]**
+
+**Instagram DM (@patanistudio):**
+
+Hey Patani,
+
+Best film lab in Bangkok and no website — pricing, darkroom availability, workshops. None of it is findable without DMing you directly.
+
+I build custom websites for Bangkok creative studios. Put a concept together for Patani.
+
+shaydefy.com
+Shayden
+
+**[ATTACH: patani-studio mockup screenshot — VERIFY COLORS FIRST]**
+
+---
+
+## 55. FICKLE LIFESTYLE
+**Contact:** Instagram @fickle.lifestyle / Email ficklelifebkk@gmail.com / WhatsApp +66 98 173 3006
+**Channel:** Email (primary) + Instagram DM
+**Website score:** Only a Carrd.co link-in-bio page — not a real website. No domain, no booking system, no SEO.
+**Pain point:** 79K followers, two locations, corporate workshop bookings — but no real website. The Carrd is just a Linktree equivalent. No Google presence, no online booking, leaving significant corporate and group booking revenue uncaptured.
+**Colors:** UNCONFIRMED — check @fickle.lifestyle on Instagram before sending
+**Mockup:** fickle-lifestyle.html
+
+**Email (ficklelifebkk@gmail.com):**
+
+Subject: Quick thought on Fickle Lifestyle's website
+
+Hi Fickle Lifestyle,
+
+I was looking up craft workshops in Bangkok and found your Instagram. 79K followers, two locations, clearly a strong brand — but your only web presence is a Carrd page, which is basically a Linktree.
+
+No workshop descriptions, no pricing, no online booking, no Google presence. Anyone searching "candle making workshop Bangkok" or "craft workshop Ratchada" finds your competitors, not you.
+
+For a business at your scale — especially the corporate bookings side — a proper website would be doing serious work.
+
+I'm a web designer in Bangkok. I build custom sites for studios and experience businesses. Put together a concept for Fickle Lifestyle — happy to show you.
+
+shaydefy.com
+
+Shayden
+
+**[ATTACH: fickle-lifestyle mockup screenshot — VERIFY COLORS FIRST]**
+
+**Instagram DM (@fickle.lifestyle):**
+
+Hey Fickle Lifestyle,
+
+79K followers and two locations but your only website is a Carrd page. Anyone searching "craft workshop Bangkok" on Google can't find you, and there's no way to book online without messaging directly.
+
+I build custom websites for Bangkok experience and workshop businesses. Put a concept together for Fickle.
+
+shaydefy.com
+Shayden
+
+**[ATTACH: fickle-lifestyle mockup screenshot — VERIFY COLORS FIRST]**
+
+---
+
+## 56. AGAIN & AGAIN VINTAGE
+**Contact:** Instagram @vintage_again_and_again / LINE @againandagain / Phone +66 86 626 6965
+**Channel:** Instagram DM (primary) + LINE
+**Website score:** No website — Instagram, Facebook, and LINE only
+**Pain point:** 91K followers, founded by an ex-Marie Claire stylist, curated vintage pieces — but no website. Zero Google presence, no online stock browsing, no way for buyers outside Bangkok to shop or follow up on pieces they saw on Instagram.
+**Colors:** UNCONFIRMED — check @vintage_again_and_again on Instagram before sending
+**Mockup:** again-and-again-vintage.html
+
+**Instagram DM (@vintage_again_and_again):**
+
+Hey Again & Again,
+
+91K followers and a brand story that's genuinely interesting — ex-Marie Claire stylist, colour-sorted vintage, editorial presentation — but no website.
+
+Anyone searching "vintage clothing Bangkok" on Google can't find you. And anyone who sees a piece on Instagram but isn't in Bangkok has no way to buy it.
+
+I build custom websites for Bangkok fashion and boutique businesses. Put a concept together for Again & Again.
+
+shaydefy.com
+Shayden
+
+**[ATTACH: again-and-again-vintage mockup screenshot — VERIFY COLORS FIRST]**
+
+**LINE (@againandagain):**
+
+Hey, it's Shayden — web designer in Bangkok. 91K followers on Instagram and no website means you're invisible on Google. Built a homepage concept for Again & Again — happy to send it. shaydefy.com
+
+---
+
+## ROUND 12 SEND ORDER
+1. Patani Studio — Email + IG DM [mockup: 54] — niche with no competitor doing this; strongest hook
+2. Fickle Lifestyle — Email + IG DM [mockup: 55] — 79K followers, corporate angle is compelling
+3. Butter Bakery — Email + IG DM [mockup: 53] — catering + pre-order system angle
+4. Again & Again Vintage — IG DM + LINE [mockup: 56] — 91K followers, stylist story angle
+5. Cuckoo and Friends — Email + IG DM [mockup: 52] — wine bar bookable page angle
+
+**BEFORE SENDING ANY MOCKUP:** Verify colors from each Instagram page first. All 5 are unconfirmed.

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Annasiri Catering — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #F9F5EF; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: #F9F5EF; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #C2A882; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75) saturate(0.72); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(249,245,239,0.16) 0%, transparent 20%), linear-gradient(0deg, rgba(100,55,20,0.45) 0%, transparent 40%); }
+  .warm-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(160,105,45,0.65) 30%, rgba(160,105,45,0.65) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(160,105,45,0.25); padding: 14px 18px; background: rgba(249,245,239,0.92); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(45,25,8,0.35); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(160,105,45,0.3); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(140,85,30,0.75); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .svc-name { color: rgba(255,255,255,0.28); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(160,105,45,0.45); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.65); }
+  .svc-item.active .svc-dot { background: rgba(160,105,45,0.9); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(249,245,239,0.97); border-bottom: 1px solid rgba(160,105,45,0.1); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #1E1008; letter-spacing: 0.1em; }
+  .logo em { font-style: italic; color: #A06928; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(30,16,8,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #1E1008; color: #F9F5EF; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: #A06928; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #1E1008; margin-bottom: 18px; }
+  h1 em { font-style: italic; color: #A06928; }
+  .rule { width: 36px; height: 1px; background: rgba(160,105,45,0.35); margin-bottom: 18px; }
+  p { color: rgba(30,16,8,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #1E1008; color: #F9F5EF; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(30,16,8,0.14); color: rgba(30,16,8,0.44); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(160,105,45,0.28); color: rgba(30,16,8,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Annasiri</em> Catering</div>
+    <div class="nav-links">
+      <a href="#">Services</a><a href="#">Menu</a><a href="#">Events</a><a href="#">Enquire</a>
+    </div>
+    <button class="nav-cta">Get a Quote</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Bangkok · Private Catering · 5-Star Trained</div>
+    <h1>Five-star food.<br><em>Your door.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's in-home catering service. Sourced from 5-star hotel kitchens — private dining, birthday parties, corporate events, and intimate gatherings. Tell us the occasion, we handle the rest.</p>
+    <div class="actions">
+      <button class="btn-primary">Get a Quote</button>
+      <button class="btn-ghost">View Menu</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Private Dining</div>
+      <div class="tag">Party Catering</div>
+      <div class="tag">Corporate Events</div>
+      <div class="tag">In-Home Service</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1200&q=80" alt="Annasiri Catering Bangkok">
+    <div class="warm-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Private Dining</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Party Catering</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Corporate Events</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Food Styling</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">5-Star</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Private Catering</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Bangkok</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

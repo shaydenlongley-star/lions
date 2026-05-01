@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Nana Photo Studio BKK — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0C0A08; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.22) saturate(0.6) contrast(1.1); }
+  .overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(12,10,8,0.97) 0%, rgba(12,10,8,0.75) 52%, rgba(12,10,8,0.18) 100%); }
+  .gold-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 4px; background: linear-gradient(to bottom, transparent, rgba(201,160,48,0.8) 30%, rgba(201,160,48,0.8) 70%, transparent); }
+  .service-list { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 2px; }
+  .svc-item { display: flex; align-items: center; gap: 10px; justify-content: flex-end; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .svc-name { color: rgba(255,255,255,0.22); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(201,160,48,0.3); }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.65); }
+  .svc-item.active .svc-dot { background: rgba(201,160,48,0.88); }
+  .location-badge { position: absolute; right: 80px; bottom: 55px; z-index: 5; border: 1px solid rgba(201,160,48,0.2); padding: 14px 20px; background: rgba(12,10,8,0.8); display: flex; align-items: center; gap: 12px; }
+  .badge-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: rgba(201,160,48,0.65); font-style: italic; }
+  .badge-text { display: flex; flex-direction: column; gap: 2px; }
+  .badge-label { color: rgba(255,255,255,0.2); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 30px 80px 30px 100px; border-bottom: 1px solid rgba(201,160,48,0.07); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #fff; letter-spacing: 0.1em; }
+  .logo em { font-style: italic; color: rgba(201,160,48,0.85); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.26); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(201,160,48,0.4); color: rgba(201,160,48,0.9); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+  .content { position: relative; z-index: 2; display: flex; align-items: center; height: 100%; padding: 0 100px; }
+  .text { max-width: 540px; }
+  .eyebrow { color: rgba(201,160,48,0.6); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; line-height: 1.04; color: #fff; margin-bottom: 22px; }
+  h1 em { font-style: italic; color: rgba(201,160,48,0.88); }
+  .rule { width: 36px; height: 1px; background: rgba(201,160,48,0.25); margin-bottom: 20px; }
+  p { color: rgba(255,255,255,0.34); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(201,160,48,0.88); color: #0C0A08; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.38); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(201,160,48,0.14); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1600&q=80" alt="Nana Photo Studio BKK">
+  <div class="overlay"></div>
+  <div class="gold-strip"></div>
+  <div class="service-list">
+    <div class="svc-item active"><div class="svc-name">Thai Costume</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Makeup</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Temple Shoots</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Same-Day Photos</div><div class="svc-dot"></div></div>
+  </div>
+  <div class="location-badge">
+    <div class="badge-num">∞</div>
+    <div class="badge-text">
+      <div class="badge-label">Near Wat Pho</div>
+      <div class="badge-label">&amp; Wat Arun</div>
+    </div>
+  </div>
+  <nav>
+    <div class="logo"><em>Nana</em> Photo Studio</div>
+    <div class="nav-links">
+      <a href="#">Services</a><a href="#">Gallery</a><a href="#">Book</a><a href="#">Contact</a>
+    </div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Phra Nakhon · Bangkok · Est. Traditional Thai Experience</div>
+      <h1>Dress up.<br>Step out.<br><em>Remember it.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's Thai costume studio near Wat Pho and Wat Arun. Traditional dress, professional makeup, and same-day photos — delivered to your phone before you leave.</p>
+      <div class="actions">
+        <button class="btn-primary">Book a Session</button>
+        <button class="btn-ghost">View Gallery</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Thai Costume</div>
+        <div class="tag">Pro Makeup</div>
+        <div class="tag">Temple Shoots</div>
+        <div class="tag">Same-Day Photos</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

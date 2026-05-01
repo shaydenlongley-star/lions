@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>GEMS GALLERY Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #090D1A; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.18) saturate(0.5) contrast(1.1);
+  }
+
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(9,13,26,0.98) 0%, rgba(9,13,26,0.75) 55%, rgba(9,13,26,0.2) 100%);
+  }
+
+  /* GG monogram */
+  .monogram {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    z-index: 5;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9rem; font-style: italic;
+    color: rgba(201,168,76,0.05);
+    line-height: 1; user-select: none;
+    letter-spacing: -0.03em;
+  }
+
+  /* Stats badge */
+  .stats {
+    position: absolute; right: 80px; bottom: 55px; z-index: 5;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .stat-row {
+    display: flex; align-items: center; gap: 10px; justify-content: flex-end;
+    padding: 8px 14px; border-bottom: 1px solid rgba(201,168,76,0.08);
+    background: rgba(9,13,26,0.6);
+  }
+  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(201,168,76,0.65); letter-spacing: 0.04em; }
+  .stat-label { color: rgba(255,255,255,0.2); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #F5EFE0; letter-spacing: 0.16em; text-transform: uppercase; }
+  .logo em { font-style: italic; color: rgba(201,168,76,0.8); text-transform: none; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.25); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(201,168,76,0.35); color: rgba(201,168,76,0.85); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 560px; }
+
+  .eyebrow { color: rgba(201,168,76,0.6); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; line-height: 1.05;
+    color: #F5EFE0; margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: rgba(201,168,76,0.85); }
+
+  .rule { width: 36px; height: 1px; background: rgba(201,168,76,0.22); margin-bottom: 20px; }
+
+  p { color: rgba(245,239,224,0.34); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(201,168,76,0.88); color: #090D1A; padding: 14px 32px; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.36); padding: 14px 32px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(201,168,76,0.14); color: rgba(245,239,224,0.22); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=1600&q=80" alt="GEMS GALLERY Bangkok">
+  <div class="overlay"></div>
+  <div class="monogram">GG</div>
+
+  <div class="stats">
+    <div class="stat-row"><div class="stat-val">5,000+</div><div class="stat-label">Google Reviews</div></div>
+    <div class="stat-row"><div class="stat-val">4.4 ★</div><div class="stat-label">TripAdvisor Rating</div></div>
+    <div class="stat-row"><div class="stat-val">17+</div><div class="stat-label">Languages Spoken</div></div>
+  </div>
+
+  <nav>
+    <div class="logo">Gems <em>Gallery</em></div>
+    <div class="nav-links">
+      <a href="#">Collections</a>
+      <a href="#">Gemstones</a>
+      <a href="#">Custom</a>
+      <a href="#">Visit</a>
+    </div>
+    <button class="nav-cta">Book a Visit</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Phayathai · Bangkok · Thailand's Largest</div>
+      <h1>Bangkok's finest<br>gems, <em>under one roof.</em></h1>
+      <div class="rule"></div>
+      <p>Thailand's largest gemstone and jewelry destination on Rama 6 Road. Five thousand five-star reviews. Seventeen languages. One address — for collectors, connoisseurs, and first-time buyers alike.</p>
+      <div class="actions">
+        <button class="btn-primary">Book a Visit</button>
+        <button class="btn-ghost">View Collections</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Sapphires</div>
+        <div class="tag">Rubies</div>
+        <div class="tag">Custom Jewellery</div>
+        <div class="tag">Free Transfer</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

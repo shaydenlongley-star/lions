@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Chichaya Flowers — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #FAF7F4; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: #FAF7F4; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #D4C4B8; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) saturate(0.7); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(250,247,244,0.18) 0%, transparent 20%), linear-gradient(0deg, rgba(180,140,130,0.45) 0%, transparent 40%); }
+  .petal-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(195,155,155,0.55) 30%, rgba(195,155,155,0.55) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(195,155,155,0.28); padding: 14px 18px; background: rgba(250,247,244,0.9); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(55,35,35,0.36); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(195,155,155,0.3); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(175,120,115,0.75); font-style: italic; }
+  .arrangement-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .arr-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .arr-name { color: rgba(255,255,255,0.28); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .arr-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(195,155,155,0.45); flex-shrink: 0; }
+  .arr-item.active .arr-name { color: rgba(255,255,255,0.65); }
+  .arr-item.active .arr-dot { background: rgba(195,155,155,0.9); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(250,247,244,0.97); border-bottom: 1px solid rgba(195,155,155,0.12); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #2A1818; letter-spacing: 0.1em; }
+  .logo em { font-style: italic; color: #C39B9B; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(42,24,24,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #2A1818; color: #FAF7F4; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: #C39B9B; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #2A1818; margin-bottom: 18px; }
+  h1 em { font-style: italic; color: #C39B9B; }
+  .rule { width: 36px; height: 1px; background: rgba(195,155,155,0.38); margin-bottom: 18px; }
+  p { color: rgba(42,24,24,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #2A1818; color: #FAF7F4; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(42,24,24,0.14); color: rgba(42,24,24,0.44); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(195,155,155,0.28); color: rgba(42,24,24,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Chichaya</em> Flowers</div>
+    <div class="nav-links">
+      <a href="#">Shop</a><a href="#">Arrangements</a><a href="#">Events</a><a href="#">Order</a>
+    </div>
+    <button class="nav-cta">Order Now</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Sukhumvit 11 · Bangkok</div>
+    <h1>Flowers that<br>say <em>everything.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's boutique flower studio on Sukhumvit 11. Custom arrangements, event florals, and same-day delivery — for gifts, weddings, and every occasion that deserves something beautiful.</p>
+    <div class="actions">
+      <button class="btn-primary">Order Now</button>
+      <button class="btn-ghost">View Arrangements</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Custom Arrangements</div>
+      <div class="tag">Event Florals</div>
+      <div class="tag">Same-Day Delivery</div>
+      <div class="tag">Sukhumvit 11</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1487530811015-780780169c9f?w=1200&q=80" alt="Chichaya Flowers Bangkok">
+    <div class="petal-strip"></div>
+    <div class="arrangement-list">
+      <div class="arr-item active"><div class="arr-name">Bouquets</div><div class="arr-dot"></div></div>
+      <div class="arr-item"><div class="arr-name">Arrangements</div><div class="arr-dot"></div></div>
+      <div class="arr-item"><div class="arr-name">Wedding Florals</div><div class="arr-dot"></div></div>
+      <div class="arr-item"><div class="arr-name">Event Decor</div><div class="arr-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Custom</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Arrangements</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Sukhumvit 11</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

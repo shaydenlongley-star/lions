@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>The Esquire Barber Club — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0F0F0F; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.18) saturate(0.3) contrast(1.2); }
+  .overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(15,15,15,0.98) 0%, rgba(15,15,15,0.72) 50%, rgba(15,15,15,0.2) 100%); }
+  .gold-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 4px; background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.75) 30%, rgba(201,168,76,0.75) 70%, transparent); }
+  .service-list { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 2px; }
+  .svc-item { display: flex; align-items: center; gap: 10px; justify-content: flex-end; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .svc-name { color: rgba(255,255,255,0.22); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(201,168,76,0.3); }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.65); }
+  .svc-item.active .svc-dot { background: rgba(201,168,76,0.88); }
+  .branch-badge { position: absolute; right: 80px; bottom: 55px; z-index: 5; border: 1px solid rgba(201,168,76,0.2); padding: 14px 20px; background: rgba(15,15,15,0.78); display: flex; align-items: center; gap: 12px; }
+  .badge-num { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: rgba(201,168,76,0.65); font-style: italic; }
+  .badge-text { display: flex; flex-direction: column; gap: 2px; }
+  .badge-label { color: rgba(255,255,255,0.2); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 30px 80px 30px 100px; border-bottom: 1px solid rgba(201,168,76,0.07); }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #fff; letter-spacing: 0.1em; }
+  .logo em { font-style: italic; color: rgba(201,168,76,0.85); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.26); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(201,168,76,0.4); color: rgba(201,168,76,0.9); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+  .content { position: relative; z-index: 2; display: flex; align-items: center; height: 100%; padding: 0 100px; }
+  .text { max-width: 540px; }
+  .eyebrow { color: rgba(201,168,76,0.6); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: 5rem; font-weight: 400; line-height: 1.04; color: #fff; margin-bottom: 22px; }
+  h1 em { font-style: italic; color: rgba(201,168,76,0.88); }
+  .rule { width: 36px; height: 1px; background: rgba(201,168,76,0.25); margin-bottom: 20px; }
+  p { color: rgba(255,255,255,0.34); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(201,168,76,0.88); color: #0F0F0F; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.38); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(201,168,76,0.14); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80" alt="The Esquire Barber Club">
+  <div class="overlay"></div>
+  <div class="gold-strip"></div>
+  <div class="service-list">
+    <div class="svc-item active"><div class="svc-name">Haircuts</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Skin Fades</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Hot Towel Shave</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Beard Sculpt</div><div class="svc-dot"></div></div>
+  </div>
+  <div class="branch-badge">
+    <div class="badge-num">9</div>
+    <div class="badge-text">
+      <div class="badge-label">Bangkok</div>
+      <div class="badge-label">Locations</div>
+    </div>
+  </div>
+  <nav>
+    <div class="logo">The <em>Esquire</em> Barber Club</div>
+    <div class="nav-links">
+      <a href="#">Services</a><a href="#">Locations</a><a href="#">About</a><a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">One Bangkok · 9 Locations Across Bangkok</div>
+      <h1>Where character<br><em>begins.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's premium barber club with 9 locations across the city. Precision haircuts, fades, hot towel shaves, and beard sculpting — in a space built for men who care about the details.</p>
+      <div class="actions">
+        <button class="btn-primary">Book Now</button>
+        <button class="btn-ghost">Find a Location</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Skin Fades</div>
+        <div class="tag">Hot Towel Shave</div>
+        <div class="tag">Beard Sculpt</div>
+        <div class="tag">9 Locations</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

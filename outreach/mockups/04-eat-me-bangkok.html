@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Eat Me Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #111009; font-family: 'Inter', sans-serif; }
+
+  .hero {
+    width: 100%; height: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+
+  .left {
+    background: #111009;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 80px 100px;
+    position: relative; z-index: 2;
+  }
+
+  .right {
+    position: relative; overflow: hidden;
+    background: #111009;
+  }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: left center;
+    filter: brightness(0.65) saturate(0.9);
+  }
+  .right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(17,16,9,0.5) 0%, rgba(17,16,9,0.15) 40%, rgba(17,16,9,0.35) 100%);
+  }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 32px 80px;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; font-style: italic; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.45); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+  .nav-cta { background: #d4a03c; border: 1px solid #d4a03c; color: #111009; padding: 10px 24px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+
+  .eyebrow { color: #d4a03c; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 20px; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.6rem; font-weight: 400; line-height: 1.05;
+    color: #fff; margin-bottom: 20px;
+  }
+  h1 em { color: #d4a03c; font-style: italic; }
+
+  .rule { width: 48px; height: 1px; background: rgba(212,160,60,0.4); margin-bottom: 20px; }
+
+  p {
+    color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.75;
+    max-width: 400px; margin-bottom: 40px; font-weight: 300;
+  }
+
+  .actions { display: flex; gap: 14px; }
+  .btn-primary { background: #d4a03c; color: #111009; padding: 15px 32px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); padding: 15px 32px; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .award {
+    position: absolute; bottom: 40px; left: 100px;
+    display: flex; align-items: center; gap: 14px;
+    color: rgba(255,255,255,0.35); font-size: 0.72rem; letter-spacing: 0.1em;
+  }
+  .award-badge {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid rgba(212,160,60,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; color: #d4a03c; font-size: 0.65rem; text-align: center; line-height: 1.2;
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo">Eat Me</div>
+    <div class="nav-links">
+      <a href="#">Menu</a>
+      <a href="#">Gallery</a>
+      <a href="#">Events</a>
+      <a href="#">About</a>
+    </div>
+    <button class="nav-cta">Reserve a Table</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Silom · Bangkok · Est. 2004</div>
+    <h1>Where food<br>becomes <em>art.</em></h1>
+    <div class="rule"></div>
+    <p>Three floors of progressive cuisine, art, and nightlife in the heart of Silom. Ranked among Asia's 50 Best Restaurants. Open nightly from 3pm.</p>
+    <div class="actions">
+      <button class="btn-primary">Reserve a Table</button>
+      <button class="btn-ghost">View Menu</button>
+    </div>
+
+    <div class="award">
+      <div class="award-badge">#31<br>Asia</div>
+      Asia's 50 Best Restaurants
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://eatmerestaurant.com/wp-content/uploads/2023/09/About-5-cropped.jpg" alt="Eat Me Bangkok">
+  </div>
+</div>
+</body>
+</html>

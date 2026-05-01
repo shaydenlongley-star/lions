@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Wine Aspect Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0C0A09; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.2) saturate(0.6) contrast(1.1);
+  }
+
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(12,10,9,0.98) 0%, rgba(12,10,9,0.72) 52%, rgba(12,10,9,0.15) 100%);
+  }
+
+  /* Burgundy left accent */
+  .burgundy-strip {
+    position: absolute; left: 0; top: 0; bottom: 0; z-index: 3;
+    width: 4px;
+    background: linear-gradient(to bottom, transparent, rgba(120,20,40,0.8) 30%, rgba(120,20,40,0.8) 70%, transparent);
+  }
+
+  /* Award badge */
+  .award {
+    position: absolute; right: 80px; bottom: 55px; z-index: 5;
+    border: 1px solid rgba(180,140,80,0.18); padding: 14px 20px;
+    background: rgba(12,10,9,0.78);
+    display: flex; flex-direction: column; gap: 6px; align-items: center;
+  }
+  .award-label { color: rgba(255,255,255,0.2); font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .award-divider { width: 22px; height: 1px; background: rgba(180,140,80,0.22); }
+  .award-val { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: rgba(180,140,80,0.7); font-style: italic; letter-spacing: 0.04em; }
+
+  /* Wine list */
+  .wine-list {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    z-index: 5; display: flex; flex-direction: column; gap: 3px;
+  }
+  .wine-item {
+    display: flex; align-items: center; gap: 10px; justify-content: flex-end;
+    padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .wine-name { color: rgba(255,255,255,0.22); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .wine-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(120,20,40,0.5); flex-shrink: 0; }
+  .wine-item.active .wine-name { color: rgba(255,255,255,0.6); }
+  .wine-item.active .wine-dot { background: rgba(160,40,60,0.9); }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #F5EFE0; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 300; }
+  .logo em { font-style: italic; color: rgba(180,140,80,0.8); text-transform: none; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.26); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(180,140,80,0.35); color: rgba(180,140,80,0.85); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 560px; }
+
+  .eyebrow { color: rgba(180,140,80,0.6); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; line-height: 1.05;
+    color: #F5EFE0; margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: rgba(180,140,80,0.88); }
+
+  .rule { width: 36px; height: 1px; background: rgba(120,20,40,0.5); margin-bottom: 20px; }
+
+  p { color: rgba(245,239,224,0.34); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(120,20,40,0.88); color: #F5EFE0; padding: 14px 32px; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.14em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.36); padding: 14px 32px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(120,20,40,0.3); color: rgba(245,239,224,0.22); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1600&q=80" alt="Wine Aspect Bangkok">
+  <div class="overlay"></div>
+  <div class="burgundy-strip"></div>
+
+  <div class="wine-list">
+    <div class="wine-item active"><div class="wine-name">Fine Wine</div><div class="wine-dot"></div></div>
+    <div class="wine-item"><div class="wine-name">Tastings</div><div class="wine-dot"></div></div>
+    <div class="wine-item"><div class="wine-name">Masterclasses</div><div class="wine-dot"></div></div>
+    <div class="wine-item"><div class="wine-name">Private Dinners</div><div class="wine-dot"></div></div>
+  </div>
+
+  <div class="award">
+    <div class="award-label">International Women in</div>
+    <div class="award-divider"></div>
+    <div class="award-val">Wines & Spirits 2024</div>
+    <div class="award-divider"></div>
+    <div class="award-label">Award Winner</div>
+  </div>
+
+  <nav>
+    <div class="logo">Wine <em>Aspect</em></div>
+    <div class="nav-links">
+      <a href="#">Wine List</a>
+      <a href="#">Events</a>
+      <a href="#">Import</a>
+      <a href="#">Visit</a>
+    </div>
+    <button class="nav-cta">Reserve a Table</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Thong Lo · Bangkok · Fine Wine</div>
+      <h1>Wine worth<br>talking <em>about.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's boutique fine wine bar and importer on Thong Lo. Curated bottles, intimate tastings, and wine dinners hosted by a 2024 International Award winner — for people who take wine seriously.</p>
+      <div class="actions">
+        <button class="btn-primary">Reserve a Table</button>
+        <button class="btn-ghost">Browse the List</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Fine Wine</div>
+        <div class="tag">Tastings</div>
+        <div class="tag">Masterclasses</div>
+        <div class="tag">Thong Lo</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

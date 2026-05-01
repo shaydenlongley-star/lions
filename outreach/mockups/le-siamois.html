@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Le Siamois — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #f5f0e8; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+  .left {
+    background: #f5f0e8;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px; position: relative;
+  }
+  .left::before {
+    content: ''; position: absolute; inset: 0; opacity: 0.03;
+    background-image: repeating-linear-gradient(0deg, #2c1810 0px, transparent 1px, transparent 40px),
+                      repeating-linear-gradient(90deg, #2c1810 0px, transparent 1px, transparent 40px);
+  }
+
+  .right { position: relative; overflow: hidden; background: #2c1810; }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.52) saturate(0.65);
+  }
+  .right::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgba(245,240,232,0.1) 0%, transparent 25%),
+                linear-gradient(0deg, rgba(44,24,16,0.65) 0%, transparent 45%);
+  }
+
+  /* French tricolor accent */
+  .tricolor {
+    position: absolute; left: 0; top: 0; bottom: 0; z-index: 3;
+    display: flex; flex-direction: column; width: 3px;
+  }
+  .tricolor div { flex: 1; }
+  .tc-blue { background: rgba(0,35,149,0.4); }
+  .tc-white { background: rgba(255,255,255,0.25); }
+  .tc-red { background: rgba(237,41,57,0.4); }
+
+  /* Bistro badge */
+  .bistro-badge {
+    position: absolute; right: 50px; top: 50%; transform: translateY(-50%);
+    z-index: 5; border: 1px solid rgba(255,255,255,0.12);
+    width: 100px; height: 100px; border-radius: 50%;
+    background: rgba(44,24,16,0.5);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  }
+  .bistro-badge-top { color: rgba(255,255,255,0.3); font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .bistro-badge-name { font-family: 'Playfair Display', serif; font-size: 0.75rem; color: rgba(255,255,255,0.5); font-style: italic; }
+  .bistro-badge-year { color: rgba(255,255,255,0.2); font-size: 0.5rem; letter-spacing: 0.15em; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 70px 28px 100px;
+    background: rgba(245,240,232,0.97);
+    border-bottom: 1px solid rgba(44,24,16,0.07);
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #2c1810; letter-spacing: 0.08em; }
+  .logo em { font-style: italic; color: #8b1a2a; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(44,24,16,0.38); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(44,24,16,0.2); color: rgba(44,24,16,0.6); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .eyebrow { color: #8b1a2a; font-size: 0.67rem; letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 18px; opacity: 0.8; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.6rem; font-weight: 400; line-height: 1.05;
+    color: #2c1810; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #8b1a2a; }
+
+  .rule { width: 36px; height: 1px; background: rgba(139,26,42,0.35); margin-bottom: 18px; }
+
+  p { color: rgba(44,24,16,0.48); font-size: 0.9rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 30px; }
+  .btn-primary { background: #2c1810; color: #f5f0e8; padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(44,24,16,0.13); color: rgba(44,24,16,0.46); padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(139,26,42,0.2); color: rgba(44,24,16,0.38); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Le</em> Siamois</div>
+    <div class="nav-links">
+      <a href="#">Menu</a>
+      <a href="#">Wine</a>
+      <a href="#">Reservations</a>
+      <a href="#">Find Us</a>
+    </div>
+    <button class="nav-cta">Reserve a Table</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">French Bistro · Bangkok</div>
+    <h1>Paris in<br>the heart of<br><em>Bangkok.</em></h1>
+    <div class="rule"></div>
+    <p>Authentic French cuisine served with warmth, wine, and no pretence. From steak frites to crème brûlée — Le Siamois is Bangkok's neighbourhood bistro for those who know.</p>
+    <div class="actions">
+      <button class="btn-primary">Reserve a Table</button>
+      <button class="btn-ghost">View the Menu</button>
+    </div>
+    <div class="tags">
+      <div class="tag">French Bistro</div>
+      <div class="tag">Wine List</div>
+      <div class="tag">Set Lunch</div>
+      <div class="tag">Private Dining</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Le Siamois French Bistro">
+    <div class="tricolor">
+      <div class="tc-blue"></div>
+      <div class="tc-white"></div>
+      <div class="tc-red"></div>
+    </div>
+    <div class="bistro-badge">
+      <div class="bistro-badge-top">Bistro</div>
+      <div class="bistro-badge-name">Français</div>
+      <div class="bistro-badge-year">Bangkok</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

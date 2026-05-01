@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Acellence Clinic — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #F5F2EE; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+  .left {
+    background: #F5F2EE;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px; position: relative;
+  }
+
+  .right { position: relative; overflow: hidden; background: #1C2B3A; }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.5) saturate(0.5);
+  }
+  .right::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgba(245,242,238,0.1) 0%, transparent 25%),
+                linear-gradient(0deg, rgba(28,43,58,0.65) 0%, transparent 45%);
+  }
+
+  /* Treatment tags */
+  .treatments-side {
+    position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+    z-index: 5; display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+  }
+  .treat-tag {
+    border: 1px solid rgba(184,149,74,0.2); padding: 5px 14px;
+    color: rgba(255,255,255,0.28); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+    background: rgba(28,43,58,0.4);
+  }
+
+  /* Location badge */
+  .location {
+    position: absolute; right: 40px; bottom: 50px; z-index: 5;
+    border: 1px solid rgba(184,149,74,0.15); padding: 10px 16px;
+    background: rgba(28,43,58,0.55);
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .location-label { color: rgba(255,255,255,0.2); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .location-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: rgba(255,255,255,0.4); font-style: italic; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 70px 28px 100px;
+    background: rgba(245,242,238,0.97);
+    border-bottom: 1px solid rgba(28,43,58,0.07);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #1C2B3A; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 300; }
+  .logo em { font-style: italic; color: #B8954A; font-weight: 300; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(28,43,58,0.38); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #1C2B3A; color: #F5F2EE; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+
+  .eyebrow { color: #B8954A; font-size: 0.67rem; letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 18px; opacity: 0.85; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.4rem; font-weight: 300; line-height: 1.07;
+    color: #1C2B3A; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #B8954A; }
+
+  .rule { width: 36px; height: 1px; background: rgba(184,149,74,0.35); margin-bottom: 18px; }
+
+  p { color: rgba(28,43,58,0.48); font-size: 0.9rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 30px; }
+  .btn-primary { background: #1C2B3A; color: #F5F2EE; padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(28,43,58,0.13); color: rgba(28,43,58,0.46); padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(184,149,74,0.2); color: rgba(28,43,58,0.4); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Acellence</em> Clinic</div>
+    <div class="nav-links">
+      <a href="#">Treatments</a>
+      <a href="#">Doctors</a>
+      <a href="#">About</a>
+      <a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book a Consultation</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Wireless Road · Lumpini · Bangkok</div>
+    <h1>Advanced<br>aesthetics.<br><em>Expert hands.</em></h1>
+    <div class="rule"></div>
+    <p>Premium aesthetic medicine on Wireless Road, Bangkok. Botox, fillers, skin treatments, and body contouring — delivered by specialists in a setting that matches your standards.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Consultation</button>
+      <button class="btn-ghost">View Treatments</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Botox</div>
+      <div class="tag">Fillers</div>
+      <div class="tag">Skin Treatments</div>
+      <div class="tag">Body Contouring</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=80" alt="Acellence Clinic">
+    <div class="treatments-side">
+      <div class="treat-tag">Botox & Fillers</div>
+      <div class="treat-tag">Laser Skin</div>
+      <div class="treat-tag">Body Sculpting</div>
+    </div>
+    <div class="location">
+      <div class="location-label">Located at</div>
+      <div class="location-name">Wireless Road, Bangkok</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

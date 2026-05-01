@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>RÁM FASHION Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0f1520; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.28) saturate(0.3) contrast(1.1);
+  }
+
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(15,21,32,0.98) 0%, rgba(15,21,32,0.65) 50%, rgba(15,21,32,0.1) 100%);
+  }
+
+  /* Tailor measure accent */
+  .measure {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    z-index: 5; display: flex; flex-direction: column; align-items: flex-end; gap: 16px;
+  }
+  .measure-line {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .measure-tick { width: 20px; height: 1px; background: rgba(255,255,255,0.1); }
+  .measure-tick.long { width: 30px; }
+  .measure-num { color: rgba(255,255,255,0.12); font-size: 0.56rem; letter-spacing: 0.1em; font-weight: 200; }
+
+  /* Fabric tag */
+  .fabric-tag {
+    position: absolute; right: 80px; bottom: 55px; z-index: 5;
+    border: 1px solid rgba(255,255,255,0.07); padding: 10px 16px;
+    background: rgba(15,14,13,0.7);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .fabric-label { color: rgba(255,255,255,0.18); font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .fabric-name { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: rgba(255,255,255,0.4); font-style: italic; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: #fff; letter-spacing: 0.28em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.28); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 540px; }
+
+  .eyebrow { color: rgba(255,255,255,0.25); font-size: 0.67rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; line-height: 1.05;
+    color: #fff; margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: rgba(255,255,255,0.5); }
+
+  .rule { width: 36px; height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.35); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: #C49B3C; color: #fff; padding: 14px 32px; font-size: 0.71rem; font-weight: 400; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.2); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80" alt="RÁM FASHION Bangkok">
+  <div class="overlay"></div>
+
+  <div class="measure">
+    <div class="measure-line"><div class="measure-num">36"</div><div class="measure-tick long"></div></div>
+    <div class="measure-line"><div class="measure-num">28"</div><div class="measure-tick"></div></div>
+    <div class="measure-line"><div class="measure-num">38"</div><div class="measure-tick long"></div></div>
+    <div class="measure-line"><div class="measure-num">42"</div><div class="measure-tick"></div></div>
+  </div>
+
+  <div class="fabric-tag">
+    <div class="fabric-label">Specialty</div>
+    <div class="fabric-name">Custom Tailoring</div>
+  </div>
+
+  <nav>
+    <div class="logo">RÁM Fashion</div>
+    <div class="nav-links">
+      <a href="#">Collections</a>
+      <a href="#">Bespoke</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <button class="nav-cta">Book a Fitting</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Pranakorn · Bangkok · Custom Fashion</div>
+      <h1>Made for you.<br><em>Nothing less.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok custom fashion and bespoke tailoring in the heart of the old city. Ready-to-wear collections and made-to-measure pieces — crafted for those who know the difference.</p>
+      <div class="actions">
+        <button class="btn-primary">Book a Fitting</button>
+        <button class="btn-ghost">View Collections</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Bespoke Tailoring</div>
+        <div class="tag">Ready-to-Wear</div>
+        <div class="tag">Custom Orders</div>
+        <div class="tag">Bangkok Old City</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

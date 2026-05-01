@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Patani Studio — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0C0A08; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.14) saturate(0.2) contrast(1.4); }
+  .overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(12,10,8,0.98) 0%, rgba(12,10,8,0.74) 52%, rgba(12,10,8,0.18) 100%); }
+  .amber-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(196,140,60,0.82) 30%, rgba(196,140,60,0.82) 70%, transparent); }
+  .service-list { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 2px; }
+  .svc-item { display: flex; align-items: center; gap: 10px; justify-content: flex-end; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .svc-name { color: rgba(255,255,255,0.22); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(196,140,60,0.35); }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.65); }
+  .svc-item.active .svc-dot { background: rgba(196,140,60,0.9); }
+  .location-badge { position: absolute; right: 80px; bottom: 55px; z-index: 5; border: 1px solid rgba(196,140,60,0.22); padding: 14px 20px; background: rgba(12,10,8,0.84); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(255,255,255,0.2); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(196,140,60,0.28); }
+  .badge-val { font-family: 'DM Serif Display', serif; font-size: 1rem; color: rgba(196,140,60,0.82); font-style: italic; }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 30px 80px 30px 100px; border-bottom: 1px solid rgba(196,140,60,0.07); }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #fff; letter-spacing: 0.12em; }
+  .logo em { font-style: italic; color: rgba(196,140,60,0.9); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.26); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(196,140,60,0.4); color: rgba(196,140,60,0.95); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+  .content { position: relative; z-index: 2; display: flex; align-items: center; height: 100%; padding: 0 100px; }
+  .text { max-width: 540px; }
+  .eyebrow { color: rgba(196,140,60,0.65); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: 5rem; font-weight: 400; line-height: 1.04; color: #fff; margin-bottom: 22px; }
+  h1 em { font-style: italic; color: rgba(196,140,60,0.9); }
+  .rule { width: 36px; height: 1px; background: rgba(196,140,60,0.26); margin-bottom: 20px; }
+  p { color: rgba(255,255,255,0.3); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(196,140,60,0.88); color: #0C0A08; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.36); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(196,140,60,0.16); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600&q=80" alt="Patani Studio Bangkok">
+  <div class="overlay"></div>
+  <div class="amber-strip"></div>
+  <div class="service-list">
+    <div class="svc-item active"><div class="svc-name">Film Processing</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Fine Art Prints</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Darkroom Rental</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Workshops</div><div class="svc-dot"></div></div>
+  </div>
+  <div class="location-badge">
+    <div class="badge-label">Soi Nana</div>
+    <div class="badge-divider"></div>
+    <div class="badge-val">Yaowarat</div>
+    <div class="badge-divider"></div>
+    <div class="badge-label">Film Lab</div>
+  </div>
+  <nav>
+    <div class="logo"><em>Patani</em> Studio</div>
+    <div class="nav-links">
+      <a href="#">Services</a><a href="#">Darkroom</a><a href="#">Workshops</a><a href="#">Submit</a>
+    </div>
+    <button class="nav-cta">Submit Film</button>
+  </nav>
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Soi Nana · Yaowarat · Fine Art Film Lab</div>
+      <h1>Film, done<br><em>properly.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's finest film lab in Yaowarat. C41, B&W, E-6 processing — silver gelatin and RA-4 color fine art printing, darkroom rental, and analog workshops.</p>
+      <div class="actions">
+        <button class="btn-primary">Submit Film</button>
+        <button class="btn-ghost">Book Darkroom</button>
+      </div>
+      <div class="tags">
+        <div class="tag">C41 · B&W · E-6</div>
+        <div class="tag">Fine Art Prints</div>
+        <div class="tag">Darkroom Rental</div>
+        <div class="tag">Workshops</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

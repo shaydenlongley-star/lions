@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Instyle Salon Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #080808; font-family: 'Montserrat', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  /* Full bleed background */
+  .bg-img {
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, #080808 0%, #111111 100%);
+  }
+
+  /* Gradient overlay left to right */
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(8,8,8,0.96) 0%, rgba(8,8,8,0.7) 45%, rgba(8,8,8,0.1) 100%);
+  }
+
+  /* Pink accent glow */
+  .glow {
+    position: absolute; z-index: 1;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(220,140,180,0.07) 0%, transparent 70%);
+    right: 10%; top: 50%; transform: translateY(-50%);
+  }
+
+  /* Scissors icon */
+  .scissors {
+    position: absolute; right: 100px; top: 50%; transform: translateY(-50%);
+    z-index: 2; opacity: 0.06;
+    font-size: 16rem; line-height: 1;
+  }
+
+  /* TikTok badge */
+  .tiktok-badge {
+    position: absolute; right: 80px; bottom: 60px; z-index: 5;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 20px;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
+  }
+  .tiktok-num { color: rgba(255,255,255,0.5); font-size: 1.4rem; font-weight: 200; letter-spacing: -0.02em; }
+  .tiktok-label { color: rgba(255,255,255,0.2); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: #fff; letter-spacing: 0.2em; text-transform: uppercase; }
+  .logo span { color: rgba(220,140,180,0.8); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.3); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; }
+  .nav-cta { background: rgba(220,140,180,0.9); color: #080808; padding: 10px 22px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 3;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 580px; }
+
+  .eyebrow { color: rgba(220,140,180,0.6); font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5rem; font-weight: 200; line-height: 1.05;
+    color: #fff; margin-bottom: 22px; letter-spacing: -0.01em;
+  }
+  h1 strong { font-weight: 600; }
+  h1 .pink { color: rgba(220,140,180,0.9); }
+
+  .rule { width: 36px; height: 1px; background: rgba(220,140,180,0.35); margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.38); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(220,140,180,0.9); color: #080808; padding: 14px 32px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.45); padding: 14px 32px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .services { display: flex; gap: 8px; }
+  .service { border: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.25); padding: 5px 12px; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="bg-img"></div>
+  <div class="overlay"></div>
+  <div class="glow"></div>
+  <div class="scissors">✂</div>
+
+  <div class="tiktok-badge">
+    <div class="tiktok-num">667K</div>
+    <div class="tiktok-label">TikTok Followers</div>
+  </div>
+
+  <nav>
+    <div class="logo">In<span>style</span></div>
+    <div class="nav-links">
+      <a href="#">Services</a>
+      <a href="#">Gallery</a>
+      <a href="#">Team</a>
+      <a href="#">Contact</a>
+    </div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Bangkok · Premium Hair Salon</div>
+      <h1>Your <strong>best</strong><br>hair day<br>starts <span class="pink">here.</span></h1>
+      <div class="rule"></div>
+      <p>Bangkok's most-watched salon on TikTok — now with online booking. Cuts, colour, and styling from Bangkok's top stylists. Walk in or book your slot in seconds.</p>
+      <div class="actions">
+        <button class="btn-primary">Book Online</button>
+        <button class="btn-ghost">See Our Work</button>
+      </div>
+      <div class="services">
+        <div class="service">Cuts</div>
+        <div class="service">Colour</div>
+        <div class="service">Styling</div>
+        <div class="service">Treatment</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Dance.BKK — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #111111; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.22) saturate(0.4) contrast(1.2);
+  }
+
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(17,17,17,0.97) 0%, rgba(17,17,17,0.68) 50%, rgba(17,17,17,0.15) 100%);
+  }
+
+  /* Hot pink accent */
+  .pink-strip {
+    position: absolute; left: 0; top: 0; bottom: 0; z-index: 3;
+    width: 4px;
+    background: linear-gradient(to bottom, transparent, rgba(220,50,120,0.75) 30%, rgba(220,50,120,0.75) 70%, transparent);
+  }
+
+  /* Styles list */
+  .style-list {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    z-index: 5; display: flex; flex-direction: column; gap: 2px;
+  }
+  .sty-item {
+    display: flex; align-items: center; gap: 10px; justify-content: flex-end;
+    padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .sty-name { color: rgba(255,255,255,0.22); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .sty-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(220,50,120,0.3); }
+  .sty-item.active .sty-name { color: rgba(255,255,255,0.65); }
+  .sty-item.active .sty-dot { background: rgba(220,50,120,0.85); }
+
+  /* Location badge */
+  .location-badge {
+    position: absolute; right: 80px; bottom: 55px; z-index: 5;
+    border: 1px solid rgba(220,50,120,0.18); padding: 12px 18px;
+    background: rgba(17,17,17,0.75);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(220,50,120,0.7); }
+  .badge-text { display: flex; flex-direction: column; gap: 2px; }
+  .badge-label { color: rgba(255,255,255,0.2); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .badge-val { color: rgba(220,50,120,0.65); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #fff; letter-spacing: 0.04em; }
+  .logo em { font-style: italic; color: rgba(220,50,120,0.85); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.28); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { background: rgba(220,50,120,0.85); color: #fff; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; font-weight: 400; }
+
+  .content {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 540px; }
+
+  .eyebrow { color: rgba(220,50,120,0.65); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5.2rem; font-weight: 400; line-height: 1.02;
+    color: #fff; margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: rgba(220,50,120,0.9); }
+
+  .rule { width: 36px; height: 1px; background: rgba(220,50,120,0.3); margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.34); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(220,50,120,0.88); color: #fff; padding: 14px 32px; font-size: 0.71rem; font-weight: 400; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(220,50,120,0.18); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=1600&q=80" alt="Dance BKK Studio">
+  <div class="overlay"></div>
+  <div class="pink-strip"></div>
+
+  <div class="style-list">
+    <div class="sty-item active"><div class="sty-name">Hip Hop</div><div class="sty-dot"></div></div>
+    <div class="sty-item"><div class="sty-name">K-Pop</div><div class="sty-dot"></div></div>
+    <div class="sty-item"><div class="sty-name">Contemporary</div><div class="sty-dot"></div></div>
+    <div class="sty-item"><div class="sty-name">Freestyle</div><div class="sty-dot"></div></div>
+  </div>
+
+  <div class="location-badge">
+    <div class="badge-dot"></div>
+    <div class="badge-text">
+      <div class="badge-label">Located at</div>
+      <div class="badge-val">Sukhumvit Soi 2</div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="logo"><em>Dance</em>.BKK</div>
+    <div class="nav-links">
+      <a href="#">Classes</a>
+      <a href="#">Schedule</a>
+      <a href="#">Space Rental</a>
+      <a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book a Class</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Sukhumvit Soi 2 · Bangkok</div>
+      <h1>Learn to dance.<br><em>Your way.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's dance studio for kids and adults on Sukhumvit Soi 2. Hip hop, K-pop, contemporary, and freestyle — beginner to advanced, in a space that doesn't take itself too seriously.</p>
+      <div class="actions">
+        <button class="btn-primary">Book a Class</button>
+        <button class="btn-ghost">View Schedule</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Hip Hop</div>
+        <div class="tag">K-Pop</div>
+        <div class="tag">Kids & Adults</div>
+        <div class="tag">Space Rental</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Bangkok Tattoo Studio — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #060606; font-family: 'Inter', sans-serif; }
+
+  .hero {
+    width: 100%; height: 100%;
+    display: grid; grid-template-columns: 0.9fr 1.1fr;
+    position: relative;
+  }
+
+  .left {
+    background: #060606;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px;
+    position: relative; z-index: 2;
+  }
+
+  .right {
+    position: relative; overflow: hidden;
+    background: #0e0e0e;
+  }
+
+  /* Ink texture overlay on right */
+  .right::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, #060606 0%, rgba(6,6,6,0.4) 30%, rgba(6,6,6,0.0) 60%);
+  }
+  .right::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(180,20,20,0.06) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(180,20,20,0.04) 0%, transparent 40%);
+  }
+
+  /* Decorative large number */
+  .bg-num {
+    position: absolute; right: -20px; bottom: -40px; z-index: 0;
+    font-family: 'Bebas Neue', sans-serif; font-size: 20rem; line-height: 1;
+    color: rgba(255,255,255,0.015); pointer-events: none; user-select: none;
+  }
+
+  /* Flash art placeholder grid */
+  .flash-grid {
+    position: absolute; inset: 0; z-index: 1;
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr);
+    gap: 1px; padding: 80px 40px 40px 0;
+  }
+  .flash-cell {
+    border: 1px solid rgba(255,255,255,0.04);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.04); font-size: 2rem;
+  }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: #fff; letter-spacing: 0.12em; }
+  .logo span { color: #b41414; }
+  .nav-links { display: flex; gap: 40px; }
+  .nav-links a { color: rgba(255,255,255,0.3); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; }
+  .nav-cta { background: #b41414; color: #fff; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: pointer; }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.28); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: #b41414; }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6.5rem; font-weight: 400; line-height: 0.9;
+    color: #fff; margin-bottom: 24px; letter-spacing: 0.02em;
+  }
+  h1 .accent { color: #b41414; }
+  h1 .outline { -webkit-text-stroke: 1px rgba(255,255,255,0.18); color: transparent; }
+
+  .rule { width: 36px; height: 1px; background: #b41414; margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.38); font-size: 0.9rem; line-height: 1.78; max-width: 380px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 40px; }
+  .btn-primary { background: #fff; color: #060606; padding: 14px 32px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.45); padding: 14px 32px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .styles { display: flex; gap: 8px; flex-wrap: wrap; }
+  .style-tag { border: 1px solid rgba(180,20,20,0.3); color: rgba(255,255,255,0.3); padding: 5px 12px; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  .side-text {
+    position: absolute; left: 20px; top: 50%; z-index: 3;
+    transform: translateY(-50%) rotate(-90deg);
+    color: rgba(255,255,255,0.1); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo">Bangkok <span>Tattoo</span> Studio</div>
+    <div class="nav-links">
+      <a href="#">Artists</a>
+      <a href="#">Gallery</a>
+      <a href="#">Styles</a>
+      <a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+
+  <div class="left">
+    <div class="bg-num">BKK</div>
+    <div class="eyebrow"><span class="dot"></span>Bangkok · Silom · Est. 2005</div>
+    <h1>Ink.<br><span class="outline">Art.</span><br><span class="accent">Forever.</span></h1>
+    <div class="rule"></div>
+    <p>Bangkok's underground fine art tattoo studio. Custom designs, realism, blackwork, and traditional Thai motifs — every piece unique to you.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Session</button>
+      <button class="btn-ghost">View Gallery</button>
+    </div>
+    <div class="styles">
+      <div class="style-tag">Realism</div>
+      <div class="style-tag">Blackwork</div>
+      <div class="style-tag">Traditional Thai</div>
+      <div class="style-tag">Neo-Traditional</div>
+      <div class="style-tag">Fineline</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="flash-grid">
+      <div class="flash-cell">✦</div><div class="flash-cell">◈</div><div class="flash-cell">✦</div>
+      <div class="flash-cell">◈</div><div class="flash-cell">✦</div><div class="flash-cell">◈</div>
+      <div class="flash-cell">✦</div><div class="flash-cell">◈</div><div class="flash-cell">✦</div>
+    </div>
+  </div>
+
+  <div class="side-text">Bangkok Tattoo Studio · Original Art · Since 2005</div>
+</div>
+</body>
+</html>

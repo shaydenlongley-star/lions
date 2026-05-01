@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Baan Hunt Real Estate — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0e1118; font-family: 'Inter', sans-serif; }
+
+  .hero {
+    width: 100%; height: 100%; position: relative; overflow: hidden;
+    background: linear-gradient(160deg, #0e1118 0%, #141a26 60%, #0e1118 100%);
+  }
+
+  /* Property grid background */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(100,140,200,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100,140,200,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Soft blue glow */
+  .glow {
+    position: absolute;
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse, rgba(80,120,200,0.07) 0%, transparent 70%);
+    top: 40%; right: 10%; transform: translateY(-50%);
+  }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 32px 80px;
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: #fff; letter-spacing: 0.12em; }
+  .logo span { color: rgba(100,160,240,0.7); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.35); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(100,160,240,0.3); color: rgba(100,160,240,0.8); padding: 10px 24px; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 680px; }
+
+  .eyebrow { color: rgba(100,160,240,0.6); font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 24px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem; font-weight: 300; line-height: 1.0;
+    color: #fff; margin-bottom: 24px;
+  }
+  h1 em { color: rgba(100,160,240,0.8); font-style: italic; }
+
+  p { color: rgba(255,255,255,0.45); font-size: 1rem; line-height: 1.75; max-width: 480px; margin-bottom: 44px; font-weight: 300; }
+
+  .actions { display: flex; gap: 16px; margin-bottom: 60px; }
+  .btn-primary { background: rgba(100,160,240,0.9); color: #0e1118; padding: 16px 36px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55); padding: 16px 36px; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .property-tags { display: flex; gap: 10px; }
+  .tag { border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.3); padding: 7px 16px; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .stats {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .stat { text-align: right; border-right: 2px solid rgba(100,160,240,0.2); padding-right: 20px; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: rgba(100,160,240,0.7); font-weight: 300; line-height: 1; }
+  .stat-label { color: rgba(255,255,255,0.25); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="glow"></div>
+  <nav>
+    <div class="logo">Baan <span>Hunt</span></div>
+    <div class="nav-links">
+      <a href="#">Buy</a>
+      <a href="#">Rent</a>
+      <a href="#">Invest</a>
+      <a href="#">Developers</a>
+    </div>
+    <button class="nav-cta">List a Property</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Bangkok · Premium Real Estate</div>
+      <h1>Find your<br><em>perfect</em><br>Bangkok home.</h1>
+      <p>Condos, villas, and investment properties across Bangkok's most sought-after neighbourhoods. Expert guidance for expats and investors.</p>
+      <div class="actions">
+        <button class="btn-primary">Search Properties</button>
+        <button class="btn-ghost">Talk to an Agent</button>
+      </div>
+      <div class="property-tags">
+        <div class="tag">Sukhumvit</div>
+        <div class="tag">Silom</div>
+        <div class="tag">Sathorn</div>
+        <div class="tag">Riverside</div>
+        <div class="tag">Ari</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Active Listings</div></div>
+    <div class="stat"><div class="stat-num">12yr</div><div class="stat-label">Bangkok Market</div></div>
+    <div class="stat"><div class="stat-num">EN/TH</div><div class="stat-label">Bilingual Team</div></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Dii Aesthetic Clinic — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #06090f; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+  .bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 65% 45%, #0a1628 0%, #06090f 65%);
+  }
+
+  /* DNA/crystal glow effects */
+  .glow-1 {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(60,140,240,0.09) 0%, transparent 65%);
+    right: 5%; top: 20%;
+  }
+  .glow-2 {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(100,200,180,0.06) 0%, transparent 65%);
+    right: 35%; bottom: 15%;
+  }
+
+  /* Geometric crystal shape */
+  .crystal {
+    position: absolute; right: 100px; top: 50%; transform: translateY(-50%);
+    z-index: 2;
+  }
+  .crystal-ring {
+    width: 340px; height: 340px; border-radius: 50%;
+    border: 1px solid rgba(60,140,240,0.12);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .crystal-ring::before {
+    content: '';
+    position: absolute;
+    width: 260px; height: 260px; border-radius: 50%;
+    border: 1px solid rgba(60,140,240,0.07);
+  }
+  .crystal-inner {
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(60,140,240,0.12), rgba(6,9,15,0.8));
+    border: 1px solid rgba(60,140,240,0.1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px;
+  }
+  .crystal-letter { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-style: italic; color: rgba(60,140,240,0.3); line-height: 1; }
+  .crystal-label { color: rgba(60,140,240,0.2); font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; }
+
+  /* Tech line decoration */
+  .tech-line {
+    position: absolute; right: 80px; bottom: 55px; z-index: 3;
+    display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+  }
+  .tech-item { color: rgba(60,140,240,0.3); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+  .tech-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(60,140,240,0.4); }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 30px 80px 30px 100px;
+    border-bottom: 1px solid rgba(60,140,240,0.07);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; font-weight: 300; color: #fff; letter-spacing: 0.2em; }
+  .logo span { color: rgba(60,140,240,0.7); font-style: normal; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.28); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(60,140,240,0.35); color: rgba(60,140,240,0.8); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 3;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 540px; }
+
+  .eyebrow { color: rgba(60,140,240,0.5); font-size: 0.67rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; line-height: 1.05;
+    color: #fff; margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: rgba(60,140,240,0.75); }
+
+  .rule { width: 36px; height: 1px; background: rgba(60,140,240,0.25); margin-bottom: 20px; }
+
+  p { color: rgba(255,255,255,0.36); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(60,140,240,0.85); color: #06090f; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.38); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(60,140,240,0.12); color: rgba(255,255,255,0.22); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="bg"></div>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <div class="crystal">
+    <div class="crystal-ring">
+      <div class="crystal-inner">
+        <div class="crystal-letter">Dii</div>
+        <div class="crystal-label">Integrate · Innovate</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tech-line">
+    <div class="tech-item">Ulthera <span class="tech-dot"></span></div>
+    <div class="tech-item">Thermage <span class="tech-dot"></span></div>
+    <div class="tech-item">FOTONA <span class="tech-dot"></span></div>
+    <div class="tech-item">Ultraformer <span class="tech-dot"></span></div>
+  </div>
+
+  <nav>
+    <div class="logo"><em>Dii</em> <span>Aesthetic</span></div>
+    <div class="nav-links">
+      <a href="#">Treatments</a>
+      <a href="#">Technology</a>
+      <a href="#">Branches</a>
+      <a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Siam Paragon · Bangkok · 16 Years</div>
+      <h1>Where science<br>meets <em>beauty.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's leading aesthetic clinic — 16 years of precision medicine inside Siam Paragon. Ulthera, Thermage, FOTONA, and advanced skin science, delivered by specialists.</p>
+      <div class="actions">
+        <button class="btn-primary">Book a Consultation</button>
+        <button class="btn-ghost">Our Treatments</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Ulthera</div>
+        <div class="tag">Thermage</div>
+        <div class="tag">FOTONA</div>
+        <div class="tag">Fillers</div>
+        <div class="tag">Skin Boosters</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

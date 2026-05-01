@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Common Ground Tattoo — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #080808; font-family: 'Inter', sans-serif; }
+
+  .hero {
+    width: 100%; height: 100%;
+    background: #080808;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute; right: 0; top: 0;
+    width: 55%; height: 100%;
+    object-fit: cover; object-position: center top;
+    filter: brightness(0.45) saturate(0.7);
+  }
+
+  /* Dark fade from left over the image */
+  .hero::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, #080808 35%, rgba(8,8,8,0.7) 60%, rgba(8,8,8,0.1) 100%);
+  }
+
+  /* Red accent glow */
+  .glow {
+    position: absolute; width: 800px; height: 400px; z-index: 1;
+    background: radial-gradient(ellipse, rgba(180,30,30,0.08) 0%, transparent 70%);
+    top: 60%; left: 30%; transform: translate(-50%, -50%);
+  }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 3;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 36px 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: #fff; letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 40px; }
+  .nav-links a { color: rgba(255,255,255,0.35); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; }
+
+  .content {
+    position: relative; z-index: 2; pointer-events: none;
+    padding: 0 100px; max-width: 900px;
+  }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    color: rgba(255,255,255,0.3); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #b41e1e; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 7rem; font-weight: 400; line-height: 0.92;
+    color: #fff; margin-bottom: 32px;
+    letter-spacing: -0.02em;
+  }
+  h1 .line2 { display: block; color: rgba(255,255,255,0.12); -webkit-text-stroke: 1px rgba(255,255,255,0.2); }
+  h1 em { color: #b41e1e; font-style: italic; }
+
+  p {
+    color: rgba(255,255,255,0.4); font-size: 0.95rem; line-height: 1.75;
+    max-width: 440px; margin-bottom: 48px; font-weight: 300;
+  }
+
+  .actions { display: flex; gap: 14px; align-items: center; }
+  .btn-primary { background: #fff; color: #080808; padding: 16px 36px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; }
+  .btn-ghost { color: rgba(255,255,255,0.45); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+  .btn-ghost::after { content: '↗'; font-size: 1rem; }
+
+  .side-label {
+    position: absolute; right: 60px; top: 50%; z-index: 3; transform: translateY(-50%) rotate(90deg);
+    color: rgba(255,255,255,0.12); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    transform-origin: center;
+  }
+
+  .artists {
+    position: absolute; bottom: 40px; left: 100px; z-index: 3;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .artist-dot { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); }
+  .artist-text { color: rgba(255,255,255,0.25); font-size: 0.7rem; letter-spacing: 0.1em; margin-left: 6px; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="hero-img" src="Screenshot 2026-04-26 112648.png" alt="Common Ground Tattoo">
+  <div class="glow"></div>
+
+  <nav>
+    <div class="logo">Common Ground</div>
+    <div class="nav-links">
+      <a href="#">Artists</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Book</a>
+      <a href="#">Studio</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Bangkok · Saphan Taksin · Custom Work</div>
+    <h1>Ink that<br><span class="line2">demands</span><br><em>attention.</em></h1>
+    <p>International resident artists. Custom designs from concept to skin. No flash — every piece is built for you, on you.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Consultation</button>
+      <button class="btn-ghost">View Portfolio</button>
+    </div>
+  </div>
+
+  <div class="side-label">Bangkok · Est. 2019</div>
+
+  <div class="artists">
+    <div class="artist-dot"></div>
+    <div class="artist-dot"></div>
+    <div class="artist-dot"></div>
+    <div class="artist-dot"></div>
+    <div class="artist-text">4 resident international artists</div>
+  </div>
+</div>
+</body>
+</html>

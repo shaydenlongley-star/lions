@@ -1,0 +1,20 @@
+{
+  "name": "shaydefy-outreach",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "find": "node prospect-finder.js",
+    "score": "node scorer.js",
+    "send": "node email-sender.js",
+    "track": "node tracker.js"
+  },
+  "dependencies": {
+    "serpapi": "^2.1.0",
+    "nodemailer": "^6.9.16",
+    "googleapis": "^144.0.0",
+    "node-fetch": "^3.3.2",
+    "csv-writer": "^1.6.0",
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5"
+  }
+}

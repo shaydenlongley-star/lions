@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Bangkok Yoga — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #FBF7F2; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+  .left {
+    background: #FBF7F2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px; position: relative;
+  }
+
+  .right { position: relative; overflow: hidden; background: #3D2B1F; }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.5) saturate(0.7);
+  }
+  .right::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgba(251,247,242,0.1) 0%, transparent 25%),
+                linear-gradient(0deg, rgba(61,43,31,0.65) 0%, transparent 45%);
+  }
+
+  /* Om symbol */
+  .om {
+    position: absolute; right: 50px; top: 50%; transform: translateY(-50%);
+    z-index: 5; font-size: 6rem; color: rgba(212,168,82,0.12);
+    line-height: 1; user-select: none;
+  }
+
+  /* Heritage badge */
+  .heritage {
+    position: absolute; right: 50px; bottom: 50px; z-index: 5;
+    border: 1px solid rgba(212,168,82,0.2); padding: 12px 18px;
+    background: rgba(61,43,31,0.5);
+    display: flex; flex-direction: column; gap: 3px; align-items: center;
+  }
+  .heritage-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: rgba(212,168,82,0.6); font-weight: 300; }
+  .heritage-label { color: rgba(255,255,255,0.22); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 70px 28px 100px;
+    background: rgba(251,247,242,0.97);
+    border-bottom: 1px solid rgba(61,43,31,0.07);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #3D2B1F; letter-spacing: 0.12em; }
+  .logo em { font-style: italic; color: #C97A4A; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(61,43,31,0.38); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(61,43,31,0.2); color: rgba(61,43,31,0.6); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .eyebrow { color: #C97A4A; font-size: 0.67rem; letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 18px; opacity: 0.85; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.6rem; font-weight: 300; line-height: 1.06;
+    color: #3D2B1F; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #C97A4A; }
+
+  .rule { width: 36px; height: 1px; background: rgba(201,122,74,0.35); margin-bottom: 18px; }
+
+  p { color: rgba(61,43,31,0.48); font-size: 0.9rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 30px; }
+  .btn-primary { background: #C97A4A; color: #FBF7F2; padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(61,43,31,0.13); color: rgba(61,43,31,0.46); padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(201,122,74,0.22); color: rgba(61,43,31,0.4); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Bangkok</em> Yoga</div>
+    <div class="nav-links">
+      <a href="#">Classes</a>
+      <a href="#">Schedule</a>
+      <a href="#">About</a>
+      <a href="#">Find Us</a>
+    </div>
+    <button class="nav-cta">View Schedule</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Silom Road · Bangkok · Est. 20+ Years</div>
+    <h1>Find your<br>stillness in<br><em>Bangkok.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's most established yoga school. Over two decades of authentic yoga teaching on Silom Road — beginner through advanced, all styles, all levels welcome.</p>
+    <div class="actions">
+      <button class="btn-primary">View Schedule</button>
+      <button class="btn-ghost">Try a Class</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Hatha</div>
+      <div class="tag">Vinyasa</div>
+      <div class="tag">Meditation</div>
+      <div class="tag">Beginners</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1200&q=80" alt="Bangkok Yoga">
+    <div class="om">ॐ</div>
+    <div class="heritage">
+      <div class="heritage-num">20+</div>
+      <div class="heritage-label">Years Teaching</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

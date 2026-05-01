@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>OFUOFU Pet Spa — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #F5F7F4; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: #F5F7F4; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #A8BCA8; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.74) saturate(0.6); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(245,247,244,0.16) 0%, transparent 20%), linear-gradient(0deg, rgba(45,70,45,0.38) 0%, transparent 40%); }
+  .sage-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(108,148,108,0.58) 30%, rgba(108,148,108,0.58) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(108,148,108,0.24); padding: 14px 18px; background: rgba(245,247,244,0.92); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(20,38,20,0.34); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(108,148,108,0.28); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(85,120,85,0.72); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .svc-name { color: rgba(255,255,255,0.28); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(108,148,108,0.42); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.62); }
+  .svc-item.active .svc-dot { background: rgba(108,148,108,0.88); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(245,247,244,0.97); border-bottom: 1px solid rgba(108,148,108,0.1); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #142014; letter-spacing: 0.12em; }
+  .logo em { font-style: italic; color: #6C946C; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(20,32,20,0.34); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #142014; color: #F5F7F4; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: #6C946C; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #142014; margin-bottom: 18px; }
+  h1 em { font-style: italic; color: #6C946C; }
+  .rule { width: 36px; height: 1px; background: rgba(108,148,108,0.32); margin-bottom: 18px; }
+  p { color: rgba(20,32,20,0.44); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #142014; color: #F5F7F4; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(20,32,20,0.14); color: rgba(20,32,20,0.42); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(108,148,108,0.26); color: rgba(20,32,20,0.36); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>OFUOFU</em> Pet Spa</div>
+    <div class="nav-links">
+      <a href="#">Spa Treatments</a><a href="#">Gallery</a><a href="#">Membership</a><a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Srinakarin · Bangkok · Japanese Pet Spa</div>
+    <h1>The spa your<br>pet <em>deserves.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's Japanese-inspired pet spa on Srinakarin Road. Ozone spa, mud spa, salt spa, soda spa, and professional grooming — vet supervised, for dogs and cats who deserve the full treatment.</p>
+    <div class="actions">
+      <button class="btn-primary">Book Now</button>
+      <button class="btn-ghost">View Treatments</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Ozone Spa</div>
+      <div class="tag">Mud Spa</div>
+      <div class="tag">Salt Spa</div>
+      <div class="tag">Vet Supervised</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="OFUOFU Pet Spa Bangkok">
+    <div class="sage-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Ozone Spa</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Mud Spa</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Salt Spa</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Grooming</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">おふろ</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Japanese Spa</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Bangkok</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

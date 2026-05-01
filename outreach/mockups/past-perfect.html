@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Past Perfect Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #f0ebe2; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1.1fr 0.9fr; position: relative; }
+
+  .left {
+    background: #f0ebe2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 100px; position: relative;
+  }
+  /* Aged paper texture */
+  .left::before {
+    content: ''; position: absolute; inset: 0; opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .right { position: relative; overflow: hidden; background: #2a2118; }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.5) saturate(0.5) sepia(0.3);
+  }
+  .right::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgba(240,235,226,0.08) 0%, transparent 25%),
+                linear-gradient(0deg, rgba(42,33,24,0.6) 0%, transparent 45%);
+  }
+
+  /* Vintage tag */
+  .vintage-tag {
+    position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+    z-index: 5; border: 1px solid rgba(255,255,255,0.1);
+    padding: 16px 20px; background: rgba(42,33,24,0.5);
+    display: flex; flex-direction: column; gap: 8px; align-items: center;
+  }
+  .vintage-tag-label { color: rgba(255,255,255,0.25); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .vintage-tag-era { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: rgba(255,255,255,0.4); font-style: italic; }
+  .vintage-tag-divider { width: 30px; height: 1px; background: rgba(255,255,255,0.1); }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 70px 28px 100px;
+    background: rgba(240,235,226,0.97);
+    border-bottom: 1px solid rgba(42,33,24,0.07);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #2a2118; letter-spacing: 0.06em; }
+  .logo em { font-style: italic; color: #8c6840; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(42,33,24,0.38); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(42,33,24,0.2); color: rgba(42,33,24,0.6); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+
+  .eyebrow { color: #8c6840; font-size: 0.67rem; letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 18px; opacity: 0.8; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4.8rem; font-weight: 400; line-height: 1.05;
+    color: #2a2118; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #8c6840; }
+
+  .rule { width: 36px; height: 1px; background: rgba(140,104,64,0.35); margin-bottom: 18px; }
+
+  p { color: rgba(42,33,24,0.48); font-size: 0.9rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 30px; }
+  .btn-primary { background: #2a2118; color: #f0ebe2; padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(42,33,24,0.13); color: rgba(42,33,24,0.46); padding: 14px 30px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(140,104,64,0.22); color: rgba(42,33,24,0.38); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo">Past <em>Perfect</em></div>
+    <div class="nav-links">
+      <a href="#">New In</a>
+      <a href="#">Browse</a>
+      <a href="#">About</a>
+      <a href="#">Find Us</a>
+    </div>
+    <button class="nav-cta">Browse the Edit</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Song Wat Rd · Samphanthawong · Bangkok</div>
+    <h1>Vintage done<br><em>properly.</em></h1>
+    <div class="rule"></div>
+    <p>Curated vintage above Sit in Soi, Song Wat Road. 1970s dresses, Hawaiian shirts, collectible tees — every piece washed, clean, and worth wearing. Hidden gem, for those who know.</p>
+    <div class="actions">
+      <button class="btn-primary">Browse the Edit</button>
+      <button class="btn-ghost">Find Us</button>
+    </div>
+    <div class="tags">
+      <div class="tag">1960s–80s</div>
+      <div class="tag">Hawaiian Shirts</div>
+      <div class="tag">Vintage Tees</div>
+      <div class="tag">Dresses</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&q=80" alt="Past Perfect Vintage">
+    <div class="vintage-tag">
+      <div class="vintage-tag-label">Est. Styles</div>
+      <div class="vintage-tag-era">1960s–80s</div>
+      <div class="vintage-tag-divider"></div>
+      <div class="vintage-tag-label">Song Wat Rd</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

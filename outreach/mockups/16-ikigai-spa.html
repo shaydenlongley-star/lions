@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Ikigai Spa Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #f5f0ea; font-family: 'Inter', sans-serif; }
+
+  .hero {
+    width: 100%; height: 100%;
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .left {
+    background: #f5f0ea;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 80px 100px;
+    position: relative;
+  }
+
+  .right {
+    background: #1a1a18;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Zen circle */
+  .zen-circle {
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.08);
+    position: absolute;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 80px rgba(255,255,255,0.02), inset 0 0 80px rgba(255,255,255,0.02);
+  }
+  .zen-inner {
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle at 45% 40%, #2a2a26, #141412);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px;
+  }
+  .kanji { font-size: 3.5rem; color: rgba(255,255,255,0.15); line-height: 1; font-family: serif; }
+  .kanji-label { color: rgba(255,255,255,0.2); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 32px 80px 32px 100px;
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: #1a1a18; letter-spacing: 0.15em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(26,26,24,0.45); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
+
+  .eyebrow { color: rgba(26,26,24,0.4); font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 20px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.8rem; font-weight: 300; line-height: 1.08;
+    color: #1a1a18; margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: #6b5c3e; }
+
+  .rule { width: 40px; height: 1px; background: rgba(26,26,24,0.2); margin-bottom: 20px; }
+
+  p { color: rgba(26,26,24,0.5); font-size: 0.92rem; line-height: 1.8; max-width: 380px; margin-bottom: 44px; font-weight: 300; }
+
+  .actions { display: flex; gap: 14px; }
+  .btn-primary { background: #1a1a18; color: #f5f0ea; padding: 16px 36px; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,26,24,0.2); color: rgba(26,26,24,0.55); padding: 16px 36px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .bottom-tag {
+    position: absolute; bottom: 40px; left: 100px;
+    color: rgba(26,26,24,0.3); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    display: flex; gap: 20px;
+  }
+  .bottom-tag span::before { content: '— '; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo">Ikigai</div>
+    <div class="nav-links">
+      <a href="#">Treatments</a>
+      <a href="#">Packages</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Ari · Bangkok · Craftsman Hotel</div>
+    <h1>Peace begins<br>from <em>within.</em></h1>
+    <div class="rule"></div>
+    <p>A sanctuary of Japanese-inspired wellness in the heart of Ari. Holistic treatments designed to restore balance, calm the mind, and renew the body.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Treatment</button>
+      <button class="btn-ghost">Our Services</button>
+    </div>
+    <div class="bottom-tag">
+      <span>Japanese Wellness</span>
+      <span>Holistic Treatments</span>
+      <span>Craftsman Hotel, Ari</span>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="zen-circle">
+      <div class="zen-inner">
+        <div class="kanji">生き甲斐</div>
+        <div class="kanji-label">Reason for being</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

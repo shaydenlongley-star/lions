@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Common Ground Tattoo — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #080808; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.14) saturate(0) contrast(1.4); }
+  .overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0.78) 52%, rgba(8,8,8,0.22) 100%); }
+  .white-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(220,210,190,0.5) 30%, rgba(220,210,190,0.5) 70%, transparent); }
+  .service-list { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 2px; }
+  .svc-item { display: flex; align-items: center; gap: 10px; justify-content: flex-end; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .svc-name { color: rgba(255,255,255,0.2); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(220,210,190,0.25); }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.6); }
+  .svc-item.active .svc-dot { background: rgba(220,210,190,0.75); }
+  .location-badge { position: absolute; right: 80px; bottom: 55px; z-index: 5; border: 1px solid rgba(255,255,255,0.08); padding: 14px 20px; background: rgba(8,8,8,0.85); display: flex; align-items: center; gap: 12px; }
+  .badge-text { display: flex; flex-direction: column; gap: 3px; }
+  .badge-label { color: rgba(255,255,255,0.18); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 30px 80px 30px 100px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #fff; letter-spacing: 0.1em; }
+  .logo em { font-style: italic; color: rgba(220,210,190,0.75); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.22); font-size: 0.72rem; letter-spacing: 0.12em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; background: none; cursor: pointer; }
+  .content { position: relative; z-index: 2; display: flex; align-items: center; height: 100%; padding: 0 100px; }
+  .text { max-width: 540px; }
+  .eyebrow { color: rgba(220,210,190,0.45); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 22px; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: 5rem; font-weight: 400; line-height: 1.04; color: #fff; margin-bottom: 22px; }
+  h1 em { font-style: italic; color: rgba(220,210,190,0.7); }
+  .rule { width: 36px; height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 20px; }
+  p { color: rgba(255,255,255,0.28); font-size: 0.9rem; line-height: 1.8; max-width: 420px; margin-bottom: 40px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: rgba(220,210,190,0.88); color: #080808; padding: 14px 32px; font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); padding: 14px 32px; font-size: 0.71rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.2); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="bg-img" src="https://images.unsplash.com/photo-1562962230-16f64f0a4c66?w=1600&q=80" alt="Common Ground Tattoo Bangkok">
+  <div class="overlay"></div>
+  <div class="white-strip"></div>
+  <div class="service-list">
+    <div class="svc-item active"><div class="svc-name">Custom Work</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Asian Traditional</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">American Trad</div><div class="svc-dot"></div></div>
+    <div class="svc-item"><div class="svc-name">Guest Artists</div><div class="svc-dot"></div></div>
+  </div>
+  <div class="location-badge">
+    <div class="badge-text">
+      <div class="badge-label">Charoen Krung</div>
+      <div class="badge-label">Bang Rak · Bangkok</div>
+    </div>
+  </div>
+  <nav>
+    <div class="logo"><em>Common Ground</em> Tattoo</div>
+    <div class="nav-links">
+      <a href="#">Artists</a><a href="#">Portfolio</a><a href="#">About</a><a href="#">Book</a>
+    </div>
+    <button class="nav-cta">Book a Session</button>
+  </nav>
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Charoen Krung · Bangkok · Est. 10 Years</div>
+      <h1>Tattoo as<br><em>fine art.</em></h1>
+      <div class="rule"></div>
+      <p>Bangkok's serious tattoo studio on Charoen Krung. Custom work, Asian-inspired design, American traditional, and international guest artists — for collectors, not walk-ins.</p>
+      <div class="actions">
+        <button class="btn-primary">Book a Session</button>
+        <button class="btn-ghost">View Portfolio</button>
+      </div>
+      <div class="tags">
+        <div class="tag">Custom Work</div>
+        <div class="tag">Asian Traditional</div>
+        <div class="tag">Guest Artists</div>
+        <div class="tag">Charoen Krung</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

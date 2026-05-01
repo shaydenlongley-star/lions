@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Myth I Bangkok Street Food — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0f0e08; font-family: 'Inter', sans-serif; }
+
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+  .left {
+    background: #fdf8ee;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 70px 80px 100px;
+    position: relative;
+  }
+  .left::before {
+    content: '';
+    position: absolute; inset: 0; opacity: 0.025;
+    background-image: radial-gradient(circle, #c8a020 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .right {
+    position: relative; overflow: hidden;
+    background: #1a1508;
+  }
+  .right img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.6) saturate(0.8);
+  }
+  .right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(253,248,238,0.15) 0%, transparent 30%),
+                linear-gradient(0deg, rgba(26,21,8,0.5) 0%, transparent 50%);
+    z-index: 2;
+  }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 80px 28px 100px;
+    background: rgba(253,248,238,0.96);
+    border-bottom: 1px solid rgba(200,160,32,0.1);
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #1a1508; }
+  .logo em { font-style: italic; color: #c8a020; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,21,8,0.4); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #c8a020; color: #0f0e08; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+
+  .eyebrow { color: #c8a020; font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 18px; opacity: 0.8; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4.4rem; font-weight: 400; line-height: 1.08;
+    color: #1a1508; margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: #c8a020; }
+
+  .rule { width: 36px; height: 1px; background: rgba(200,160,32,0.4); margin-bottom: 18px; }
+
+  p { color: rgba(26,21,8,0.5); font-size: 0.91rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #c8a020; color: #0f0e08; padding: 14px 30px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,21,8,0.15); color: rgba(26,21,8,0.5); padding: 14px 30px; font-size: 0.72rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+
+  .badges { display: flex; gap: 8px; }
+  .badge { border: 1px solid rgba(200,160,32,0.25); color: rgba(26,21,8,0.4); padding: 5px 12px; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  /* Right side overlay text */
+  .right-label {
+    position: absolute; bottom: 40px; left: 30px; z-index: 3;
+    color: rgba(255,255,255,0.25); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Myth I</em> Bangkok</div>
+    <div class="nav-links">
+      <a href="#">Menu</a>
+      <a href="#">Our Story</a>
+      <a href="#">Find Us</a>
+      <a href="#">Contact</a>
+    </div>
+    <button class="nav-cta">Find Us</button>
+  </nav>
+
+  <div class="left">
+    <div class="eyebrow">Khaosan Road · Bangkok · Since 1993</div>
+    <h1>Bangkok's<br>legendary<br><em>mango sticky rice.</em></h1>
+    <div class="rule"></div>
+    <p>Three decades of street food perfection on Khaosan Road. The original mango sticky rice that tourists travel across Bangkok to find — made fresh, every day.</p>
+    <div class="actions">
+      <button class="btn-primary">Find Us</button>
+      <button class="btn-ghost">View Menu</button>
+    </div>
+    <div class="badges">
+      <div class="badge">Since 1993</div>
+      <div class="badge">Mango Sticky Rice</div>
+      <div class="badge">Khaosan Road</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1711161988375-da7eff032e45?w=1200&q=80" alt="Mango Sticky Rice">
+    <div class="right-label">Khaosan Road · Bangkok</div>
+  </div>
+</div>
+</body>
+</html>

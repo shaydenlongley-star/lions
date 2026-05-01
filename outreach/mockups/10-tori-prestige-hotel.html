@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Tori Prestige Bangkok — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #0c0a07; font-family: 'Inter', sans-serif; }
+
+  .hero {
+    width: 100%; height: 100%;
+    position: relative; overflow: hidden;
+  }
+
+  /* Background image */
+  .bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0c0a07 0%, #1a1208 40%, #0c0a07 100%);
+  }
+  .bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(180,140,60,0.06) 0%, transparent 60%),
+      linear-gradient(rgba(180,140,60,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(180,140,60,0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 80px 80px, 80px 80px;
+  }
+
+  /* Decorative frame element */
+  .frame-accent {
+    position: absolute; right: 80px; top: 50%;
+    transform: translateY(-50%);
+    width: 380px; height: 500px;
+    border: 1px solid rgba(180,140,60,0.12);
+  }
+  .frame-accent::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(180,140,60,0.06);
+  }
+  .frame-inner {
+    position: absolute; inset: 24px;
+    background: linear-gradient(160deg, rgba(180,140,60,0.05), rgba(180,140,60,0.02));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px;
+  }
+  .frame-icon {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(180,140,60,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(180,140,60,0.4); font-size: 1.4rem;
+  }
+  .frame-label { color: rgba(180,140,60,0.3); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; text-align: center; line-height: 2; }
+  .frame-divider { width: 40px; height: 1px; background: rgba(180,140,60,0.15); }
+
+  /* Room details */
+  .room-tags {
+    position: absolute; right: 92px; bottom: 56px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .room-tag {
+    border: 1px solid rgba(180,140,60,0.15);
+    color: rgba(180,140,60,0.4);
+    padding: 6px 14px; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    text-align: center;
+  }
+
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 32px 80px;
+    border-bottom: 1px solid rgba(180,140,60,0.08);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 400; color: #e8d5a0; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .logo em { font-style: italic; color: rgba(180,140,60,0.7); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.28); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(180,140,60,0.35); color: #b48c3c; padding: 10px 24px; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .content {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; height: 100%;
+    padding: 0 100px;
+  }
+
+  .text { max-width: 600px; }
+
+  .eyebrow { color: rgba(180,140,60,0.5); font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.2rem; font-weight: 300; line-height: 1.0;
+    color: #e8d5a0; margin-bottom: 22px; letter-spacing: 0.01em;
+  }
+  h1 em { color: #b48c3c; font-style: italic; }
+
+  .rule { width: 44px; height: 1px; background: rgba(180,140,60,0.3); margin-bottom: 22px; }
+
+  p { color: rgba(255,255,255,0.38); font-size: 0.93rem; line-height: 1.8; max-width: 420px; margin-bottom: 44px; font-weight: 300; }
+
+  .actions { display: flex; gap: 14px; margin-bottom: 48px; }
+  .btn-primary { background: #b48c3c; color: #0c0a07; padding: 16px 36px; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(180,140,60,0.2); color: rgba(180,140,60,0.6); padding: 16px 36px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; background: none; cursor: pointer; }
+
+  .amenities { display: flex; gap: 24px; }
+  .amenity { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.22); font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .amenity::before { content: '—'; color: rgba(180,140,60,0.3); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="bg"></div>
+
+  <div class="frame-accent">
+    <div class="frame-inner">
+      <div class="frame-icon">✦</div>
+      <div class="frame-label">Pratunam<br>Bangkok</div>
+      <div class="frame-divider"></div>
+      <div class="frame-label">Boutique Hotel<br>Direct Booking</div>
+      <div class="frame-divider"></div>
+      <div class="frame-label">Best Rate<br>Guaranteed</div>
+    </div>
+  </div>
+
+  <div class="room-tags">
+    <div class="room-tag">Deluxe Rooms</div>
+    <div class="room-tag">Superior Suites</div>
+    <div class="room-tag">From ฿1,200 / night</div>
+  </div>
+
+  <nav>
+    <div class="logo"><em>Tori</em> Prestige</div>
+    <div class="nav-links">
+      <a href="#">Rooms</a>
+      <a href="#">Amenities</a>
+      <a href="#">Location</a>
+      <a href="#">Gallery</a>
+    </div>
+    <button class="nav-cta">Book Direct</button>
+  </nav>
+
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">Pratunam · Bangkok · Boutique Hotel</div>
+      <h1>Stay in the<br>heart of <em>Bangkok.</em></h1>
+      <div class="rule"></div>
+      <p>Boutique comfort in Pratunam — Bangkok's most connected neighbourhood. Steps from Central World, Platinum Mall, and BTS Ratchaprarop. Book direct for the best rate.</p>
+      <div class="actions">
+        <button class="btn-primary">Check Availability</button>
+        <button class="btn-ghost">View Rooms</button>
+      </div>
+      <div class="amenities">
+        <div class="amenity">Free WiFi</div>
+        <div class="amenity">Airport Transfer</div>
+        <div class="amenity">24hr Reception</div>
+        <div class="amenity">Rooftop Access</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
