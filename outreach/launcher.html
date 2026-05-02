@@ -190,6 +190,36 @@ button { font-family: inherit; cursor: pointer; }
 .btn-icon.copied { border-color: var(--green-border); color: var(--green); background: var(--green-bg); }
 .btn-icon.checked { border-color: var(--green-border); color: var(--green); background: var(--green-bg); }
 
+/* ── Notes ────────────────────────────────────────── */
+.btn-icon.has-note { border-color: rgba(251,191,36,0.35); color: #FBBF24; }
+.note-chip {
+  display: inline-block; margin-left: 5px;
+  color: #FBBF24; font-size: 0.58rem; font-style: normal;
+  background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.22);
+  border-radius: 3px; padding: 1px 5px; vertical-align: middle;
+}
+.note-row {
+  display: none; padding: 6px 10px 8px 49px;
+  flex-direction: column; gap: 6px;
+}
+.note-row.open { display: flex; }
+.note-presets { display: flex; gap: 4px; flex-wrap: wrap; }
+.preset-btn {
+  padding: 3px 9px; border-radius: 10px;
+  border: 1px solid var(--border);
+  background: none; color: var(--muted);
+  font-size: 0.6rem; font-family: inherit; letter-spacing: 0.04em;
+  cursor: pointer; transition: all 0.12s;
+}
+.preset-btn:hover { border-color: rgba(251,191,36,0.3); color: #FBBF24; }
+.note-input {
+  background: none; border: none; border-bottom: 1px solid var(--border);
+  color: var(--text); font-size: 0.68rem; font-family: inherit;
+  padding: 3px 0; outline: none; width: 100%;
+}
+.note-input::placeholder { color: var(--dim); }
+.note-input:focus { border-bottom-color: var(--border-md); }
+
 /* ── Empty state ──────────────────────────────────── */
 .empty { padding: 60px 28px; text-align: center; color: var(--dim); font-size: 0.78rem; letter-spacing: 0.06em; }
 </style>
@@ -355,6 +385,26 @@ function toggleSent(cid, type) {
   render();
 }
 
+function noteKey(cid, type) { return `note_${cid}_${type}`; }
+function getNote(cid, type) { return localStorage.getItem(noteKey(cid, type)) || ''; }
+function saveNote(cid, type, val) {
+  val.trim() ? localStorage.setItem(noteKey(cid, type), val.trim()) : localStorage.removeItem(noteKey(cid, type));
+  const btn = document.getElementById(`note-btn-${cid}-${type}`);
+  if (btn) btn.classList.toggle('has-note', !!val.trim());
+  const chip = document.getElementById(`chip-${cid}-${type}`);
+  if (chip) { chip.textContent = val.trim(); chip.style.display = val.trim() ? '' : 'none'; }
+}
+function toggleNote(cid, type) {
+  const row = document.getElementById(`note-row-${cid}-${type}`);
+  if (!row) return;
+  row.classList.toggle('open');
+  if (row.classList.contains('open')) row.querySelector('.note-input').focus();
+}
+function applyPreset(cid, type, text) {
+  const input = document.querySelector(`#note-row-${cid}-${type} .note-input`);
+  if (input) { input.value = text; saveNote(cid, type, text); }
+}
+
 function getContact(id) { return contacts.find(c => c.id === id); }
 function getChannel(id, type) { return getContact(id).channels.find(ch => ch.type === type); }
 
@@ -466,17 +516,26 @@ function render() {
       const hasCopy = needsCopy(ch.type);
       const actionLabel = ch.type === 'email' ? 'Open Gmail' : ch.type === 'whatsapp' ? 'Open WhatsApp' : ch.type === 'instagram' ? 'Copy & Open IG' : 'Copy & Open LINE';
 
+      const note = getNote(c.id, ch.type);
+      const presets = ['Inactive', 'No account', 'No reply', 'Wrong number', 'Already has site'];
+
       return `<div class="ch ${chSent ? 'sent' : ''}">
         <div class="ch-icon ${ch.type}">${p.icon}</div>
         <div class="ch-info">
           <div class="ch-label">${p.label}</div>
-          <div class="ch-detail">${p.detail(ch)}</div>
+          <div class="ch-detail">${p.detail(ch)}<span class="note-chip" id="chip-${c.id}-${ch.type}" style="${note ? '' : 'display:none'}">${note}</span></div>
         </div>
         <div class="ch-actions">
           <button class="btn-launch ${ch.type}" onclick="launch(${c.id},'${ch.type}')">${actionLabel} →</button>
           ${hasCopy ? `<button class="btn-icon" id="copy-${c.id}-${ch.type}" title="Copy message only" onclick="copyMsg(${c.id},'${ch.type}')">⎘</button>` : ''}
+          <button class="btn-icon ${note ? 'has-note' : ''}" id="note-btn-${c.id}-${ch.type}" title="Add note" onclick="toggleNote(${c.id},'${ch.type}')">✎</button>
           <button class="btn-icon ${chSent ? 'checked' : ''}" title="${chSent ? 'Undo' : 'Mark sent'}" onclick="toggleSent(${c.id},'${ch.type}')">${chSent ? '✓' : '○'}</button>
         </div>
+      </div>
+      <div class="note-row" id="note-row-${c.id}-${ch.type}">
+        <div class="note-presets">${presets.map(t => `<button class="preset-btn" onclick="applyPreset(${c.id},'${ch.type}','${t}')">${t}</button>`).join('')}</div>
+        <input class="note-input" value="${note}" placeholder="or type a custom note..."
+          oninput="saveNote(${c.id},'${ch.type}',this.value)">
       </div>`;
     }).join('');
 
