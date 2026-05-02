@@ -376,7 +376,7 @@ function getUrl(ch, touch) {
     case 'instagram':
       return `https://ig.me/m/${ch.handle}`;
     case 'line':
-      return `https://line.me/ti/p/~${ch.id}`;
+      return `line://ti/p/~${ch.id}`;
   }
 }
 
@@ -464,7 +464,7 @@ function render() {
       const p = PLATFORM[ch.type];
       const chSent = isSent(c.id, ch.type);
       const hasCopy = needsCopy(ch.type);
-      const actionLabel = ch.type === 'email' ? 'Open Gmail' : ch.type === 'whatsapp' ? 'Open WhatsApp' : 'Copy & Open';
+      const actionLabel = ch.type === 'email' ? 'Open Gmail' : ch.type === 'whatsapp' ? 'Open WhatsApp' : ch.type === 'instagram' ? 'Copy & Open IG' : 'Copy & Open LINE';
 
       return `<div class="ch ${chSent ? 'sent' : ''}">
         <div class="ch-icon ${ch.type}">${p.icon}</div>
