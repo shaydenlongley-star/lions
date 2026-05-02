@@ -1925,3 +1925,238 @@ Hey, it's Shayden — web designer in Bangkok. 91K followers on Instagram and no
 5. Cuckoo and Friends — Email + IG DM [mockup: 52] — wine bar bookable page angle
 
 **BEFORE SENDING ANY MOCKUP:** Verify colors from each Instagram page first. All 5 are unconfirmed.
+
+---
+
+## 57 — TUR Hair Salon
+**Contact:** turhairsalon@gmail.com | @turhairsalon (IG) | LINE: @turhairsalon
+**Channel:** Email · Instagram · LINE
+**Website score:** 0 — no website
+**Pain point:** 67K followers, all bookings through GoWabi (commission), no branded site
+**Colors:** Warm taupe #9A7E6A on cream #F6F4F1 (best guess — verify from IG)
+**Mockup:** tur-hair-salon.html
+
+### Instagram
+T1: Hey TUR,
+
+67K followers and people clearly trust the work. But no website means anyone who doesn't already follow you has to find you through GoWabi — which takes commission and puts you next to competitors.
+
+I build custom websites for Bangkok hair salons and beauty studios. Put a concept together for TUR.
+
+shaydefy.com
+Shayden
+
+T2: Hey TUR — following up. Three things: GoWabi owns your search traffic, takes commission on every booking, and your portfolio only exists on Instagram. Built a concept. shaydefy.com — Shayden
+
+T3: Hey TUR — last message. Built a homepage concept for the salon. Reply and I'll send it. Shayden — shaydefy.com
+
+### Email
+T1 Subject: Quick thought on TUR Hair Salon's website
+
+Hi TUR Hair Salon,
+
+I was looking up hair salons near Phrom Phong and found your Instagram. 67K followers — clearly people trust you.
+
+But you have no website. Anyone searching "hair salon Phrom Phong" or "hair salon Sukhumvit 26" on Google can't find you directly. They land on GoWabi, which takes commission on every booking and puts you next to 20 competitors.
+
+For a brand with 67K followers, a proper site would do a lot of work — portfolio, booking, direct enquiries, no third-party cut.
+
+I'm a web designer in Bangkok. I build custom sites for salons and beauty businesses. Put a concept together for TUR — happy to show you.
+
+shaydefy.com
+
+Shayden
+
+T2 Subject: Re: Quick thought on TUR Hair Salon's website
+
+Hi TUR,
+
+Following up — three things holding you back online:
+1. "TUR Hair Salon Bangkok" brings up GoWabi, not your brand
+2. GoWabi takes commission on every booking you could own directly
+3. Your portfolio exists only on Instagram — not searchable or shareable as a brand page
+
+Built a concept. Happy to share it.
+
+shaydefy.com
+Shayden
+
+T3 Subject: Built something for TUR Hair Salon
+
+Hi TUR,
+
+Last email — I built a homepage concept for TUR Hair Salon. Screenshot attached.
+
+Reply here if you want to see the full version.
+
+Shayden — shaydefy.com
+
+### LINE
+T1: Hey TUR Hair Salon, it's Shayden — web designer in Bangkok. 67K followers but no website means clients have to book through GoWabi. Built a concept site for TUR. shaydefy.com — happy to show you.
+
+T2: Hey Shayden here. GoWabi takes commission on every booking you could own on your own site. Happy to show you the concept I built. shaydefy.com
+
+T3: Last message — built a homepage for TUR Hair Salon. Want to see it? Shayden — shaydefy.com
+
+**Send order:** IG → Email → LINE
+
+---
+
+## 58 — LOU LOU Nail
+**Contact:** @loulounail_ (IG) | LINE: @loulounail
+**Channel:** Instagram · LINE
+**Website score:** 0 — no website
+**Pain point:** Private nail lounge, all bookings via DM/LINE, no services menu or pricing anywhere
+**Colors:** Dusty rose #C08484 on blush #FAF0EE (best guess — verify from IG)
+**Mockup:** lou-lou-nail.html
+
+### Instagram
+T1: Hey LOU LOU,
+
+Private 1:1 nail lounge in Thonglor — that's a premium offer. But the only way to book is DMing on Instagram or LINE, and there's no services menu, no pricing, no brand page online.
+
+A private lounge at this level should have its own site. Something that shows the space, the services, and lets clients book properly.
+
+I build custom websites for Bangkok beauty studios. Put a concept together for LOU LOU.
+
+shaydefy.com
+Shayden
+
+T2: Hey LOU LOU — following up. No services menu, no pricing, no Google presence. Every booking requires a manual DM back and forth. Built a concept. shaydefy.com — Shayden
+
+T3: Hey LOU LOU — last message. Built a homepage concept for the lounge. Reply and I'll send it. Shayden — shaydefy.com
+
+### LINE
+T1: Hey LOU LOU Nail, it's Shayden — web designer in Bangkok. Private nail lounge with no website means every booking needs a manual DM. Built a concept site. shaydefy.com — happy to show you.
+
+T2: Hey Shayden here. No pricing, no services page, no Google presence. Happy to show you the concept I built. shaydefy.com
+
+T3: Last message — built a homepage for LOU LOU Nail. Want to see it? Shayden — shaydefy.com
+
+**Send order:** IG → LINE
+
+---
+
+## 59 — Bangkok Boxing Gym
+**Contact:** bangkokboxing.th@gmail.com | @bangkokboxinggym (IG) | WhatsApp: +66826626698
+**Channel:** Email · Instagram · WhatsApp
+**Website score:** 0 — no website
+**Pain point:** No website, tourist/expat market, GoWabi only discovery channel
+**Colors:** Deep red #C42018 on dark #0C0808 (best guess — verify from IG)
+**Mockup:** bangkok-boxing-gym.html
+
+### Email
+T1 Subject: Bangkok Boxing Gym — you're not showing up on Google
+
+Hi Bangkok Boxing Gym,
+
+I was looking up Muay Thai gyms near Ratchada and found your Instagram. Solid setup — kids, adults, and tourist/expat training all under one roof.
+
+But you have no website. Tourists and expats searching "Muay Thai gym Ratchada" or "boxing gym Huai Khwang" can't find you. GoWabi is the only way they can book — and that means you're competing on price next to every other gym on the platform.
+
+I'm a web designer in Bangkok. I build custom sites for gyms and fitness businesses. Put a concept together for Bangkok Boxing Gym.
+
+shaydefy.com
+
+Shayden
+
+T2 Subject: Re: Bangkok Boxing Gym — you're not showing up on Google
+
+Hi Bangkok Boxing Gym,
+
+Following up — three things costing you bookings right now:
+1. No Google presence for "Muay Thai Ratchada" or "boxing gym Huai Khwang"
+2. GoWabi is your only discovery channel, and they take a cut of every booking
+3. No schedule, no pricing, no coach info — tourists book elsewhere when they can't find basic info
+
+Happy to share the concept I built.
+
+shaydefy.com
+Shayden
+
+T3 Subject: Built something for Bangkok Boxing Gym
+
+Hi Bangkok Boxing Gym,
+
+Last email — I built a homepage concept for the gym. Screenshot attached.
+
+Reply here if you want to see the full version.
+
+Shayden — shaydefy.com
+
+### Instagram
+T1: Hey Bangkok Boxing Gym,
+
+Tourists and expats searching "Muay Thai Ratchada" on Google can't find you — there's no website. GoWabi is your only discovery channel and they take a cut.
+
+I build custom websites for Bangkok gyms and fitness businesses. Put a concept together.
+
+shaydefy.com
+Shayden
+
+T2: Hey BKK Boxing — following up. No website, no Google traffic, GoWabi takes commission. Built a concept. shaydefy.com — Shayden
+
+T3: Hey BKK Boxing — last message. Built a homepage concept. Reply and I'll send it. Shayden — shaydefy.com
+
+### WhatsApp
+T1: Hey, it's Shayden — web designer in Bangkok. Tourists searching "Muay Thai Ratchada" can't find Bangkok Boxing Gym online — no website. Built a concept site for you. shaydefy.com — happy to send it.
+
+T2: Hey Shayden here. No website means GoWabi is your only discovery channel and they take a cut. Happy to show you what I built. shaydefy.com
+
+T3: Last message — built a full homepage for Bangkok Boxing Gym. Want to see it? Shayden — shaydefy.com
+
+**Send order:** Email → IG → WhatsApp
+
+---
+
+## 60 — Daffodil Flower Boutique
+**Contact:** @daffodilbkk (IG)
+**Channel:** Instagram
+**Website score:** 0 — no website
+**Pain point:** No website, invisible for florist/flower delivery searches, losing corporate and wedding enquiries
+**Colors:** Botanical green #6A8A54 on cream #F4F2EC (best guess — verify from IG)
+**Mockup:** daffodil-flower-bkk.html
+
+### Instagram
+T1: Hey Daffodil,
+
+Beautiful work — but no website means you're invisible to anyone searching "florist Bangkok" or "flower delivery Bangkok" on Google. Corporate gifting, event, and wedding enquiries all go to competitors who have a gallery and contact form.
+
+I build custom websites for Bangkok florists and boutiques. Put a concept together for Daffodil.
+
+shaydefy.com
+Shayden
+
+T2: Hey Daffodil — following up. No Google presence for Bangkok florist searches, no corporate or wedding enquiry form, no gallery outside Instagram. Built a concept. shaydefy.com — Shayden
+
+T3: Hey Daffodil — last message. Built a homepage concept for the boutique. Reply and I'll send it. Shayden — shaydefy.com
+
+**Send order:** IG
+
+---
+
+## 61 — no bar wine bar
+**Contact:** @nobar.winebar (IG)
+**Channel:** Instagram
+**Website score:** 0 — no website
+**Pain point:** No website, natural wine customers are research-driven, no event/private booking page
+**Colors:** Burgundy #8C4060 on warm cream #F3EDE6 (best guess — verify from IG)
+**Mockup:** no-bar-wine-bar.html
+
+### Instagram
+T1: Hey no bar,
+
+Natural wine bar in Ari — the kind of place people research before they go. But no website means you're invisible on Google, and any event or private group enquiry has nowhere to go.
+
+The customer who drinks natural wine specifically searches out places like this. A website captures that traffic directly.
+
+I build custom sites for Bangkok bars and hospitality. Put a concept together for no bar.
+
+shaydefy.com
+Shayden
+
+T2: Hey no bar — following up. Natural wine drinkers research venues before visiting. No website means no Google presence, no event booking page, nothing to find. Built a concept. shaydefy.com — Shayden
+
+T3: Hey no bar — last message. Built a homepage concept for the bar. Reply and I'll send it. Shayden — shaydefy.com
+
+**Send order:** IG
