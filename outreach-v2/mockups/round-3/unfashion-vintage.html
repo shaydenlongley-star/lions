@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Unfashion Vintage — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  /* Brand colors — auto-patched by apply-colors.cjs */
+  :root {
+    --brand-primary: #8B5E3C;
+    --brand-secondary: #E8DCC8;
+    --brand-accent: #4A5C3A;
+    --brand-bg: #A0785A;
+    --brand-text: #1A1A1A;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-secondary); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-secondary); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #3A2A1A; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.62) saturate(0.55); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(232,220,200,0.1) 0%, transparent 20%), linear-gradient(0deg, rgba(22,14,6,0.5) 0%, transparent 42%); }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(139,94,60,0.9) 30%, rgba(74,92,58,0.8) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(139,94,60,0.35); padding: 14px 18px; background: rgba(232,220,200,0.94); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(26,16,8,0.36); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(139,94,60,0.42); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(139,94,60,0.9); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .svc-name { color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(139,94,60,0.55); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.68); }
+  .svc-item.active .svc-dot { background: rgba(139,94,60,0.95); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(232,220,200,0.97); border-bottom: 1px solid rgba(139,94,60,0.18); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--brand-text); letter-spacing: 0.2em; }
+  .logo em { font-style: italic; color: var(--brand-primary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,26,26,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-text); color: var(--brand-secondary); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: var(--brand-primary); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: var(--brand-text); margin-bottom: 18px; }
+  h1 em { font-style: italic; color: var(--brand-primary); }
+  .rule { width: 36px; height: 1px; background: rgba(139,94,60,0.4); margin-bottom: 18px; }
+  p { color: rgba(26,26,26,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: var(--brand-text); color: var(--brand-secondary); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,26,26,0.14); color: rgba(26,26,26,0.46); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(139,94,60,0.32); color: rgba(26,26,26,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Unfashion</em> Vintage</div>
+    <div class="nav-links"><a href="#">Shop</a><a href="#">Collection</a><a href="#">About</a><a href="#">Visit</a></div>
+    <button class="nav-cta">Shop Now</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Bangkok · Curated Vintage · Leather & Denim</div>
+    <h1>Worn well,<br><em>found here.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok's curated vintage destination. Leather boots, aged denim, and rare finds — every piece with a history worth wearing.</p>
+    <div class="actions">
+      <button class="btn-primary">Browse Collection</button>
+      <button class="btn-ghost">Visit the Store</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Vintage Leather</div><div class="tag">Denim</div><div class="tag">Curated Finds</div><div class="tag">Bangkok</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="Unfashion Vintage Bangkok">
+    <div class="accent-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Leather Goods</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Vintage Denim</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Bags & Shoes</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Rare Pieces</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Curated</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Vintage</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Bangkok · Est. Collection</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
