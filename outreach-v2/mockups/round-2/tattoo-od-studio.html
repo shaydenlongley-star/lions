@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Tattoo OD Studio — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #1A1A1A; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: #F5F0E8; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #1A1A1A; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.22) saturate(0.3); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(245,240,232,0.12) 0%, transparent 18%), linear-gradient(0deg, rgba(10,10,10,0.6) 0%, transparent 42%); }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(232,48,90,0.8) 30%, rgba(240,120,32,0.8) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(232,48,90,0.28); padding: 14px 18px; background: rgba(245,240,232,0.92); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(26,26,26,0.36); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(232,48,90,0.35); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(200,40,74,0.9); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .svc-name { color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(232,48,90,0.5); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.68); }
+  .svc-item.active .svc-dot { background: rgba(232,48,90,0.95); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(245,240,232,0.97); border-bottom: 1px solid rgba(232,48,90,0.1); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #1A1A1A; letter-spacing: 0.16em; }
+  .logo em { font-style: italic; color: #E8305A; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,26,26,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #1A1A1A; color: #F5F0E8; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: #E8305A; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #1A1A1A; margin-bottom: 18px; }
+  h1 em { font-style: italic; color: #F07820; }
+  .rule { width: 36px; height: 1px; background: rgba(232,48,90,0.35); margin-bottom: 18px; }
+  p { color: rgba(26,26,26,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: #1A1A1A; color: #F5F0E8; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,26,26,0.16); color: rgba(26,26,26,0.46); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(232,48,90,0.24); color: rgba(26,26,26,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>OD</em> Studio Tattoo</div>
+    <div class="nav-links"><a href="#">Portfolio</a><a href="#">Artists</a><a href="#">Pricing</a><a href="#">Book</a></div>
+    <button class="nav-cta">Book Appointment</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Sukhumvit 53 · Thonglor · Bangkok</div>
+    <h1>Art on skin,<br><em>made to last.</em></h1>
+    <div class="rule"></div>
+    <p>Custom tattoo studio on Sukhumvit 53. Specialising in fine line, colour realism, and custom design — every piece is a one-of-a-kind collaboration.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Session</button>
+      <button class="btn-ghost">View Portfolio</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Fine Line</div><div class="tag">Colour Realism</div><div class="tag">Custom</div><div class="tag">Thonglor</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=1200&q=80" alt="OD Studio Tattoo Bangkok">
+    <div class="accent-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Fine Line</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Colour Realism</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Custom Design</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Cover Ups</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Custom</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Tattoo</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Thonglor · Bangkok</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
