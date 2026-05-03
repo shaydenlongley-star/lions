@@ -7,6 +7,14 @@ const { execSync } = require('child_process');
 const INCOMING_DIR = path.join(__dirname, 'incoming');
 if (!fs.existsSync(INCOMING_DIR)) fs.mkdirSync(INCOMING_DIR);
 
+const STATE_FILE = path.join(__dirname, 'state.json');
+function readState() {
+  try { return JSON.parse(fs.readFileSync(STATE_FILE, 'utf8')); } catch { return {}; }
+}
+function writeState(state) {
+  fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2));
+}
+
 const server = http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -25,6 +33,29 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/health') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ ok: true }));
+    return;
+  }
+
+  if (req.method === 'GET' && req.url === '/state') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(readState()));
+    return;
+  }
+
+  if (req.method === 'POST' && req.url === '/state') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const { key, value } = JSON.parse(body);
+        const state = readState();
+        if (value === null || value === undefined) delete state[key];
+        else state[key] = value;
+        writeState(state);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: true }));
+      } catch { res.writeHead(400); res.end('Invalid JSON'); }
+    });
     return;
   }
 

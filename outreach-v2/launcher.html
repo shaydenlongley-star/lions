@@ -977,27 +977,49 @@ Shayden — shaydefy.com` }
 let currentRound = 1;
 let currentTouch = 1;
 
+// Load persisted state from server on boot (server is source of truth)
+fetch('/state').then(r => r.json()).then(state => {
+  Object.entries(state).forEach(([k, v]) => v ? localStorage.setItem(k, v) : localStorage.removeItem(k));
+  render();
+}).catch(() => render());
+
 function sentKey(contactId, channelType, touch) {
   return `sent_${contactId}_${channelType}_t${touch || currentTouch}`;
 }
+
+function persistKey(k, v) {
+  fetch('/state', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ key: k, value: v ?? null }) }).catch(() => {});
+}
+
 function isSent(cid, type) { return localStorage.getItem(sentKey(cid, type)) === '1'; }
-function markSent(cid, type) { localStorage.setItem(sentKey(cid, type), '1'); }
+function markSent(cid, type) {
+  const k = sentKey(cid, type);
+  localStorage.setItem(k, '1');
+  persistKey(k, '1');
+}
 function toggleSent(cid, type) {
   const k = sentKey(cid, type);
-  localStorage.getItem(k) === '1' ? localStorage.removeItem(k) : localStorage.setItem(k, '1');
+  const nowSent = localStorage.getItem(k) !== '1';
+  nowSent ? localStorage.setItem(k, '1') : localStorage.removeItem(k);
+  persistKey(k, nowSent ? '1' : null);
   render();
 }
 
 function resetSent() {
   if (!confirm('Clear all sent checkmarks for the current touch?')) return;
-  Object.keys(localStorage).filter(k => k.startsWith(`sent_`) && k.endsWith(`_t${currentTouch}`)).forEach(k => localStorage.removeItem(k));
+  Object.keys(localStorage).filter(k => k.startsWith(`sent_`) && k.endsWith(`_t${currentTouch}`)).forEach(k => {
+    localStorage.removeItem(k);
+    persistKey(k, null);
+  });
   render();
 }
 
 function noteKey(cid, type) { return `note_${cid}_${type}`; }
 function getNote(cid, type) { return localStorage.getItem(noteKey(cid, type)) || ''; }
 function saveNote(cid, type, val) {
-  val.trim() ? localStorage.setItem(noteKey(cid, type), val.trim()) : localStorage.removeItem(noteKey(cid, type));
+  const k = noteKey(cid, type);
+  val.trim() ? localStorage.setItem(k, val.trim()) : localStorage.removeItem(k);
+  persistKey(k, val.trim() || null);
   const btn = document.getElementById(`note-btn-${cid}-${type}`);
   if (btn) btn.classList.toggle('has-note', !!val.trim());
   const chip = document.getElementById(`chip-${cid}-${type}`);
