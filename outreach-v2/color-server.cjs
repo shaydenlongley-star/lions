@@ -1,4 +1,4 @@
-// Plain HTTP — file:// origins can POST to http://localhost without Chrome's Private Network Access restrictions
+// Serves launcher.html at GET / so browser Claude uses http://127.0.0.1:3457 — same-origin, no CORS issues
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -13,6 +13,14 @@ const server = http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
+
+  // Serve launcher at root — browser Claude navigates here instead of file://
+  if (req.method === 'GET' && (req.url === '/' || req.url === '/launcher')) {
+    const launcherPath = path.join(__dirname, 'launcher.html');
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(fs.readFileSync(launcherPath));
+    return;
+  }
 
   if (req.method === 'GET' && req.url === '/health') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -56,5 +64,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3457, '127.0.0.1', () => {
-  console.log('[COLOR SERVER] http://127.0.0.1:3457 — waiting for submissions');
+  console.log('[COLOR SERVER] Running — open http://127.0.0.1:3457 in browser');
 });

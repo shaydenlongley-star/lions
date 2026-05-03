@@ -12,7 +12,7 @@ I need you to extract brand colors from Instagram accounts and submit them to my
 For each account listed below, please:
 1. Go to their Instagram profile
 2. Analyze their color palette from their logo, feed, highlights, and brand graphics
-3. Navigate to: file:///C:/Claude%20Code/outreach-v2/launcher.html
+3. Navigate to: http://127.0.0.1:3457
 4. Click the "⬡ Colors" button in the toolbar
 5. Fill in the Round number, the Instagram handle, and the 5 color fields (Primary, Secondary, Accent, Bg, Text)
 6. Add any notes about logo style or feed vibe
