@@ -1,0 +1,12 @@
+[
+  { "id": 1, "round": 1, "name": "TUR Hair Salon", "channel": "email", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 1, "round": 1, "name": "TUR Hair Salon", "channel": "instagram", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 1, "round": 1, "name": "TUR Hair Salon", "channel": "line", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 2, "round": 1, "name": "LOU LOU Nail", "channel": "instagram", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 2, "round": 1, "name": "LOU LOU Nail", "channel": "line", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 3, "round": 1, "name": "Bangkok Boxing Gym", "channel": "email", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 3, "round": 1, "name": "Bangkok Boxing Gym", "channel": "instagram", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 3, "round": 1, "name": "Bangkok Boxing Gym", "channel": "whatsapp", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 4, "round": 1, "name": "Daffodil Flower Boutique", "channel": "instagram", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" },
+  { "id": 5, "round": 1, "name": "no bar wine bar", "channel": "instagram", "dateContacted": "2026-05-03", "status": "contacted", "touchNumber": 1, "nextFollowUp": "2026-05-06", "notes": "" }
+]
