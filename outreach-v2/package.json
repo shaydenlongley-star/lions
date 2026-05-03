@@ -1,0 +1,10 @@
+{
+  "name": "outreach-v2",
+  "version": "1.0.0",
+  "scripts": {
+    "screenshot": "node screenshot.cjs"
+  },
+  "dependencies": {
+    "puppeteer": "^24.42.0"
+  }
+}
