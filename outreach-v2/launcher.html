@@ -147,12 +147,13 @@ body {
 .ch-icon {
   width: 30px; height: 30px; border-radius: 7px;
   display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 0.68rem; font-weight: 700; letter-spacing: 0;
+  flex-shrink: 0;
 }
-.ch-icon.email    { background: rgba(66,133,244,0.12); color: var(--c-email); }
-.ch-icon.whatsapp { background: rgba(37,211,102,0.12); color: var(--c-wa); }
-.ch-icon.instagram{ background: rgba(225,48,108,0.12); color: var(--c-ig); }
-.ch-icon.line     { background: rgba(6,199,85,0.12);  color: var(--c-line); }
+.ch-icon svg { width: 16px; height: 16px; display: block; }
+.ch-icon.email    { background: rgba(66,133,244,0.12); }
+.ch-icon.whatsapp { background: rgba(37,211,102,0.12); }
+.ch-icon.instagram{ background: rgba(225,48,108,0.12); }
+.ch-icon.line     { background: rgba(6,199,85,0.12);  }
 
 .ch-info { flex: 1; min-width: 0; }
 .ch-label { font-size: 0.72rem; font-weight: 500; color: var(--text); line-height: 1.2; }
@@ -430,11 +431,18 @@ function getContact(id) { return contacts.find(c => c.id === id); }
 function getChannel(id, type) { return getContact(id).channels.find(ch => ch.type === type); }
 
 // ── Platform helpers ────────────────────────────────────────────────
+const ICONS = {
+  email: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="none"/><path d="M4 7.5C4 6.67 4.67 6 5.5 6h13C19.33 6 20 6.67 20 7.5v9c0 .83-.67 1.5-1.5 1.5h-13C4.67 18 4 17.33 4 16.5v-9z" stroke="#4285F4" stroke-width="1.5"/><path d="M4 8l8 5 8-5" stroke="#4285F4" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  whatsapp: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" fill="#25D366" fill-opacity="0.15" stroke="#25D366" stroke-width="1.5"/><path d="M8.5 9.5c.5 1 1.5 2.5 2.5 3.5s2.5 2 3.5 2.5c.3.15.65.05.85-.2l.5-.7c.2-.3.55-.4.85-.25l1.8.9c.3.15.4.5.2.8-.6 1-1.7 1.7-2.85 1.45C13 17 10 14 9.25 11.85c-.25-1.15.45-2.25 1.45-2.85.3-.2.65-.1.8.2l.9 1.8c.15.3.05.65-.25.85l-.7.5c-.25.2-.35.55-.2.85z" fill="#25D366"/></svg>`,
+  instagram: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#E1306C" stroke-width="1.5" fill="#E1306C" fill-opacity="0.1"/><circle cx="12" cy="12" r="3.5" stroke="#E1306C" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="#E1306C"/></svg>`,
+  line: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" fill="#06C755" fill-opacity="0.15" stroke="#06C755" stroke-width="1.5"/><path d="M12 5.5C8.134 5.5 5 8.1 5 11.3c0 1.9 1.07 3.6 2.75 4.7-.12.42-.4 1.5-.46 1.73-.07.28.1.28.22.2.09-.06 1.48-.98 2.08-1.38.45.06.92.1 1.41.1 3.866 0 7-2.6 7-5.8S15.866 5.5 12 5.5z" fill="#06C755" fill-opacity="0.3" stroke="#06C755" stroke-width="1"/><path d="M9 11h1m2 0h1m-2-1.5v3" stroke="#06C755" stroke-width="1.2" stroke-linecap="round"/></svg>`,
+};
+
 const PLATFORM = {
-  email:     { label: 'Email',        icon: '✉',  detail: ch => ch.to },
-  whatsapp:  { label: 'WhatsApp',     icon: 'W',  detail: ch => '+' + ch.phone },
-  instagram: { label: 'Instagram DM', icon: 'IG', detail: ch => '@' + ch.handle },
-  line:      { label: 'LINE',         icon: 'L',  detail: ch => ch.id },
+  email:     { label: 'Email',        icon: ICONS.email,     detail: ch => ch.to },
+  whatsapp:  { label: 'WhatsApp',     icon: ICONS.whatsapp,  detail: ch => '+' + ch.phone },
+  instagram: { label: 'Instagram DM', icon: ICONS.instagram, detail: ch => '@' + ch.handle },
+  line:      { label: 'LINE',         icon: ICONS.line,      detail: ch => ch.id },
 };
 
 function getUrl(ch, touch) {
@@ -537,7 +545,7 @@ function render() {
       const presets = ['Inactive', 'No account', 'No reply', 'Wrong number', 'Already has site'];
 
       return `<div class="ch ${chSent ? 'sent' : ''}">
-        <div class="ch-icon ${ch.type}">${p.icon}</div>
+        <div class="ch-icon ${ch.type}" title="${p.label}">${p.icon}</div>
         <div class="ch-info">
           <div class="ch-label">${p.label}</div>
           <div class="ch-detail">${p.detail(ch)}<span class="note-chip" id="chip-${c.id}-${ch.type}" style="${note ? '' : 'display:none'}">${note}</span></div>
