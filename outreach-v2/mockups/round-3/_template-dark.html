@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>[BUSINESS NAME] — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  /* Brand colors — auto-patched by apply-colors.cjs */
+  :root {
+    --brand-primary: #0A0A0A;
+    --brand-secondary: #E8307A;
+    --brand-accent: #F0A800;
+    --brand-bg: #0A0A0A;
+    --brand-text: #FFFFFF;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; position: relative; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.15) saturate(0.2); }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, var(--brand-bg) 0%, color-mix(in srgb, var(--brand-secondary) 8%, transparent) 60%, transparent 100%); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: color-mix(in srgb, var(--brand-bg) 92%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--brand-text) 6%, transparent); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--brand-text); letter-spacing: 0.2em; text-transform: uppercase; }
+  .logo em { font-style: italic; color: var(--brand-secondary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: color-mix(in srgb, var(--brand-text) 36%, transparent); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-secondary); color: #fff; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .content { position: relative; z-index: 5; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 120px 100px; max-width: 680px; }
+  .eyebrow { color: var(--brand-accent); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 5.2rem; font-weight: 300; line-height: 1.04; color: var(--brand-text); margin-bottom: 18px; }
+  h1 em { font-style: italic; color: var(--brand-secondary); }
+  .rule { width: 36px; height: 1px; background: color-mix(in srgb, var(--brand-secondary) 50%, transparent); margin-bottom: 18px; }
+  p { color: color-mix(in srgb, var(--brand-text) 46%, transparent); font-size: 0.88rem; line-height: 1.8; max-width: 420px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: var(--brand-secondary); color: #fff; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid color-mix(in srgb, var(--brand-text) 18%, transparent); color: color-mix(in srgb, var(--brand-text) 50%, transparent); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid color-mix(in srgb, var(--brand-secondary) 28%, transparent); color: color-mix(in srgb, var(--brand-text) 36%, transparent); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .stat-bar { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 20px; }
+  .stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: color-mix(in srgb, var(--brand-text) 70%, transparent); line-height: 1; }
+  .stat-lbl { font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: color-mix(in srgb, var(--brand-text) 28%, transparent); }
+  .stat-line { width: 1px; height: 24px; background: color-mix(in srgb, var(--brand-accent) 40%, transparent); margin: 0 auto; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"><img src="HERO_IMAGE_URL" alt="[BUSINESS NAME]"></div>
+  <div class="hero-overlay"></div>
+  <nav>
+    <div class="logo"><em>LOGO</em> Name</div>
+    <div class="nav-links"><a href="#">Link1</a><a href="#">Link2</a><a href="#">Link3</a><a href="#">Link4</a></div>
+    <button class="nav-cta">Primary CTA</button>
+  </nav>
+  <div class="content">
+    <div class="eyebrow">Area · Bangkok · Category</div>
+    <h1>Headline<br><em>italic part.</em></h1>
+    <div class="rule"></div>
+    <p>One or two sentences about what makes this place worth visiting. Specific, not generic.</p>
+    <div class="actions">
+      <button class="btn-primary">Primary CTA</button>
+      <button class="btn-ghost">Secondary CTA</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Tag 1</div><div class="tag">Tag 2</div><div class="tag">Tag 3</div><div class="tag">Tag 4</div>
+    </div>
+  </div>
+  <div class="stat-bar">
+    <div class="stat"><div class="stat-val">??</div><div class="stat-lbl">Stat 1</div></div>
+    <div class="stat-line"></div>
+    <div class="stat"><div class="stat-val">??</div><div class="stat-lbl">Stat 2</div></div>
+    <div class="stat-line"></div>
+    <div class="stat"><div class="stat-val">BKK</div><div class="stat-lbl">Based</div></div>
+  </div>
+</div>
+</body>
+</html>

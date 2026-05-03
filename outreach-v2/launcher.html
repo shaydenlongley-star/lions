@@ -223,6 +223,41 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ── Empty state ──────────────────────────────────── */
 .empty { padding: 60px 28px; text-align: center; color: var(--dim); font-size: 0.78rem; letter-spacing: 0.06em; }
+
+/* ── Color panel ──────────────────────────────────── */
+.color-panel-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+}
+.color-panel-overlay.open { display: flex; align-items: center; justify-content: center; }
+.color-panel {
+  background: #111; border: 1px solid var(--border-md);
+  border-radius: 12px; width: 480px; max-width: 95vw;
+  padding: 24px; display: flex; flex-direction: column; gap: 14px;
+}
+.cp-header { display: flex; align-items: center; justify-content: space-between; }
+.cp-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
+.cp-close { background: none; border: 1px solid var(--border); color: var(--muted); border-radius: 5px; width: 28px; height: 28px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.cp-close:hover { border-color: var(--border-md); color: var(--text); }
+.cp-row { display: flex; gap: 10px; }
+.cp-field { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.cp-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+.cp-input { background: var(--s2); border: 1px solid var(--border); color: var(--text); font-size: 0.72rem; font-family: inherit; padding: 7px 10px; border-radius: 5px; outline: none; width: 100%; }
+.cp-input:focus { border-color: var(--border-md); }
+.cp-color-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.cp-color-field { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.cp-color-preview { width: 100%; height: 26px; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; }
+.cp-color-hex { width: 100%; background: var(--s2); border: 1px solid var(--border); color: var(--text); font-size: 0.6rem; font-family: 'Inter', monospace; padding: 4px 5px; border-radius: 4px; outline: none; text-align: center; }
+.cp-color-hex:focus { border-color: var(--border-md); }
+.cp-notes { background: var(--s2); border: 1px solid var(--border); color: var(--muted); font-size: 0.68rem; font-family: inherit; padding: 8px 10px; border-radius: 5px; outline: none; width: 100%; resize: none; height: 52px; }
+.cp-notes:focus { border-color: var(--border-md); }
+.cp-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cp-status { font-size: 0.66rem; color: var(--dim); flex: 1; }
+.cp-status.ok { color: var(--green); }
+.cp-status.err { color: #F87171; }
+.btn-submit-colors { background: var(--accent-t1); color: #fff; border: none; border-radius: 6px; padding: 9px 20px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
+.btn-submit-colors:hover { opacity: 0.85; }
+.btn-submit-colors:disabled { opacity: 0.4; cursor: default; }
 </style>
 </head>
 <body>
@@ -240,7 +275,68 @@ button { font-family: inherit; cursor: pointer; }
 
 <div class="toolbar">
   <div class="round-tabs" id="roundTabs"></div>
-  <div class="statsbar" id="statsbar"></div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div class="statsbar" id="statsbar"></div>
+    <button onclick="openColorPanel()" style="padding:5px 13px;border-radius:5px;border:1px solid rgba(129,140,248,0.3);background:none;color:var(--accent-t1);font-size:0.68rem;font-family:inherit;cursor:pointer;letter-spacing:0.07em;transition:all 0.15s" onmouseover="this.style.background='rgba(129,140,248,0.1)'" onmouseout="this.style.background='none'">⬡ Colors</button>
+  </div>
+</div>
+
+<!-- Color submission panel -->
+<div class="color-panel-overlay" id="colorPanelOverlay" onclick="if(event.target===this)closeColorPanel()">
+  <div class="color-panel">
+    <div class="cp-header">
+      <div class="cp-title">Submit Brand Colors</div>
+      <button class="cp-close" onclick="closeColorPanel()">✕</button>
+    </div>
+    <div class="cp-row">
+      <div class="cp-field">
+        <div class="cp-label">Round</div>
+        <input class="cp-input" id="cp-round" type="number" min="1" value="1">
+      </div>
+      <div class="cp-field" style="flex:3">
+        <div class="cp-label">Instagram Handle</div>
+        <input class="cp-input" id="cp-handle" type="text" placeholder="e.g. rattle_tattoo">
+      </div>
+    </div>
+    <div>
+      <div class="cp-label" style="margin-bottom:8px">Brand Colors</div>
+      <div class="cp-color-row">
+        <div class="cp-color-field">
+          <div class="cp-label">Primary</div>
+          <input type="color" class="cp-color-preview" id="cp-primary-picker" oninput="syncHex('primary',this.value)">
+          <input class="cp-color-hex" id="cp-primary" value="#1A1A1A" oninput="syncPicker('primary',this.value)" placeholder="#1A1A1A">
+        </div>
+        <div class="cp-color-field">
+          <div class="cp-label">Secondary</div>
+          <input type="color" class="cp-color-preview" id="cp-secondary-picker" oninput="syncHex('secondary',this.value)">
+          <input class="cp-color-hex" id="cp-secondary" value="#E8305A" oninput="syncPicker('secondary',this.value)" placeholder="#E8305A">
+        </div>
+        <div class="cp-color-field">
+          <div class="cp-label">Accent</div>
+          <input type="color" class="cp-color-preview" id="cp-accent-picker" oninput="syncHex('accent',this.value)">
+          <input class="cp-color-hex" id="cp-accent" value="#F07820" oninput="syncPicker('accent',this.value)" placeholder="#F07820">
+        </div>
+        <div class="cp-color-field">
+          <div class="cp-label">Bg</div>
+          <input type="color" class="cp-color-preview" id="cp-bg-picker" oninput="syncHex('bg',this.value)">
+          <input class="cp-color-hex" id="cp-bg" value="#F5F0E8" oninput="syncPicker('bg',this.value)" placeholder="#F5F0E8">
+        </div>
+        <div class="cp-color-field">
+          <div class="cp-label">Text</div>
+          <input type="color" class="cp-color-preview" id="cp-text-picker" oninput="syncHex('text',this.value)">
+          <input class="cp-color-hex" id="cp-text" value="#1A1A1A" oninput="syncPicker('text',this.value)" placeholder="#1A1A1A">
+        </div>
+      </div>
+    </div>
+    <div class="cp-field">
+      <div class="cp-label">Notes (optional)</div>
+      <textarea class="cp-notes" id="cp-notes" placeholder="Logo style, feed vibe, anything Claude Code should know..."></textarea>
+    </div>
+    <div class="cp-footer">
+      <div class="cp-status" id="cp-status">Server: checking...</div>
+      <button class="btn-submit-colors" id="cp-submit" onclick="submitColors()">Submit Colors →</button>
+    </div>
+  </div>
 </div>
 
 <div class="progress-strip"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -738,6 +834,85 @@ function render() {
 }
 
 render();
+
+// ── Color panel ─────────────────────────────────────────────────────
+function openColorPanel() {
+  document.getElementById('colorPanelOverlay').classList.add('open');
+  document.getElementById('cp-round').value = currentRound;
+  checkServer();
+  syncAllPickers();
+}
+function closeColorPanel() {
+  document.getElementById('colorPanelOverlay').classList.remove('open');
+}
+
+function syncHex(key, val) {
+  const el = document.getElementById(`cp-${key}`);
+  if (el) el.value = val;
+}
+function syncPicker(key, val) {
+  if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+    const el = document.getElementById(`cp-${key}-picker`);
+    if (el) el.value = val;
+  }
+}
+function syncAllPickers() {
+  ['primary','secondary','accent','bg','text'].forEach(k => {
+    const hex = document.getElementById(`cp-${k}`).value;
+    if (/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+      document.getElementById(`cp-${k}-picker`).value = hex;
+    }
+  });
+}
+
+function checkServer() {
+  const status = document.getElementById('cp-status');
+  status.className = 'cp-status';
+  status.textContent = 'Server: checking...';
+  fetch('http://127.0.0.1:3457/health')
+    .then(r => r.json())
+    .then(() => { status.className = 'cp-status ok'; status.textContent = 'Server: ready ✓'; })
+    .catch(() => { status.className = 'cp-status err'; status.textContent = 'Server offline — run: node color-server.cjs'; });
+}
+
+function submitColors() {
+  const round = parseInt(document.getElementById('cp-round').value);
+  const handle = document.getElementById('cp-handle').value.trim();
+  const primary = document.getElementById('cp-primary').value.trim();
+  const secondary = document.getElementById('cp-secondary').value.trim();
+  const accent = document.getElementById('cp-accent').value.trim();
+  const bg = document.getElementById('cp-bg').value.trim();
+  const text = document.getElementById('cp-text').value.trim();
+  const notes = document.getElementById('cp-notes').value.trim();
+
+  if (!handle) { setStatus('err', 'Enter an Instagram handle'); return; }
+
+  const btn = document.getElementById('cp-submit');
+  btn.disabled = true;
+  setStatus('', 'Submitting...');
+
+  fetch('http://127.0.0.1:3457/colors', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ round, handle, colors: { primary, secondary, accent, bg, text, notes } })
+  })
+  .then(r => r.json())
+  .then(d => {
+    if (d.ok) {
+      setStatus('ok', `Submitted ✓ — ${d.file}`);
+      btn.disabled = false;
+    } else {
+      setStatus('err', 'Server error'); btn.disabled = false;
+    }
+  })
+  .catch(() => { setStatus('err', 'Failed — is color-server.cjs running?'); btn.disabled = false; });
+}
+
+function setStatus(cls, msg) {
+  const el = document.getElementById('cp-status');
+  el.className = 'cp-status' + (cls ? ' ' + cls : '');
+  el.textContent = msg;
+}
 </script>
 </body>
 </html>

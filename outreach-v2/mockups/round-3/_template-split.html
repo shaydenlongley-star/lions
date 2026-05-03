@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>[BUSINESS NAME] — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  /* Brand colors — auto-patched by apply-colors.cjs */
+  :root {
+    --brand-primary: #1A1A1A;
+    --brand-secondary: #E8305A;
+    --brand-accent: #F07820;
+    --brand-bg: #F5F0E8;
+    --brand-text: #1A1A1A;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #1A1A1A; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.62) saturate(0.55); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, color-mix(in srgb, var(--brand-bg) 16%, transparent) 0%, transparent 20%), linear-gradient(0deg, rgba(10,8,6,0.48) 0%, transparent 42%); }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--brand-secondary) 80%, transparent) 30%, color-mix(in srgb, var(--brand-accent) 80%, transparent) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid color-mix(in srgb, var(--brand-secondary) 28%, transparent); padding: 14px 18px; background: color-mix(in srgb, var(--brand-bg) 92%, transparent); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: color-mix(in srgb, var(--brand-text) 36%, transparent); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: color-mix(in srgb, var(--brand-secondary) 40%, transparent); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: color-mix(in srgb, var(--brand-secondary) 90%, transparent); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .svc-name { color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: color-mix(in srgb, var(--brand-secondary) 50%, transparent); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(255,255,255,0.68); }
+  .svc-item.active .svc-dot { background: var(--brand-secondary); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: color-mix(in srgb, var(--brand-bg) 97%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--brand-secondary) 10%, transparent); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--brand-text); letter-spacing: 0.12em; }
+  .logo em { font-style: italic; color: var(--brand-secondary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: color-mix(in srgb, var(--brand-text) 36%, transparent); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-text); color: var(--brand-bg); padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: var(--brand-secondary); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: var(--brand-text); margin-bottom: 18px; }
+  h1 em { font-style: italic; color: var(--brand-accent); }
+  .rule { width: 36px; height: 1px; background: color-mix(in srgb, var(--brand-secondary) 35%, transparent); margin-bottom: 18px; }
+  p { color: color-mix(in srgb, var(--brand-text) 46%, transparent); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: var(--brand-text); color: var(--brand-bg); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid color-mix(in srgb, var(--brand-text) 16%, transparent); color: color-mix(in srgb, var(--brand-text) 46%, transparent); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid color-mix(in srgb, var(--brand-secondary) 24%, transparent); color: color-mix(in srgb, var(--brand-text) 38%, transparent); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Brand</em> Name</div>
+    <div class="nav-links"><a href="#">Link1</a><a href="#">Link2</a><a href="#">Link3</a><a href="#">Link4</a></div>
+    <button class="nav-cta">Primary CTA</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Area · District · Bangkok</div>
+    <h1>Headline<br><em>italic part.</em></h1>
+    <div class="rule"></div>
+    <p>One or two sentences. Specific to this business — not generic.</p>
+    <div class="actions">
+      <button class="btn-primary">Primary CTA</button>
+      <button class="btn-ghost">Secondary CTA</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Tag 1</div><div class="tag">Tag 2</div><div class="tag">Tag 3</div><div class="tag">Tag 4</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="HERO_IMAGE_URL" alt="[BUSINESS NAME]">
+    <div class="accent-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Service 1</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Service 2</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Service 3</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Service 4</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Category</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Specialty</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Area · Bangkok</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

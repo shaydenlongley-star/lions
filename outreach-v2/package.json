@@ -5,6 +5,7 @@
     "screenshot": "node screenshot.cjs"
   },
   "dependencies": {
-    "puppeteer": "^24.42.0"
+    "puppeteer": "^24.42.0",
+    "selfsigned": "^5.5.0"
   }
 }
