@@ -7,53 +7,51 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  body { width: 100vw; height: 100vh; overflow: hidden; background: #F6F4F1; font-family: 'Inter', sans-serif; }
-  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
-  .left { background: #F6F4F1; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
-  .right { position: relative; overflow: hidden; background: #8C7260; }
-  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.74) saturate(0.55); }
-  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(246,244,241,0.16) 0%, transparent 20%), linear-gradient(0deg, rgba(26,20,16,0.44) 0%, transparent 42%); }
-  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(154,126,106,0.72) 30%, rgba(154,126,106,0.72) 70%, transparent); }
-  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(154,126,106,0.26); padding: 14px 18px; background: rgba(246,244,241,0.92); display: flex; flex-direction: column; gap: 6px; align-items: center; }
-  .badge-label { color: rgba(26,20,16,0.36); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
-  .badge-divider { width: 22px; height: 1px; background: rgba(154,126,106,0.3); }
-  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(120,96,76,0.88); font-style: italic; }
-  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
-  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
-  .svc-name { color: rgba(255,255,255,0.3); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(154,126,106,0.5); flex-shrink: 0; }
-  .svc-item.active .svc-name { color: rgba(255,255,255,0.68); }
-  .svc-item.active .svc-dot { background: rgba(154,126,106,0.95); }
-  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(246,244,241,0.97); border-bottom: 1px solid rgba(154,126,106,0.1); }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #1A1410; letter-spacing: 0.12em; }
-  .logo em { font-style: italic; color: #9A7E6A; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #1A1A1A; font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; position: relative; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.22) saturate(0.4); }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,26,26,0.96) 0%, rgba(26,26,26,0.6) 55%, transparent 100%); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(26,26,26,0.85); border-bottom: 1px solid rgba(227,0,15,0.18); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: #FFFFFF; letter-spacing: 0.18em; }
+  .logo em { font-style: normal; color: #E3000F; }
   .nav-links { display: flex; gap: 32px; }
-  .nav-links a { color: rgba(26,20,16,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
-  .nav-cta { background: #1A1410; color: #F6F4F1; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
-  .eyebrow { color: #9A7E6A; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.8rem; font-weight: 300; line-height: 1.06; color: #1A1410; margin-bottom: 18px; }
-  h1 em { font-style: italic; color: #9A7E6A; }
-  .rule { width: 36px; height: 1px; background: rgba(154,126,106,0.32); margin-bottom: 18px; }
-  p { color: rgba(26,20,16,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .nav-links a { color: rgba(255,255,255,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: #E3000F; color: #FFFFFF; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .content { position: relative; z-index: 5; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 120px 100px; max-width: 680px; }
+  .eyebrow { color: #E3000F; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 5.2rem; font-weight: 300; line-height: 1.04; color: #FFFFFF; margin-bottom: 18px; }
+  h1 em { font-style: italic; color: #F0A800; }
+  .rule { width: 36px; height: 1px; background: rgba(227,0,15,0.5); margin-bottom: 18px; }
+  p { color: rgba(255,255,255,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 420px; margin-bottom: 36px; font-weight: 300; }
   .actions { display: flex; gap: 12px; margin-bottom: 28px; }
-  .btn-primary { background: #1A1410; color: #F6F4F1; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
-  .btn-ghost { border: 1px solid rgba(26,20,16,0.16); color: rgba(26,20,16,0.46); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .btn-primary { background: #E3000F; color: #FFFFFF; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
   .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag { border: 1px solid rgba(154,126,106,0.26); color: rgba(26,20,16,0.38); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .tag { border: 1px solid rgba(227,0,15,0.3); color: rgba(255,255,255,0.36); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .stat-bar { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 20px; }
+  .stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1; }
+  .stat-lbl { font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
+  .stat-line { width: 1px; height: 24px; background: rgba(227,0,15,0.35); margin: 0 auto; }
 </style>
 </head>
 <body>
 <div class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" alt="TUR Hair Salon Bangkok">
+  </div>
+  <div class="hero-overlay"></div>
   <nav>
-    <div class="logo"><em>TUR</em> Hair Salon</div>
+    <div class="logo"><em>TUR</em> HAIR SALON</div>
     <div class="nav-links">
       <a href="#">Services</a><a href="#">Gallery</a><a href="#">About</a><a href="#">Book</a>
     </div>
     <button class="nav-cta">Book Now</button>
   </nav>
-  <div class="left">
+  <div class="content">
     <div class="eyebrow">Phrom Phong · Sukhumvit 26 · Bangkok</div>
-    <h1>Style that<br>speaks for <em>itself.</em></h1>
+    <h1>Style that speaks<br>for <em>itself.</em></h1>
     <div class="rule"></div>
     <p>Bangkok's trusted hair salon on Sukhumvit 26. Cut, colour, and treatment services by appointment — no walk-in rush, just the result you came for.</p>
     <div class="actions">
@@ -67,22 +65,12 @@
       <div class="tag">Phrom Phong</div>
     </div>
   </div>
-  <div class="right">
-    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" alt="TUR Hair Salon Bangkok">
-    <div class="accent-strip"></div>
-    <div class="svc-list">
-      <div class="svc-item active"><div class="svc-name">Cut & Colour</div><div class="svc-dot"></div></div>
-      <div class="svc-item"><div class="svc-name">Perms & Treatments</div><div class="svc-dot"></div></div>
-      <div class="svc-item"><div class="svc-name">Styling</div><div class="svc-dot"></div></div>
-      <div class="svc-item"><div class="svc-name">Keratin</div><div class="svc-dot"></div></div>
-    </div>
-    <div class="service-badge">
-      <div class="badge-label">Hair</div>
-      <div class="badge-divider"></div>
-      <div class="badge-val">Salon</div>
-      <div class="badge-divider"></div>
-      <div class="badge-label">Phrom Phong · Bangkok</div>
-    </div>
+  <div class="stat-bar">
+    <div class="stat"><div class="stat-val">67K</div><div class="stat-lbl">Followers</div></div>
+    <div class="stat-line"></div>
+    <div class="stat"><div class="stat-val">5+</div><div class="stat-lbl">Years</div></div>
+    <div class="stat-line"></div>
+    <div class="stat"><div class="stat-val">All</div><div class="stat-lbl">Hair Types</div></div>
   </div>
 </div>
 </body>
