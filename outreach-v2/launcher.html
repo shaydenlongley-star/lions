@@ -507,8 +507,8 @@ function render() {
   const rounds = [...new Set(contacts.map(c => c.round))].sort();
   const display = currentRound === 0 ? contacts : contacts.filter(c => c.round === currentRound);
 
-  const touchLabels = ['T1 · Intro', 'T2 · Follow-up', 'T3 · Final'];
-  const touchClasses = ['t1', 't2', 't3'];
+  const touchLabels = ['T1 · Intro', 'T2 · Follow-up'];
+  const touchClasses = ['t1', 't2'];
   document.getElementById('touchPills').innerHTML = touchLabels.map((lbl, i) =>
     `<button class="touch-pill ${touchClasses[i]} ${currentTouch === i+1 ? 'active' : ''}" onclick="setTouch(${i+1})">${lbl}</button>`
   ).join('');
