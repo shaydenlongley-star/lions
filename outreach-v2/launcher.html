@@ -891,10 +891,16 @@ function submitColors() {
   btn.disabled = true;
   setStatus('', 'Submitting...');
 
+  const payload = { round, handle, colors: { primary, secondary, accent, bg, text, notes } };
+
+  // Always save to localStorage as backup
+  const lsKey = `colors_r${round}_${handle}`;
+  localStorage.setItem(lsKey, JSON.stringify(payload));
+
   fetch('http://127.0.0.1:3457/colors', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ round, handle, colors: { primary, secondary, accent, bg, text, notes } })
+    body: JSON.stringify(payload)
   })
   .then(r => r.json())
   .then(d => {
@@ -905,7 +911,10 @@ function submitColors() {
       setStatus('err', 'Server error'); btn.disabled = false;
     }
   })
-  .catch(() => { setStatus('err', 'Failed — is color-server.cjs running?'); btn.disabled = false; });
+  .catch(() => {
+    setStatus('err', 'Server offline — saved to localStorage. Start server and resubmit.');
+    btn.disabled = false;
+  });
 }
 
 function setStatus(cls, msg) {
