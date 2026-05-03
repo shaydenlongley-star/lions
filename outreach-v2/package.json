@@ -2,6 +2,7 @@
   "name": "outreach-v2",
   "version": "1.0.0",
   "scripts": {
+    "start": "node color-server.cjs",
     "screenshot": "node screenshot.cjs"
   },
   "dependencies": {

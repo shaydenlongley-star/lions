@@ -63,6 +63,14 @@ const server = http.createServer((req, res) => {
   res.writeHead(404); res.end('Not found');
 });
 
+server.on('error', e => {
+  if (e.code === 'EADDRINUSE') {
+    console.log('[COLOR SERVER] Already running on port 3457 — nothing to do.');
+    process.exit(0);
+  }
+  throw e;
+});
+
 server.listen(3457, '127.0.0.1', () => {
   console.log('[COLOR SERVER] Running — open http://127.0.0.1:3457 in browser');
 });
