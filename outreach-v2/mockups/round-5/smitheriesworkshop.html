@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Smitheries Workshop — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  /* Brand colors — auto-patched by apply-colors.cjs */
+  :root {
+    --brand-primary: #C4A05A;
+    --brand-secondary: #8A6A38;
+    --brand-accent: #E0BC78;
+    --brand-bg: #1A1510;
+    --brand-text: #F5F0E8;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; position: relative; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.16) saturate(0.5); }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,21,16,0.97) 0%, rgba(196,160,90,0.09) 60%, transparent 100%); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(26,21,16,0.92); border-bottom: 1px solid rgba(196,160,90,0.15); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--brand-text); letter-spacing: 0.2em; }
+  .logo em { font-style: italic; color: var(--brand-primary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(245,240,232,0.36); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-primary); color: #1A1510; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .content { position: relative; z-index: 5; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 120px 100px; max-width: 680px; }
+  .eyebrow { color: var(--brand-primary); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 5.2rem; font-weight: 300; line-height: 1.04; color: var(--brand-text); margin-bottom: 18px; }
+  h1 em { font-style: italic; color: var(--brand-primary); }
+  .rule { width: 36px; height: 1px; background: rgba(196,160,90,0.42); margin-bottom: 18px; }
+  p { color: rgba(245,240,232,0.46); font-size: 0.88rem; line-height: 1.8; max-width: 420px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: var(--brand-primary); color: #1A1510; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(245,240,232,0.18); color: rgba(245,240,232,0.5); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(196,160,90,0.26); color: rgba(245,240,232,0.36); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .stat-bar { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 20px; }
+  .stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: rgba(245,240,232,0.7); line-height: 1; }
+  .stat-lbl { font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.28); }
+  .stat-line { width: 1px; height: 24px; background: rgba(196,160,90,0.38); margin: 0 auto; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a0?w=1200&q=80" alt="Smitheries Workshop Bangkok"></div>
+  <div class="hero-overlay"></div>
+  <nav>
+    <div class="logo"><em>Smitheries</em> Workshop</div>
+    <div class="nav-links"><a href="#">Jewelry</a><a href="#">Workshops</a><a href="#">About</a><a href="#">Book</a></div>
+    <button class="nav-cta">Book a Workshop</button>
+  </nav>
+  <div class="content">
+    <div class="eyebrow">Ekkamai 21 · Bangkok · Jewelry & Craft</div>
+    <h1>Make the ring<br><em>yourself.</em></h1>
+    <div class="rule"></div>
+    <p>Independent jewelry studio and workshop space in Ekkamai. Buy handcrafted pieces or come in and make your own — the craft is the point.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Workshop</button>
+      <button class="btn-ghost">View the Showroom</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Jewelry Making</div><div class="tag">Workshops</div><div class="tag">Ekkamai</div><div class="tag">Showroom</div>
+    </div>
+  </div>
+  <div class="stat-bar">
+    <div class="stat"><div class="stat-val">BKK</div><div class="stat-lbl">Ekkamai</div></div>
+    <div class="stat-line"></div>
+    <div class="stat"><div class="stat-val">1:1</div><div class="stat-lbl">Sessions</div></div>
+    <div class="stat-line"></div>
+    <div class="stat"><div class="stat-val">Craft</div><div class="stat-lbl">Studio</div></div>
+  </div>
+</div>
+</body>
+</html>

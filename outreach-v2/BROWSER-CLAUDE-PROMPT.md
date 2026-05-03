@@ -12,7 +12,46 @@ Copy the prompt below and paste it into Claude in your browser (claude.ai). The 
 
 ---
 
-## Round 4 Prompt — Copy This
+## Round 5 Prompt — Copy This
+
+```
+I need you to extract brand colors from Instagram accounts and submit them to my local outreach tool.
+
+For each account listed below, please:
+1. Go to their Instagram profile
+2. Analyze their color palette from their logo, feed, highlights, and brand graphics
+3. Navigate to: http://127.0.0.1:3457
+4. Click the "⬡ Colors" button in the toolbar
+5. Fill in Round: 5, the Instagram handle, and the 5 color fields
+6. Add a short note about the logo style and feed vibe
+7. Click "Submit Colors →"
+8. Wait for "Submitted ✓" before moving to the next account
+
+Accounts to process (Round 5):
+- @2463speakeasy — Hidden speakeasy bar, Sukhumvit 22, dark and moody
+- @thonglormuaythai — Muay Thai gym, Thonglor/Ekkamai area
+- @alliestudioth — Photography/creative studio Bangkok
+- @lashcomeon — Lash extension salon Bangkok
+- @siamrington — Jewelry boutique Bangkok
+- @commoncottonofficial — Premium soy candle and home fragrance brand, multiple Bangkok locations
+- @summerbowlth — Acai and smoothie bowl bar, 4 Bangkok locations
+- @amiari — All-day brunch restaurant, Ari neighborhood
+- @smitheriesworkshop — Jewelry making workshop studio, Ekkamai
+- @paletteartspace — Art gallery and cafe, BTS Thonglor
+
+Color field guidance:
+- Primary: dominant brand color (logo, key UI elements)
+- Secondary: second most used color in the feed/branding
+- Accent: highlight or CTA color (often a pop color used sparingly)
+- Bg: background color that best represents their brand (cream, white, black, warm tan, etc.)
+- Text: primary text color (usually dark on light backgrounds, light on dark)
+
+After all 10 accounts are submitted, tell me you're done.
+```
+
+---
+
+## Round 4 Prompt — Archive
 
 ```
 I need you to extract brand colors from Instagram accounts and submit them to my local outreach tool.
