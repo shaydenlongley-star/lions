@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>M Contemporary Art — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #0A0A0A;
+    --brand-secondary: #E63946;
+    --brand-accent: #F4A261;
+    --brand-bg: #0F0F0F;
+    --brand-text: #F5F0E8;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Space Grotesk', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #080808; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.48) saturate(0.55); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(15,15,15,0.4) 0%, transparent 25%), linear-gradient(0deg, rgba(5,5,5,0.75) 0%, transparent 42%); }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(230,57,70,0.85) 30%, rgba(244,162,97,0.7) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(230,57,70,0.28); padding: 14px 18px; background: rgba(15,15,15,0.95); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(245,240,232,0.3); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(230,57,70,0.4); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(244,162,97,0.9); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .svc-name { color: rgba(245,240,232,0.25); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(230,57,70,0.5); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(245,240,232,0.65); }
+  .svc-item.active .svc-dot { background: rgba(244,162,97,0.95); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(10,10,10,0.98); border-bottom: 1px solid rgba(230,57,70,0.14); }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: var(--brand-text); letter-spacing: 0.3em; font-weight: 300; }
+  .logo em { font-style: normal; color: var(--brand-secondary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(245,240,232,0.3); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-secondary); color: #fff; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: var(--brand-accent); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; line-height: 1.06; color: var(--brand-text); margin-bottom: 18px; }
+  h1 em { font-style: italic; color: var(--brand-accent); }
+  .rule { width: 36px; height: 1px; background: rgba(230,57,70,0.5); margin-bottom: 18px; }
+  p { color: rgba(245,240,232,0.45); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: var(--brand-secondary); color: #fff; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(245,240,232,0.15); color: rgba(245,240,232,0.45); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(230,57,70,0.28); color: rgba(245,240,232,0.35); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>M</em> Contemporary</div>
+    <div class="nav-links"><a href="#">Exhibitions</a><a href="#">Artists</a><a href="#">About</a><a href="#">Contact</a></div>
+    <button class="nav-cta">View Current Exhibition</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Contemporary Art · Sukhumvit · Bangkok</div>
+    <h1>Art that<br><em>stays with you.</em></h1>
+    <div class="rule"></div>
+    <p>A serious gallery space in the heart of Bangkok. Rotating exhibitions from Thai and international artists — work you can actually live with.</p>
+    <div class="actions">
+      <button class="btn-primary">View Current Exhibition</button>
+      <button class="btn-ghost">Contact Gallery</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Contemporary Art</div><div class="tag">Bangkok</div><div class="tag">Exhibitions</div><div class="tag">Thai Artists</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=1200&q=80" alt="M Contemporary Art Gallery Sukhumvit Bangkok">
+    <div class="accent-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Current Exhibition</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Thai Artists</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">International</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Acquisitions</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Gallery</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Contemporary</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Sukhumvit · BKK</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

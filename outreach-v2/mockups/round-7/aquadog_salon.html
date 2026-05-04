@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Aquadog Salon — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #2D5A27;
+    --brand-secondary: #F5A623;
+    --brand-accent: #8BC34A;
+    --brand-bg: #F5F3EE;
+    --brand-text: #1A1A1A;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 100px; }
+  .right { position: relative; overflow: hidden; background: #d8d4cc; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85) saturate(0.75); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(245,243,238,0.2) 0%, transparent 28%), linear-gradient(0deg, rgba(45,90,39,0.4) 0%, transparent 40%); }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 3px; background: linear-gradient(to bottom, transparent, rgba(245,166,35,0.8) 30%, rgba(139,195,74,0.65) 70%, transparent); }
+  .service-badge { position: absolute; right: 48px; bottom: 60px; z-index: 5; border: 1px solid rgba(245,166,35,0.3); padding: 14px 18px; background: rgba(245,243,238,0.94); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(26,26,26,0.4); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 22px; height: 1px; background: rgba(245,166,35,0.4); }
+  .badge-val { font-family: 'Playfair Display', serif; font-size: 1rem; color: rgba(45,90,39,0.9); font-style: italic; }
+  .svc-list { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(26,26,26,0.08); }
+  .svc-name { color: rgba(245,243,238,0.45); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(245,166,35,0.5); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(245,243,238,0.85); }
+  .svc-item.active .svc-dot { background: rgba(139,195,74,0.95); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 70px 26px 100px; background: rgba(245,243,238,0.97); border-bottom: 1px solid rgba(45,90,39,0.1); }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--brand-text); letter-spacing: 0.18em; }
+  .logo em { font-style: normal; color: var(--brand-primary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,26,26,0.4); font-size: 0.72rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-primary); color: #fff; padding: 10px 22px; font-size: 0.7rem; letter-spacing: 0.1em; border: none; cursor: pointer; }
+  .eyebrow { color: var(--brand-secondary); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Playfair Display', serif; font-size: 4.8rem; font-weight: 400; line-height: 1.06; color: var(--brand-text); margin-bottom: 18px; }
+  h1 em { font-style: italic; color: var(--brand-primary); }
+  .rule { width: 36px; height: 1px; background: rgba(245,166,35,0.5); margin-bottom: 18px; }
+  p { color: rgba(26,26,26,0.55); font-size: 0.88rem; line-height: 1.8; max-width: 380px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+  .btn-primary { background: var(--brand-primary); color: #fff; padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; }
+  .btn-ghost { border: 1px solid rgba(26,26,26,0.2); color: rgba(26,26,26,0.5); padding: 14px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(45,90,39,0.25); color: rgba(26,26,26,0.4); padding: 5px 12px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>Aquadog</em> Salon</div>
+    <div class="nav-links"><a href="#">Services</a><a href="#">Gallery</a><a href="#">About</a><a href="#">Contact</a></div>
+    <button class="nav-cta">Book a Groom</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Dog Grooming · Phrompong · Sukhumvit 39</div>
+    <h1>Premium grooming.<br><em>Tail-wagging results.</em></h1>
+    <div class="rule"></div>
+    <p>Boutique dog grooming in the heart of Phrompong. Full groom, bath, styling, and nail care — handled with patience and love.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Groom</button>
+      <button class="btn-ghost">See Our Services</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Dog Grooming</div><div class="tag">Phrompong</div><div class="tag">Bath & Groom</div><div class="tag">Nail Care</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="Aquadog Salon Premium Dog Grooming Phrompong">
+    <div class="accent-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Full Groom</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Bath & Dry</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Nail Care</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Styling</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Premium</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Grooming</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">Phrompong · BKK</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
