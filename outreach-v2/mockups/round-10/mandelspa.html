@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Mandel Spa — Massage & Wellness Bangkok</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #C8880A;
+    --brand-secondary: #1A1010;
+    --brand-accent: #E8A830;
+    --brand-bg: #1A1010;
+    --brand-text: #F5EDD8;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 96px; }
+  .right { position: relative; overflow: hidden; background: #0A120B; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) saturate(0.6); }
+  .right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(107,140,110,0.25) 0%, transparent 60%), linear-gradient(135deg, #0A120B 0%, #0D1A0E 100%); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(12,18,9,0.5) 0%, transparent 30%), linear-gradient(0deg, rgba(12,18,9,0.7) 0%, transparent 40%); }
+  .accent-strip { position: absolute; top: 0; left: 0; bottom: 0; z-index: 3; width: 1px; background: linear-gradient(to bottom, transparent, rgba(141,123,90,0.6) 30%, rgba(201,169,110,0.5) 70%, transparent); }
+  .service-badge { position: absolute; right: 44px; bottom: 56px; z-index: 5; border: 1px solid rgba(141,123,90,0.3); padding: 16px 20px; background: rgba(12,18,9,0.95); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .badge-label { color: rgba(240,234,214,0.3); font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .badge-divider { width: 20px; height: 1px; background: rgba(201,169,110,0.4); }
+  .badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(201,169,110,0.85); font-weight: 300; letter-spacing: 0.06em; }
+  .svc-list { position: absolute; right: 44px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .svc-name { color: rgba(240,234,214,0.22); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(141,123,90,0.4); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(240,234,214,0.6); }
+  .svc-item.active .svc-dot { background: rgba(201,169,110,0.9); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 64px 24px 96px; background: rgba(12,18,9,0.98); border-bottom: 1px solid rgba(141,123,90,0.18); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--brand-text); letter-spacing: 0.28em; font-weight: 300; }
+  .logo em { font-style: normal; color: var(--brand-secondary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(240,234,214,0.3); font-size: 0.7rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(201,169,110,0.5); background: none; color: rgba(201,169,110,0.85); padding: 9px 22px; font-size: 0.66rem; letter-spacing: 0.12em; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .eyebrow { color: rgba(201,169,110,0.7); font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: rgba(201,169,110,0.45); display: inline-block; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.4rem; font-weight: 300; line-height: 1.08; color: var(--brand-text); margin-bottom: 14px; }
+  h1 em { font-style: italic; color: rgba(201,169,110,0.85); }
+  .tagline { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: rgba(240,234,214,0.38); margin-bottom: 28px; }
+  .rule { width: 36px; height: 1px; background: rgba(141,123,90,0.45); margin-bottom: 26px; }
+  p { color: rgba(240,234,214,0.45); font-size: 0.84rem; line-height: 1.85; max-width: 370px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 32px; }
+  .btn-primary { background: rgba(141,123,90,0.85); color: var(--brand-text); padding: 13px 30px; font-size: 0.68rem; letter-spacing: 0.12em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .btn-ghost { border: 1px solid rgba(240,234,214,0.14); color: rgba(240,234,214,0.4); padding: 13px 30px; font-size: 0.68rem; letter-spacing: 0.12em; background: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .trust { display: flex; align-items: center; gap: 20px; }
+  .t-item { display: flex; flex-direction: column; gap: 3px; }
+  .t-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--brand-text); }
+  .t-lbl { font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,234,214,0.32); }
+  .t-div { width: 1px; height: 28px; background: rgba(141,123,90,0.22); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>MANDEL</em> Spa</div>
+    <div class="nav-links"><a href="#">Services</a><a href="#">Locations</a><a href="#">Packages</a><a href="#">Book</a></div>
+    <button class="nav-cta">Book a Session</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Massage & Wellness · Thonglor · Lat Phrao</div>
+    <h1>Restore your<br>body.<br><em>Find stillness.</em></h1>
+    <div class="tagline">Thai massage and wellness therapy across Bangkok.</div>
+    <div class="rule"></div>
+    <p>Mandel Spa brings expert massage therapy and holistic wellness to two Bangkok locations. From traditional Thai massage to deep tissue and relaxation treatments — tailored to how you feel today.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Session</button>
+      <button class="btn-ghost">View Services</button>
+    </div>
+    <div class="trust">
+      <div class="t-item"><span class="t-num">2</span><span class="t-lbl">Locations</span></div>
+      <div class="t-div"></div>
+      <div class="t-item"><span class="t-num">Daily</span><span class="t-lbl">Availability</span></div>
+      <div class="t-div"></div>
+      <div class="t-item"><span class="t-num">Thai</span><span class="t-lbl">Certified</span></div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-bg"></div>
+    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80" alt="Mandel Spa Bangkok massage">
+    <div class="accent-strip"></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Thai Massage</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Deep Tissue</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Aromatherapy</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Couples</div><div class="svc-dot"></div></div>
+    </div>
+    <div class="service-badge">
+      <div class="badge-label">Wellness</div>
+      <div class="badge-divider"></div>
+      <div class="badge-val">Bangkok</div>
+      <div class="badge-divider"></div>
+      <div class="badge-label">2 Locations</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

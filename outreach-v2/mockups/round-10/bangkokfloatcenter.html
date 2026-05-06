@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Bangkok Float — Float Therapy Bangkok</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #7ABCB8;
+    --brand-secondary: #2A6878;
+    --brand-accent: #4090A8;
+    --brand-bg: #F0F8F8;
+    --brand-text: #1A3038;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 96px; }
+  .right { position: relative; overflow: hidden; background: #040B12; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3) saturate(0.7) hue-rotate(15deg); }
+  .right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 55% 45%, rgba(14,155,160,0.2) 0%, rgba(26,110,168,0.15) 45%, transparent 65%), linear-gradient(135deg, #050C14 0%, #060D16 100%); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(5,12,20,0.55) 0%, transparent 32%), linear-gradient(0deg, rgba(5,12,20,0.65) 0%, transparent 42%); }
+  .water-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 2px; background: linear-gradient(to bottom, transparent, rgba(26,110,168,0.7) 25%, rgba(14,155,160,0.6) 65%, transparent); }
+  .float-badge { position: absolute; right: 44px; top: 128px; z-index: 5; background: rgba(5,12,20,0.97); border: 1px solid rgba(26,110,168,0.4); padding: 18px 22px; display: flex; flex-direction: column; gap: 5px; align-items: center; }
+  .float-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: rgba(160,212,232,0.85); line-height: 1; }
+  .float-lbl { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(232,244,250,0.28); }
+  .svc-list { position: absolute; right: 44px; bottom: 56px; z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .svc-name { color: rgba(232,244,250,0.2); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .svc-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(26,110,168,0.4); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(232,244,250,0.58); }
+  .svc-item.active .svc-dot { background: rgba(14,155,160,0.9); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 64px 24px 96px; background: rgba(5,12,20,0.99); border-bottom: 1px solid rgba(26,110,168,0.2); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--brand-text); letter-spacing: 0.28em; font-weight: 300; }
+  .logo em { font-style: normal; color: rgba(14,155,160,0.85); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(232,244,250,0.26); font-size: 0.7rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(26,110,168,0.5); background: none; color: rgba(160,212,232,0.8); padding: 9px 22px; font-size: 0.65rem; letter-spacing: 0.12em; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .eyebrow { color: rgba(14,155,160,0.65); font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: rgba(26,110,168,0.5); display: inline-block; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; line-height: 1.06; color: var(--brand-text); margin-bottom: 14px; }
+  h1 em { font-style: italic; color: rgba(160,212,232,0.85); }
+  .rule { width: 36px; height: 1px; background: rgba(26,110,168,0.5); margin-bottom: 26px; }
+  p { color: rgba(232,244,250,0.38); font-size: 0.84rem; line-height: 1.85; max-width: 370px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 32px; }
+  .btn-primary { background: rgba(26,110,168,0.85); color: var(--brand-text); padding: 13px 30px; font-size: 0.68rem; letter-spacing: 0.12em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .btn-ghost { border: 1px solid rgba(232,244,250,0.14); color: rgba(232,244,250,0.38); padding: 13px 30px; font-size: 0.68rem; letter-spacing: 0.12em; background: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .trust { display: flex; align-items: center; gap: 20px; }
+  .t-item { display: flex; flex-direction: column; gap: 3px; }
+  .t-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--brand-text); }
+  .t-lbl { font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(232,244,250,0.26); }
+  .t-div { width: 1px; height: 28px; background: rgba(26,110,168,0.22); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>BANGKOK</em> Float</div>
+    <div class="nav-links"><a href="#">Float Therapy</a><a href="#">How It Works</a><a href="#">Benefits</a><a href="#">Book</a></div>
+    <button class="nav-cta">Book a Float</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Float Therapy · Sensory Deprivation · Bangkok</div>
+    <h1>Disconnect.<br>Recover.<br><em>Resurface.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok Float is Thailand's float therapy center — private float pods filled with 500kg of Epsom salt, letting your body effortlessly float in near-total silence. Deep recovery, reduced stress, and mental clarity in a single session.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Float</button>
+      <button class="btn-ghost">How It Works</button>
+    </div>
+    <div class="trust">
+      <div class="t-item"><span class="t-num">60–90</span><span class="t-lbl">Minute Sessions</span></div>
+      <div class="t-div"></div>
+      <div class="t-item"><span class="t-num">Private</span><span class="t-lbl">Float Pods</span></div>
+      <div class="t-div"></div>
+      <div class="t-item"><span class="t-num">Bangkok</span><span class="t-lbl">Located</span></div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-bg"></div>
+    <img src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=1200&q=80" alt="Bangkok Float therapy">
+    <div class="water-strip"></div>
+    <div class="float-badge">
+      <div class="float-num">Float</div>
+      <div class="float-lbl">Therapy · Bangkok</div>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Float Sessions</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Deep Recovery</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Stress Relief</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Group Bookings</div><div class="svc-dot"></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

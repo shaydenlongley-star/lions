@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Firepower Hot Sauces — Bangkok</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #E02010;
+    --brand-secondary: #F58020;
+    --brand-accent: #C80808;
+    --brand-bg: #FFFFFF;
+    --brand-text: #1A1A1A;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 96px; }
+  .right { position: relative; overflow: hidden; background: #120300; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3) saturate(0.6); }
+  .right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 55% 35%, rgba(255,51,0,0.25) 0%, rgba(255,140,0,0.1) 40%, transparent 65%), linear-gradient(135deg, #0A0200 0%, #150300 100%); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(10,2,0,0.7) 0%, transparent 35%), linear-gradient(0deg, rgba(10,2,0,0.7) 0%, transparent 45%); }
+  .flame-bar { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 4px; background: linear-gradient(to bottom, transparent, var(--brand-primary) 25%, var(--brand-secondary) 55%, var(--brand-accent) 80%, transparent); }
+  .heat-badge { position: absolute; right: 44px; top: 130px; z-index: 5; background: rgba(10,2,0,0.97); border: 1px solid rgba(255,51,0,0.5); padding: 18px 22px; display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .heat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--brand-primary); line-height: 1; }
+  .heat-lbl { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,248,240,0.3); }
+  .svc-list { position: absolute; right: 44px; bottom: 56px; z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .svc-name { color: rgba(255,248,240,0.22); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 6px; height: 6px; background: rgba(255,51,0,0.35); flex-shrink: 0; border-radius: 50%; }
+  .svc-item.active .svc-name { color: rgba(255,248,240,0.65); }
+  .svc-item.active .svc-dot { background: var(--brand-primary); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 64px 24px 96px; background: rgba(10,2,0,0.98); border-bottom: 1px solid rgba(255,51,0,0.2); }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; color: var(--brand-text); letter-spacing: 0.18em; font-weight: 700; }
+  .logo em { font-style: normal; color: var(--brand-primary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(255,248,240,0.28); font-size: 0.7rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-primary); color: #fff; padding: 10px 22px; font-size: 0.68rem; letter-spacing: 0.1em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .eyebrow { color: rgba(255,140,0,0.65); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.4rem; font-weight: 700; line-height: 1.02; color: var(--brand-text); margin-bottom: 16px; }
+  h1 em { font-style: normal; color: var(--brand-primary); }
+  .heat-scale { display: flex; gap: 4px; margin-bottom: 22px; align-items: center; }
+  .heat-pip { width: 14px; height: 14px; border-radius: 50%; }
+  .h1 { background: rgba(255,215,0,0.8); }
+  .h2 { background: rgba(255,140,0,0.9); }
+  .h3 { background: rgba(255,80,0,0.95); }
+  .h4 { background: rgba(255,30,0,0.95); }
+  .h5 { background: rgba(200,0,0,0.8); }
+  .heat-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,248,240,0.3); margin-left: 4px; }
+  p { color: rgba(255,248,240,0.42); font-size: 0.86rem; line-height: 1.8; max-width: 370px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 32px; }
+  .btn-primary { background: var(--brand-primary); color: #fff; padding: 13px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .btn-ghost { border: 1px solid rgba(255,248,240,0.15); color: rgba(255,248,240,0.4); padding: 13px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(255,51,0,0.28); color: rgba(255,248,240,0.32); padding: 5px 12px; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>FIREPOWER</em> HOT SAUCES</div>
+    <div class="nav-links"><a href="#">Shop</a><a href="#">Sauces</a><a href="#">Heat Guide</a><a href="#">Order</a></div>
+    <button class="nav-cta">Shop Now</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Artisan Hot Sauce · Handcrafted · Bangkok</div>
+    <h1>Real heat.<br>Real <em>flavour.</em><br>No apologies.</h1>
+    <div class="heat-scale">
+      <div class="heat-pip h1"></div>
+      <div class="heat-pip h2"></div>
+      <div class="heat-pip h3"></div>
+      <div class="heat-pip h4"></div>
+      <div class="heat-pip h5"></div>
+      <span class="heat-label">All heat levels</span>
+    </div>
+    <p>Firepower makes small-batch hot sauces from real peppers, real ingredients, and real recipes — no fillers, no shortcuts. Made in Bangkok for people who actually like heat. Every bottle is handcrafted and ready to ship.</p>
+    <div class="actions">
+      <button class="btn-primary">Shop All Sauces</button>
+      <button class="btn-ghost">Heat Guide</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Small Batch</div><div class="tag">Bangkok Made</div><div class="tag">Real Heat</div><div class="tag">Order Online</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-bg"></div>
+    <img src="https://images.unsplash.com/photo-1565071559227-20ab25b7685e?w=1200&q=80" alt="Firepower Hot Sauces Bangkok">
+    <div class="flame-bar"></div>
+    <div class="heat-badge">
+      <div class="heat-num">🌶️🌶️🌶️</div>
+      <div class="heat-lbl">Bangkok Heat</div>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Original Hot</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Ghost Pepper</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Habanero</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Mild &amp; Smoky</div><div class="svc-dot"></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

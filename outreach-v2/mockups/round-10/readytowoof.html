@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Ready to Woof — Pet Accessories Bangkok</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #E85A60;
+    --brand-secondary: #6ABAA8;
+    --brand-accent: #F5C0B0;
+    --brand-bg: #F5F0EC;
+    --brand-text: #1A1A1A;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 96px; }
+  .right { position: relative; overflow: hidden; background: #1A0E08; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) saturate(0.85); }
+  .right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 55% 40%, rgba(232,113,74,0.2) 0%, transparent 55%), linear-gradient(135deg, #1A0E08 0%, #201508 100%); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(255,248,242,0.2) 0%, transparent 22%), linear-gradient(0deg, rgba(26,14,8,0.55) 0%, transparent 40%); }
+  .accent-strip { position: absolute; left: 0; top: 0; bottom: 0; z-index: 3; width: 5px; background: linear-gradient(to bottom, var(--brand-primary), var(--brand-accent) 50%, var(--brand-secondary)); }
+  .follower-badge { position: absolute; right: 44px; top: 130px; z-index: 5; background: rgba(255,248,242,0.97); border: 2px solid var(--brand-primary); padding: 16px 22px; display: flex; flex-direction: column; gap: 4px; align-items: center; border-radius: 4px; }
+  .follower-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 600; color: var(--brand-primary); line-height: 1; }
+  .follower-lbl { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(26,16,8,0.4); }
+  .svc-list { position: absolute; right: 44px; bottom: 56px; z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .svc-name { color: rgba(255,248,242,0.24); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 7px; height: 7px; background: rgba(232,113,74,0.35); border-radius: 50%; flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(255,248,242,0.7); }
+  .svc-item.active .svc-dot { background: var(--brand-primary); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 64px 24px 96px; background: var(--brand-bg); border-bottom: 1px solid rgba(232,113,74,0.15); }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; color: var(--brand-text); letter-spacing: 0.18em; font-weight: 600; }
+  .logo em { font-style: normal; color: var(--brand-primary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(26,16,8,0.32); font-size: 0.7rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-primary); color: #fff; padding: 10px 22px; font-size: 0.68rem; letter-spacing: 0.1em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .eyebrow { color: var(--brand-primary); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.1rem; font-weight: 300; line-height: 1.07; color: var(--brand-text); margin-bottom: 16px; }
+  h1 em { font-style: normal; color: var(--brand-primary); font-weight: 600; }
+  .rule { width: 36px; height: 3px; background: var(--brand-secondary); margin-bottom: 22px; }
+  p { color: rgba(26,16,8,0.48); font-size: 0.86rem; line-height: 1.8; max-width: 370px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 32px; }
+  .btn-primary { background: var(--brand-primary); color: #fff; padding: 13px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .btn-ghost { border: 1px solid rgba(26,16,8,0.18); color: rgba(26,16,8,0.45); padding: 13px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { background: rgba(26,16,8,0.06); color: rgba(26,16,8,0.4); padding: 5px 12px; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 2px; }
+  .tag.color { background: rgba(232,113,74,0.1); color: rgba(200,80,40,0.7); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>READY</em> TO WOOF</div>
+    <div class="nav-links"><a href="#">Shop</a><a href="#">Accessories</a><a href="#">Apparel</a><a href="#">Order</a></div>
+    <button class="nav-cta">Shop Now</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Pet Accessories · Sukhumvit 39 · Bangkok</div>
+    <h1>Dress your<br>dog to <em>impress.</em></h1>
+    <div class="rule"></div>
+    <p>Ready to Woof designs pet accessories and fashion for dogs who deserve the best. Collars, harnesses, apparel, and lifestyle accessories — thoughtfully designed and available in Bangkok and online.</p>
+    <div class="actions">
+      <button class="btn-primary">Shop the Collection</button>
+      <button class="btn-ghost">See All Accessories</button>
+    </div>
+    <div class="tags">
+      <div class="tag color">Pet Accessories</div><div class="tag">Dog Apparel</div><div class="tag">Bangkok</div><div class="tag">Online</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-bg"></div>
+    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="Ready to Woof pet accessories Bangkok">
+    <div class="accent-strip"></div>
+    <div class="follower-badge">
+      <div class="follower-num">12K</div>
+      <div class="follower-lbl">Followers</div>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Collars &amp; Harnesses</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Dog Apparel</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Accessories</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Gift Sets</div><div class="svc-dot"></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

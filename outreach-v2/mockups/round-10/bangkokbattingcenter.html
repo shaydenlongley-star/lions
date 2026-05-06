@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Bangkok Batting Center — Baseball Bangkok</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #F5D800;
+    --brand-secondary: #1A1A1A;
+    --brand-accent: #CC2020;
+    --brand-bg: #F5F5F5;
+    --brand-text: #1A1A1A;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 96px; }
+  .right { position: relative; overflow: hidden; background: #0D0A05; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3) saturate(0.4); }
+  .right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(200,148,10,0.2) 0%, transparent 55%), linear-gradient(135deg, #090909 0%, #0D0A05 100%); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(9,9,9,0.65) 0%, transparent 35%), linear-gradient(0deg, rgba(9,9,9,0.7) 0%, transparent 45%); }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--brand-secondary), var(--brand-primary), var(--brand-accent)); z-index: 5; }
+  .stat-badge { position: absolute; right: 44px; top: 130px; z-index: 5; background: rgba(9,9,9,0.97); border: 2px solid rgba(200,148,10,0.5); padding: 18px 22px; display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--brand-primary); line-height: 1; }
+  .stat-lbl { font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,245,240,0.35); }
+  .svc-list { position: absolute; right: 44px; bottom: 56px; z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .svc-name { color: rgba(245,245,240,0.22); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .svc-dot { width: 5px; height: 5px; background: rgba(200,148,10,0.35); border-radius: 50%; flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(245,245,240,0.65); }
+  .svc-item.active .svc-dot { background: var(--brand-primary); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 64px 24px 96px; background: rgba(9,9,9,0.98); border-bottom: 1px solid rgba(200,148,10,0.2); }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; color: var(--brand-text); letter-spacing: 0.2em; font-weight: 600; }
+  .logo em { font-style: normal; color: var(--brand-primary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(245,245,240,0.28); font-size: 0.7rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { background: var(--brand-primary); color: #000; padding: 10px 22px; font-size: 0.68rem; letter-spacing: 0.1em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .eyebrow { color: rgba(200,148,10,0.65); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.4rem; font-weight: 700; line-height: 1.02; color: var(--brand-text); margin-bottom: 16px; }
+  h1 em { font-style: normal; color: var(--brand-primary); }
+  .rule { width: 50px; height: 3px; background: var(--brand-secondary); margin-bottom: 22px; }
+  p { color: rgba(245,245,240,0.42); font-size: 0.86rem; line-height: 1.8; max-width: 370px; margin-bottom: 36px; font-weight: 300; }
+  .actions { display: flex; gap: 12px; margin-bottom: 32px; }
+  .btn-primary { background: var(--brand-primary); color: #000; padding: 13px 30px; font-size: 0.7rem; letter-spacing: 0.12em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .btn-ghost { border: 1px solid rgba(245,245,240,0.15); color: rgba(245,245,240,0.4); padding: 13px 30px; font-size: 0.7rem; letter-spacing: 0.12em; background: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { border: 1px solid rgba(200,148,10,0.28); color: rgba(245,245,240,0.32); padding: 5px 12px; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>BANGKOK</em> BATTING CENTER</div>
+    <div class="nav-links"><a href="#">Lanes</a><a href="#">Pricing</a><a href="#">Location</a><a href="#">Book</a></div>
+    <button class="nav-cta">Book a Lane</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Baseball · Batting Cages · Ratchadaphisek · Bangkok</div>
+    <h1>Step up.<br>Swing <em>hard.</em><br>Hit more.</h1>
+    <div class="rule"></div>
+    <p>Bangkok's only batting center. Multiple lanes, adjustable pitch speeds, and a space that takes the sport seriously. Whether you're training or just having a go — bring your swing.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Lane</button>
+      <button class="btn-ghost">Pricing & Hours</button>
+    </div>
+    <div class="tags">
+      <div class="tag">Baseball</div><div class="tag">Batting Cages</div><div class="tag">Bangkok</div><div class="tag">All Levels</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-bg"></div>
+    <img src="https://images.unsplash.com/photo-1544216717-3bbf52512659?w=1200&q=80" alt="Bangkok Batting Center baseball">
+    <div class="top-bar"></div>
+    <div class="stat-badge">
+      <div class="stat-num">⚾</div>
+      <div class="stat-lbl">Batting Center</div>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Batting Lanes</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Pitching Machine</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Group Bookings</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Equipment Rental</div><div class="svc-dot"></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

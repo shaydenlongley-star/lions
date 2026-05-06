@@ -129,6 +129,74 @@ body {
 }
 .badge-round { color: var(--dim); border: 1px solid var(--border); }
 .badge-complete { color: var(--green); border: 1px solid var(--green-border); background: var(--green-bg); }
+.badge-ni { color: #F87171; border: 1px solid rgba(248,113,113,0.3); background: rgba(248,113,113,0.06); }
+.card.ni { opacity: 0.45; }
+.card.ni:hover { opacity: 0.7; }
+.btn-ni {
+  padding: 2px 8px; border-radius: 3px;
+  font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid var(--border); background: none; color: var(--dim);
+  font-family: inherit; cursor: pointer; transition: all 0.15s;
+}
+.btn-ni:hover { border-color: rgba(248,113,113,0.4); color: #F87171; }
+.btn-ni.active { border-color: rgba(248,113,113,0.3); color: #F87171; background: rgba(248,113,113,0.06); }
+
+/* ── Reply tracking ───────────────────────────────── */
+.badge-replied { color: var(--accent-t1); border: 1px solid rgba(129,140,248,0.3); background: rgba(129,140,248,0.08); }
+.badge-hot     { color: #F97316; border: 1px solid rgba(249,115,22,0.3); background: rgba(249,115,22,0.08); }
+.badge-maybe   { color: #A78BFA; border: 1px solid rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); }
+.badge-dead    { color: #6B7280; border: 1px solid rgba(107,114,128,0.25); background: rgba(107,114,128,0.06); }
+.card.replied  { border-color: rgba(129,140,248,0.2); }
+.card.hot      { border-color: rgba(249,115,22,0.3); box-shadow: 0 0 0 1px rgba(249,115,22,0.05) inset; }
+
+.btn-reply {
+  padding: 2px 8px; border-radius: 3px;
+  font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid var(--border); background: none; color: var(--dim);
+  font-family: inherit; cursor: pointer; transition: all 0.15s;
+}
+.btn-reply:hover { border-color: rgba(129,140,248,0.4); color: var(--accent-t1); }
+.btn-reply.active { border-color: rgba(129,140,248,0.3); color: var(--accent-t1); background: rgba(129,140,248,0.08); }
+
+.reply-panel {
+  display: none; padding: 8px 16px 12px;
+  border-top: 1px solid var(--border);
+  flex-direction: column; gap: 9px;
+  background: rgba(129,140,248,0.03);
+}
+.reply-panel.open { display: flex; }
+.reply-row { display: flex; align-items: center; gap: 8px; }
+.reply-row-label { font-size: 0.59rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); width: 56px; flex-shrink: 0; }
+.reply-chips { display: flex; gap: 5px; flex-wrap: wrap; }
+.reply-chip {
+  padding: 3px 10px; border-radius: 12px;
+  border: 1px solid var(--border);
+  background: none; color: var(--muted);
+  font-size: 0.63rem; font-family: inherit; letter-spacing: 0.04em;
+  cursor: pointer; transition: all 0.13s;
+}
+.reply-chip:hover { border-color: var(--border-md); color: var(--text); }
+.reply-chip.sel-email     { border-color: rgba(66,133,244,0.45); color: var(--c-email); background: rgba(66,133,244,0.1); }
+.reply-chip.sel-whatsapp  { border-color: rgba(37,211,102,0.45); color: var(--c-wa); background: rgba(37,211,102,0.1); }
+.reply-chip.sel-instagram { border-color: rgba(225,48,108,0.45); color: var(--c-ig); background: rgba(225,48,108,0.1); }
+.reply-chip.sel-line      { border-color: rgba(6,199,85,0.45); color: var(--c-line); background: rgba(6,199,85,0.1); }
+.reply-chip.sel-hot       { border-color: rgba(249,115,22,0.4); color: #F97316; background: rgba(249,115,22,0.1); }
+.reply-chip.sel-maybe     { border-color: rgba(167,139,250,0.4); color: #A78BFA; background: rgba(167,139,250,0.1); }
+.reply-chip.sel-dead      { border-color: rgba(107,114,128,0.4); color: #6B7280; background: rgba(107,114,128,0.1); }
+
+/* ── Filter tabs ──────────────────────────────────── */
+.filter-tabs { display: flex; gap: 4px; }
+.filter-tab {
+  padding: 4px 11px; border-radius: 12px;
+  border: 1px solid var(--border);
+  background: none; color: var(--muted);
+  font-size: 0.63rem; font-family: inherit; letter-spacing: 0.07em;
+  cursor: pointer; transition: all 0.15s;
+}
+.filter-tab:hover:not(.active) { border-color: var(--border-md); color: var(--text); }
+.filter-tab.active { background: var(--s3); border-color: var(--border-md); color: var(--text); }
+.filter-tab.active.f-replied { border-color: rgba(129,140,248,0.4); color: var(--accent-t1); background: rgba(129,140,248,0.1); }
+.filter-tab.active.f-hot     { border-color: rgba(249,115,22,0.4); color: #F97316; background: rgba(249,115,22,0.1); }
 
 .channels { padding: 0 10px 10px; display: flex; flex-direction: column; gap: 5px; }
 
@@ -278,7 +346,8 @@ button { font-family: inherit; cursor: pointer; }
     <div class="round-tabs" id="roundTabs"></div>
     <div class="round-tabs" id="subTabs" style="display:none"></div>
   </div>
-  <div style="display:flex;align-items:center;gap:8px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="filter-tabs" id="filterTabs"></div>
     <div class="statsbar" id="statsbar"></div>
     <button onclick="openColorPanel()" style="padding:5px 13px;border-radius:5px;border:1px solid rgba(129,140,248,0.3);background:none;color:var(--accent-t1);font-size:0.68rem;font-family:inherit;cursor:pointer;letter-spacing:0.07em;transition:all 0.15s" onmouseover="this.style.background='rgba(129,140,248,0.1)'" onmouseout="this.style.background='none'">⬡ Colors</button>
   </div>
@@ -975,7 +1044,7 @@ Just checking if you got a chance to see the redesign concept I sent. Happy to a
 Shayden — shaydefy.com` }
   ]},
 
-  { id: 21, round: 5, date: '2026-05-03', name: "2463 Speakeasy", channels: [
+  { id: 21, round: 5, date: '2026-05-04', name: "2463 Speakeasy", channels: [
     { type:'instagram', handle:'2463speakeasy',
       t1:`Hey 2463,
 
@@ -1003,33 +1072,36 @@ Shayden`,
 
 Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
 
-Shayden — shaydefy.com` }
+Shayden — shaydefy.com` },
+    { type:'line', id:'2463speakeasy',
+      t1:`Hey 2463 — I'm Shayden, web designer in Bangkok. Built a homepage concept for the bar — reservation form, no address listed, keeps the mystery but makes you findable. Screenshot attached. No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent for 2463. Happy to chat. Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66972632463',
+      t1:`Hey 2463 — it's Shayden, web designer in Bangkok. Built a homepage concept for the bar — reservation form, no address listed, keeps the mystery but makes you findable. Screenshot attached. No strings. shaydefy.com`,
+      t2:`Hey — just following up on the mockup I sent for 2463. Happy to chat. Shayden — shaydefy.com` }
   ]},
 
-  { id: 22, round: 5, date: '2026-05-03', name: "Thonglor Muay Thai", channels: [
-    { type:'instagram', handle:'thonglormuaythai',
-      t1:`Hey Thonglor Muay Thai,
+  { id: 23, round: 5, date: '2026-05-04', name: "Floral House", channels: [
+    { type:'instagram', handle:'floralhouse.bkk',
+      t1:`Hey Floral House,
 
-Tourists and expats are actively searching "Muay Thai gym Thonglor" and "boxing classes Bangkok" on Google. Without a website, you don't show up — they book the gym that does.
+1,200+ posts, years of operation, orders via LINE and phone — but no website. Anyone who finds you online and wants to browse arrangements or place an order has nowhere to go.
 
-No class schedule, no trainer info, no trial class page. Everything goes through LINE or DM, and a chunk of those people just don't bother.
-
-Built a concept for Thonglor Muay Thai — attaching it here. No strings.
+A site with a gallery, occasion categories, and an order form would convert that search traffic into actual orders. Built a concept for Floral House — attaching it here. No strings.
 
 shaydefy.com
 Shayden`,
-      t2:`Hey — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
-    { type:'email', to:'thonglormuaythai@gmail.com', subject:'Built a mockup for Thonglor Muay Thai',
-      t1:`Hi Thonglor Muay Thai,
+      t2:`Hey Floral House — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'floralhouse.bkk@gmail.com', subject:'Built a mockup for Floral House',
+      t1:`Hi Floral House,
 
-Found you searching Muay Thai gyms in Bangkok — great location for picking up tourists and expats in Thonglor.
+Found you searching flower delivery in Bangkok — 1,200+ posts, clearly a real operation.
 
-Three things a website fixes immediately:
-1. You'd rank for "Muay Thai Thonglor" — right now those searches don't find you
-2. A class schedule and trainer page means people can book without a DM
-3. A trial class CTA converts curious visitors into actual signups
+The gap: no website. Anyone who wants to browse arrangements, see pricing, or place an order has to go through LINE or call directly. A lot of people don't bother — they just book whoever has a site.
 
-Built a homepage concept for the gym. Screenshot attached — no strings.
+A simple site with a gallery, occasion categories, and an order form changes that.
+
+Built a homepage concept for Floral House. Screenshot attached — no strings.
 
 shaydefy.com
 Shayden`,
@@ -1038,64 +1110,30 @@ Shayden`,
 Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
 
 Shayden — shaydefy.com` },
-    { type:'line', id:'thonglormuaythai',
-      t1:`Hey Thonglor Muay Thai — I'm Shayden, web designer in Bangkok. Tourists searching for Muay Thai on Google can't find you without a website. Built a concept with class schedule and trial class CTA (screenshot attached). No strings. shaydefy.com`,
-      t2:`Hi — just following up on the mockup I sent. Happy to answer any questions. Shayden — shaydefy.com` }
+    { type:'whatsapp', phone:'66910042879',
+      t1:`Hey, it's Shayden — web designer in Bangkok. 1,200+ posts but no website means customers searching for flower delivery in Bangkok can't find you or browse arrangements. Built a homepage concept for Floral House (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
   ]},
 
-  { id: 23, round: 5, date: '2026-05-03', name: "Allie Studio", channels: [
-    { type:'instagram', handle:'alliestudioth',
-      t1:`Hey Allie Studio,
+  { id: 24, round: 5, date: '2026-05-04', name: "Morgen Coffee", channels: [
+    { type:'instagram', handle:'morgencoffee_bkk',
+      t1:`Hey Morgen,
 
-Great work on Instagram — but your portfolio is renting space on a platform you don't control. One algorithm change and reach drops. One account issue and it's gone.
+Korean minimalist specialty cafe in Phrom Phong — the kind of place people are actively searching for. But there's no website, just a Linktree. Anyone Googling "specialty coffee Phrom Phong" or "cafe Sukhumvit 39" doesn't find you.
 
-A website is the portfolio you own. Searchable, bookable, always up — and you'd actually rank for "photography studio Bangkok" instead of relying on follows.
-
-Built a concept for Allie Studio — attaching it here. No strings.
+Built a concept for Morgen — clean, minimal, matches the aesthetic. Attaching it here. No strings.
 
 shaydefy.com
 Shayden`,
-      t2:`Hey Allie — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
-    { type:'email', to:'alliestudio.bkk@gmail.com', subject:'Built a mockup for Allie Studio',
-      t1:`Hi Allie Studio,
+      t2:`Hey Morgen — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'morgen.coffee.bkk@gmail.com', subject:'Built a mockup for Morgen Coffee',
+      t1:`Hi Morgen,
 
-Found you searching photography studios in Bangkok — good work on the Instagram.
+Found you searching specialty cafes in Phrom Phong — great space, and the Instagram reflects the brand well.
 
-One thing: Instagram is rented ground. Your portfolio is only as visible as the algorithm decides. A website means:
-— Clients searching for Bangkok studios find you on Google
-— You own your booking flow (no DMs, no third-party tools)
-— Your portfolio is permanent, searchable, branded to you
+One thing: no website means you're invisible on Google. "Specialty coffee Phrom Phong" and "cafe Sukhumvit 39" are searches your potential customers are running right now — and they're landing on TripAdvisor and Google Maps, not you.
 
-Built a homepage concept for Allie Studio. Screenshot attached — no strings.
-
-shaydefy.com
-Shayden`,
-      t2:`Hi,
-
-Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
-
-Shayden — shaydefy.com` }
-  ]},
-
-  { id: 24, round: 5, date: '2026-05-03', name: "Lash Come On", channels: [
-    { type:'instagram', handle:'lashcomeon',
-      t1:`Hey Lash Come On,
-
-Lash salon in Bangkok — the kind of service people research before booking. But without a website, there's no menu, no pricing, and every booking is a manual DM. You're losing the clients who don't bother to message.
-
-Built a concept for Lash Come On — services page, pricing, and a booking button. Attaching it here. No strings.
-
-shaydefy.com
-Shayden`,
-      t2:`Hey — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
-    { type:'email', to:'lashcomeon@gmail.com', subject:'Built a mockup for Lash Come On',
-      t1:`Hi Lash Come On,
-
-Found you searching lash salons in Bangkok — clean work, good Instagram presence.
-
-The issue: no website means no pricing visible upfront, no booking system, and every new client has to DM before they can book. A lot of them don't. You're also invisible on Google to anyone searching "lash extensions Bangkok" who doesn't already follow you.
-
-Built a homepage concept with a services menu and booking CTA. Screenshot attached — no strings.
+Built a homepage concept that matches the minimal aesthetic. Screenshot attached — no strings.
 
 shaydefy.com
 Shayden`,
@@ -1104,12 +1142,12 @@ Shayden`,
 Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
 
 Shayden — shaydefy.com` },
-    { type:'line', id:'lashcomeon',
-      t1:`Hey Lash Come On — I'm Shayden, web designer in Bangkok. No website means no pricing, no booking page, and every client has to DM first. Built a concept with services and booking CTA (screenshot attached). No strings. shaydefy.com`,
-      t2:`Hi — just following up on the mockup I sent. Happy to answer any questions. Shayden — shaydefy.com` }
+    { type:'whatsapp', phone:'66928487643',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Korean minimalist cafe in Phrom Phong with no website means you're invisible on Google. Built a homepage concept for Morgen that matches the aesthetic (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
   ]},
 
-  { id: 25, round: 5, date: '2026-05-03', name: "Siam Rington", channels: [
+  { id: 25, round: 5, date: '2026-05-04', name: "Siam Rington", channels: [
     { type:'instagram', handle:'siamrington',
       t1:`Hey Siam Rington,
 
@@ -1138,27 +1176,25 @@ Just checking if you got a chance to see the mockup I sent. Happy to answer any 
 Shayden — shaydefy.com` }
   ]},
 
-  { id: 26, round: 5, date: '2026-05-03', name: "Common Cotton", channels: [
-    { type:'instagram', handle:'commoncottonofficial',
-      t1:`Hey Common Cotton,
+  { id: 26, round: 5, date: '2026-05-04', name: "MTCH Matcha Bar", channels: [
+    { type:'instagram', handle:'mtch.official',
+      t1:`Hey MTCH,
 
-Premium candle brand across multiple Bangkok locations — the aesthetic is clearly considered. But there's no proper website, just Instagram and a marketplace link.
+Thailand's Best Specialty Matcha Shop 2024 — 33K followers, two Bangkok locations, 5 years sourcing from Uji and Fukuoka. And you're still living on a Linktree.
 
-A brand like this deserves better than a marketplace page. Your own site means you own the customer relationship, tell the brand story properly, and stop paying a cut on every sale.
-
-Built a concept for Common Cotton — attaching it here. No strings.
+The brand story is strong enough to carry a proper site. Anyone searching "matcha bar Bangkok" on Google should land on you, not a third-party review. Built a concept for MTCH — attaching it here. No strings.
 
 shaydefy.com
 Shayden`,
-      t2:`Hey Common Cotton — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
-    { type:'email', to:'commoncotton.bkk@gmail.com', subject:'Built a mockup for Common Cotton',
-      t1:`Hi Common Cotton,
+      t2:`Hey MTCH — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'mtch.bkk@gmail.com', subject:'Built a mockup for MTCH',
+      t1:`Hi MTCH,
 
-Found you searching premium candles in Bangkok — multiple locations, beautiful product aesthetic.
+Found you searching matcha bars in Bangkok — Thailand's best specialty matcha, two locations, and a serious sourcing story.
 
-One thing that stands out: no direct-to-consumer website. Selling through a marketplace means they take a cut and own the customer data. A brand like Common Cotton has enough presence to move people off a marketplace and onto a site that's fully yours.
+One thing: no website. Just a Linktree. That means anyone Googling "matcha bar Bangkok" or "matcha Ari" lands on Timeout and Google Maps, not you. A brand with this much credibility should own that search traffic.
 
-Built a concept of what that could look like. Screenshot attached — no strings.
+Built a homepage concept for MTCH. Screenshot attached — no strings.
 
 shaydefy.com
 Shayden`,
@@ -1166,10 +1202,13 @@ Shayden`,
 
 Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
 
-Shayden — shaydefy.com` }
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66656913584',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Thailand's Best Matcha 2024, 33K followers, two Bangkok locations — still on a Linktree. Built a proper homepage concept for MTCH (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
   ]},
 
-  { id: 27, round: 5, date: '2026-05-03', name: "Summer Bowl", channels: [
+  { id: 27, round: 5, date: '2026-05-04', name: "Summer Bowl", channels: [
     { type:'instagram', handle:'summerbowlth',
       t1:`Hey Summer Bowl,
 
@@ -1195,39 +1234,13 @@ Shayden`,
 
 Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
 
-Shayden — shaydefy.com` }
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66898942646',
+      t1:`Hey, it's Shayden — web designer in Bangkok. 4 acai bowl locations across Bangkok but no website — customers can't find the nearest location or see the full menu. Built a homepage concept for Summer Bowl (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
   ]},
 
-  { id: 28, round: 5, date: '2026-05-03', name: "AMI Brunch", channels: [
-    { type:'instagram', handle:'amiari',
-      t1:`Hey AMI,
-
-All-day brunch in Ari with bottomless bubbles — exactly the kind of place people Google before they go. But there's no website with the menu, hours, or a reservation option.
-
-Built a concept for AMI — clean layout, menu section, reserve button. Attaching it here. No strings.
-
-shaydefy.com
-Shayden`,
-      t2:`Hey AMI — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
-    { type:'email', to:'ami.brunch.ari@gmail.com', subject:'Built a mockup for AMI Brunch',
-      t1:`Hi AMI,
-
-Found you searching brunch spots in Ari — all-day menu, bottomless bubbles on weekends, good concept.
-
-The gap: no website means people can't see the full menu or hours before deciding whether to come. "Brunch Ari Bangkok" on Google shows TripAdvisor and Wongnai, not you. A reservation page would also capture the weekend bottomless crowd who want to book ahead.
-
-Built a homepage concept for AMI. Screenshot attached — no strings.
-
-shaydefy.com
-Shayden`,
-      t2:`Hi,
-
-Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
-
-Shayden — shaydefy.com` }
-  ]},
-
-  { id: 29, round: 5, date: '2026-05-03', name: "Smitheries Workshop", channels: [
+  { id: 29, round: 5, date: '2026-05-04', name: "Smitheries Workshop", channels: [
     { type:'instagram', handle:'smitheriesworkshop',
       t1:`Hey Smitheries,
 
@@ -1256,28 +1269,386 @@ Just checking if you got a chance to see the mockup I sent. Happy to answer any 
 Shayden — shaydefy.com` },
     { type:'line', id:'smitheriesworkshop',
       t1:`Hey Smitheries — I'm Shayden, web designer in Bangkok. All workshop bookings going through FunNow/Klook means paying commission every month. Built a direct booking site concept (screenshot attached). No strings. shaydefy.com`,
-      t2:`Hi — just following up on the mockup I sent. Happy to answer any questions. Shayden — shaydefy.com` }
+      t2:`Hi — just following up on the mockup I sent. Happy to answer any questions. Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66863365337',
+      t1:`Hey, it's Shayden — web designer in Bangkok. All jewelry workshop bookings going through FunNow/Klook means you're paying commission on every session. Built a direct booking site concept for Smitheries (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
   ]},
 
-  { id: 30, round: 5, date: '2026-05-03', name: "Palette Artspace", channels: [
-    { type:'instagram', handle:'paletteartspace',
-      t1:`Hey Palette Artspace,
+  { id: 31, round: 6, date: '2026-05-04', name: "Landhaus Bakery", channels: [
+    { type:'instagram', handle:'landhausbakeryari',
+      t1:`Hey Landhaus,
 
-Gallery and cafe at BTS Thonglor — a genuinely good concept. But there's no website with the current exhibition, opening hours, or a way to enquire about event hire.
+German artisan bakery in Ari — the domain exists but shows a "coming soon" page that's been up for months. Anyone searching for you online hits a dead end.
 
-Built a concept for Palette Artspace — exhibition section, cafe page, events contact. Attaching it here. No strings.
+A proper site with your bread menu, bake schedule, and pre-order would convert all that Ari foot traffic into online orders too.
+
+Built a concept for Landhaus — attaching it here. No strings.
 
 shaydefy.com
 Shayden`,
-      t2:`Hey Palette — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
-    { type:'email', to:'paletteartspace@gmail.com', subject:'Built a mockup for Palette Artspace',
-      t1:`Hi Palette Artspace,
+      t2:`Hey Landhaus — just following up on the mockup I sent. Happy to chat if you're interested. Shayden — shaydefy.com` },
+    { type:'email', to:'landhaus.ari@gmail.com', subject:'Built a mockup for Landhaus Bakery',
+      t1:`Hi Landhaus,
 
-Found you searching art galleries in Bangkok — gallery and cafe at BTS Thonglor, rotating exhibitions. A space where art meets everyday life is worth discovering properly.
+Found you searching artisan bakeries in Ari — great concept, and the bread looks genuinely good.
 
-The issue: no website with the current exhibition, no event booking, and no way to find you unless you're already following on Instagram. Art collectors and tourists searching "art gallery Thonglor" get nothing.
+One thing: your domain has been showing a "coming soon" page for a long time. Anyone who finds you online hits a holding page and bounces. You're losing customers who specifically searched for you.
 
-Built a homepage concept with an exhibition section and event enquiry form. Screenshot attached — no strings.
+Built a homepage concept with a bread menu and pre-order section. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'6621650322',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Landhaus has a domain but it's been showing "coming soon" for months. Built a homepage concept with bread menu and pre-order (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'landhausbakeryari',
+      t1:`Hey Landhaus — I'm Shayden, web designer in Bangkok. Your domain's been showing "coming soon" for months — built a proper homepage concept with bread menu and pre-order (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 32, round: 6, date: '2026-05-04', name: "Nine Pastry", channels: [
+    { type:'instagram', handle:'nine.pastry',
+      t1:`Hey Nine Pastry,
+
+Neighbourhood artisan bakery in Phrom Phong — but your only web presence is a free Wix subdomain. No custom domain, poor mobile experience, and it's not ranking for anything.
+
+Built a concept for Nine Pastry — clean, minimal, matches the brand. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Nine Pastry — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'nnetzer5@gmail.com', subject:'Built a mockup for Nine Pastry',
+      t1:`Hi Nine Pastry,
+
+Found you searching artisan bakeries in Phrom Phong — genuinely great work.
+
+One thing: your current site is a free Wix subdomain (ninepastry.wixsite.com). No custom domain, poor SEO, slow on mobile. Anyone searching "pastry Phrom Phong" or "bakery Sukhumvit 22" isn't finding you.
+
+Built a proper homepage concept. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66958155839',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Nine Pastry's only site is a free Wix subdomain with no custom domain or SEO. Built a proper homepage concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'nine_pastry',
+      t1:`Hey Nine Pastry — I'm Shayden, web designer in Bangkok. Free Wix subdomain means no Google traffic. Built a proper homepage concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 33, round: 6, date: '2026-05-04', name: "Little Hideout Pâtisserie", channels: [
+    { type:'instagram', handle:'littlehideout.patisserie',
+      t1:`Hey Little Hideout,
+
+52K followers, beautiful work — and zero website. All customer contact runs through LINE and Facebook.
+
+A brand this strong deserves a proper home. Custom cake enquiry form, menu, ordering — everything in one place instead of scattered across DMs.
+
+Built a concept for Little Hideout — attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Little Hideout — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'littlehideoutcafe@gmail.com', subject:'Built a mockup for Little Hideout Pâtisserie',
+      t1:`Hi Little Hideout,
+
+Found you searching French patisseries in Bangkok — 52,000 followers and genuinely beautiful work.
+
+The gap: no website. Custom cake enquiries, menu browsing, ordering — all of it goes through LINE and Facebook DMs. A lot of people don't bother with that and just book the patisserie that has a proper site.
+
+Built a homepage concept with a custom cake enquiry form and full menu. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'line', id:'littlehideout',
+      t1:`Hey Little Hideout — I'm Shayden, web designer in Bangkok. 52K followers with no website means all enquiries go through LINE DM. Built a homepage concept with custom cake form and full menu (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 34, round: 6, date: '2026-05-04', name: "AMI Brunch & Bubbles", channels: [
+    { type:'instagram', handle:'ami.ari__',
+      t1:`Hey AMI,
+
+All-day brunch in Ari from a MasterChef finalist — that's a story worth telling properly. But there's no website, which means the people who discover AMI online have nowhere to go.
+
+No menu, no reservation form, no way to find you unless you're already following. Built a concept for AMI — attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey AMI — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'amibrunchandbubble@gmail.com', subject:'Built a mockup for AMI Brunch & Bubbles',
+      t1:`Hi AMI,
+
+Found you searching brunch spots in Ari — Italian-inspired all-day dining from Chef Ploy is exactly the kind of story that resonates online.
+
+One thing: no website. Anyone who hears about AMI and searches for it gets nothing — no menu, no reservation form, nowhere to land. You're losing customers who searched specifically for you.
+
+Built a homepage concept with a menu and reservation section. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66645246598',
+      t1:`Hey, it's Shayden — web designer in Bangkok. AMI has a great story (MasterChef chef, Italian brunch in Ari) but no website. Built a homepage concept with menu and reservation form (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 35, round: 6, date: '2026-05-04', name: "Mutual Bar", channels: [
+    { type:'instagram', handle:'mutual.bar',
+      t1:`Hey Mutual,
+
+Craft cocktail bar in Phrom Phong founded by the director of Bad Genius — that's a genuinely compelling story. But there's no website. No menu, no reservations, nothing to discover.
+
+A bar this considered deserves a site to match. Built a concept for Mutual — attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Mutual — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'mutualbar@gmail.com', subject:'Built a mockup for Mutual Bar',
+      t1:`Hi Mutual,
+
+Found you searching cocktail bars in Phrom Phong — the brand story behind Mutual (director of Bad Genius, serious cocktail programme) is exactly the kind of thing that deserves more than phone and Facebook bookings.
+
+No website means the story doesn't travel. Anyone who hears about Mutual and searches online gets nothing.
+
+Built a homepage concept with a cocktail menu and reservation form. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'6625506820',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Mutual Bar has a great story (Bad Genius director, craft cocktails in Phrom Phong) but no website. Built a homepage concept with cocktail menu and reservations (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 36, round: 6, date: '2026-05-04', name: "Nowhere BKK", channels: [
+    { type:'instagram', handle:'nowherebkk',
+      t1:`Hey Nowhere,
+
+Rooftop bar with live music in Ekkamai — and not even a Linktree. Anyone who searches for you online finds nothing at all.
+
+A rooftop bar needs a discovery page. Events calendar, what's on this week, how to get there. Built a concept for Nowhere — attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Nowhere — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66993944417',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Nowhere BKK has no website or Linktree — rooftop bar with live music and zero online presence. Built a homepage concept with events calendar (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'nowherebkk',
+      t1:`Hey Nowhere — I'm Shayden, web designer in Bangkok. No website means no way for new customers to discover the rooftop or check what's on. Built a homepage concept with events calendar (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 37, round: 6, date: '2026-05-04', name: "PEAR Bubbletea", channels: [
+    { type:'instagram', handle:'pearbubbletea',
+      t1:`Hey PEAR,
+
+Organic bubble tea across multiple Bangkok locations — but LINE-only ordering and no website. Anyone who finds PEAR online has no menu to browse and no way to find the nearest location.
+
+Built a concept for PEAR — menu, location finder, online ordering. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey PEAR — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66969659595',
+      t1:`Hey, it's Shayden — web designer in Bangkok. PEAR Bubbletea has multiple locations but no website — customers can't find you online or see the full menu. Built a homepage concept with menu and location finder (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'pearbubbletea',
+      t1:`Hey PEAR — I'm Shayden, web designer in Bangkok. Multi-location but no website means LINE DMs for everything. Built a homepage concept with menu and location finder (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 38, round: 6, date: '2026-05-04', name: "Ramen Kaisugi", channels: [
+    { type:'instagram', handle:'ramen.kaisugi.bkk',
+      t1:`Hey Kaisugi,
+
+Iwakuni ramen from Yamaguchi — the Japanese parent brand has a proper site, but the Bangkok branch has nothing. Anyone searching "ramen Sukhumvit 33" or "Japanese ramen Bangkok" can't find you.
+
+Built a concept for Kaisugi Bangkok — matching the parent brand's quality. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Kaisugi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'ramen.kaisugi.bkk@gmail.com', subject:'Built a mockup for Ramen Kaisugi Bangkok',
+      t1:`Hi Kaisugi,
+
+Found you searching Japanese ramen on Sukhumvit 33 — Iwakuni-style ramen from Yamaguchi is a genuinely compelling story for Bangkok.
+
+One thing: the Japanese brand has a website, but the Bangkok branch doesn't. Anyone Googling "ramen Sukhumvit 33" gets TripAdvisor and Wongnai, not you directly.
+
+Built a homepage concept for Kaisugi Bangkok. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66829133174',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Kaisugi's Japanese parent brand has a website but the Bangkok branch doesn't — built a homepage concept so the BKK location can own its own Google traffic (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 39, round: 6, date: '2026-05-04', name: "Big Big Tree", channels: [
+    { type:'instagram', handle:'bigbigtree_bkk',
+      t1:`Hey Big Big Tree,
+
+Rare tropical aroids shipped worldwide with phytosanitary documentation — that's a serious operation. But no website. Collectors searching for rare plants can't find you unless they're already following on Instagram.
+
+Built a concept for Big Big Tree — shop page, species browser, worldwide shipping info. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Big Big Tree — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+
+  { id: 41, round: 6, date: '2026-05-04', name: "Phachas Bridal", channels: [
+    { type:'instagram', handle:'phachas.bridal',
+      t1:`Hey Phachas,
+
+51K followers and beautiful work — but the website is just a product shop with no brand story, no about page, no portfolio. Your Instagram is doing all the heavy lifting.
+
+A proper brand site would convert that 51K into actual enquiries. Built a concept for Phachas — attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Phachas — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 42, round: 6, date: '2026-05-04', name: "Orca Barber", channels: [
+    { type:'instagram', handle:'xorca5roo',
+      t1:`Hey Orca,
+
+Solo barber in Metro Mall, MRT Asok — fades, afros, tapers for an international crowd. But no website. Tourists and expats searching "barbershop Asok" or "fade Bangkok" can't find you.
+
+A simple booking page with your services and availability would change that. Built a concept for Orca — attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Orca — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'saranwiroon@gmail.com', subject:'Built a mockup for Orca Barber',
+      t1:`Hi Orca,
+
+Found you searching barbershops near MRT Asok — fades, afros, and tapers for an international crowd is exactly what expats and tourists are searching for.
+
+No website means you're invisible to those searches. A direct booking page with your services and a Setmore link would capture that traffic and cut out the DM step.
+
+Built a homepage concept for Orca. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66877780586',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Expats and tourists searching "barbershop Asok" or "fade Bangkok" can't find Orca without a website. Built a booking-focused homepage concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'orca5roo',
+      t1:`Hey Orca — I'm Shayden, web designer in Bangkok. No website means expats searching for fades near Asok don't find you. Built a booking-focused homepage concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 43, round: 6, date: '2026-05-04', name: "GAMSA Korean BBQ", channels: [
+    { type:'instagram', handle:'gamsa_aree',
+      t1:`Hey GAMSA,
+
+20K followers, premium Korean BBQ in Ari — and no website. Reservations only via LINE or phone, which means you're losing people who want to check the menu and book online before deciding.
+
+Built a concept for GAMSA — menu, reservation form, the full experience. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey GAMSA — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'gamsajhk@gmail.com', subject:'Built a mockup for GAMSA Korean BBQ',
+      t1:`Hi GAMSA,
+
+Found you searching Korean BBQ in Ari — 20,000 followers and a packed dining room, clearly doing something right.
+
+One gap: no website. Anyone who wants to check the menu or book a table before visiting has to call or LINE. A lot of people won't bother and just book the restaurant that has an online reservation.
+
+Built a homepage concept with a full menu and reservation form. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` },
+    { type:'line', id:'gamsa_aree',
+      t1:`Hey GAMSA — I'm Shayden, web designer in Bangkok. 20K followers but no website means reservations only via LINE or phone. Built a homepage concept with menu and online reservation form (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  // ── Round 7 ───────────────────────────────────────────────────────
+  { id: 44, round: 7, date: '2026-05-04', name: "NAMU Pilates", channels: [
+    { type:'instagram', handle:'namupilates',
+      t1:`Hey NAMU,
+
+13K followers and a full studio — but every booking goes through ClassPass, which takes commission on every single session and puts you next to every other studio in Bangkok.
+
+No website means no direct bookings, no Google presence, no way for people to find you without already following you.
+
+Built a concept for NAMU — class schedule, direct booking, studio story. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey NAMU — just checking if you saw the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'namupilatesnamu',
+      t1:`Hey NAMU — I'm Shayden, web designer in Bangkok. 13K followers but ClassPass owns your bookings and takes commission on every session. Built a homepage concept with direct class schedule and booking (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 45, round: 7, date: '2026-05-04', name: "Aquadog Salon", channels: [
+    { type:'instagram', handle:'aquadog_salon',
+      t1:`Hey Aquadog,
+
+7K followers and clearly a trusted grooming spot in Phrompong — but there's no website anywhere. Anyone searching "dog grooming Sukhumvit" on Google can't find you at all.
+
+A Hotmail address and a LINE link aren't doing justice to what you've built.
+
+Built a concept for Aquadog — services, pricing, online booking. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Aquadog — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'Nutchanun133@hotmail.com', subject:'Built a mockup for Aquadog Salon',
+      t1:`Hi Aquadog,
+
+Found you searching dog grooming in Phrompong — 7,000 followers and clearly a trusted spot in the area.
+
+One gap: no website. Anyone searching on Google can't find you, and a Hotmail address makes it hard to look as professional as the service you're delivering.
+
+Built a homepage concept with your services, pricing, and a booking form. Screenshot attached — no strings.
 
 shaydefy.com
 Shayden`,
@@ -1286,15 +1657,1084 @@ Shayden`,
 Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
 
 Shayden — shaydefy.com` }
+  ]},
+
+  { id: 46, round: 7, date: '2026-05-04', name: "SPF.CO Swimwear", channels: [
+    { type:'instagram', handle:'spf.co.bkk',
+      t1:`Hey SPF.CO,
+
+28K followers and you're shipping worldwide — but everyone who clicks your link lands on a Linktree. That's where the sale stops.
+
+No product pages, no checkout, no brand story. Just a list of links.
+
+Built a concept for SPF.CO — lookbook, shop, the full experience. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey SPF.CO — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'spf.co',
+      t1:`Hey SPF.CO — I'm Shayden, web designer in Bangkok. 28K followers sending people to a Linktree is losing sales. Built a proper e-commerce concept — lookbook, shop, brand story (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'spf.co.bkk@gmail.com', subject:'Built a mockup for SPF.CO',
+      t1:`Hi SPF.CO,
+
+Found you searching Bangkok swimwear brands — 28,000 followers and global shipping ambitions.
+
+One gap: your entire web presence is a Linktree. Every customer who clicks through hits a dead end instead of a product page they can buy from.
+
+Built a homepage concept with a proper lookbook and shop flow. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 47, round: 7, date: '2026-05-04', name: "Wallflowers Bangkok", channels: [
+    { type:'instagram', handle:'wallflowerscafe.th',
+      t1:`Hey Wallflowers,
+
+24K followers and one of the most talked-about spots in Chinatown — but everyone who clicks your bio link lands on a Linktree.
+
+No reservation page, no story, no SEO. You're invisible to anyone who doesn't already follow you.
+
+Built a concept for Wallflowers — atmosphere, menu, reservation flow. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Wallflowers — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'cafe@wallflowersth.com', subject:'Built a mockup for Wallflowers Bangkok',
+      t1:`Hi Wallflowers,
+
+Found you searching cocktail bars in Chinatown — 24,000 followers and consistently strong reviews. Clearly a destination worth visiting.
+
+One gap: your only web presence is a Linktree. No reservation page, no menu, no Google ranking. You're invisible to everyone who searches before they scroll Instagram.
+
+Built a homepage concept with your atmosphere, menu, and a reservation form. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 48, round: 7, date: '2026-05-04', name: "REC. Bangkok", channels: [
+    { type:'instagram', handle:'rec.bangkok',
+      t1:`Hey REC,
+
+A vinyl-record whiskey bar is a concept that sells itself — but there's no website anywhere. No Google presence means you're completely invisible to anyone who hasn't already heard of you by word of mouth.
+
+Built a concept for REC — the vibe, the menu, the experience. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey REC — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66965396696',
+      t1:`Hey, it's Shayden — web designer in Bangkok. REC is a brilliant concept but no website means no Google presence at all — invisible outside word of mouth. Built a homepage concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'recbangkok',
+      t1:`Hey REC — I'm Shayden, web designer in Bangkok. Vinyl whiskey bar with no website = no Google presence at all. Built a homepage concept capturing the REC vibe (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 49, round: 7, date: '2026-05-04', name: "Reformed Pilates BKK", channels: [
+    { type:'instagram', handle:'reformedpilatesbkk',
+      t1:`Hey Reformed,
+
+6K followers and a clearly premium studio — but the website doesn't match what you're building. Generic Wix template, nothing that says Reformed specifically.
+
+Your clients are paying for a premium experience and the first thing they see online is a budget site.
+
+Built a concept that actually reflects the brand. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Reformed — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'reformedmovementstudio@gmail.com', subject:'Built a mockup for Reformed Pilates',
+      t1:`Hi Reformed,
+
+Found you searching reformer pilates in Sukhumvit — 6,000 followers and a clearly premium studio.
+
+One issue: your current site is a generic Wix template. It doesn't say anything about what makes Reformed different. Clients paying for a premium experience expect that to be reflected online.
+
+Built a homepage concept that actually matches the brand. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 50, round: 7, date: '2026-05-04', name: "Insignia Bangkok", channels: [
+    { type:'instagram', handle:'insigniabangkok',
+      t1:`Hey Insignia,
+
+15K followers and a genuinely unique product — handmade signet rings built to order. But the website barely works and orders still happen via DMs.
+
+Every sale that goes through a DM is a sale that almost didn't happen. A proper ordering flow would convert your 15K following at a completely different rate.
+
+Built a concept with a real product page and order flow. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Insignia — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'insigniabangkok@gmail.com', subject:'Built a mockup for Insignia Bangkok',
+      t1:`Hi Insignia,
+
+Found you searching custom jewelry Bangkok — 15,000 followers and a distinctive handmade product.
+
+The gap: your website is a placeholder and orders go through DMs. Every customer who has to DM to buy is a customer who might not bother. A proper e-commerce flow would turn your following into actual sales.
+
+Built a homepage concept with a product page and order flow. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 51, round: 7, date: '2026-05-04', name: "M Contemporary Art", channels: [
+    { type:'instagram', handle:'mcontemporary.art',
+      t1:`Hey M Contemporary,
+
+7K followers and a serious gallery space — but the website is almost completely empty. No exhibition calendar, no artist profiles, no way to buy.
+
+An art gallery without a proper web presence loses the people who'd buy online but never walk in.
+
+Built a concept — exhibitions, artists, contact. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey M Contemporary — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'mcontemporary.art',
+      t1:`Hey M Contemporary — I'm Shayden, web designer in Bangkok. 7K followers and a proper gallery but the website is nearly empty — no exhibitions, no artists, no sales flow. Built a proper concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'silpa@mcontemporary.art', subject:'Built a mockup for M Contemporary',
+      t1:`Hi,
+
+Found you searching contemporary art Bangkok — 7,000 followers and a well-regarded gallery space in Sukhumvit.
+
+The gap: the website is almost empty. No exhibition calendar, no artist profiles, no way for someone to buy work online. A gallery at this level should have a site that does the space justice.
+
+Built a homepage concept with exhibitions and artist pages. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 52, round: 7, date: '2026-05-04', name: "Siam Culinary Academy", channels: [
+    { type:'instagram', handle:'siamculinaryacademy',
+      t1:`Hey Siam Culinary,
+
+Real cooking classes, multiple channels set up — but the website doesn't convert. No clear booking flow, no class calendar, nothing that makes someone click "book now."
+
+Built a concept with a proper class schedule and booking form. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Siam Culinary — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66656060631',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Siam Culinary has everything set up but the website isn't converting — no booking flow, no class calendar. Built a proper homepage concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'siamculinary',
+      t1:`Hey Siam Culinary — I'm Shayden, web designer in Bangkok. Your site isn't converting bookings — no class calendar, no clear booking flow. Built a proper homepage concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'siamculinaryacademy@gmail.com', subject:'Built a mockup for Siam Culinary Academy',
+      t1:`Hi Siam Culinary,
+
+Found you searching cooking classes Bangkok. Real classes, real setup — but the website doesn't close bookings. No class calendar, no clear CTA, no reason for someone to book on the spot.
+
+Built a homepage concept with a proper class schedule and booking flow. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 53, round: 7, date: '2026-05-04', name: "Tonson Grooming", channels: [
+    { type:'instagram', handle:'tonsongrooming',
+      t1:`Hey Tonson,
+
+Premium location on Ploenchit, clearly a serious grooming operation — but the website is a single page with almost no content and nothing that ranks on Google.
+
+Anyone searching "dog grooming Ploenchit" doesn't find you. That's business you're leaving on the table.
+
+Built a concept — services, gallery, booking. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Tonson — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'hello@tonsongrooming.com', subject:'Built a mockup for Tonson Grooming',
+      t1:`Hi Tonson,
+
+Found you searching pet grooming near Ploenchit. Premium location and a proper operation — but the website is a single thin page with no SEO content.
+
+Anyone searching "dog grooming Sukhumvit" or "pet hotel Bangkok" on Google won't find you. A content-led site would change that immediately.
+
+Built a homepage concept with services, gallery, and a booking form. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 54, round: 7, date: '2026-05-04', name: "Bangkok Thai Cooking", channels: [
+    { type:'instagram', handle:'bangkokthaicookingacademy',
+      t1:`Hey Bangkok Thai Cooking,
+
+5.6K followers and a well-reviewed cooking class business — but the website looks like it hasn't been updated since 2015. In a category where tourists book by searching, that's directly costing you bookings.
+
+Built a concept that matches the experience you're actually delivering. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Bangkok Thai Cooking — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'bangkokthaicooking@gmail.com', subject:'Built a mockup for Bangkok Thai Cooking Academy',
+      t1:`Hi Bangkok Thai Cooking,
+
+Found you searching Thai cooking classes Bangkok — 5,600 followers and strong reviews.
+
+One problem: the website design is years out of date. Tourists book cooking classes based on Google search and first impressions. An outdated site loses them to better-looking competitors before they even read what you offer.
+
+Built a homepage concept with a modern design and booking flow. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  // ── Round 8 ───────────────────────────────────────────────────────
+  { id: 55, round: 8, date: '2026-05-04', name: "Brow Babe BKK", channels: [
+    { type:'instagram', handle:'browbabe.th',
+      t1:`Hey Brow Babe,
+
+16K followers and clearly a go-to spot for brows in Bangkok — but every booking still goes through Instagram DM. No website, no Google presence, invisible to anyone who doesn't already follow you.
+
+Built a concept for Brow Babe — services, pricing, online booking. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Brow Babe — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 56, round: 8, date: '2026-05-04', name: "Hollywood Lashes BKK", channels: [
+    { type:'instagram', handle:'hollywoodlashesbkk',
+      t1:`Hey Hollywood Lashes,
+
+20K followers — but the website is a bare Shopify product page with no service info, no pricing, no about section. New clients discovering you can't figure out what you offer or how to book.
+
+Built a proper concept — services, pricing, booking flow. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Hollywood Lashes — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'hollywoodlashesbkk',
+      t1:`Hey Hollywood Lashes — I'm Shayden, web designer in Bangkok. 20K followers but your website has no services, no pricing, no booking flow. Built a proper concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 58, round: 8, date: '2026-05-04', name: "Common Cotton", channels: [
+    { type:'instagram', handle:'commoncotton.official',
+      t1:`Hey Common Cotton,
+
+15K followers, 5 locations across Bangkok — and no website. A brand with this much physical presence should have an online presence to match.
+
+Built a concept — the brand story, store locations, collections. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Common Cotton — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'commoncotton',
+      t1:`Hey Common Cotton — I'm Shayden, web designer in Bangkok. 15K followers and 5 locations but no website means you're invisible online. Built a proper brand homepage (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'commoncotton@gmail.com', subject:'Built a mockup for Common Cotton',
+      t1:`Hi Common Cotton,
+
+Found you searching home decor Bangkok — 15,000 followers and 5 locations across the city.
+
+One gap: no website. A brand with this much physical presence should have an online presence to match — somewhere people can browse the collections and find their nearest store.
+
+Built a homepage concept. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 59, round: 8, date: '2026-05-04', name: "Rongros", channels: [
+    { type:'instagram', handle:'rongros_bkk',
+      t1:`Hey Rongros,
+
+18K followers, Michelin-recognised, and your only web presence is a Linktree. A restaurant at this level deserves a proper site — menus, reservations, the full story.
+
+Built a concept for Rongros. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Rongros — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'rongrosbkk',
+      t1:`Hey Rongros — I'm Shayden, web designer in Bangkok. Michelin-recognised with 18K followers but only a Linktree online. Built a proper site concept with menus and reservations (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'rongrosbkk@gmail.com', subject:'Built a mockup for Rongros',
+      t1:`Hi Rongros,
+
+Found you searching riverside dining Bangkok — Michelin-recognised, 18,000 followers, and clearly doing something special.
+
+One gap: a Linktree is your entire web presence. No reservation page, no menu, no brand story. A restaurant at this level should have a site that matches the experience you're delivering.
+
+Built a homepage concept with menus and a reservation flow. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+
+  { id: 61, round: 8, date: '2026-05-04', name: "Ice Cream Samosorn", channels: [
+    { type:'instagram', handle:'icecream.samosorn',
+      t1:`Hey Samosorn,
+
+17K followers and viral on TikTok — but there's no website anywhere. All that social traffic has nowhere to land except your Instagram profile.
+
+Built a concept — the story, the flavours, how to find you. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Samosorn — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'icecream.samosorn',
+      t1:`Hey Samosorn — I'm Shayden, web designer in Bangkok. 17K followers and viral TikTok with no website — all that traffic has nowhere to land. Built a proper homepage (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'icecream.samosorn@gmail.com', subject:'Built a mockup for Ice Cream Samosorn',
+      t1:`Hi Ice Cream Samosorn,
+
+Found you searching desserts near Chulalongkorn — viral TikTok presence and 17K Instagram followers.
+
+One gap: no website. All that social traffic lands on your Instagram with nowhere to go. A simple landing page with your story, flavours, and location would convert it.
+
+Built a homepage concept. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 63, round: 8, date: '2026-05-04', name: "Stay Studio BKK", channels: [
+    { type:'instagram', handle:'staystudiobkk',
+      t1:`Hey Stay Studio,
+
+20K followers and a beautiful Instagram feed — but the website is a flat template that looks nothing like the aesthetic you've built on IG. New clients check the site before booking and first impressions matter.
+
+Built a concept that matches what you've actually created. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Stay Studio — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'staylifestyle',
+      t1:`Hey Stay Studio — I'm Shayden, web designer in Bangkok. 20K followers but the website looks nothing like your IG aesthetic — a flat template is losing you bookings. Built a proper concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'stay@staylifestyle.com', subject:'Built a mockup for Stay Studio BKK',
+      t1:`Hi Stay Studio,
+
+Found you searching self-photo studios Bangkok — 20,000 followers and a clearly polished brand on Instagram.
+
+One gap: the website is a generic template that doesn't match the aesthetic at all. Clients who check before booking see something completely different from what your IG promises.
+
+Built a homepage concept that actually reflects the brand. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  // ── Round 9 ───────────────────────────────────────────────────────
+  { id: 68, round: 9, date: '2026-05-06', name: "Somewhere Bookshop", channels: [
+    { type:'instagram', handle:'somewhere_bookshop_homecafe',
+      t1:`Hey Somewhere,
+
+65K followers and no website is one of the wildest gaps I've seen. All that audience and the only place to find you is Instagram.
+
+Built a concept — the story, the shelves, how to visit. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Somewhere — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'somewherebookshop@gmail.com', subject:'Built a mockup for Somewhere Bookshop',
+      t1:`Hi Somewhere,
+
+Found you searching bookshop cafés Bangkok — 65,000 followers and a cult following, clearly one of the best spots in the city.
+
+One gap: no website. All that audience and there's nowhere to send people who want to know more before visiting.
+
+Built a homepage concept. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 69, round: 9, date: '2026-05-06', name: "X-SPACE Escape Room", channels: [
+    { type:'instagram', handle:'xspaceescape',
+      t1:`Hey X-SPACE,
+
+22K followers and multiple locations — but no website means tourists searching "escape room Bangkok" on Google can't find you. You're losing advance booking traffic every single day.
+
+Built a concept — rooms, booking, locations. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey X-SPACE — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 72, round: 9, date: '2026-05-06', name: "Bluebird Jazz Bar", channels: [
+    { type:'instagram', handle:'bluebirdjazzbar',
+      t1:`Hey Bluebird,
+
+11K followers and one of the best jazz nights in Thonglor — but no website means no events calendar, no lineup, invisible to everyone searching Google before heading out.
+
+Built a concept — the vibe, the events, how to get there. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Bluebird — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'bluebirdjazzbar@gmail.com', subject:'Built a mockup for Bluebird Jazz Bar',
+      t1:`Hi Bluebird,
+
+Found you searching jazz bars in Thonglor — 11,000 followers and clearly a proper music venue.
+
+One gap: no website. No events calendar, no way to find what's on. Anyone searching before they head out has nowhere to go.
+
+Built a homepage concept with events and atmosphere. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 73, round: 9, date: '2026-05-06', name: "BicycleBoys Bangkok", channels: [
+    { type:'instagram', handle:'bicycleboys.bangkok',
+      t1:`Hey BicycleBoys,
+
+18K followers and a cult Charoenkrung brand — but the website URL has a typo in it and the site itself is empty. First impressions matter and right now the site is losing you credibility.
+
+Built a proper concept — the bikes, the café, the story. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey BicycleBoys — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'hellobicycleboys@gmail.com', subject:'Built a mockup for BicycleBoys Bangkok',
+      t1:`Hi BicycleBoys,
+
+Found you searching cycling shops in Charoenkrung — 18,000 followers and clearly a Bangkok institution.
+
+One thing I noticed: the website URL has a typo and the site is close to empty. A brand with this much personality deserves a site that actually shows it.
+
+Built a homepage concept. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 74, round: 9, date: '2026-05-06', name: "GIMM Eyewear", channels: [
+    { type:'instagram', handle:'gimmeyewear',
+      t1:`Hey GIMM,
+
+32K followers, handcrafted bespoke frames, international buyers — and no website. Nowhere to browse the collection, nowhere to order, nowhere to understand what GIMM is without already following you.
+
+Built a concept — the craft, the frames, how to order. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey GIMM — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'gimmeyewear@gmail.com', subject:'Built a mockup for GIMM Eyewear',
+      t1:`Hi GIMM,
+
+Found you searching bespoke eyewear Bangkok — 32,000 followers and a clearly exceptional product.
+
+The gap: no website. Nowhere to see the collection or understand the ordering process. International buyers interested in your work have no way to engage outside DMs.
+
+Built a homepage concept. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 75, round: 9, date: '2026-05-06', name: "Nikaku Bangkok", channels: [
+    { type:'instagram', handle:'nikakubangkok',
+      t1:`Hey Nikaku,
+
+Edomae sushi at this level with a thin Squarespace template doesn't do the restaurant justice. No omakase journey, no chef story, no reason to commit to a reservation before you've even looked around.
+
+Built a concept that matches the prestige. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Nikaku — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'contact@nikakubangkok.com', subject:'Built a mockup for Nikaku Bangkok',
+      t1:`Hi Nikaku,
+
+Found you searching Edomae sushi in Bangkok — a counter experience at this level deserves a site that matches it.
+
+The current template is thin and doesn't communicate what makes Nikaku worth booking. No chef story, no journey, nothing that builds anticipation.
+
+Built a homepage concept that does it justice. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 76, round: 9, date: '2026-05-06', name: "Cheriwed", channels: [
+    { type:'instagram', handle:'cheriwed',
+      t1:`Hey Cheriwed,
+
+12K followers and a beautiful portfolio — but the website is an outdated template that doesn't come close to showing what you can do. Couples compare photographers online before they ever reach out.
+
+Built a concept that actually matches the work. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Cheriwed — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'whatsapp', phone:'66997826966',
+      t1:`Hey, it's Shayden — web designer in Bangkok. Cheriwed's portfolio deserves better than an outdated template. Built a proper concept that shows the work (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hey — just checking if you got a chance to see the mockup. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'cheriwed',
+      t1:`Hey Cheriwed — I'm Shayden, web designer in Bangkok. Beautiful photography but the website is letting the portfolio down. Built a proper concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'info@cheriwed.com', subject:'Built a mockup for Cheriwed',
+      t1:`Hi Cheriwed,
+
+Found you searching wedding photographers Bangkok — 12,000 followers and a genuinely beautiful portfolio.
+
+One issue: the website is outdated and not doing the work justice. Couples comparing photographers will move on if the site doesn't match the quality of the images.
+
+Built a homepage concept that actually shows what you do. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 78, round: 9, date: '2026-05-06', name: "Seven Creation", channels: [
+    { type:'instagram', handle:'seven_creation',
+      t1:`Hey Seven Creation,
+
+Premium car wraps and ceramic coating across multiple Bangkok locations — but no website. The clients who spend serious money on their cars research before they book. You're not showing up.
+
+Built a concept — services, gallery, locations. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Seven Creation — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'sevencreation',
+      t1:`Hey Seven Creation — I'm Shayden, web designer in Bangkok. Premium car detailing with no website means high-end clients can't find you. Built a proper concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', to:'sevencreation.bkk@gmail.com', subject:'Built a mockup for Seven Creation',
+      t1:`Hi Seven Creation,
+
+Found you searching car wraps and ceramic coating Bangkok — multiple locations and clearly a professional operation.
+
+One gap: no website. Clients who invest seriously in their cars research online before booking. You're invisible to them.
+
+Built a homepage concept. Screenshot attached — no strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hi,
+
+Just checking if you got a chance to see the mockup I sent. Happy to answer any questions.
+
+Shayden — shaydefy.com` }
+  ]},
+
+  { id: 79, round: 9, date: '2026-05-06', name: "Tattsmatter", channels: [
+    { type:'instagram', handle:'tattsmatter',
+      t1:`Hey Tattsmatter,
+
+23K followers, strong aesthetic, clearly a female-led studio with a real identity — but the website is a single Wix page that says almost nothing. The brand on Instagram is way ahead of what the site shows.
+
+Built a proper portfolio concept. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Tattsmatter — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'tattsmatter',
+      t1:`Hey Tattsmatter — I'm Shayden, web designer in Bangkok. 23K followers and a beautiful brand but the website is just a placeholder. Built a proper portfolio concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 80, round: 9, date: '2026-05-06', name: "ES-SEN-TAILS", channels: [
+    { type:'instagram', handle:'essentailspet',
+      t1:`Hey ES-SEN-TAILS,
+
+Premium dog enrichment and boarding in Lumphini — but the website is a sparse Wix page that doesn't reflect the quality of what you're offering. The clientele you're targeting expects more online.
+
+Built a concept that matches the service. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey ES-SEN-TAILS — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 81, round: 9, date: '2026-05-06', name: "Little Pea BKK", channels: [
+    { type:'instagram', handle:'littlepeabkk',
+      t1:`Hey Little Pea,
+
+Kids enrichment at The Commons — one of Bangkok's most premium lifestyle venues — but the website is a basic template that looks nothing like where you're based. Parents researching activities judge by first impressions.
+
+Built a concept that matches the space. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Little Pea — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'littlepeabkk',
+      t1:`Hey Little Pea — I'm Shayden, web designer in Bangkok. The Commons location but a basic template website — it doesn't match. Built a proper concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 82, round: 9, date: '2026-05-06', name: "YARK Tattoo", channels: [
+    { type:'instagram', handle:'yarktattoo',
+      t1:`Hey YARK,
+
+213K followers and no website. That's one of the biggest gaps I've seen — a studio at your scale with no Google presence, no portfolio site, no booking page.
+
+Built a concept — the work, the artists, how to book. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey YARK — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'line', id:'yarktattoo',
+      t1:`Hey YARK — I'm Shayden, web designer in Bangkok. 213K followers with no website is one of the biggest gaps I've seen. Built a proper portfolio and booking concept (screenshot attached). No strings. shaydefy.com`,
+      t2:`Hi — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  { id: 83, round: 9, date: '2026-05-06', name: "Ihavenoname Tattoo", channels: [
+    { type:'instagram', handle:'ihavenoname_tattoostudio',
+      t1:`Hey Ihavenoname,
+
+12K followers and appointment-only fineline work — but all bookings go through Instagram DM with no website anywhere. You're invisible outside Instagram, and DM bookings lose people who won't wait for a reply.
+
+Built a concept — the portfolio, the artists, how to book. Attaching it here. No strings.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Ihavenoname — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+
+  // ── Round 10 ──────────────────────────────────────────────────────
+  { id: 84, round: 10, date: '2026-05-07', name: "Mandel Spa", channels: [
+    { type:'instagram', handle:'mandelspa',
+      t1:`Hey Mandel Spa,
+
+Nice setup — massage and wellness with locations in Thonglor and Lat Phrao. But your Instagram is doing all the work. No website means anyone searching "massage Thonglor" on Google just scrolls past you.
+
+Built a concept homepage for Mandel Spa — services, booking, locations. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Mandel Spa — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'Mandelspamassage@gmail.com',
+      subject:`Quick thought on Mandel Spa's website`,
+      t1:`Hi,
+
+I was looking up massage in Bangkok and came across Mandel Spa.
+
+You've got two solid locations but no website — which means you're invisible to anyone searching on Google. Most of your customers are coming from word of mouth or Instagram, but you're leaving a big chunk of organic traffic on the table.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses — no templates, built from scratch. Here's my portfolio: shaydefy.com
+
+I think Mandel Spa could look a lot stronger online. Worth 5 minutes?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Mandel Spa's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 85, round: 10, date: '2026-05-07', name: "Vishal Haria PT", channels: [
+    { type:'instagram', handle:'vishalharia',
+      t1:`Hey Vishal,
+
+19K followers and clearly a serious PT — but the Linktree is doing a lot of heavy lifting. No real website means no Google presence, no booking page, nothing that looks professional to a new client who finds you outside Instagram.
+
+Built a concept homepage — your method, your sessions, how to book. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Vishal — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'vishal@synrgy.fitness',
+      subject:`Quick thought on your website`,
+      t1:`Hi Vishal,
+
+I was looking up personal trainers in Bangkok and came across your work.
+
+19K followers and clearly a serious PT — but the Linktree is doing all the heavy lifting online. No real site means no Google presence, no booking page, nothing that looks professional to a new client who finds you outside Instagram.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses and trainers. Portfolio: shaydefy.com
+
+Think your brand could look a lot stronger with a proper site. Worth 5 minutes?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi Vishal — just following up on my last email. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 86, round: 10, date: '2026-05-07', name: "Roundhouse Surf Skate", channels: [
+    { type:'instagram', handle:'roundhouse_surfskate',
+      t1:`Hey Roundhouse,
+
+Surf skate park and café is a great concept — different from everything else in Bangkok. But there's no website, so anyone who hears about you and Googles it finds nothing.
+
+Built a quick concept — the park, the café, how to get there. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Roundhouse — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+  { id: 87, round: 10, date: '2026-05-07', name: "Red Catering BKK", channels: [
+    { type:'instagram', handle:'redcateringbkk',
+      t1:`Hey Red Catering,
+
+Private dining and catering — the kind of thing clients always Google before they call. But there's no website, so you're missing everyone who searches "catering Bangkok" or "private chef Sukhumvit" and wants to see a proper menu and pricing.
+
+Built a concept homepage for you. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Red Catering — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'redcateringbkk@gmail.com',
+      subject:`Quick thought on Red Catering's website`,
+      t1:`Hi,
+
+I was looking up catering in Bangkok and came across Red Catering.
+
+Private dining and catering is exactly the kind of service clients search for before they ever pick up the phone — but without a website, you're invisible to that whole channel. Most people won't DM to ask for a menu.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses — built from scratch, no templates. Portfolio: shaydefy.com
+
+Think Red Catering could be doing a lot more online. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Red Catering's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 88, round: 10, date: '2026-05-07', name: "Kosan Korean Language School", channels: [
+    { type:'instagram', handle:'kosankls',
+      t1:`Hey Kosan,
+
+Korean language school in Ladprao — solid niche. But there's no website, so anyone searching "Korean classes Bangkok" on Google can't find you. That's a big chunk of students going to whoever shows up first.
+
+Built a concept homepage — courses, schedule, how to enroll. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Kosan — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'kosankls@gmail.com',
+      subject:`Quick thought on Kosan's website`,
+      t1:`Hi,
+
+I was looking up Korean language classes in Bangkok and came across Kosan.
+
+Without a website, you're invisible to everyone who Googles "Korean classes Bangkok" — and that's a growing search term. Students want to see the course structure, schedule, and pricing before they commit, and right now there's nowhere to send them.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses. Portfolio: shaydefy.com
+
+Think Kosan could be pulling in a lot more students with a proper site. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Kosan's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 89, round: 10, date: '2026-05-07', name: "Haptic Editions", channels: [
+    { type:'instagram', handle:'haptic.editions',
+      t1:`Hey Haptic,
+
+Risograph printing in Bangkok — genuinely niche, and the work looks great. But there's no website, so anyone looking to commission a print run has nowhere to go outside Instagram. That's a conversion problem.
+
+Built a concept homepage — services, print specs, how to order. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Haptic — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'info@hapticeditions.com',
+      subject:`Quick thought on Haptic Editions' website`,
+      t1:`Hi,
+
+I was looking up risograph printing in Bangkok and came across Haptic Editions.
+
+The work is great but the website isn't keeping up — there's nothing that shows the print specs, the ordering process, or what makes Haptic's output different. For a studio taking commissions, the site should be doing a lot more selling.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses. Portfolio: shaydefy.com
+
+Think Haptic Editions could be converting a lot more visitors into clients. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Haptic Editions' website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 90, round: 10, date: '2026-05-07', name: "Bangkok Batting Center", channels: [
+    { type:'instagram', handle:'bangkokbattingcenter',
+      t1:`Hey Bangkok Batting Center,
+
+Baseball batting cages in Bangkok — one of a kind. But there's no website, so anyone searching on Google finds nothing. You're relying on people already knowing you exist.
+
+Built a concept homepage — lanes, pricing, location, how to book. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Bangkok Batting Center — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'haokacompany@yahoo.co.jp',
+      subject:`Quick thought on Bangkok Batting Center's website`,
+      t1:`Hi,
+
+I was looking up batting cages in Bangkok and came across Bangkok Batting Center.
+
+Baseball batting cages in Bangkok is a genuinely unique concept — but there's no website, so anyone who Googles it finds nothing. You're completely invisible outside Instagram and word of mouth.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses. Portfolio: shaydefy.com
+
+Think Bangkok Batting Center could be doing a lot more online. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Bangkok Batting Center's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 91, round: 10, date: '2026-05-07', name: "Ido Catering", channels: [
+    { type:'instagram', handle:'idocatering',
+      t1:`Hey Ido Catering,
+
+The food looks great — but the website isn't keeping up with the quality. A catering business lives and dies on first impressions, and right now the site doesn't show the menus, the presentation, or what makes Ido different.
+
+Built a concept that better matches what you're actually delivering. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Ido Catering — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'ido@ido-catering.com',
+      subject:`Quick thought on Ido Catering's website`,
+      t1:`Hi,
+
+I was looking up catering in Bangkok and came across Ido Catering.
+
+The site exists but it's not doing much selling — there's nothing that communicates the presentation quality, the menu variety, or why someone should choose Ido over the next catering option. For a business where clients make decisions before they ever pick up the phone, the site should be working harder.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses. Portfolio: shaydefy.com
+
+Think Ido Catering could be converting a lot more enquiries with a stronger site. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Ido Catering's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 92, round: 10, date: '2026-05-07', name: "Attic Studios Bangkok", channels: [
+    { type:'instagram', handle:'atticstudiosbangkok',
+      t1:`Hey Attic Studios,
+
+Art classes and studio space on Sukhumvit 31 — the kind of thing people search for. But the website is pretty bare — nothing that sells the experience, the instructors, or why someone should pick Attic over another studio.
+
+Built a concept that shows what you're actually about. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Attic Studios — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'info@attic-studios.com',
+      subject:`Quick thought on Attic Studios' website`,
+      t1:`Hi,
+
+I was looking up art classes in Bangkok and came across Attic Studios.
+
+The site exists but it's not doing much selling — there's nothing that communicates the studio's personality, the instructors, or what makes a class at Attic worth it. For a creative studio that depends on walk-ins and word of mouth, the site should be doing a lot more work.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses. Portfolio: shaydefy.com
+
+Think Attic Studios could look a lot stronger online. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Attic Studios' website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 93, round: 10, date: '2026-05-07', name: "House of Horse BKK", channels: [
+    { type:'instagram', handle:'houseofhorse.bkk',
+      t1:`Hey House of Horse,
+
+Horse riding out in Min Buri — genuinely unique for Bangkok. But there's no website, so anyone who searches "horse riding Bangkok" finds nothing. That's probably your best discovery channel and it's completely untapped.
+
+Built a concept homepage — lessons, pricing, location, how to book. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey House of Horse — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'hohriding@gmail.com',
+      subject:`Quick thought on House of Horse's website`,
+      t1:`Hi,
+
+I was looking up horse riding in Bangkok and came across House of Horse.
+
+Horse riding in Min Buri is a great offering — but without a website, you're missing everyone who searches for it online. "Horse riding Bangkok" gets real search traffic and right now there's nothing for you to show up with.
+
+I'm a web designer based in Bangkok. I build custom sites for local businesses. Portfolio: shaydefy.com
+
+Think House of Horse could be getting a lot more bookings with a proper site. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about House of Horse's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 94, round: 10, date: '2026-05-07', name: "Firepower Hot Sauces", channels: [
+    { type:'instagram', handle:'firepowerhotsauces',
+      t1:`Hey Firepower,
+
+Artisan hot sauce made in Bangkok — solid concept. But 1K followers and no website means almost no one outside your existing audience knows you exist. You should be selling online, not just at markets.
+
+Built a concept store homepage. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Firepower — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+  { id: 95, round: 10, date: '2026-05-07', name: "Ready to Woof", channels: [
+    { type:'instagram', handle:'readytowoof',
+      t1:`Hey Ready to Woof,
+
+12K followers and the product photography is great — but there's no website. Anyone who finds you and wants to buy goes to Instagram and has to DM to order. That's friction that kills conversions.
+
+Built a concept storefront for you. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Ready to Woof — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` }
+  ]},
+  { id: 96, round: 10, date: '2026-05-07', name: "The Aspire Club", channels: [
+    { type:'instagram', handle:'theaspireclub',
+      t1:`Hey Aspire Club,
+
+Executive coaching and PT in Thonglor — premium positioning. But the website doesn't match the brand. First impressions count with that clientele, and right now the site undersells what you're actually offering.
+
+Built a concept that better matches the level. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Aspire Club — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'connect@theaspireclub.com',
+      subject:`Quick thought on The Aspire Club's website`,
+      t1:`Hi,
+
+I was looking up executive coaching and personal training in Bangkok and came across The Aspire Club.
+
+The positioning is premium but the website doesn't match — it's not communicating the exclusivity, the method, or the calibre of client you're working with. For that kind of clientele, first impressions on the site matter as much as word of mouth.
+
+I'm a web designer based in Bangkok. I build custom sites for businesses at this level. Portfolio: shaydefy.com
+
+Think The Aspire Club deserves a site that actually matches the brand. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about The Aspire Club's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
+  ]},
+  { id: 98, round: 10, date: '2026-05-07', name: "Bangkok Float Center", channels: [
+    { type:'instagram', handle:'bangkokfloatcenter',
+      t1:`Hey Bangkok Float,
+
+Float therapy in Bangkok — the concept sells itself, but only if people can find you. The site exists but it's not showing what the experience is actually like — the pods, the benefits, how it compares to other recovery methods. That's what converts a curious visitor into a booking.
+
+Built a concept that sells the experience better. Attaching it here.
+
+shaydefy.com
+Shayden`,
+      t2:`Hey Bangkok Float — just following up on the mockup I sent. Happy to chat. Shayden — shaydefy.com` },
+    { type:'email', address:'info@bangkokfloatcenter.com',
+      subject:`Quick thought on Bangkok Float Center's website`,
+      t1:`Hi,
+
+I was looking up float therapy in Bangkok and came across Bangkok Float Center.
+
+The site is there but it's not doing much selling — there's nothing that really communicates what a float session feels like, the science behind it, or why someone should try it for the first time. That's the whole conversion challenge with float therapy: most people need to be convinced before they book.
+
+I'm a web designer based in Bangkok. I build custom sites for wellness businesses. Portfolio: shaydefy.com
+
+Think Bangkok Float Center could be getting a lot more first-time bookings with a stronger site. Worth a quick chat?
+
+Shayden
+shaydefy.com`,
+      t2:`Hi — just following up on my last email about Bangkok Float Center's website. Happy to chat here or on Instagram. Shayden — shaydefy.com` }
   ]}
 ];
 
 // ── State ──────────────────────────────────────────────────────────
 let currentRound = 0;
-let currentDate = 'latest'; // 'latest' shows most recent date, 'all' shows everything
+let currentDate = 'latest';
 let currentTouch = 1;
+let currentFilter = 'all'; // 'all' | 'replied' | 'hot'
 
 function formatDateTab(d) {
+  if (d.startsWith('round-')) return 'Round ' + d.split('-')[1];
   const [y, m, day] = d.split('-');
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   return `${parseInt(day)} ${months[parseInt(m)-1]} ${y}`;
@@ -1328,6 +2768,16 @@ function toggleSent(cid, type) {
   render();
 }
 
+function niKey(cid) { return `ni_${cid}`; }
+function isNI(cid) { return localStorage.getItem(niKey(cid)) === '1'; }
+function toggleNI(cid) {
+  const k = niKey(cid);
+  const now = localStorage.getItem(k) !== '1';
+  now ? localStorage.setItem(k, '1') : localStorage.removeItem(k);
+  persistKey(k, now ? '1' : null);
+  render();
+}
+
 function resetSent() {
   if (!confirm('Clear all sent checkmarks for the current touch?')) return;
   Object.keys(localStorage).filter(k => k.startsWith(`sent_`) && k.endsWith(`_t${currentTouch}`)).forEach(k => {
@@ -1357,6 +2807,47 @@ function toggleNote(cid, type) {
 function applyPreset(cid, type, text) {
   const input = document.querySelector(`#note-row-${cid}-${type} .note-input`);
   if (input) { input.value = text; saveNote(cid, type, text); }
+}
+
+// ── Reply state ──────────────────────────────────────────────────
+function repliedKey(cid) { return `replied_${cid}`; }
+function replyChKey(cid)  { return `reply_ch_${cid}`; }
+function replyIntKey(cid) { return `reply_int_${cid}`; }
+function isReplied(cid)      { return localStorage.getItem(repliedKey(cid)) === '1'; }
+function getReplyChannel(cid){ return localStorage.getItem(replyChKey(cid)) || ''; }
+function getReplyInterest(cid){ return localStorage.getItem(replyIntKey(cid)) || ''; }
+
+function toggleReply(cid) {
+  const k = repliedKey(cid);
+  const now = localStorage.getItem(k) !== '1';
+  now ? localStorage.setItem(k, '1') : localStorage.removeItem(k);
+  persistKey(k, now ? '1' : null);
+  if (!now) {
+    [replyChKey(cid), replyIntKey(cid)].forEach(rk => { localStorage.removeItem(rk); persistKey(rk, null); });
+  }
+  render();
+}
+function setReplyChannel(cid, type) {
+  const k = replyChKey(cid);
+  const val = localStorage.getItem(k) === type ? null : type;
+  val ? localStorage.setItem(k, val) : localStorage.removeItem(k);
+  persistKey(k, val);
+  render();
+}
+function setReplyInterest(cid, level) {
+  const k = replyIntKey(cid);
+  const val = localStorage.getItem(k) === level ? null : level;
+  val ? localStorage.setItem(k, val) : localStorage.removeItem(k);
+  persistKey(k, val);
+  render();
+}
+function toggleReplyPanel(cid) {
+  const el = document.getElementById(`reply-panel-${cid}`);
+  if (el) el.classList.toggle('open');
+}
+function setFilter(f) {
+  currentFilter = f;
+  render();
 }
 
 function getContact(id) { return contacts.find(c => c.id === id); }
@@ -1449,7 +2940,7 @@ function render() {
 
   const roundsInDate = [...new Set(byDate.map(c => c.round))].sort((a,b) => a-b);
   const subTabsEl = document.getElementById('subTabs');
-  if (roundsInDate.length > 1) {
+  if (activeDate !== 'all' && roundsInDate.length >= 1) {
     subTabsEl.style.display = '';
     subTabsEl.innerHTML =
       `<button class="round-tab ${currentRound===0?'active':''}" onclick="setRound(0)">All</button>` +
@@ -1457,7 +2948,10 @@ function render() {
   } else {
     subTabsEl.style.display = 'none';
   }
-  const display = currentRound > 0 ? byDate.filter(c => c.round === currentRound) : byDate;
+  const byRound = currentRound > 0 ? byDate.filter(c => c.round === currentRound) : byDate;
+  let display = currentTouch > 1 ? byRound.filter(c => !isNI(c.id)) : byRound;
+  if (currentFilter === 'replied') display = display.filter(c => isReplied(c.id));
+  if (currentFilter === 'hot')     display = display.filter(c => getReplyInterest(c.id) === 'hot');
 
   const touchLabels = ['T1 · Intro', 'T2 · Follow-up'];
   const touchClasses = ['t1', 't2'];
@@ -1469,15 +2963,27 @@ function render() {
     dates.map(d => `<button class="round-tab ${activeDate === d ? 'active' : ''}" onclick="setDate('${d}')">${formatDateTab(d)}</button>`).join('') +
     `<button class="round-tab ${activeDate === 'all' ? 'active' : ''}" onclick="setDate('all')">All</button>`;
 
+  document.getElementById('filterTabs').innerHTML =
+    `<button class="filter-tab ${currentFilter==='all'?'active':''}" onclick="setFilter('all')">All</button>` +
+    `<button class="filter-tab f-replied ${currentFilter==='replied'?'active':''}" onclick="setFilter('replied')">↩ Replied</button>` +
+    `<button class="filter-tab f-hot ${currentFilter==='hot'?'active':''}" onclick="setFilter('hot')">🔥 Hot</button>`;
+
+  const allInScope = currentTouch > 1 ? byRound.filter(c => !isNI(c.id)) : byRound;
   const totalCh = display.flatMap(c => c.channels).length;
   const sentCh = display.flatMap(c => c.channels.map(ch => isSent(c.id, ch.type) ? 1 : 0)).reduce((a,b)=>a+b, 0);
   const pct = totalCh ? Math.round(sentCh / totalCh * 100) : 0;
+  const repliedCount = allInScope.filter(c => isReplied(c.id)).length;
+  const hotCount = allInScope.filter(c => getReplyInterest(c.id) === 'hot').length;
   document.getElementById('statsbar').innerHTML = `
-    <div class="stat-item"><div class="stat-val">${display.length}</div><div class="stat-lbl">Contacts</div></div>
+    <div class="stat-item"><div class="stat-val">${allInScope.length}</div><div class="stat-lbl">Contacts</div></div>
     <div class="stat-divider"></div>
     <div class="stat-item"><div class="stat-val">${sentCh}<span style="font-size:0.7rem;font-weight:400;color:var(--dim)"> / ${totalCh}</span></div><div class="stat-lbl">Sent</div></div>
     <div class="stat-divider"></div>
-    <div class="stat-item"><div class="stat-val" style="color:${pct===100?'var(--green)':'var(--text)'}">${pct}%</div><div class="stat-lbl">Done</div></div>`;
+    <div class="stat-item"><div class="stat-val" style="color:${pct===100?'var(--green)':'var(--text)'}">${pct}%</div><div class="stat-lbl">Done</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-val" style="color:${repliedCount>0?'var(--accent-t1)':'var(--text)'}">${repliedCount}</div><div class="stat-lbl">Replied</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-val" style="color:${hotCount>0?'#F97316':'var(--text)'}">${hotCount}</div><div class="stat-lbl">Hot</div></div>`;
 
   document.getElementById('progressFill').style.width = pct + '%';
 
@@ -1516,16 +3022,55 @@ function render() {
       </div>`;
     }).join('');
 
-    return `<div class="card ${complete ? 'complete' : ''}">
+    const ni = isNI(c.id);
+    const replied = isReplied(c.id);
+    const replyCh = getReplyChannel(c.id);
+    const replyInt = getReplyInterest(c.id);
+    const chTypes = c.channels.map(ch => ch.type);
+    const intLabels = { hot: '🔥 Interested', maybe: '↩ Maybe', dead: '✕ Dead' };
+    const replyBadge = replyInt === 'hot' ? '<span class="badge badge-hot">🔥 Hot</span>'
+      : replyInt === 'maybe' ? '<span class="badge badge-maybe">↩ Maybe</span>'
+      : replyInt === 'dead' ? '<span class="badge badge-dead">✕ Dead</span>'
+      : replied ? '<span class="badge badge-replied">Replied</span>' : '';
+
+    const replyPlatformChips = chTypes.map(t => {
+      const sel = replyCh === t ? `sel-${t}` : '';
+      const lbl = { email:'Email', whatsapp:'WhatsApp', instagram:'Instagram', line:'LINE' }[t];
+      return `<button class="reply-chip ${sel}" onclick="setReplyChannel(${c.id},'${t}')">${lbl}</button>`;
+    }).join('');
+
+    const interestChips = ['hot','maybe','dead'].map(lvl => {
+      const sel = replyInt === lvl ? `sel-${lvl}` : '';
+      return `<button class="reply-chip ${sel}" onclick="setReplyInterest(${c.id},'${lvl}')">${intLabels[lvl]}</button>`;
+    }).join('');
+
+    const cardClass = `card ${complete ? 'complete' : ''} ${ni ? 'ni' : ''} ${replyInt === 'hot' ? 'hot' : replied ? 'replied' : ''}`;
+    return `<div class="${cardClass}">
       <div class="card-bar"><div class="card-bar-fill" style="width:${barPct}%"></div></div>
       <div class="card-header">
         <div class="card-name">${c.name}</div>
         <div class="card-right">
-          ${complete ? '<span class="badge badge-complete">Done</span>' : `<span style="font-size:0.62rem;color:var(--muted)">${sent}/${total}</span>`}
+          ${replyBadge}
+          ${!replied && !ni ? (complete ? '<span class="badge badge-complete">Done</span>' : `<span style="font-size:0.62rem;color:var(--muted)">${sent}/${total}</span>`) : ''}
           <span class="badge badge-round">R${c.round}</span>
+          <button class="btn-reply ${replied ? 'active' : ''}" onclick="toggleReplyPanel(${c.id})" title="Log reply">↩</button>
+          <button class="btn-ni ${ni ? 'active' : ''}" onclick="toggleNI(${c.id})" title="${ni ? 'Undo' : 'Mark not interested'}">${ni ? '✕ undo' : '✕'}</button>
         </div>
       </div>
       <div class="channels">${rows}</div>
+      <div class="reply-panel ${replied ? 'open' : ''}" id="reply-panel-${c.id}">
+        <div class="reply-row">
+          <div class="reply-row-label">Platform</div>
+          <div class="reply-chips">${replyPlatformChips}</div>
+        </div>
+        <div class="reply-row">
+          <div class="reply-row-label">Interest</div>
+          <div class="reply-chips">${interestChips}</div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:2px">
+          <button class="reply-chip ${replied ? 'sel-hot' : ''}" style="font-size:0.6rem;${replied?'border-color:rgba(34,197,94,0.4);color:var(--green);background:var(--green-bg)':''}" onclick="toggleReply(${c.id})">${replied ? '✓ Marked as replied — click to undo' : '+ Mark as replied'}</button>
+        </div>
+      </div>
     </div>`;
   }).join('');
 }

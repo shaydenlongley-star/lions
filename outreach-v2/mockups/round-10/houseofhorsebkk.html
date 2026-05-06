@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>House of Horse BKK — Horse Riding Bangkok</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-primary: #2A9080;
+    --brand-secondary: #6A4828;
+    --brand-accent: #C8A040;
+    --brand-bg: #F5F0E8;
+    --brand-text: #1A2820;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: var(--brand-bg); font-family: 'Inter', sans-serif; }
+  .hero { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .left { background: var(--brand-bg); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 96px; position: relative; }
+  .corner-tl, .corner-br { position: absolute; width: 44px; height: 44px; }
+  .corner-tl { top: 40px; left: 40px; border-top: 1px solid rgba(107,66,38,0.3); border-left: 1px solid rgba(107,66,38,0.3); }
+  .corner-br { bottom: 40px; right: 44px; border-bottom: 1px solid rgba(107,66,38,0.3); border-right: 1px solid rgba(107,66,38,0.3); }
+  .right { position: relative; overflow: hidden; background: #1A0E06; }
+  .right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55) saturate(0.8); }
+  .right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 55% 45%, rgba(107,66,38,0.25) 0%, transparent 55%), linear-gradient(135deg, #1A0E06 0%, #231205 100%); }
+  .right::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(245,240,229,0.18) 0%, transparent 22%), linear-gradient(0deg, rgba(26,14,6,0.58) 0%, transparent 40%); }
+  .divider { position: absolute; left: 0; top: 8%; bottom: 8%; z-index: 3; width: 1px; background: linear-gradient(to bottom, transparent, rgba(212,169,106,0.5) 25%, rgba(212,169,106,0.5) 75%, transparent); }
+  .stat-badge { position: absolute; right: 36px; top: 120px; z-index: 5; border: 1px solid rgba(212,169,106,0.4); padding: 16px 20px; background: rgba(245,240,229,0.96); display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--brand-primary); line-height: 1; }
+  .stat-lbl { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,18,8,0.38); }
+  .svc-list { position: absolute; right: 36px; bottom: 56px; z-index: 5; display: flex; flex-direction: column; gap: 3px; }
+  .svc-item { display: flex; align-items: center; gap: 8px; justify-content: flex-end; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .svc-name { color: rgba(245,240,229,0.24); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .svc-dot { width: 5px; height: 5px; transform: rotate(45deg); background: rgba(107,66,38,0.4); flex-shrink: 0; }
+  .svc-item.active .svc-name { color: rgba(245,240,229,0.62); }
+  .svc-item.active .svc-dot { background: rgba(212,169,106,0.9); }
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 64px 0 96px; height: 76px; background: rgba(245,240,229,0.98); border-bottom: 1px solid rgba(107,66,38,0.14); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--brand-text); letter-spacing: 0.28em; font-weight: 300; }
+  .logo em { font-style: normal; color: var(--brand-primary); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(30,18,8,0.32); font-size: 0.7rem; letter-spacing: 0.1em; text-decoration: none; }
+  .nav-cta { border: 1px solid rgba(107,66,38,0.5); background: none; color: var(--brand-primary); padding: 9px 22px; font-size: 0.65rem; letter-spacing: 0.12em; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .eyebrow { color: rgba(212,169,106,0.8); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ''; width: 20px; height: 1px; background: rgba(107,66,38,0.45); display: inline-block; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; line-height: 1.06; color: var(--brand-text); margin-bottom: 12px; }
+  h1 em { font-style: italic; color: rgba(212,169,106,0.85); }
+  .rule { width: 32px; height: 1px; background: rgba(107,66,38,0.4); margin-bottom: 24px; }
+  p { font-size: 0.84rem; line-height: 1.85; font-weight: 300; color: rgba(30,18,8,0.48); max-width: 370px; margin-bottom: 36px; }
+  .actions { display: flex; gap: 12px; margin-bottom: 36px; }
+  .btn-primary { background: var(--brand-primary); color: var(--brand-bg); padding: 13px 30px; font-size: 0.68rem; letter-spacing: 0.14em; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .btn-ghost { border: 1px solid rgba(30,18,8,0.15); color: rgba(30,18,8,0.42); padding: 13px 30px; font-size: 0.68rem; letter-spacing: 0.14em; background: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .trust { display: flex; align-items: center; gap: 18px; }
+  .t-item { display: flex; flex-direction: column; gap: 3px; }
+  .t-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--brand-text); }
+  .t-lbl { font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(30,18,8,0.35); }
+  .t-div { width: 1px; height: 28px; background: rgba(107,66,38,0.2); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo"><em>HOUSE</em> of Horse</div>
+    <div class="nav-links"><a href="#">Lessons</a><a href="#">Our Horses</a><a href="#">Location</a><a href="#">Book</a></div>
+    <button class="nav-cta">Book a Lesson</button>
+  </nav>
+  <div class="left">
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+    <div class="eyebrow">Horse Riding · Min Buri · Bangkok</div>
+    <h1>Ride.<br>Learn.<br><em>Connect.</em></h1>
+    <div class="rule"></div>
+    <p>House of Horse offers horse riding lessons and experiences at our stables in Min Buri. From first-time riders to experienced equestrians — professional instruction, well-cared-for horses, and space to truly connect with the ride.</p>
+    <div class="actions">
+      <button class="btn-primary">Book a Lesson</button>
+      <button class="btn-ghost">Meet Our Horses</button>
+    </div>
+    <div class="trust">
+      <div class="t-item"><span class="t-num">All Ages</span><span class="t-lbl">Welcome</span></div>
+      <div class="t-div"></div>
+      <div class="t-item"><span class="t-num">Min Buri</span><span class="t-lbl">Bangkok</span></div>
+      <div class="t-div"></div>
+      <div class="t-item"><span class="t-num">Certified</span><span class="t-lbl">Instructors</span></div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-bg"></div>
+    <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1200&q=80" alt="House of Horse Bangkok riding">
+    <div class="divider"></div>
+    <div class="stat-badge">
+      <div class="stat-num">🐴</div>
+      <div class="stat-lbl">Min Buri · Bangkok</div>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Beginner Lessons</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Advanced Training</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Kids Classes</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Trail Rides</div><div class="svc-dot"></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
