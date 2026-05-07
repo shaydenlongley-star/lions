@@ -248,4 +248,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ── Scroll progress bar ──────────────────────────────
+  const progressBar = document.getElementById('scrollProgress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = max > 0 ? (window.scrollY / max * 100) + '%' : '0%';
+    }, { passive: true });
+  }
+
+  // ── Custom cursor ────────────────────────────────────
+  const cursorDot  = document.querySelector('.cursor-dot');
+  const cursorRing = document.querySelector('.cursor-ring');
+  if (cursorDot && cursorRing && !window.matchMedia('(pointer:coarse)').matches) {
+    let mx = -200, my = -200, rx = -200, ry = -200;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursorDot.style.left = mx + 'px';
+      cursorDot.style.top  = my + 'px';
+    }, { passive: true });
+
+    document.addEventListener('mousedown', () => cursorDot.classList.add('clicking'));
+    document.addEventListener('mouseup',   () => cursorDot.classList.remove('clicking'));
+
+    (function trackRing() {
+      rx += (mx - rx) * 0.1;
+      ry += (my - ry) * 0.1;
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top  = ry + 'px';
+      requestAnimationFrame(trackRing);
+    })();
+
+    document.querySelectorAll('a, button, .cat-card, .product-card, .gallery-thumb, .nav-toggle').forEach(el => {
+      el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+    });
+  }
+
+  // ── Hero mouse parallax ──────────────────────────────
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg && !window.matchMedia('(pointer:coarse)').matches) {
+    document.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth  - 0.5) * 16;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      heroBg.style.transform = `scale(1.08) translate(${x}px,${y}px)`;
+    }, { passive: true });
+  }
+
+  // ── Magnetic buttons ─────────────────────────────────
+  if (!window.matchMedia('(pointer:coarse)').matches) {
+    document.querySelectorAll('.btn-gold, .btn-primary').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        btn.style.transition = 'transform 0.18s var(--ease), background 0.25s, border-color 0.25s';
+      });
+      btn.addEventListener('mousemove', e => {
+        const r  = btn.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width  / 2)) * 0.3;
+        const dy = (e.clientY - (r.top  + r.height / 2)) * 0.3;
+        btn.style.transform = `translate(${dx}px,${dy}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transition = 'transform 0.55s cubic-bezier(0.34,1.56,0.64,1), background 0.25s, border-color 0.25s';
+        btn.style.transform = '';
+        setTimeout(() => { btn.style.transition = ''; }, 560);
+      });
+    });
+  }
+
 });
