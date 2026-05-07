@@ -37,6 +37,17 @@
   justify-content: center;
   animation: gemEntrance 1s cubic-bezier(0,0,0.2,1) both;
 }
+.mf-intro-gem::after {
+  content: '';
+  position: absolute;
+  width: min(360px, 68vw);
+  height: min(360px, 68vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 50%, #020A03 82%);
+  z-index: 3;
+  pointer-events: none;
+  animation: gemFloat 4.5s ease-in-out infinite;
+}
 @keyframes gemEntrance {
   0% { opacity:0; transform:scale(0.4) translateY(30px); }
   60% { opacity:1; }
@@ -47,8 +58,8 @@
   width: min(360px, 68vw);
   height: min(360px, 68vw);
   object-fit: cover;
-  clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
-  filter: brightness(1.1) saturate(1.5) contrast(1.05);
+  border-radius: 50%;
+  filter: brightness(0.95) saturate(1.6) contrast(1.1);
   animation: gemFloat 4.5s ease-in-out infinite;
   position: relative;
   z-index: 2;
