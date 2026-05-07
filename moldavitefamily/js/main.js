@@ -272,17 +272,57 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousedown', () => cursorDot.classList.add('clicking'));
     document.addEventListener('mouseup',   () => cursorDot.classList.remove('clicking'));
 
+    // Image reveal element — sits inside the lagging ring
+    const cursorImg = document.createElement('div');
+    cursorImg.className = 'cursor-image';
+    cursorImg.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(cursorImg);
+
     (function trackRing() {
       rx += (mx - rx) * 0.1;
       ry += (my - ry) * 0.1;
       cursorRing.style.left = rx + 'px';
       cursorRing.style.top  = ry + 'px';
+      cursorImg.style.left  = rx + 'px';
+      cursorImg.style.top   = ry + 'px';
       requestAnimationFrame(trackRing);
     })();
 
     document.querySelectorAll('a, button, .cat-card, .product-card, .gallery-thumb, .nav-toggle').forEach(el => {
       el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
       el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+    });
+
+    // Product card image reveal
+    document.querySelectorAll('.product-card').forEach(card => {
+      const img = card.querySelector('.product-img-wrap img');
+      if (!img) return;
+      card.addEventListener('mouseenter', () => {
+        cursorImg.style.backgroundImage = `url(${img.src})`;
+        cursorImg.classList.add('visible');
+        cursorRing.classList.add('image-mode');
+      });
+      card.addEventListener('mouseleave', () => {
+        cursorImg.classList.remove('visible');
+        cursorRing.classList.remove('image-mode');
+      });
+    });
+
+    // Category card image reveal
+    document.querySelectorAll('.cat-card').forEach(card => {
+      const imgEl = card.querySelector('.cat-card-img');
+      if (!imgEl) return;
+      const bg = window.getComputedStyle(imgEl).backgroundImage;
+      if (!bg || bg === 'none') return;
+      card.addEventListener('mouseenter', () => {
+        cursorImg.style.backgroundImage = bg;
+        cursorImg.classList.add('visible');
+        cursorRing.classList.add('image-mode');
+      });
+      card.addEventListener('mouseleave', () => {
+        cursorImg.classList.remove('visible');
+        cursorRing.classList.remove('image-mode');
+      });
     });
   }
 
@@ -390,5 +430,30 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // ── Page transitions ──────────────────────────────────
+  const ptOverlay = document.createElement('div');
+  ptOverlay.className = 'page-transition-overlay active';
+  ptOverlay.setAttribute('aria-hidden', 'true');
+  document.body.prepend(ptOverlay);
+
+  // Double rAF ensures the browser paints the active state before we remove it
+  requestAnimationFrame(() => requestAnimationFrame(() => ptOverlay.classList.remove('active')));
+
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href
+      || href.startsWith('#')
+      || href.startsWith('http')
+      || href.startsWith('mailto')
+      || href.startsWith('tel')
+      || link.target === '_blank'
+      || link.hasAttribute('download')) return;
+    e.preventDefault();
+    ptOverlay.classList.add('active');
+    setTimeout(() => { window.location.href = href; }, 420);
+  });
 
 });

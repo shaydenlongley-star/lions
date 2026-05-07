@@ -2001,3 +2001,44 @@ body::after {
   .impact-num { font-size: 22vw; }
   .impact-moment { min-height: 55vh; }
 }
+
+/* ── Page transition overlay ─────────────────────────────────── */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: var(--bg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.38s ease;
+}
+.page-transition-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Cursor image reveal ─────────────────────────────────────── */
+.cursor-image {
+  position: fixed;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99993;
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+  transition: opacity 0.32s var(--ease),
+              transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background-size: cover;
+  background-position: center;
+  will-change: left, top, transform, opacity;
+}
+.cursor-image.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.cursor-ring.image-mode {
+  width: 114px;
+  height: 114px;
+  border-color: rgba(196,160,64,0.65);
+}
