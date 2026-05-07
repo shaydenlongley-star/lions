@@ -165,27 +165,77 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Filter pills (sidebar) ─────────────────────────────
-  document.querySelectorAll('.sidebar-list a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelectorAll('.sidebar-list a').forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
+  // ── Shop sidebar category filter ──────────────────────
+  const sidebarLinks = document.querySelectorAll('.sidebar-list a[data-filter]');
+  const productCards = document.querySelectorAll('.product-grid-shop .product-card');
+  const shopCount    = document.querySelector('.shop-count');
 
-  // ── Contact form ───────────────────────────────────────
+  if (sidebarLinks.length && productCards.length) {
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        sidebarLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        const filter = link.dataset.filter;
+        let visible = 0;
+        productCards.forEach(card => {
+          const cats = card.dataset.categories || '';
+          const show = filter === 'all' || cats.includes(filter);
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (shopCount) shopCount.textContent = `Showing ${visible} products`;
+      });
+    });
+
+    // Price range apply
+    const priceApply = document.querySelector('.price-range .btn');
+    const minInput   = document.querySelector('.range-input input[data-min]');
+    const maxInput   = document.querySelector('.range-input input[data-max]');
+    if (priceApply && minInput && maxInput) {
+      priceApply.addEventListener('click', () => {
+        const min = parseFloat(minInput.value) || 0;
+        const max = parseFloat(maxInput.value) || Infinity;
+        let visible = 0;
+        productCards.forEach(card => {
+          const price = parseFloat(card.dataset.price) || 0;
+          const show  = price >= min && price <= max;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (shopCount) shopCount.textContent = `Showing ${visible} products`;
+      });
+    }
+  }
+
+  // ── Contact form — Formspree ───────────────────────────
   const contactForm = document.querySelector('.contact-form form');
   if (contactForm) {
-    contactForm.addEventListener('submit', e => {
+    contactForm.addEventListener('submit', async e => {
       e.preventDefault();
       const btn = contactForm.querySelector('[type=submit]');
+      const orig = btn.textContent;
       btn.textContent = 'Sending...';
-      setTimeout(() => {
-        btn.textContent = 'Message Sent ✓';
-        btn.style.background = 'var(--green)';
-        contactForm.reset();
-      }, 1200);
+      btn.disabled = true;
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          btn.textContent = 'Message Sent ✓';
+          btn.style.background = 'var(--green)';
+          contactForm.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        btn.textContent = orig;
+        btn.disabled = false;
+        alert('Something went wrong. Please email us directly at moldavitefamily@gmail.com');
+      }
     });
   }
 

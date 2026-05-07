@@ -1101,6 +1101,15 @@ h4 { font-size: 1.1rem; }
   .contact-grid { grid-template-columns:1fr; }
 }
 
+@media(max-width:768px) {
+  .contact-grid { grid-template-columns:1fr; }
+  .ship-cards { grid-template-columns:repeat(2,1fr); }
+  .policy-grid { grid-template-columns:1fr; gap:48px; }
+  .exp-chapter { height:auto; min-height:100vh; }
+  .exp-year { font-size:25vw; }
+  .exp-bg { transform:scale(1.04) !important; } /* disable parallax shift on mobile */
+}
+
 @media(max-width:900px) {
   .nav-links, .nav-cta { display:none; }
   .nav-toggle { display:flex; }

@@ -127,15 +127,18 @@
   }
 
   /* ── Ken Burns parallax on scroll ──────────────────────── */
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = () => window.innerWidth < 768;
+
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
+    if (prefersReduced || isMobile()) return;
     const vh = window.innerHeight;
-    chapters.forEach((ch, i) => {
+    chapters.forEach(ch => {
       const bg = ch.querySelector('.exp-bg');
       if (!bg) return;
       const rect = ch.getBoundingClientRect();
-      const progress = -rect.top / vh; // 0 = entering, 1 = leaving
-      const parallax = progress * 40; // px shift
+      const progress = -rect.top / vh;
+      const parallax = progress * 30;
       bg.style.transform = `scale(1.08) translateY(${parallax}px)`;
     });
   }, { passive: true });
