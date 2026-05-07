@@ -1932,3 +1932,72 @@ body::after {
 @media (max-width: 600px) {
   .besednice-facts { flex-direction: column; gap: 20px; }
 }
+
+/* ── Hero particles canvas ───────────────────────────────────── */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── 3D card tilt ────────────────────────────────────────────── */
+.product-card { transform-style: preserve-3d; }
+
+/* ── Impact / origin moment ──────────────────────────────────── */
+.impact-moment {
+  position: relative;
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: clamp(60px,10vw,120px) var(--gutter);
+}
+.impact-num {
+  position: absolute;
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 16vw, 18rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(196,160,64,0.14);
+  pointer-events: none;
+  user-select: none;
+  animation: impact-float 22s ease-in-out infinite alternate;
+}
+@keyframes impact-float {
+  0%   { transform: translateX(-3%) translateY(0); }
+  100% { transform: translateX(3%) translateY(-14px); }
+}
+.impact-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 640px;
+}
+.impact-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.impact-tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.6rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.32;
+}
+@media (max-width: 768px) {
+  .impact-num { font-size: 22vw; }
+  .impact-moment { min-height: 55vh; }
+}

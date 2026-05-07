@@ -316,4 +316,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Hero canvas particles ─────────────────────────────
+  const heroSec = document.querySelector('.hero');
+  if (heroSec) {
+    const hc = document.createElement('canvas');
+    hc.className = 'hero-particles';
+    hc.setAttribute('aria-hidden', 'true');
+    heroSec.insertBefore(hc, heroSec.querySelector('.hero-content'));
+    const hx = hc.getContext('2d');
+
+    const resizeHC = () => {
+      hc.width  = heroSec.offsetWidth;
+      hc.height = heroSec.offsetHeight;
+    };
+    resizeHC();
+    window.addEventListener('resize', resizeHC, { passive: true });
+
+    let hmx = hc.width / 2, hmy = hc.height / 2;
+    heroSec.addEventListener('mousemove', e => { hmx = e.clientX; hmy = e.clientY; }, { passive: true });
+
+    const hpts = Array.from({ length: 68 }, () => ({
+      x:    Math.random() * (heroSec.offsetWidth  || 1200),
+      y:    Math.random() * (heroSec.offsetHeight || 800),
+      vx:   (Math.random() - 0.5) * 0.22,
+      vy:   -(0.06 + Math.random() * 0.2),
+      r:    0.4 + Math.random() * 1.6,
+      a:    0.06 + Math.random() * 0.32,
+      da:   (Math.random() - 0.5) * 0.007,
+      gold: Math.random() > 0.62,
+    }));
+
+    (function hloop() {
+      hx.clearRect(0, 0, hc.width, hc.height);
+      hpts.forEach(p => {
+        const ddx  = hmx - p.x, ddy = hmy - p.y;
+        const dist = Math.sqrt(ddx * ddx + ddy * ddy) || 1;
+        if (dist < 220) { p.vx += ddx / dist * 0.006; p.vy += ddy / dist * 0.006; }
+        p.vx *= 0.988; p.vy *= 0.988;
+        p.vy -= 0.0015;
+        p.x  += p.vx;  p.y += p.vy;
+        p.a  += p.da;
+        if (p.a < 0.05 || p.a > 0.42) p.da *= -1;
+        if (p.y < -5)              p.y = hc.height + 5;
+        if (p.x < -5)              p.x = hc.width  + 5;
+        if (p.x > hc.width + 5)   p.x = -5;
+        hx.beginPath();
+        hx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        hx.fillStyle    = p.gold ? '#C4A040' : '#3D7A50';
+        hx.globalAlpha  = p.a;
+        hx.fill();
+      });
+      hx.globalAlpha = 1;
+      requestAnimationFrame(hloop);
+    })();
+  }
+
+  // ── 3D perspective card tilt ──────────────────────────
+  if (!window.matchMedia('(pointer:coarse)').matches) {
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.12s ease, border-color 0.3s';
+      });
+      card.addEventListener('mousemove', e => {
+        const r    = card.getBoundingClientRect();
+        const xPct = (e.clientX - r.left)  / r.width  - 0.5;
+        const yPct = (e.clientY - r.top)   / r.height - 0.5;
+        card.style.transform =
+          `perspective(900px) rotateX(${-yPct * 9}deg) rotateY(${xPct * 9}deg) translateY(-4px) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s';
+        card.style.transform  = '';
+      });
+    });
+  }
+
 });
