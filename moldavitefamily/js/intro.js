@@ -7,9 +7,25 @@
   const overlay = document.getElementById('mfIntro');
   if (!overlay) return;
 
-  // Only show once per device
-  if (localStorage.getItem('mf-intro-v1')) { destroy(); return; }
-  localStorage.setItem('mf-intro-v1', '1');
+  // ── All timers declared up front to avoid TDZ errors ────
+  let hardEscape = null;
+  let autoTimer  = null;
+  let rafId      = null;
+
+  // ── Destroy defined first so localStorage check can use it ──
+  function destroy() {
+    if (hardEscape !== null) clearTimeout(hardEscape);
+    if (autoTimer  !== null) clearTimeout(autoTimer);
+    cancelAnimationFrame(rafId);
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onInteract);
+    window.removeEventListener('resize', resize);
+    if (overlay && overlay.isConnected) overlay.remove();
+  }
+
+  // Only show once per device (v2 key resets old visitors)
+  if (localStorage.getItem('mf-intro-v2')) { destroy(); return; }
+  localStorage.setItem('mf-intro-v2', '1');
 
   const gemEl  = document.getElementById('mfGem');
   const canvas = document.getElementById('mfCanvas');
@@ -18,8 +34,8 @@
 
   document.body.style.overflow = 'hidden';
 
-  // Hard escape — never leave user stuck
-  const hardEscape = setTimeout(destroy, 9000);
+  // Hard escape — absolutely cannot leave user stuck
+  hardEscape = setTimeout(destroy, 9000);
 
   function resize() {
     canvas.width  = window.innerWidth;
@@ -31,7 +47,10 @@
   // ── Gem center from DOM ──────────────────────────────────
   function gemCenter() {
     const r = gemEl.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height / 2, r: r.width / 2 };
+    const cx = r.left + r.width  / 2;
+    const cy = r.top  + r.height / 2;
+    const rad = r.width / 2 || 120; // fallback if layout not ready
+    return { x: cx || canvas.width / 2, y: cy || canvas.height / 2, r: rad };
   }
 
   // ── Moldavite palette ────────────────────────────────────
@@ -49,8 +68,7 @@
   let flash    = 0;
   let shakeX   = 0, shakeY = 0;
   let exploded = false;
-  let rafId    = null;
-  let autoTimer;
+  let fadingOut = false;
 
   // ── Build triangular shards ──────────────────────────────
   function buildShards(gcx, gcy, gr) {
@@ -82,33 +100,33 @@
     const dx = cx - gcx, dy = cy - gcy;
     const d  = Math.sqrt(dx * dx + dy * dy) || 1;
     const df = Math.min(d / gr, 1);
-    const spd = 6 + df * 16 + Math.random() * 10;
+    const spd = 8 + df * 20 + Math.random() * 12;
 
     shards.push({
       pts, cx, cy, pivX: cx, pivY: cy,
-      vx: (dx / d) * spd + (Math.random() - 0.5) * 6,
-      vy: (dy / d) * spd + (Math.random() - 0.5) * 6 - 3,
-      ay: 0.45, omega: (Math.random() - 0.5) * 0.22, rot: 0,
+      vx: (dx / d) * spd + (Math.random() - 0.5) * 8,
+      vy: (dy / d) * spd + (Math.random() - 0.5) * 8 - 4,
+      ay: 0.5, omega: (Math.random() - 0.5) * 0.26, rot: 0,
       alpha: 1, life: 1,
-      decay: 0.011 + Math.random() * 0.009,
+      decay: 0.013 + Math.random() * 0.01,
       fill: randColor(),
-      bright: Math.random() > 0.82,
+      bright: Math.random() > 0.78,
     });
   }
 
   // ── Build sparks ─────────────────────────────────────────
   function buildSparks(gcx, gcy) {
-    for (let i = 0; i < 95; i++) {
+    for (let i = 0; i < 100; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const spd   = 4 + Math.random() * 24;
+      const spd   = 5 + Math.random() * 28;
       sparks.push({
         x: gcx + (Math.random() - 0.5) * 24,
         y: gcy + (Math.random() - 0.5) * 24,
-        vx: Math.cos(angle) * spd, vy: Math.sin(angle) * spd - 1.5,
-        ay: 0.38, r: 0.8 + Math.random() * 2.8,
+        vx: Math.cos(angle) * spd, vy: Math.sin(angle) * spd - 2,
+        ay: 0.42, r: 0.8 + Math.random() * 3,
         alpha: 1, trail: [],
-        color: Math.random() > 0.55 ? '#d4b84a' : '#62ae78',
-        decay: 0.018 + Math.random() * 0.022,
+        color: Math.random() > 0.5 ? '#d4b84a' : '#62ae78',
+        decay: 0.02 + Math.random() * 0.024,
       });
     }
   }
@@ -134,7 +152,7 @@
       ctx.fillStyle = s.fill;
     }
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
     ctx.lineWidth = 0.6;
     ctx.stroke();
     ctx.restore();
@@ -144,26 +162,25 @@
   function tick() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    shakeX *= 0.7; shakeY *= 0.7;
+    shakeX *= 0.68; shakeY *= 0.68;
     overlay.style.transform = `translate(${shakeX.toFixed(1)}px,${shakeY.toFixed(1)}px)`;
 
     if (flash > 0) {
-      ctx.fillStyle = `rgba(180,255,200,${flash})`;
+      ctx.fillStyle = `rgba(180,255,200,${flash.toFixed(3)})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      flash = Math.max(0, flash - 0.055);
+      flash = Math.max(0, flash - 0.05);
     }
 
     let alive = false;
 
     for (const s of shards) {
       if (s.alpha <= 0) continue;
-      s.vx += 0; s.vy += s.ay;
+      s.vy += s.ay;
       s.cx += s.vx; s.cy += s.vy;
       s.rot += s.omega;
       s.life -= s.decay;
-      s.alpha = Math.max(0, s.life);
-      drawShard(s);
-      alive = true;
+      s.alpha = s.life > 0 ? s.life : 0;
+      if (s.alpha > 0) { drawShard(s); alive = true; }
     }
 
     for (const sp of sparks) {
@@ -179,28 +196,45 @@
         if (ta < 0.01) continue;
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, sp.r * (1 - t / sp.trail.length) * 0.8, 0, Math.PI * 2);
-        ctx.fillStyle = sp.color; ctx.globalAlpha = ta; ctx.fill();
+        ctx.fillStyle = sp.color;
+        ctx.globalAlpha = ta;
+        ctx.fill();
       }
-      ctx.globalAlpha = sp.alpha;
-      ctx.beginPath(); ctx.arc(sp.x, sp.y, sp.r, 0, Math.PI * 2);
-      ctx.fillStyle = sp.color; ctx.fill();
+      if (sp.alpha > 0) {
+        ctx.globalAlpha = sp.alpha;
+        ctx.beginPath(); ctx.arc(sp.x, sp.y, sp.r, 0, Math.PI * 2);
+        ctx.fillStyle = sp.color; ctx.fill();
+        alive = true;
+      }
       ctx.globalAlpha = 1;
-      alive = true;
     }
 
-    if (alive || flash > 0 || Math.abs(shakeX) > 0.5 || Math.abs(shakeY) > 0.5) {
+    const stillMoving = Math.abs(shakeX) > 0.5 || Math.abs(shakeY) > 0.5 || flash > 0;
+    if (alive || stillMoving) {
       rafId = requestAnimationFrame(tick);
     } else {
       fadeOut();
     }
   }
 
+  // ── Fade out overlay ─────────────────────────────────────
+  function fadeOut() {
+    if (fadingOut) return;
+    fadingOut = true;
+    cancelAnimationFrame(rafId);
+    overlay.style.transition = 'opacity 0.55s ease';
+    overlay.style.opacity    = '0';
+    setTimeout(destroy, 620);
+  }
+
   // ── Trigger explosion ────────────────────────────────────
   function explode() {
     if (exploded) return;
     exploded = true;
-    clearTimeout(autoTimer);
-    document.removeEventListener('keydown', onInteract);
+    if (autoTimer !== null) clearTimeout(autoTimer);
+    overlay.removeEventListener('click',      onInteract);
+    overlay.removeEventListener('touchstart', onInteract);
+    document.removeEventListener('keydown',   onInteract);
 
     const { x, y, r } = gemCenter();
     gemEl.style.transition = 'none';
@@ -209,44 +243,28 @@
     if (hint) hint.style.opacity = '0';
 
     flash  = 1;
-    shakeX = (Math.random() - 0.5) * 52;
-    shakeY = (Math.random() - 0.5) * 52;
+    shakeX = (Math.random() - 0.5) * 56;
+    shakeY = (Math.random() - 0.5) * 56;
 
-    buildShards(x, y, r * 1.15);
+    buildShards(x, y, r * 1.2);
     buildSparks(x, y);
 
     cancelAnimationFrame(rafId);
     rafId = requestAnimationFrame(tick);
 
-    // Emergency bail — if animation somehow hangs, force exit after 5s
-    setTimeout(() => { if (overlay.isConnected) fadeOut(); }, 5000);
-  }
-
-  // ── Fade out overlay ─────────────────────────────────────
-  function fadeOut() {
-    cancelAnimationFrame(rafId);
-    overlay.style.transition = 'opacity 0.6s ease';
-    overlay.style.opacity    = '0';
-    setTimeout(destroy, 680);
-  }
-
-  function destroy() {
-    clearTimeout(hardEscape);
-    cancelAnimationFrame(rafId);
-    document.body.style.overflow = '';
-    document.removeEventListener('keydown', onInteract);
-    if (overlay && overlay.isConnected) overlay.remove();
+    // Guaranteed exit 4s after explosion regardless of animation state
+    setTimeout(fadeOut, 4000);
   }
 
   // ── Interactions ─────────────────────────────────────────
   function onInteract() { explode(); }
 
-  overlay.addEventListener('click', onInteract);
+  overlay.addEventListener('click',      onInteract);
   overlay.addEventListener('touchstart', onInteract, { passive: true });
-  document.addEventListener('keydown', onInteract);
+  document.addEventListener('keydown',   onInteract);
 
-  autoTimer = setTimeout(explode, 3500);
+  autoTimer = setTimeout(explode, 3000);
 
-  setTimeout(() => { if (!exploded && hint) hint.style.opacity = '1'; }, 1600);
+  setTimeout(() => { if (!exploded && hint) hint.style.opacity = '1'; }, 1400);
 
 })();
