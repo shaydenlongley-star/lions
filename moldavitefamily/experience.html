@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="15,000,000 Years in the Making — The origin story of moldavite, from a meteorite impact to your hands.">
   <title>The Origin Story — Moldavite Family</title>
+  <meta name="theme-color" content="#070D08">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://moldavitefamily.com/experience">
+  <meta property="og:title" content="The Origin Story — Moldavite Family">
+  <meta property="og:description" content="15,000,000 Years in the Making — The origin story of moldavite, from a meteorite impact to your hands.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cdn11.bigcommerce.com/s-ne4r27in1y/images/stencil/750x700/d/special__14099.original.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,6 +23,7 @@
   </style>
 </head>
 <body class="exp-body">
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <canvas id="exp-particles"></canvas>
 
@@ -41,7 +49,7 @@
 <!-- ══════════════════════════════════════════════════════════
      CHAPTER 1 — THE IMPACT
      ══════════════════════════════════════════════════════════ -->
-<section class="exp-chapter exp-ch1" id="ch0">
+<section class="exp-chapter exp-ch1" id="main-content">
   <div class="exp-bg" style="background-image:url('https://cdn11.bigcommerce.com/s-ne4r27in1y/images/stencil/750x700/a/special__14099.original.jpg');"></div>
   <div class="exp-overlay"></div>
   <div class="exp-year">–15M</div>
@@ -133,6 +141,23 @@
   </div>
 </section>
 
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="cart-drawer-header">
+    <h2 class="cart-drawer-title">Your Cart</h2>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter">
+    <div class="cart-total">
+      <span>Order total</span>
+      <span class="cart-total-price" id="cartTotal">$0.00</span>
+    </div>
+    <a href="https://moldavitefamily.com/cart" class="btn btn-primary cart-checkout-btn">Checkout →</a>
+  </div>
+</aside>
+
 <script src="js/experience.js" defer></script>
+<script src="js/cart.js" defer></script>
 </body>
 </html>

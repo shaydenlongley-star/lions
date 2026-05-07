@@ -171,21 +171,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const shopCount    = document.querySelector('.shop-count');
 
   if (sidebarLinks.length && productCards.length) {
+
+    let activeCategory = 'all';
+    let activeMin = 0;
+    let activeMax = Infinity;
+
+    function flashCount() {
+      if (!shopCount) return;
+      shopCount.classList.remove('count-flash');
+      void shopCount.offsetWidth; // force reflow
+      shopCount.classList.add('count-flash');
+    }
+
+    function applyFilters() {
+      let visible = 0;
+      productCards.forEach(card => {
+        const cats  = (card.dataset.categories || '').split(' ');
+        const price = parseFloat(card.dataset.price) || 0;
+        const catOk   = activeCategory === 'all' || cats.includes(activeCategory);
+        const priceOk = price >= activeMin && price <= activeMax;
+        const show    = catOk && priceOk;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (shopCount) {
+        shopCount.textContent = `Showing ${visible} products`;
+        flashCount();
+      }
+    }
+
     sidebarLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         sidebarLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-
-        const filter = link.dataset.filter;
-        let visible = 0;
-        productCards.forEach(card => {
-          const cats = card.dataset.categories || '';
-          const show = filter === 'all' || cats.includes(filter);
-          card.style.display = show ? '' : 'none';
-          if (show) visible++;
-        });
-        if (shopCount) shopCount.textContent = `Showing ${visible} products`;
+        activeCategory = link.dataset.filter;
+        applyFilters();
       });
     });
 
@@ -195,17 +216,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxInput   = document.querySelector('.range-input input[data-max]');
     if (priceApply && minInput && maxInput) {
       priceApply.addEventListener('click', () => {
-        const min = parseFloat(minInput.value) || 0;
-        const max = parseFloat(maxInput.value) || Infinity;
-        let visible = 0;
-        productCards.forEach(card => {
-          const price = parseFloat(card.dataset.price) || 0;
-          const show  = price >= min && price <= max;
-          card.style.display = show ? '' : 'none';
-          if (show) visible++;
-        });
-        if (shopCount) shopCount.textContent = `Showing ${visible} products`;
+        activeMin = parseFloat(minInput.value) || 0;
+        activeMax = parseFloat(maxInput.value) || Infinity;
+        applyFilters();
       });
+    }
+
+    // Sort dropdown
+    const sortSelect = document.getElementById('sortSelect');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', () => {
+        const grid  = document.querySelector('.product-grid-shop');
+        if (!grid) return;
+        const cards = [...grid.querySelectorAll('.product-card')];
+        const val   = sortSelect.value;
+
+        cards.sort((a, b) => {
+          const pa = parseFloat(a.dataset.price) || 0;
+          const pb = parseFloat(b.dataset.price) || 0;
+          if (val === 'price-asc')  return pa - pb;
+          if (val === 'price-desc') return pb - pa;
+          // 'default' and 'newest' — restore original DOM order via data-index
+          const ia = parseInt(a.dataset.index ?? a.dataset.price ?? 0);
+          const ib = parseInt(b.dataset.index ?? b.dataset.price ?? 0);
+          return ia - ib;
+        });
+
+        // Re-append in sorted order (preserves display:none state)
+        cards.forEach(c => grid.appendChild(c));
+        flashCount();
+      });
+    }
+
+    // Activate filter from URL hash (e.g. shop.html#besednice → filter besednice)
+    const hashFilter = window.location.hash.replace('#', '');
+    if (hashFilter) {
+      const matchLink = [...sidebarLinks].find(l => l.dataset.filter === hashFilter);
+      if (matchLink) matchLink.click();
     }
   }
 
@@ -428,6 +475,86 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transition = 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s';
         card.style.transform  = '';
       });
+    });
+  }
+
+  // ── Footer year ──────────────────────────────────────────────
+  const fy = document.getElementById('footerYear');
+  if (fy) fy.textContent = new Date().getFullYear();
+
+  // ── Dynamic years in business ────────────────────────────────
+  const yearsInBiz = new Date().getFullYear() - 1987;
+  document.querySelectorAll('.years-in-biz').forEach(el => {
+    el.textContent = yearsInBiz;
+  });
+  const yearsCountEl = document.querySelector('[data-years-from="1987"]');
+  if (yearsCountEl) {
+    yearsCountEl.dataset.count = yearsInBiz;
+    yearsCountEl.textContent   = yearsInBiz;
+  }
+
+  // ── Toast (used by cart) ─────────────────────────────────────
+  let _toastTimer;
+  window.showMFToast = function(msg) {
+    let toast = document.getElementById('cartToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'cartToast';
+      toast.className = 'cart-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.add('visible');
+    clearTimeout(_toastTimer);
+    _toastTimer = setTimeout(() => toast.classList.remove('visible'), 2000);
+  };
+
+  // ── btn-wish SKU routing ──────────────────────────────────────
+  document.querySelectorAll('.product-card').forEach(card => {
+    const sku     = card.querySelector('.product-sku')?.textContent?.trim();
+    const wishBtn = card.querySelector('.btn-wish');
+    if (wishBtn && sku) {
+      wishBtn.setAttribute('href', `product.html?sku=${sku}`);
+      wishBtn.setAttribute('aria-label', 'View details');
+    }
+  });
+
+  // ── Scroll-to-top button ─────────────────────────────────────
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 600);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ── New Arrivals show more ────────────────────────────────────
+  const showMoreBtn   = document.getElementById('newArrivalsShowMore');
+  const arrivalsExtra = document.getElementById('newArrivalsExtra');
+  if (showMoreBtn && arrivalsExtra) {
+    showMoreBtn.addEventListener('click', () => {
+      const expanded = arrivalsExtra.classList.toggle('expanded');
+      showMoreBtn.textContent = expanded ? 'Show Less ↑' : 'Show More ↓';
+    });
+  }
+
+  // ── Newsletter form ───────────────────────────────────────────
+  const newsletterForm    = document.getElementById('newsletterForm');
+  const newsletterSuccess = document.getElementById('newsletterSuccess');
+  const newsletterError   = document.getElementById('newsletterError');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail')?.value?.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      newsletterError.style.display   = valid ? 'none' : 'block';
+      newsletterSuccess.style.display = 'none';
+      if (valid) {
+        newsletterSuccess.style.display = 'block';
+        newsletterForm.querySelector('input').value = '';
+      }
     });
   }
 
