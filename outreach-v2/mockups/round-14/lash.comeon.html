@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Lash Come On — Lash Extensions & Beauty Bangkok</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root{--brand-primary:#B8A090;--brand-secondary:#D8C8B8;--brand-accent:#8B1A30;--brand-bg:#FAF7F4;--brand-text:#2A1A10}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{width:100vw;height:100vh;overflow:hidden;background:var(--brand-bg);font-family:'Inter',sans-serif}
+  .hero{width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;position:relative}
+  .left{background:var(--brand-bg);display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 96px}
+  .right{position:relative;overflow:hidden;background:#180808}
+  .right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.22) saturate(0.4)}
+  .right-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(139,26,48,0.25) 0%,transparent 55%),linear-gradient(135deg,#180808 0%,#200A0A 100%)}
+  .right::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(24,8,8,0.65) 0%,transparent 35%),linear-gradient(0deg,rgba(24,8,8,0.7) 0%,transparent 40%)}
+  .bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--brand-accent),var(--brand-primary),var(--brand-secondary));z-index:5}
+  .badge{position:absolute;right:44px;top:130px;z-index:5;background:rgba(24,8,8,0.97);border:1px solid rgba(139,26,48,0.45);padding:20px 24px;display:flex;flex-direction:column;gap:4px;align-items:center}
+  .badge-sym{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:var(--brand-accent);line-height:1}
+  .badge-lbl{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(139,26,48,0.4)}
+  .svc-list{position:absolute;right:44px;bottom:56px;z-index:5;display:flex;flex-direction:column;gap:3px}
+  .svc-item{display:flex;align-items:center;gap:8px;justify-content:flex-end;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.07)}
+  .svc-name{color:rgba(255,255,255,0.22);font-size:0.57rem;letter-spacing:0.12em;text-transform:uppercase}
+  .svc-dot{width:4px;height:4px;background:rgba(139,26,48,0.3);border-radius:50%;flex-shrink:0}
+  .svc-item.active .svc-name{color:rgba(139,26,48,0.75)}
+  .svc-item.active .svc-dot{background:var(--brand-accent)}
+  nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:24px 64px 24px 96px;background:var(--brand-bg);border-bottom:1px solid rgba(42,26,16,0.08)}
+  .logo{font-family:'Space Grotesk',sans-serif;font-size:0.88rem;color:var(--brand-text);letter-spacing:0.22em;font-weight:600}
+  .logo em{font-style:normal;color:var(--brand-accent)}
+  .nav-links{display:flex;gap:32px}
+  .nav-links a{color:rgba(42,26,16,0.4);font-size:0.68rem;letter-spacing:0.1em;text-decoration:none}
+  .nav-cta{background:var(--brand-accent);color:#FAF7F4;border:none;padding:9px 22px;font-size:0.67rem;letter-spacing:0.12em;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600}
+  .eyebrow{color:var(--brand-accent);font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:'';width:22px;height:1px;background:rgba(139,26,48,0.5);display:inline-block}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:4.4rem;font-weight:700;line-height:1.02;color:var(--brand-text);margin-bottom:20px}
+  h1 em{font-style:normal;color:var(--brand-accent)}
+  .rule{width:40px;height:3px;background:var(--brand-primary);margin-bottom:24px}
+  p{color:rgba(42,26,16,0.5);font-size:0.85rem;line-height:1.8;max-width:360px;margin-bottom:36px;font-weight:300}
+  .actions{display:flex;gap:12px;margin-bottom:32px}
+  .btn-primary{background:var(--brand-accent);color:#FAF7F4;padding:13px 30px;font-size:0.68rem;letter-spacing:0.12em;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600}
+  .btn-ghost{border:1px solid rgba(42,26,16,0.18);color:rgba(42,26,16,0.45);padding:13px 28px;font-size:0.68rem;letter-spacing:0.12em;background:none;cursor:pointer;font-family:'Inter',sans-serif}
+  .tags{display:flex;gap:8px}
+  .tag{border:1px solid rgba(42,26,16,0.12);color:rgba(42,26,16,0.4);padding:5px 12px;font-size:0.57rem;letter-spacing:0.13em;text-transform:uppercase}
+  .tag.highlight{border-color:rgba(139,26,48,0.4);color:var(--brand-accent)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <nav>
+    <div class="logo">LASH <em>COME ON</em></div>
+    <div class="nav-links"><a href="#">Services</a><a href="#">Book</a><a href="#">Gallery</a><a href="#">Find Us</a></div>
+    <button class="nav-cta">Book Now</button>
+  </nav>
+  <div class="left">
+    <div class="eyebrow">Lash Extensions · Lash Lift · Brow · Bangkok</div>
+    <h1>Lash.<br>Lift.<br><em>Look.</em></h1>
+    <div class="rule"></div>
+    <p>Bangkok lash studio — extensions, lifts, and brow shaping in a calm, professional space. Appointment-based, quality-first results that last.</p>
+    <div class="actions">
+      <button class="btn-primary">Book an Appointment</button>
+      <button class="btn-ghost">See Services</button>
+    </div>
+    <div class="tags">
+      <div class="tag highlight">Lash Extensions</div><div class="tag">Lash Lift</div><div class="tag">Brow</div><div class="tag">Bangkok</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-bg"></div>
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" alt="Lash Come On lash extensions beauty Bangkok">
+    <div class="bar"></div>
+    <div class="badge"><div class="badge-sym">✦</div><div class="badge-lbl">Studio</div></div>
+    <div class="svc-list">
+      <div class="svc-item active"><div class="svc-name">Lash Extensions</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Lash Lift</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Brow Shaping</div><div class="svc-dot"></div></div>
+      <div class="svc-item"><div class="svc-name">Bangkok</div><div class="svc-dot"></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
